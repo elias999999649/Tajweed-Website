@@ -46,7 +46,7 @@ export const curriculumAreas: CurriculumArea[] = [
     level: "Essential",
     order: 3,
     summary: "Study the three commonly taught Meem Sakinah cases in the standard teaching order.",
-    prerequisites: ["makharij-al-huruf", "ghunnah"],
+    prerequisites: ["makharij-al-huruf", "intro-to-ghunnah"],
     rules: [
       "meem-sakinah",
       "ikhfa-shafawi",

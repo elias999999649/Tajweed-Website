@@ -8,9 +8,18 @@ const extensions = [".ts", ".tsx", ".js", ".mjs"];
 
 export async function resolve(specifier, context, next) {
   if (specifier.startsWith("@/")) {
+    const base = specifier.slice(2);
     for (const extension of extensions) {
       try {
-        return await next(new URL(`./${specifier.slice(2)}${extension}`, root).href, context);
+        return await next(new URL(`./${base}${extension}`, root).href, context);
+      } catch {
+        // Try the next extension.
+      }
+    }
+    // Directory imports ("@/lib/foo" -> "lib/foo/index.ts").
+    for (const extension of extensions) {
+      try {
+        return await next(new URL(`./${base}/index${extension}`, root).href, context);
       } catch {
         // Try the next extension.
       }

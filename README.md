@@ -1,6 +1,6 @@
 # Complete Tajweed Guide
 
-A calm, structured way to learn Tajweed: 33 rule lessons, a curriculum path, glossary, articles, and quizzes — all server-rendered, no accounts required.
+A calm, structured way to learn Tajweed: 50 rule lessons, a curriculum path, glossary, articles, and quizzes — all server-rendered, no accounts required.
 
 ## Quick start
 
@@ -45,7 +45,7 @@ app/
   page.tsx              homepage
   start-here/           beginner orientation
   learn/                learning path (5 levels + topic pages)
-  tajweed/[slug]/       33 rule lessons (quiz, FAQ, examples, sources)
+  tajweed/[slug]/       50 rule lessons (quiz, FAQ, examples, sources)
   practice/             filterable practice session
   glossary/             searchable glossary
   articles/             approved articles

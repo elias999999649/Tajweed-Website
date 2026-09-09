@@ -17,6 +17,9 @@ export function GlossaryDirectory() {
 }
 
 function GlossaryCard({ entry }: { entry: (typeof tajweedGlossary)[number] }) {
-  const lessons = entry.relatedLessonIds.map((id) => tajweedRules.find((rule) => rule.id === id)).filter((rule): rule is (typeof tajweedRules)[number] => Boolean(rule));
+  // relatedLessonIds stores rule *slugs*, so resolve lessons by slug (not id).
+  const lessons = entry.relatedLessonIds
+    .map((slug) => tajweedRules.find((rule) => rule.slug === slug))
+    .filter((rule): rule is (typeof tajweedRules)[number] => Boolean(rule));
   return <article className="glossary-card" id={entry.id}><div className="glossary-card-heading"><div><h2>{entry.englishTerm}</h2><p className="glossary-arabic" lang="ar" dir="rtl">{entry.arabicSpelling}</p></div></div><p className="glossary-definition">{entry.definition}</p><div className="glossary-detail"><h3>Detailed explanation</h3><p>{entry.detailedExplanation}</p>{entry.pronunciationGuidance && <><h3>Pronunciation guidance</h3><p>{entry.pronunciationGuidance}</p></>}</div><div className="glossary-card-footer"><span>Related lessons</span>{lessons.map((lesson) => <a href={`/tajweed/${lesson.slug}`} key={lesson.id}>{lesson.name} <ArrowRight size={14} /></a>)}</div></article>;
 }

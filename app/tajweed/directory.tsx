@@ -46,6 +46,8 @@ export function TajweedDirectory() {
 }
 
 function RuleCard({ rule }: { rule: TajweedRuleRecord }) {
-  const verifiedExamples = tajweedExamples.filter((example) => example.ruleId === rule.id && example.type === "quran" && example.verificationStatus === "verified").length;
-  return <a className="directory-rule-card" href={`/tajweed/${rule.slug}`}><div className="directory-card-top"><span className="badge">{rule.level}</span><span className="directory-difficulty">{difficultyLabels[difficultyFor(rule.difficultyScore)]}</span></div><div className="directory-card-title"><h3>{rule.name}</h3>{rule.arabicName && <span lang="ar" dir="rtl">{rule.arabicName}</span>}</div><p>{rule.shortDefinition}</p><div className="directory-card-meta"><span>{rule.category}</span><span>{verifiedExamples} verified examples</span></div><ArrowRight className="directory-card-arrow" size={17} /></a>;
+  const quranExamplesForRule = tajweedExamples.filter((example) => example.ruleId === rule.id && example.type === "quran");
+  const verifiedExamples = quranExamplesForRule.filter((example) => example.verificationStatus === "verified").length;
+  const exampleLabel = verifiedExamples > 0 ? `${verifiedExamples} verified ${verifiedExamples === 1 ? "example" : "examples"}` : quranExamplesForRule.length > 0 ? "Examples in review" : "Examples pending review";
+  return <a className="directory-rule-card" href={`/tajweed/${rule.slug}`}><div className="directory-card-top"><span className="badge">{rule.level}</span><span className="directory-difficulty">{difficultyLabels[difficultyFor(rule.difficultyScore)]}</span></div><div className="directory-card-title"><h3>{rule.name}</h3>{rule.arabicName && <span lang="ar" dir="rtl">{rule.arabicName}</span>}</div><p>{rule.shortDefinition}</p><div className="directory-card-meta"><span>{rule.category}</span><span>{exampleLabel}</span></div><ArrowRight className="directory-card-arrow" size={17} /></a>;
 }

@@ -16,12 +16,16 @@ export const topicLessonMap: Record<string, string> = {
   "raa-rules": "raa-heavy-and-light",
   // Topic slug differs slightly from the rule slug ("lis" vs "li").
   "madd-arid-lis-sukun": "madd-arid-li-sukun",
-  "stopping-signs": "mushaf-stopping-symbols",
+  // Topic ids "stop-signs" and "how-to-resume" differ from their slugs, so the
+  // map must use the topic *id* (see tajweedTopics in lib/taxonomy/index.ts).
+  "stop-signs": "mushaf-stopping-symbols",
   "types-of-waqf": "major-stopping-concepts",
-  "how-to-resume-after-a-stop": "ibtida",
+  "how-to-resume": "ibtida",
   "noon-and-meem-mushaddad": "ghunnah",
   "idgham-between-letters": "idgham",
   "tafkhim-and-tarqiq": "tafkhim",
+  // Topic id "hamzatul-wasl" differs from the rule id "hamzat-al-wasl".
+  "hamzatul-wasl": "hamzat-al-wasl",
   "cutting-and-joining": "hamzat-al-wasl",
   "recitation-modes": "waqf",
 };

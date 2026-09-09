@@ -189,9 +189,9 @@ function generateWrongOptions(rule: any, count: number, type: "definition" | "oc
           ];
 
     const option = generic[wrongOptions.length % generic.length];
-    if (!wrongOptions.includes(option) && option !== rule.shortDefinition && option !== rule.whenItOccurs) {
-      wrongOptions.push(option);
-    }
+    // Guard against an endless loop when the candidate is already present.
+    if (wrongOptions.includes(option) || option === rule.shortDefinition || option === rule.whenItOccurs) break;
+    wrongOptions.push(option);
   }
 
   return wrongOptions.slice(0, count);
