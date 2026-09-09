@@ -1,5 +1,6 @@
 import type { LessonQuiz, LessonQuizQuestion } from "./types";
 import { tajweedRules } from "@/lib/tajweed/rules";
+import { shuffleOptions } from "./shuffle";
 
 /**
  * LESSON QUIZ SYSTEM
@@ -19,6 +20,14 @@ function difficultyForRule(difficultyScore: number) {
   if (difficultyScore <= 2) return "developing";
   if (difficultyScore <= 3) return "consolidating";
   return "advanced";
+}
+
+/**
+ * Deterministic shuffle so the correct answer is not always the first option,
+ * while server and client renders stay identical for a given question id.
+ */
+function shuffleOptionsLocal(options: string[], seed: string): { options: string[]; correctAnswer: number } {
+  return shuffleOptions(options, seed);
 }
 
 function levelForRule(level: string) {
@@ -44,7 +53,7 @@ function createQuizzes(): LessonQuiz[] {
 
     // QUESTION 1: UNDERSTANDING
     // Test the definition or core concept
-    const q1Options = [rule.shortDefinition, ...generateWrongOptions(rule, 3, "definition")];
+    const q1Raw = [rule.shortDefinition, ...generateWrongOptions(rule, 3, "definition")];
     const q1 = createQuestion(
       `${rule.id}-q1-understanding`,
       rule.id,
@@ -52,7 +61,7 @@ function createQuizzes(): LessonQuiz[] {
       "multiple-choice",
       "understanding",
       `What is ${rule.name}?`,
-      q1Options,
+      q1Raw,
       0,
       `${rule.shortDefinition} This is the verified definition for ${rule.name}.`,
       difficulty,
@@ -124,6 +133,7 @@ function createQuestion(
   difficulty: any,
   level: any,
 ): LessonQuizQuestion {
+  const shuffled = shuffleOptionsLocal(options, id);
   return {
     id,
     lessonId,
@@ -131,8 +141,8 @@ function createQuestion(
     type,
     purpose,
     question,
-    options,
-    correctAnswer,
+    options: shuffled.options,
+    correctAnswer: shuffled.correctAnswer,
     explanation,
     difficulty,
     level,

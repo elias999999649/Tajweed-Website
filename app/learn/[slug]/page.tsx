@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import { ArrowRight, BookOpen, ChevronRight } from "lucide-react";
+import { ArrowRight, BookOpen, ChevronRight, Clock } from "lucide-react";
 import { notFound, permanentRedirect } from "next/navigation";
 import { Footer, SiteHeader } from "@/components/ui";
 import { tajweedLevels, tajweedTopics } from "@/lib/taxonomy";
+import { getTopicLessonLink } from "@/lib/taxonomy/lessons";
 
-const aliases: Record<string, string> = { essential: "essential-rules", "madd-and-lengthening": "madd", "stopping-and-starting": "stopping-starting", "advanced": "advanced-topics" };
+const aliases: Record<string, string> = { essential: "essential-rules", advanced: "advanced-topics" };
 function resolve(slug: string) { const normalized = aliases[slug] ?? slug; return tajweedLevels.find((level) => level.slug === normalized) ?? tajweedTopics.find((topic) => topic.slug === slug); }
 function isLevel(item: NonNullable<ReturnType<typeof resolve>>): item is (typeof tajweedLevels)[number] { return "topicIds" in item; }
 export function generateStaticParams() { return [...tajweedLevels.map((level) => ({ slug: level.slug })), ...tajweedTopics.map((topic) => ({ slug: topic.slug }))]; }
@@ -21,6 +22,7 @@ export default async function LearnDetailPage({ params }: { params: Promise<{ sl
   const levelIndex = itemIsLevel ? tajweedLevels.findIndex((l) => l.id === item.id) : -1;
   const prevLevel = levelIndex > 0 ? tajweedLevels[levelIndex - 1] : null;
   const nextLevel = levelIndex >= 0 && levelIndex < tajweedLevels.length - 1 ? tajweedLevels[levelIndex + 1] : null;
+  const lessonLink = !itemIsLevel ? getTopicLessonLink(item) : null;
 
   return (
     <>
@@ -36,10 +38,10 @@ export default async function LearnDetailPage({ params }: { params: Promise<{ sl
             <p className="eyebrow">{itemIsLevel ? `Level 0${item.level} of 05` : item.category}</p>
             <h1 style={{ marginBottom: "14px" }}>{item.title}</h1>
             <p className="hero-lede">{itemIsLevel ? item.purpose : item.summary}</p>
-            {!itemIsLevel && (
+            {!itemIsLevel && lessonLink && (
               <div className="hero-actions" style={{ marginTop: "20px" }}>
-                <a className="button primary" href={`/tajweed/${item.slug}`}>
-                  <BookOpen size={16} /> Open Full Rule Lesson <ArrowRight size={14} />
+                <a className="button primary" href={`/tajweed/${lessonLink.lessonSlug}`}>
+                  {lessonLink.isPreparation ? <Clock size={16} /> : <BookOpen size={16} />} {lessonLink.isPreparation ? "Open the related lesson" : "Open Full Rule Lesson"} <ArrowRight size={14} />
                 </a>
               </div>
             )}
@@ -47,44 +49,32 @@ export default async function LearnDetailPage({ params }: { params: Promise<{ sl
         </section>
 
         {itemIsLevel && (
-          <section className="section" style={{ paddingTop: "60px", paddingBottom: "80px" }}>
-            <div className="container" style={{ maxWidth: "840px" }}>
-              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "24px" }}>
-                <h2 style={{ margin: 0, fontSize: "24px" }}>Topics in this Level</h2>
-                <span className="muted" style={{ fontSize: "13px" }}>{topics.length} modules</span>
+          <section className="section learn-level-section">
+            <div className="container learn-level-inner">
+              <div className="learn-level-heading">
+                <h2>Topics in this Level</h2>
+                <span className="muted">{topics.length} modules</span>
               </div>
 
-              <div style={{ display: "grid", gap: "14px" }}>
-                {topics.map((topic, index) => (
-                  <a 
-                    className="learn-row-card" 
-                    href={`/tajweed/${topic.slug}`} 
-                    key={topic.id}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      gap: "20px",
-                      padding: "20px 24px",
-                      background: "var(--white)",
-                      border: "1px solid var(--line)",
-                      borderRadius: "12px",
-                      transition: "all 0.18s ease"
-                    }}
-                  >
-                    <div style={{ display: "flex", alignItems: "center", gap: "18px" }}>
-                      <span className="badge" style={{ fontSize: "11px", padding: "4px 8px" }}>0{index + 1}</span>
-                      <div style={{ display: "grid", gap: "3px" }}>
-                        <h3 style={{ margin: 0, fontSize: "17px" }}>{topic.title}</h3>
-                        <span className="muted" style={{ fontSize: "13px" }}>{topic.category} · {topic.estimatedDifficulty}</span>
+              <div className="learn-topic-list">
+                {topics.map((topic, index) => {
+                  const link = getTopicLessonLink(topic);
+                  return (
+                    <a className="learn-topic-row" href={`/tajweed/${link.lessonSlug}`} key={topic.id}>
+                      <div className="learn-topic-main">
+                        <span className="badge">{String(index + 1).padStart(2, "0")}</span>
+                        <div className="learn-topic-copy">
+                          <h3>{topic.title}{link.isPreparation && <span className="prep-badge"><Clock size={11} /> In preparation</span>}</h3>
+                          <span className="muted">{topic.category} · {topic.estimatedDifficulty}{link.isPreparation && " · opens a related lesson"}</span>
+                        </div>
                       </div>
-                    </div>
-                    <ArrowRight size={16} style={{ color: "var(--green)", flex: "none" }} />
-                  </a>
-                ))}
+                      <ArrowRight size={16} className="learn-topic-arrow" />
+                    </a>
+                  );
+                })}
               </div>
 
-              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "40px", paddingTop: "24px", borderTop: "1px solid var(--line)" }}>
+              <div className="learn-level-footer">
                 {prevLevel ? (
                   <a className="outline-link" href={`/learn/${prevLevel.slug}`}>
                     ← Level 0{prevLevel.level}: {prevLevel.title}

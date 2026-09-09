@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CheckCircle2, XCircle, RotateCcw, ChevronRight, ChevronLeft } from "lucide-react";
 import type { LessonQuizQuestion } from "@/lib/practice/types";
 
@@ -13,8 +13,10 @@ interface QuestionState {
   current: number;
   selected: number | null;
   score: number;
-  answered: boolean;
+  answeredCount: number;
   completed: boolean;
+  /** Selection kept per question so going back shows the answer and prevents re-scoring. */
+  answered: Record<number, number>;
 }
 
 export function LessonQuiz({ lessonName, questions }: LessonQuizProps) {
@@ -22,8 +24,9 @@ export function LessonQuiz({ lessonName, questions }: LessonQuizProps) {
     current: 0,
     selected: null,
     score: 0,
-    answered: false,
+    answeredCount: 0,
     completed: false,
+    answered: {},
   });
 
   if (!questions || questions.length === 0) {
@@ -36,16 +39,21 @@ export function LessonQuiz({ lessonName, questions }: LessonQuizProps) {
 
   const question = questions[state.current];
   const isLastQuestion = state.current === questions.length - 1;
-  const progress = ((state.current + (state.answered ? 1 : 0)) / questions.length) * 100;
+  const previousSelection = state.answered[state.current];
+  const wasAnswered = previousSelection !== undefined;
+  const selected = wasAnswered ? previousSelection : state.selected;
+  const answered = wasAnswered || state.selected !== null;
+  const progress = (Math.max(state.answeredCount, state.current + (answered ? 1 : 0)) / questions.length) * 100;
 
   function handleAnswer(index: number) {
-    if (state.answered) return;
+    if (answered) return;
 
     const correct = index === question.correctAnswer;
     setState((prev) => ({
       ...prev,
       selected: index,
-      answered: true,
+      answered: { ...prev.answered, [prev.current]: index },
+      answeredCount: prev.answeredCount + 1,
       score: correct ? prev.score + 1 : prev.score,
     }));
   }
@@ -58,19 +66,13 @@ export function LessonQuiz({ lessonName, questions }: LessonQuizProps) {
         ...prev,
         current: prev.current + 1,
         selected: null,
-        answered: false,
       }));
     }
   }
 
   function handlePrevious() {
     if (state.current > 0) {
-      setState((prev) => ({
-        ...prev,
-        current: prev.current - 1,
-        selected: null,
-        answered: false,
-      }));
+      setState((prev) => ({ ...prev, current: prev.current - 1, selected: null }));
     }
   }
 
@@ -79,8 +81,9 @@ export function LessonQuiz({ lessonName, questions }: LessonQuizProps) {
       current: 0,
       selected: null,
       score: 0,
-      answered: false,
+      answeredCount: 0,
       completed: false,
+      answered: {},
     });
   }
 
@@ -161,15 +164,15 @@ export function LessonQuiz({ lessonName, questions }: LessonQuizProps) {
         {question.options.map((option, index) => (
           <button
             key={index}
-            className={`quiz-option ${state.selected === index ? (index === question.correctAnswer ? "correct" : "incorrect") : state.answered && index === question.correctAnswer ? "correct" : ""}`}
+            className={`quiz-option ${selected === index ? (index === question.correctAnswer ? "correct" : "incorrect") : answered && index === question.correctAnswer ? "correct" : ""}`}
             onClick={() => handleAnswer(index)}
-            disabled={state.answered}
+            disabled={answered}
             aria-label={`Option ${String.fromCharCode(65 + index)}: ${option}`}
           >
             <span className="option-indicator">
-              {state.answered && index === question.correctAnswer && <CheckCircle2 size={20} />}
-              {state.answered && state.selected === index && index !== question.correctAnswer && <XCircle size={20} />}
-              {!state.answered && <span className="option-letter">{String.fromCharCode(65 + index)}</span>}
+              {answered && index === question.correctAnswer && <CheckCircle2 size={20} />}
+              {answered && selected === index && index !== question.correctAnswer && <XCircle size={20} />}
+              {!answered && <span className="option-letter">{String.fromCharCode(65 + index)}</span>}
             </span>
             <span className="option-text">{option}</span>
           </button>
@@ -177,10 +180,10 @@ export function LessonQuiz({ lessonName, questions }: LessonQuizProps) {
       </div>
 
       {/* Feedback */}
-      {state.answered && (
-        <div className={`quiz-feedback ${state.selected === question.correctAnswer ? "correct" : "incorrect"}`}>
+      {answered && (
+        <div className={`quiz-feedback ${selected === question.correctAnswer ? "correct" : "incorrect"}`} role="status">
           <div className="feedback-header">
-            {state.selected === question.correctAnswer ? (
+            {selected === question.correctAnswer ? (
               <>
                 <CheckCircle2 size={20} />
                 <strong>Correct!</strong>
@@ -207,7 +210,7 @@ export function LessonQuiz({ lessonName, questions }: LessonQuizProps) {
           <ChevronLeft size={16} /> Previous
         </button>
 
-        {state.answered && (
+        {answered && (
           <button
             className="button primary"
             onClick={handleNext}

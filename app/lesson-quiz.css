@@ -69,7 +69,7 @@
   width: max-content;
   padding: 5px 9px;
   color: var(--gold);
-  background: #fff8e6;
+  background: var(--tint-gold);
   border-radius: 999px;
   font-size: 10px;
   font-weight: 700;
@@ -118,13 +118,13 @@
 .quiz-option.correct {
   color: var(--green);
   border-color: var(--green);
-  background: #e6f0e9;
+  background: var(--tint-green);
 }
 
 .quiz-option.incorrect {
-  color: #b85c4d;
-  border-color: #d6897f;
-  background: #faf1f0;
+  color: var(--tint-red-ink);
+  border-color: var(--tint-red-line);
+  background: var(--tint-red-bg);
 }
 
 .option-indicator {
@@ -160,13 +160,13 @@
 }
 
 .quiz-feedback.correct {
-  background: #f0faf6;
+  background: var(--tint-soft);
   border-left-color: var(--green);
 }
 
 .quiz-feedback.incorrect {
-  background: #faf1f0;
-  border-left-color: #b85c4d;
+  background: var(--tint-red-bg);
+  border-left-color: var(--tint-red-ink);
 }
 
 .feedback-header {
@@ -182,7 +182,7 @@
 }
 
 .quiz-feedback.incorrect .feedback-header {
-  color: #b85c4d;
+  color: var(--tint-red-ink);
 }
 
 .feedback-explanation {
@@ -246,13 +246,13 @@
 }
 
 .results-score.passed .score-circle {
-  background: #e6f0e9;
+  background: var(--tint-green);
   color: var(--green);
 }
 
 .results-score.needs-review .score-circle {
-  background: #faf1f0;
-  color: #b85c4d;
+  background: var(--tint-red-bg);
+  color: var(--tint-red-ink);
 }
 
 .score-number {
@@ -283,13 +283,13 @@
 }
 
 .feedback.positive {
-  background: #e6f0e9;
+  background: var(--tint-green);
   color: var(--green);
 }
 
 .feedback.needs-work {
-  background: #faf1f0;
-  color: #b85c4d;
+  background: var(--tint-red-bg);
+  color: var(--tint-red-ink);
 }
 
 .results-feedback .feedback {

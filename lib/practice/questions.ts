@@ -1,6 +1,7 @@
 import { tajweedExamples } from "@/lib/tajweed/examples";
 import { tajweedRules } from "@/lib/tajweed/rules";
 import type { TajweedRuleRecord } from "@/lib/tajweed/types";
+import { shuffleOptions } from "./shuffle";
 import type { PracticeQuestion } from "./types";
 
 const verifiedRules = tajweedRules.filter((rule) => rule.verificationStatus === "verified" && rule.reviewStatus === "VERIFIED");
@@ -18,7 +19,9 @@ function levelFor(rule: TajweedRuleRecord): PracticeQuestion["level"] {
 }
 
 function baseQuestion(rule: TajweedRuleRecord, id: string, type: PracticeQuestion["type"], question: string, answers: string[], correctAnswer: number, explanation: string): PracticeQuestion {
-  return { id, type, question, options: answers, answers, correctAnswer, explanation, relatedRule: rule.id, difficulty: difficultyFor(rule), category: rule.category, level: levelFor(rule), reviewStatus: "approved", sourceIds: rule.sources };
+  // Deterministic shuffle so the correct answer is not always listed first.
+  const { options, correctAnswer: shuffledCorrect } = shuffleOptions(answers, id);
+  return { id, type, question, options, answers: options, correctAnswer: shuffledCorrect, explanation, relatedRule: rule.id, difficulty: difficultyFor(rule), category: rule.category, level: levelFor(rule), reviewStatus: "approved", sourceIds: rule.sources };
 }
 
 function distinctOptions(correct: string, alternatives: string[], limit = 4) {

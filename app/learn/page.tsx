@@ -17,47 +17,29 @@ export default function LearnPage() {
           </div>
         </section>
 
-        <section className="section" style={{ paddingTop: "60px", paddingBottom: "80px" }}>
-          <div className="container" style={{ maxWidth: "840px" }}>
-            <div style={{ display: "grid", gap: "16px" }}>
+        <section className="section learn-level-section">
+          <div className="container learn-level-inner">
+            <div className="learn-topic-list">
               {tajweedLevels.map((level) => (
-                <a 
-                  key={level.id} 
-                  href={`/learn/${level.slug}`}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    gap: "24px",
-                    padding: "26px 30px",
-                    background: "var(--white)",
-                    border: "1px solid var(--line)",
-                    borderRadius: "14px",
-                    boxShadow: "0 4px 20px rgba(19,54,45,.03)",
-                    transition: "all 0.18s ease"
-                  }}
-                  className="learn-row-card"
-                >
-                  <div style={{ display: "grid", gap: "6px" }}>
-                    <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-                      <span className="badge" style={{ fontSize: "11px" }}>Level 0{level.level}</span>
+                <a key={level.id} href={`/learn/${level.slug}`} className="learn-topic-row">
+                  <div className="learn-topic-main">
+                    <span className="badge">Level 0{level.level}</span>
+                    <div className="learn-topic-copy">
+                      <h3>{level.title}</h3>
+                      <span className="muted">{level.purpose}</span>
                     </div>
-                    <h3 style={{ margin: "4px 0 2px", fontSize: "20px", letterSpacing: "-.02em" }}>{level.title}</h3>
-                    <p className="muted" style={{ margin: 0, fontSize: "14px" }}>{level.purpose}</p>
                   </div>
-                  <div style={{ display: "grid", placeItems: "center", width: "42px", height: "42px", flex: "none", color: "var(--green)", background: "var(--warm)", borderRadius: "10px" }}>
-                    <ArrowRight size={18} />
-                  </div>
+                  <ArrowRight size={16} className="learn-topic-arrow" />
                 </a>
               ))}
             </div>
 
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "40px", padding: "24px 30px", background: "var(--warm)", borderRadius: "14px", border: "1px solid var(--line)" }}>
-              <div style={{ display: "grid", gap: "4px" }}>
-                <strong style={{ fontSize: "15px" }}>Ready to test your knowledge?</strong>
-                <span className="muted" style={{ fontSize: "13px" }}>Practice with interactive Quranic examples and quizzes.</span>
+            <div className="learn-cta-row">
+              <div className="learn-cta-copy">
+                <strong>Ready to test your knowledge?</strong>
+                <span className="muted">Practice with interactive quizzes on every rule.</span>
               </div>
-              <a className="button primary" href="/practice" style={{ flex: "none" }}>
+              <a className="button primary" href="/practice">
                 <BookOpen size={15} /> Practice Mode
               </a>
             </div>

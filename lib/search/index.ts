@@ -27,12 +27,54 @@ export const searchDocuments: SearchDocument[] = [
 
 export const searchSuggestions = ["ikhfa", "noon sakinah", "madd", "qalqalah", "heavy letters", "makharij"];
 
-export function searchDocumentsFor(query: string, level?: SearchLevel) {
-  const normalized = query.trim().toLocaleLowerCase();
-  return searchDocuments.filter((document) => {
-    const matchesLevel = !level || document.level === level;
-    if (!normalized) return matchesLevel;
-    const haystack = [document.title, document.category, document.level, document.description, ...document.terms].filter(Boolean).join(" ").toLocaleLowerCase();
-    return matchesLevel && haystack.includes(normalized);
-  });
+/** Compact index for the client-side search palette (keeps the bundle small). */
+export type SearchIndexEntry = { kind: SearchKind; title: string; level?: SearchLevel; description: string; url: string; haystack: string };
+
+const paletteDocuments: SearchDocument[] = [
+  ...tajweedRules.map((rule): SearchDocument => ({ kind: "rule", title: rule.name, category: rule.category, level: searchLevelFor(rule.level), description: rule.shortDefinition, url: `/tajweed/${rule.slug}`, terms: [rule.arabicName ?? "", rule.name] })),
+  ...tajweedGlossary.map((entry): SearchDocument => ({ kind: "glossary", title: entry.englishTerm, category: "Tajweed glossary", description: entry.definition, url: `/glossary#${entry.id}`, terms: [entry.arabicTerm, entry.arabicSpelling] })),
+  ...supportingDocuments,
+];
+
+export const searchPaletteIndex: SearchIndexEntry[] = paletteDocuments.map((document) => ({ kind: document.kind, title: document.title, level: document.level, description: document.description, url: document.url, haystack: [document.title, document.category, document.level ?? "", document.description, ...document.terms].filter(Boolean).join(" ").toLocaleLowerCase() }));
+
+function tokenize(query: string): string[] {
+  return query.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
 }
+
+function scoreEntry(haystack: string, tokens: string[]): number {
+  let score = 0;
+  for (const token of tokens) {
+    const index = haystack.indexOf(token);
+    if (index === -1) return 0; // every word must match somewhere
+    score += index === 0 ? 3 : index < 30 ? 2 : 1;
+  }
+  return score;
+}
+
+/** Search with multi-word matching and relevance ranking (best first). */
+export function searchDocumentsFor(query: string, level?: SearchLevel): SearchDocument[] {
+  const tokens = tokenize(query);
+  const matchingLevel = (document: SearchDocument) => !level || document.level === level;
+  if (!tokens.length) return searchDocuments.filter(matchingLevel);
+  return searchDocuments
+    .filter((document) => matchingLevel(document))
+    .map((document) => ({ document, score: scoreEntry([document.title, document.category, document.level ?? "", document.description, ...document.terms].filter(Boolean).join(" ").toLocaleLowerCase(), tokens) }))
+    .filter((entry) => entry.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .map((entry) => entry.document);
+}
+
+/** Client-side ranked search over a provided compact index. */
+export function searchEntries(entries: SearchIndexEntry[], query: string, limit = 8): SearchIndexEntry[] {
+  const tokens = tokenize(query);
+  if (!tokens.length) return [];
+  return entries
+    .map((entry) => ({ entry, score: scoreEntry(entry.haystack, tokens) }))
+    .filter((item) => item.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit)
+    .map((item) => item.entry);
+}
+
+
