@@ -4,6 +4,8 @@ import { tajweedRules } from "@/lib/tajweed/rules";
 import { tajweedLevels } from "@/lib/taxonomy";
 import { absoluteUrl } from "@/lib/seo";
 
+export const dynamic = "force-static";
+
 const staticPages = [
   { path: "/", frequency: "monthly" as const, priority: 1 },
   { path: "/tajweed", frequency: "weekly" as const, priority: 0.9 },

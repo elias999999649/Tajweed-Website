@@ -6,8 +6,8 @@ const levels: SearchLevel[] = ["Foundations", "Essential", "Intermediate", "Adva
 
 export const metadata = { title: "Search | Complete Tajweed Guide", description: "Search Tajweed rules, lessons, articles, and glossary terms.", robots: { index: false, follow: true }, alternates: { canonical: "/search" } };
 
-export default async function SearchPage({ searchParams }: { searchParams: Promise<{ q?: string; level?: string }> }) {
-  const params = await searchParams;
+export default function SearchPage({ searchParams }: { searchParams?: { q?: string; level?: string } }) {
+  const params = searchParams ?? {};
   const query = params.q ?? "";
   const level = levels.includes(params.level as SearchLevel) ? params.level as SearchLevel : undefined;
   const results = searchDocumentsFor(query, level);
