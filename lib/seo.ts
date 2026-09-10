@@ -1,7 +1,7 @@
 const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/+$/, "");
 
-// Keep local development usable, but never emit a fake production domain in metadata.
-export const siteUrl = configuredSiteUrl || "http://localhost:3000";
+// Use the canonical public origin in static builds even when Cloudflare does not inject env vars.
+export const siteUrl = configuredSiteUrl || "https://tajweed101.pages.dev";
 
 export function absoluteUrl(path: string) {
   return new URL(path, siteUrl).toString();

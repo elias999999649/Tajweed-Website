@@ -12,19 +12,88 @@ const amiri = Amiri({ subsets: ["arabic", "latin"], weight: ["400", "700"], vari
 const themeInitScript = `(function(){try{var t=localStorage.getItem("theme");var d=t==="dark"||(!t&&window.matchMedia("(prefers-color-scheme: dark)").matches);document.documentElement.classList.toggle("dark",d);}catch(e){}})();`;
 
 export const metadata: Metadata = {
-  title: "Complete Tajweed Guide",
-  description: "A calm, clear way to learn Tajweed through explanation, listening, and practice.",
   metadataBase: new URL(siteUrl),
+  title: {
+    default: "Learn Tajweed Online | Complete Tajweed Guide",
+    template: "%s | Complete Tajweed Guide",
+  },
+  description: "Learn Tajweed online with clear explanations, Quran examples, practice exercises, and a structured path for reading the Quran with confidence.",
+  applicationName: "Complete Tajweed Guide",
+  keywords: [
+    "tajweed",
+    "learn tajweed",
+    "tajweed guide",
+    "quran recitation",
+    "read quran properly",
+    "tajweed rules",
+    "quran pronunciation",
+    "how to learn tajweed",
+    "learn quran recitation",
+    "tajweed lessons",
+    "tajweed examples",
+  ],
+  authors: [{ name: "Complete Tajweed Guide" }],
   alternates: { canonical: "/" },
-  openGraph: { type: "website", siteName: "Complete Tajweed Guide", title: "Complete Tajweed Guide", description: "A calm, clear way to learn Tajweed through explanation, listening, and practice.", url: absoluteUrl("/") },
-  twitter: { card: "summary_large_image", title: "Complete Tajweed Guide", description: "A calm, clear way to learn Tajweed through explanation, listening, and practice." },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "Complete Tajweed Guide",
+    title: "Learn Tajweed Online | Complete Tajweed Guide",
+    description: "Learn Tajweed online with clear explanations, Quran examples, practice exercises, and a structured path for reading the Quran with confidence.",
+    url: absoluteUrl("/"),
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Learn Tajweed Online | Complete Tajweed Guide",
+    description: "Learn Tajweed online with clear explanations, Quran examples, practice exercises, and a structured path for reading the Quran with confidence.",
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${fraunces.variable} ${amiri.variable}`}>
-      <head><script dangerouslySetInnerHTML={{ __html: themeInitScript }} /></head>
-      <body><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([{ "@context": "https://schema.org", "@type": "Organization", name: "Complete Tajweed Guide", url: absoluteUrl("/") }, { "@context": "https://schema.org", "@type": "WebSite", name: "Complete Tajweed Guide", url: absoluteUrl("/"), description: "A structured English guide to Tajweed learning." }]) }} />{children}</body>
+      <head>
+        <meta name="google-site-verification" content="rylsW5TzohyKjKDfX8PxnMCWazZkitUeJoBjVg65Ayw" />
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
+      <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Complete Tajweed Guide",
+            url: absoluteUrl("/"),
+            logo: absoluteUrl("/icon.svg"),
+            sameAs: ["https://tajweed101.pages.dev"],
+            description: "A structured online Tajweed guide helping learners understand Quranic pronunciation and recitation rules."
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "Complete Tajweed Guide",
+            url: absoluteUrl("/"),
+            description: "Learn Tajweed online with clear explanations, Quranic examples, and practice exercises for proper Quran recitation.",
+            inLanguage: "en",
+            potentialAction: {
+              "@type": "SearchAction",
+              target: `${absoluteUrl("/search")}?q={search_term_string}`,
+              "query-input": "required name=search_term_string"
+            }
+          }
+        ]) }} />
+        {children}
+      </body>
     </html>
   );
 }
