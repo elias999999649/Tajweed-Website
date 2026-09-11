@@ -1,6 +1,7 @@
 import nextVitals from "eslint-config-next/core-web-vitals";
 
 const config = [
+  { ignores: [".chrome-*-profile*/**", ".screenshots/**", "out/**", ".next/**"] },
   ...nextVitals,
   {
     // This content-first site intentionally uses plain internal anchors in server-rendered

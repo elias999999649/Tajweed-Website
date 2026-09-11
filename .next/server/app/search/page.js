@@ -1,9 +1,9 @@
 var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/search/page.js")
-R.c("server/chunks/ssr/[root-of-the-server]__05s7z7r._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0jxl8zr._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_1n3w9lb._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__11amk28._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__0j26pto._.js")
-R.c("server/chunks/ssr/[root-of-the-server]__06lxvgi._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__0rc23e4._.js")
 R.c("server/chunks/ssr/app_error_tsx_15zfp7n._.js")
 R.c("server/chunks/ssr/_05p5doo._.js")
 R.c("server/chunks/ssr/_048nvzw._.js")
@@ -12,5 +12,5 @@ R.c("server/chunks/ssr/node_modules_next_dist_client_components_builtin_unauthor
 R.c("server/chunks/ssr/node_modules_next_dist_client_components_builtin_global-error_0q-w892.js")
 R.c("server/chunks/ssr/app_search_layout_tsx_0zfw60-._.js")
 R.c("server/chunks/ssr/_next-internal_server_app_search_page_actions_0_8-8no.js")
-R.m(72982)
-module.exports=R.m(72982).exports
+R.m(61991)
+module.exports=R.m(61991).exports

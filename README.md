@@ -25,13 +25,16 @@ cp .env.example .env.local
 
 ## Scripts
 
-| Command           | Purpose                                                            |
-| ----------------- | ------------------------------------------------------------------ |
-| `npm run dev`     | Development server                                                  |
-| `npm run build`   | Production build (also type-checks and prerenders all pages)        |
-| `npm run start`   | Serve the production build                                         |
-| `npm run lint`    | ESLint with the Next.js core-web-vitals config                      |
-| `npm run audit`   | Content integrity audit: quiz generation, cross-references, coverage |
+| Command             | Purpose                                                            |
+| ------------------- | ------------------------------------------------------------------ |
+| `npm run dev`       | Development server                                                  |
+| `npm run build`     | Production build (also type-checks and prerenders all pages)        |
+| `npm run start`     | Serve the production build                                         |
+| `npm run lint`      | ESLint with the Next.js core-web-vitals config                      |
+| `npm run audit`     | Content integrity audit: quiz generation, cross-references, coverage |
+| `npm run font`      | Rebuild the self-hosted Google Sans Flex subset (`app/fonts/`)       |
+| `npm run design:test` | Headless Chrome QA: every page in light/dark + mobile, console errors, overflow, tiny text, interactions |
+| `npm run design:shots` | Capture before/after screenshots into `.screenshots/`           |
 
 Run `npm run audit` before every deploy. It fails (exit code 1) when a rule
 references a missing rule, the curriculum points to a lesson that does not
@@ -79,8 +82,9 @@ docs/                   editorial, SEO, and QA checklists
 - Fully server-rendered content; client JavaScript only for the header menu,
   theme toggle, quiz interactions, search palette, and directory filters.
 - Dark mode with system-preference detection, saved choice, and no flash.
-- Self-hosted fonts via `next/font` (Fraunces for headings, Amiri for Arabic)
-  so diacritics render consistently on every platform.
+- Self-hosted variable font (Google Sans Flex, subset to ~60 KB with
+  `npm run font`) plus Amiri for Arabic so diacritics render consistently
+  on every platform.
 - ⌘K / Ctrl+K search palette with ranked multi-word matching.
 - Seeded option shuffle in all quizzes so the correct answer is never
   consistently the first choice.
@@ -101,5 +105,6 @@ docs/                   editorial, SEO, and QA checklists
 1. `npm run lint`
 2. `npm run audit`
 3. `npm run build`
-4. Follow `docs/QUALITY-AUDIT.md` (mobile, keyboard, screen reader, Arabic
+4. `npm run design:test` (headless Chrome QA over the static export)
+5. Follow `docs/QUALITY-AUDIT.md` (mobile, keyboard, screen reader, Arabic
    rendering) and `docs/SEO-AUDIT.md` on the pages you changed.

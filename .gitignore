@@ -5,3 +5,8 @@ coverage/
 *.tsbuildinfo
 .env*
 !.env.example
+
+# Local test artifacts (headless browser profiles + QA screenshots)
+.chrome-*-profile*/
+.screenshots/
+
