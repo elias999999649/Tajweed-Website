@@ -20,7 +20,7 @@ const supportingDocuments: SearchDocument[] = articles.map((article): SearchDocu
 const searchLevelFor = (level: DifficultyLevel): SearchLevel => level === "Foundation" ? "Foundations" : level;
 
 export const searchDocuments: SearchDocument[] = [
-  ...tajweedRules.map((rule): SearchDocument => ({ kind: "rule", title: rule.name, category: rule.category, level: searchLevelFor(rule.level), description: rule.shortDefinition, url: `/tajweed/${rule.slug}`, terms: [rule.arabicName ?? "", rule.detailedExplanation, ...rule.prerequisites, ...rule.relatedRules] })),
+  ...tajweedRules.map((rule): SearchDocument => ({ kind: "rule", title: rule.name, category: rule.category, level: searchLevelFor(rule.level), description: rule.shortDefinition, url: `/tajweed/${rule.slug}`, terms: [rule.name, rule.arabicName ?? "", rule.category, rule.detailedExplanation, ...rule.prerequisites, ...rule.relatedRules] })),
   ...tajweedGlossary.map((entry): SearchDocument => ({ kind: "glossary", title: entry.englishTerm, category: "Tajweed glossary", description: entry.definition, url: `/glossary#${entry.id}`, terms: [entry.arabicTerm, entry.arabicSpelling, entry.detailedExplanation, ...entry.relatedRuleIds] })),
   ...supportingDocuments,
 ];
@@ -38,18 +38,30 @@ const paletteDocuments: SearchDocument[] = [
 
 export const searchPaletteIndex: SearchIndexEntry[] = paletteDocuments.map((document) => ({ kind: document.kind, title: document.title, level: document.level, description: document.description, url: document.url, haystack: [document.title, document.category, document.level ?? "", document.description, ...document.terms].filter(Boolean).join(" ").toLocaleLowerCase() }));
 
+function normalize(value: string): string {
+  return value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase().replace(/[’'`-]/g, " ").replace(/[^\p{Letter}\p{Number}]+/gu, " ").trim();
+}
+
 function tokenize(query: string): string[] {
-  return query.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
+  return normalize(query).split(/\s+/).filter((token) => token.length > 1);
 }
 
 function scoreEntry(haystack: string, tokens: string[]): number {
+  const normalizedHaystack = normalize(haystack);
+  const words = normalizedHaystack.split(/\s+/);
   let score = 0;
+  let matched = 0;
   for (const token of tokens) {
-    const index = haystack.indexOf(token);
-    if (index === -1) return 0; // every word must match somewhere
-    score += index === 0 ? 3 : index < 30 ? 2 : 1;
+    const index = normalizedHaystack.indexOf(token);
+    const wordMatch = words.some((word) => word === token || word.startsWith(token));
+    if (index === -1 && !wordMatch) continue;
+    matched += 1;
+    score += wordMatch ? 5 : 2;
+    if (index === 0) score += 3;
+    else if (index < 45) score += 1;
   }
-  return score;
+  if (!matched) return 0;
+  return score + (matched === tokens.length ? 8 : matched * 2);
 }
 
 /** Search with multi-word matching and relevance ranking (best first). */

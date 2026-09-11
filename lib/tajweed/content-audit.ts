@@ -36,9 +36,9 @@ export function auditRuleContent(rule: TajweedRuleRecord): RuleContentAudit {
   const lettersPresent = rule.letters.length > 0 || ["what-is-tajweed", "why-tajweed-is-studied", "waqf", "ibtida"].includes(rule.id);
   const pronunciationPresent = meaningful(rule.pronunciation);
   const authenticExamplesPresent = examples.some((example) => example.type === "quran");
-  const examplesVerified = examples.some((example) => example.type === "quran") && examples.filter((example) => example.type === "quran").every((example) => example.verificationStatus === "verified");
+  const examplesVerified = examples.some((example) => example.type === "quran") && examples.filter((example) => example.type === "quran").every((example) => example.verificationStatus === "verified" && Boolean(example.surah) && Number.isInteger(example.verse) && Boolean(example.sourceIds?.length));
   const relatedRulesLinked = rule.relatedRules.every(hasRule);
-  const quizPresent = practiceQuestions.some((question) => question.relatedRule === rule.id);
+  const quizPresent = rule.verificationStatus === "verified" && rule.reviewStatus === "VERIFIED" && practiceQuestions.some((question) => question.relatedRule === rule.id);
 
   if (!definitionPresent) issues.push("Definition missing or too brief");
   if (!explanationPresent) issues.push("Detailed explanation missing or too brief");
@@ -50,7 +50,9 @@ export function auditRuleContent(rule: TajweedRuleRecord): RuleContentAudit {
   if (!rule.commonMistakes.length) issues.push("Common mistakes missing");
   if (!relatedRulesLinked) issues.push("Related rule link is unresolved");
   if (!rule.practiceQuestions.length) issues.push("Practice prompt missing");
-  if (!quizPresent) issues.push("No verified quiz questions");
+  if (!quizPresent) issues.push("No approved quiz questions");
+  if (rule.verificationStatus === "verified" && rule.reviewStatus !== "VERIFIED") issues.push("Verification status and review status disagree");
+  if (rule.verificationStatus !== "verified" && rule.reviewStatus === "VERIFIED") issues.push("Review status claims approval while verification is not verified");
   if (!rule.sources.length || !rule.sourceReferences.length) issues.push("Source reference missing");
   if (!rule.level) issues.push("Learning level missing");
   if (!rule.prerequisites) issues.push("Prerequisites missing");

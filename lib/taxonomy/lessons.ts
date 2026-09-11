@@ -42,7 +42,8 @@ export type TopicLessonLink = {
 function lessonSlugForTopic(topic: TajweedTopic): string {
   const mapped = topicLessonMap[topic.id];
   if (mapped && tajweedRules.some((rule) => rule.id === mapped)) return mapped;
-  return topic.slug;
+  const relatedRule = topic.relatedRules.find((id) => tajweedRules.some((rule) => rule.id === id));
+  return relatedRule ?? "what-is-tajweed";
 }
 
 /** Resolve the /tajweed/[slug] lesson a topic links to. */

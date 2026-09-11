@@ -30,11 +30,11 @@ export function SearchPalette({ index }: { index: SearchIndexEntry[] }) {
         event.preventDefault();
         setOpen((value) => !value);
       }
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") close();
     }
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, []);
+  }, [close]);
 
   useEffect(() => {
     if (open) {
@@ -54,6 +54,7 @@ export function SearchPalette({ index }: { index: SearchIndexEntry[] }) {
 
   return <div className="palette-backdrop" onClick={(event) => { if (event.target === event.currentTarget) close(); }}>
     <div className="search-palette" role="dialog" aria-modal="true" aria-label="Search the guide">
+      <button type="button" className="palette-close" onClick={close} aria-label="Close search">×</button>
       <div className="palette-input-row"><Search size={18} /><input ref={inputRef} value={query} onChange={(event) => updateQuery(event.target.value)} onKeyDown={onKeyDown} placeholder="Search rules, terms, and articles…" aria-label="Search query" aria-controls="palette-results" /></div>
       <div className="palette-results" id="palette-results">
         {query.trim() && !results.length && <p className="palette-empty">No results for “{query}”. Try a shorter word such as “madd” or “ikhfa”.</p>}

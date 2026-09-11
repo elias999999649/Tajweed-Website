@@ -4,13 +4,13 @@ import { shuffleOptions } from "./shuffle";
 
 /**
  * LESSON QUIZ SYSTEM
- * 
+ *
  * This system generates 2-3 focused quiz questions for each Tajweed lesson.
  * Each question tests one aspect:
  * - Q1: UNDERSTANDING - Test the definition or main concept
  * - Q2: RECOGNITION - Test whether the learner can recognize when the rule applies
  * - Q3: APPLICATION (when needed) - Test what to do when encountering the rule
- * 
+ *
  * All questions are grounded in verified lesson content.
  * No invented examples or unsupported information.
  */
@@ -46,7 +46,8 @@ function levelForRule(level: string) {
 }
 
 function createQuizzes(): LessonQuiz[] {
-  return tajweedRules.map((rule) => {
+  // A quiz is an assessment of approved content, not a way to publish review-stage claims.
+  return tajweedRules.filter((rule) => rule.verificationStatus === "verified" && rule.reviewStatus === "VERIFIED").map((rule) => {
     const questions: LessonQuizQuestion[] = [];
     const difficulty = difficultyForRule(rule.difficultyScore);
     const level = levelForRule(rule.level);

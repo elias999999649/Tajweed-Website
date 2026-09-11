@@ -21,8 +21,11 @@ const ok = (message) => console.log("  ✓ " + message);
 console.log("=== QUIZ SYSTEM ===");
 const stats = getQuizStatistics();
 console.log(`  Lessons: ${stats.totalLessons} · with quizzes: ${stats.lessonsWithQuizzes} · questions: ${stats.totalQuestions}`);
-stats.totalLessons > 0 ? ok("lesson quizzes generated") : fail("no lesson quizzes generated");
-stats.totalQuestions >= stats.totalLessons * 2 ? ok("every lesson has at least 2 questions") : fail("some lessons have fewer than 2 questions");
+const approvedRuleCount = tajweedRules.filter((rule) => rule.verificationStatus === "verified" && rule.reviewStatus === "VERIFIED").length;
+if (approvedRuleCount === 0 && stats.totalLessons === 0) ok("quiz generation is correctly gated until content review is complete");
+else if (approvedRuleCount > 0 && stats.totalLessons > 0) ok("lesson quizzes generated from approved rules");
+else fail("approved rule and quiz counts are inconsistent");
+if (stats.totalLessons > 0) stats.totalQuestions >= stats.totalLessons * 2 ? ok("every lesson has at least 2 questions") : fail("some lessons have fewer than 2 questions");
 lessonQuizzes.forEach((quiz) => {
   quiz.questions.forEach((question) => {
     if (question.options.length < 2) fail(`question ${question.id} has fewer than 2 options`);
@@ -33,10 +36,14 @@ ok("all quiz answers valid");
 
 console.log("=== PRACTICE BANK ===");
 console.log(`  Questions: ${practiceQuestions.length}`);
-practiceQuestions.length > 0 ? ok("practice bank is not empty") : fail("practice bank is empty");
-const alwaysFirst = practiceQuestions.filter((q) => q.correctAnswer === 0).length;
-console.log(`  Correct answer at position A: ${alwaysFirst}/${practiceQuestions.length}`);
-alwaysFirst < practiceQuestions.length * 0.6 ? ok("answers are shuffled") : fail("correct answer is nearly always the first option");
+if (!practiceQuestions.length && approvedRuleCount === 0) ok("practice bank is correctly gated until content review is complete");
+else if (practiceQuestions.length) ok("practice bank is not empty");
+else fail("approved rules exist but practice bank is empty");
+if (practiceQuestions.length) {
+  const alwaysFirst = practiceQuestions.filter((q) => q.correctAnswer === 0).length;
+  console.log(`  Correct answer at position A: ${alwaysFirst}/${practiceQuestions.length}`);
+  alwaysFirst < practiceQuestions.length * 0.6 ? ok("answers are shuffled") : fail("correct answer is nearly always the first option");
+}
 
 console.log("=== RULE CROSS-REFERENCES ===");
 const ruleIds = new Set(tajweedRules.map((rule) => rule.id));
