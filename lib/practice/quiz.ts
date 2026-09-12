@@ -126,7 +126,7 @@ function createQuestion(
     explanation,
     difficulty,
     level,
-    verificationStatus: "verified",
+    verificationStatus: "needs-review",
   };
 }
 

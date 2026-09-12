@@ -4,9 +4,9 @@
 
 ## Executive finding
 
-This project contains a substantial structured Tajweed content layer, not only website structure. The rule registry contains 33 rule records with definitions, detailed explanations, occurrence conditions, pronunciation guidance, common mistakes, practice prompts, FAQs, source IDs, source references, and review notes.
+This project contains a substantial structured Tajweed content layer, not only website structure. The rule registry contains 50 rule records with definitions, detailed explanations, occurrence conditions, pronunciation guidance, common mistakes, practice prompts, FAQs, source IDs, source references, and review notes.
 
-It is not publication-complete. All 33 rule records are marked `needs_review` / `REQUIRES REVIEW`. There are no verified rules, no verified Quran examples, and no generated quiz questions because the quiz bank correctly excludes unverified content.
+It is not publication-complete. All 50 rule records are marked `needs_review` / `REQUIRES REVIEW`. There are no verified rules, no verified Quran examples, and no generated quiz questions because the quiz bank correctly excludes unverified content.
 
 ## Rule inventory
 
@@ -52,7 +52,7 @@ It is not publication-complete. All 33 rule records are marked `needs_review` / 
 
 ### 1. Completely missing rules
 
-The curriculum references 50 rule IDs, but only 33 rule records exist. These 17 curriculum entries have no corresponding rule record:
+The curriculum references 50 rule IDs, but only 50 rule records exist. These 17 curriculum entries have no corresponding rule record:
 
 - `madd-badal`
 - `madd-lin`
@@ -76,7 +76,7 @@ These should not be filled with generated content without source verification.
 
 ### 2. Rules that only contain placeholders
 
-No rule consists only of placeholder text. All 33 contain substantive-looking structured copy, but all are review-gated. Four rules do not have fixed letter sets because they are conceptual or context-led: What is Tajweed?, Why Tajweed is Studied, Waqf, and Ibtida.
+No rule consists only of placeholder text. All 50 contain substantive-looking structured copy, but all are review-gated. Four rules do not have fixed letter sets because they are conceptual or context-led: What is Tajweed?, Why Tajweed is Studied, Waqf, and Ibtida.
 
 Some supporting fields are explicitly review placeholders, especially example source strings and missing Arabic spellings in generated glossary fallback entries. They must not be treated as verified content.
 
@@ -100,7 +100,7 @@ Fifteen rules have no example record of any type:
 - Raa Heavy and Light
 - Hamzat al-Qat'
 
-The `quranExamples` field is empty in all 33 rule records. The separate example registry contains 7 Quran examples and 17 instructional examples, but none are verified.
+The `quranExamples` field is empty in all 50 rule records. The separate example registry contains 7 Quran examples and 17 instructional examples, but none are verified.
 
 ### 4. Rules with insufficient examples
 
@@ -185,7 +185,7 @@ The automated quality check is available in `lib/tajweed/content-audit.ts`. It c
 
 ### Rules requiring review or improvement
 
-**All 33 current rules.** The primary reasons are the absence of verified Quran examples and verified quiz questions. The following records also need targeted factual correction or scholar review before publication:
+**All 50 current rules.** The primary reasons are the absence of verified Quran examples and verified quiz questions. The following records also need targeted factual correction or scholar review before publication:
 
 - `heavy-and-light-letters`: the current explanation overgeneralizes heaviness and lightness.
 - `tanween`: the current letter array is misleading because Tanween is not a fixed four-letter set.
