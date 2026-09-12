@@ -549,7 +549,6 @@ details p { color: var(--muted); font-size: .9375rem; margin-bottom: 18px; }
 }
 .directory-rule-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--green-line); }
 .directory-card-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
-.directory-difficulty { color: var(--gold); font-size: .75rem; font-weight: 650; }
 .directory-card-title { display: grid; gap: 4px; margin-top: 4px; }
 .directory-card-title h3 { margin: 0; }
 .directory-card-title span { font-family: var(--font-arabic); color: var(--green); font-size: 1.25rem; line-height: 1.7; }
@@ -843,3 +842,16 @@ details p { color: var(--muted); font-size: .9375rem; margin-bottom: 18px; }
 @media (max-width: 720px) {
   .brand-mark { width: 56px; height: 56px; }
 }
+
+/* Quran ayah feature card */
+.ayah-card { padding: clamp(28px, 4vw, 42px); background: linear-gradient(145deg, var(--surface), var(--green-soft)); }
+.ayah-card-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.ayah-card-top .eyebrow { margin: 0; }
+.ayah-ornament { color: var(--gold); font-size: 1.5rem; }
+.ayah-arabic { margin: clamp(42px, 6vw, 64px) 0 24px; color: var(--green); font-family: var(--font-arabic); font-size: clamp(2.2rem, 4.4vw, 3.7rem); line-height: 1.8; text-align: center; }
+.ayah-translation { max-width: 28ch; margin: 0 auto 12px; color: var(--ink-strong); font-size: 1.1rem; font-weight: 600; line-height: 1.5; text-align: center; }
+.ayah-card cite { display: block; color: var(--gold); font-size: .82rem; font-style: normal; font-weight: 650; letter-spacing: .02em; text-align: center; }
+.ayah-rule { display: flex; align-items: center; gap: 12px; margin: 24px auto 18px; max-width: 220px; color: var(--gold); }
+.ayah-rule span { height: 1px; flex: 1; background: var(--green-line); }
+.ayah-rule i { font-size: .75rem; font-style: normal; }
+.ayah-note { max-width: 34ch; margin: 0 auto; color: var(--muted); font-size: .875rem; line-height: 1.55; text-align: center; }
