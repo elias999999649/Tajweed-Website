@@ -164,13 +164,14 @@ td { color: var(--muted); }
 .brand { display: flex; align-items: center; gap: 12px; flex: none; font-weight: 700; letter-spacing: -.02em; font-size: 1.0625rem; }
 .brand em { color: var(--green); font-style: normal; }
 .brand-mark {
-  display: grid; place-items: center; width: 40px; height: 40px; padding: 7px;
-  color: var(--green); background: var(--green-soft);
+  display: grid; place-items: center; width: 72px; height: 72px; padding: 0;
+  overflow: hidden; color: var(--green); background: var(--surface);
   border: 1px solid var(--green-line); border-radius: 12px;
 }
-.brand-mark svg { width: 100%; height: 100%; }
+.brand-mark img, .brand-mark svg { width: 100%; height: 100%; }
+.brand-mark img { display: block; object-fit: cover; }
 .brand-name { display: grid; grid-template-columns: auto auto; column-gap: 4px; align-items: baseline; line-height: 1.05; }
-.brand-name small { grid-column: 1 / -1; margin-top: 4px; color: var(--muted); font-size: .75rem; font-weight: 550; letter-spacing: .03em; }
+.brand-name small { margin-top: 5px; color: var(--muted); font-size: .75rem; font-weight: 550; letter-spacing: .03em; }
 .main-nav { display: flex; flex: 1; justify-content: center; gap: clamp(16px, 2.4vw, 30px); color: var(--muted); font-size: .9375rem; font-weight: 550; }
 .main-nav a { padding: 8px 2px; border-radius: 8px; }
 .nav-actions { display: flex; gap: 8px; align-items: center; }
@@ -412,6 +413,7 @@ details p { color: var(--muted); font-size: .9375rem; margin-bottom: 18px; }
 .practice-hub { display: grid; gap: 30px; }
 .practice-toolbar { display: flex; justify-content: space-between; align-items: end; gap: 22px; flex-wrap: wrap; }
 .practice-toolbar h2 { margin-bottom: 0; }
+.practice-count { margin: 7px 0 0; font-size: .875rem; }
 .practice-filters { display: grid; gap: 12px; }
 .filter-pills { display: flex; flex-wrap: wrap; gap: 8px; }
 .filter-pills button {
@@ -834,4 +836,10 @@ details p { color: var(--muted); font-size: .9375rem; margin-bottom: 18px; }
 /* ---------- Motion & print ---------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+}
+
+/* Tajweed101 brand image */
+.brand-name > span { font-size: 1.2rem; letter-spacing: -.035em; }
+@media (max-width: 720px) {
+  .brand-mark { width: 56px; height: 56px; }
 }

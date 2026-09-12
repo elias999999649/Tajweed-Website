@@ -9,7 +9,6 @@ export const dynamic = "force-static";
 const staticPages = [
   { path: "/", frequency: "monthly" as const, priority: 1 },
   { path: "/tajweed", frequency: "weekly" as const, priority: 0.9 },
-  { path: "/start-here", frequency: "monthly" as const, priority: 0.9 },
   { path: "/learn", frequency: "monthly" as const, priority: 0.8 },
   { path: "/practice", frequency: "monthly" as const, priority: 0.7 },
   { path: "/about", frequency: "yearly" as const, priority: 0.4 },

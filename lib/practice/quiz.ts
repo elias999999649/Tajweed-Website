@@ -11,8 +11,9 @@ import { shuffleOptions } from "./shuffle";
  * - Q2: RECOGNITION - Test whether the learner can recognize when the rule applies
  * - Q3: APPLICATION (when needed) - Test what to do when encountering the rule
  *
- * All questions are grounded in verified lesson content.
- * No invented examples or unsupported information.
+ * Questions are grounded in each lesson's structured content. Lessons that are
+ * still awaiting qualified review are shown as review-stage questions so every
+ * learner can practise, while their status remains visible to content tooling.
  */
 
 function difficultyForRule(difficultyScore: number) {
@@ -46,11 +47,11 @@ function levelForRule(level: string) {
 }
 
 function createQuizzes(): LessonQuiz[] {
-  // A quiz is an assessment of approved content, not a way to publish review-stage claims.
-  return tajweedRules.filter((rule) => rule.verificationStatus === "verified" && rule.reviewStatus === "VERIFIED").map((rule) => {
+  return tajweedRules.map((rule) => {
     const questions: LessonQuizQuestion[] = [];
     const difficulty = difficultyForRule(rule.difficultyScore);
     const level = levelForRule(rule.level);
+    const verificationStatus: LessonQuizQuestion["verificationStatus"] = rule.verificationStatus === "verified" && rule.reviewStatus === "VERIFIED" ? "verified" : "needs-review";
 
     // QUESTION 1: UNDERSTANDING
     // Test the definition or core concept
@@ -64,10 +65,11 @@ function createQuizzes(): LessonQuiz[] {
       `What is ${rule.name}?`,
       q1Raw,
       0,
-      `${rule.shortDefinition} This is the verified definition for ${rule.name}.`,
+      `${rule.shortDefinition} This explanation comes directly from the lesson content for ${rule.name}.`,
       difficulty,
       level,
     );
+    q1.verificationStatus = verificationStatus;
     questions.push(q1);
 
     // QUESTION 2: RECOGNITION
@@ -82,35 +84,12 @@ function createQuizzes(): LessonQuiz[] {
       `When does ${rule.name} occur?`,
       q2Options,
       0,
-      `${rule.name} occurs: ${rule.whenItOccurs}. This is the verified occurrence condition for this rule.`,
+      `${rule.name} occurs: ${rule.whenItOccurs} Review the lesson explanation and practise identifying this condition while reciting.`,
       difficulty,
       level,
     );
+    q2.verificationStatus = verificationStatus;
     questions.push(q2);
-
-    // QUESTION 3: APPLICATION (conditional)
-    // Only add for rules with specific letters or actionable pronunciation guidance
-    if (rule.letters.length > 0 && rule.pronunciation) {
-      const q3Options = generateLetterOrApplicationOptions(rule);
-      if (q3Options.length >= 2) {
-        const q3 = createQuestion(
-          `${rule.id}-q3-application`,
-          rule.id,
-          rule.slug,
-          rule.letters.length > 0 ? "true-false" : "multiple-choice",
-          "application",
-          rule.letters.length > 0
-            ? `True or false: ${rule.letters.slice(0, 2).join(", ")} are letters involved in ${rule.name}.`
-            : `In ${rule.name}, the learner should: ${rule.pronunciation.split(".")[0]}.`,
-          q3Options,
-          0,
-          `${rule.pronunciation || rule.commonMistakes[0]}. This guidance comes from the verified lesson content for ${rule.name}.`,
-          difficulty,
-          level,
-        );
-        questions.push(q3);
-      }
-    }
 
     return {
       lessonId: rule.id,

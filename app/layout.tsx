@@ -21,12 +21,13 @@ const themeInitScript = `(function(){try{var t=localStorage.getItem("theme");var
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  icons: { icon: "/logo.png", apple: "/logo.png" },
   title: {
-    default: "Learn Tajweed Online | Complete Tajweed Guide",
-    template: "%s | Complete Tajweed Guide",
+    default: "Tajweed101 | Learn Tajweed Online",
+    template: "%s | Tajweed101",
   },
   description: "Learn Tajweed online with clear explanations, Quran examples, practice exercises, and a structured path for reading the Quran with confidence.",
-  applicationName: "Complete Tajweed Guide",
+  applicationName: "Tajweed101",
   keywords: [
     "tajweed",
     "learn tajweed",
@@ -83,7 +84,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
             "@type": "Organization",
             name: "Complete Tajweed Guide",
             url: absoluteUrl("/"),
-            logo: absoluteUrl("/icon.svg"),
+            logo: absoluteUrl("/logo.png"),
             sameAs: ["https://tajweed101.pages.dev"],
             description: "A structured online Tajweed guide helping learners understand Quranic pronunciation and recitation rules."
           },
