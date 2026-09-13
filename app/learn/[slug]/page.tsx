@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ArrowRight, BookOpen, ChevronRight, Clock } from "lucide-react";
+import { ArrowRight, BookOpen, ChevronRight } from "lucide-react";
 import { notFound, permanentRedirect } from "next/navigation";
 import { Footer, SiteHeader } from "@/components/ui";
 import { tajweedLevels, tajweedTopics } from "@/lib/taxonomy";
@@ -41,7 +41,7 @@ export default async function LearnDetailPage({ params }: { params: Promise<{ sl
             {!itemIsLevel && lessonLink && (
               <div className="hero-actions" style={{ marginTop: "20px" }}>
                 <a className="button primary" href={`/tajweed/${lessonLink.lessonSlug}`}>
-                  {lessonLink.isPreparation ? <Clock size={16} /> : <BookOpen size={16} />} {lessonLink.isPreparation ? "Open the related lesson" : "Open Full Rule Lesson"} <ArrowRight size={14} />
+                  <BookOpen size={16} /> Open Full Rule Lesson <ArrowRight size={14} />
                 </a>
               </div>
             )}
@@ -64,8 +64,7 @@ export default async function LearnDetailPage({ params }: { params: Promise<{ sl
                       <div className="learn-topic-main">
                         <span className="badge">{String(index + 1).padStart(2, "0")}</span>
                         <div className="learn-topic-copy">
-                          <h3>{topic.title}{link.isPreparation && <span className="prep-badge"><Clock size={11} /> In preparation</span>}</h3>
-                          <span className="muted">{topic.category} · {topic.estimatedDifficulty}{link.isPreparation && " · opens a related lesson"}</span>
+                          <h3>{topic.title}</h3>
                         </div>
                       </div>
                       <ArrowRight size={16} className="learn-topic-arrow" />

@@ -188,6 +188,7 @@ td { color: var(--muted); }
 .trust-row { display: flex; flex-wrap: wrap; gap: 22px; margin-top: 36px; color: var(--muted); font-size: .8125rem; }
 .trust-row span { display: flex; align-items: center; gap: 8px; }
 .trust-row svg { color: var(--gold); }
+.search-helper { margin: 12px 0 0; color: var(--muted); text-align: center; font-size: .8125rem; }
 
 .hero-aside {
   position: relative; padding: 30px 28px;
@@ -195,6 +196,83 @@ td { color: var(--muted); }
   border-radius: var(--radius-lg); box-shadow: var(--shadow-md);
 }
 .hero-dashboard { display: block; }
+.hero-route-card { display: grid; gap: 18px; }
+.hero-ayah-card {
+  display: grid;
+  gap: 20px;
+  padding: 32px 30px;
+  background: var(--surface);
+  border: 1px solid var(--green-line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+.hero-ayah-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--green), var(--gold-bright));
+}
+.hero-ayah-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+.hero-ayah-header .eyebrow {
+  margin: 0;
+}
+.hero-ayah-arabic-box {
+  padding: 26px 20px;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  text-align: center;
+}
+.hero-ayah-arabic {
+  margin: 0;
+  font-family: var(--font-arabic);
+  font-size: clamp(2.2rem, 4vw, 2.8rem);
+  line-height: 1.85;
+  color: var(--green);
+  letter-spacing: .02em;
+}
+.hero-ayah-details {
+  display: grid;
+  gap: 12px;
+  font-size: .9375rem;
+  color: var(--muted);
+}
+.hero-ayah-details p {
+  margin: 0;
+  line-height: 1.6;
+}
+.hero-ayah-details strong {
+  color: var(--ink-strong);
+}
+.hero-ayah-translit {
+  color: var(--muted);
+  font-size: .9375rem;
+  letter-spacing: .01em;
+}
+.hero-ayah-translation {
+  font-style: italic;
+  color: var(--ink-strong);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+.hero-route-heading { display: flex; justify-content: space-between; align-items: center; gap: 14px; }
+.hero-route-heading .eyebrow { margin: 0; }
+.hero-route-icon { display: grid; place-items: center; width: 42px; height: 42px; color: var(--green); background: var(--green-soft); border-radius: 12px; }
+.hero-route-card h2 { margin: 0; font-size: clamp(1.5rem, 3vw, 2rem); }
+.hero-route-card > p { margin: 0; color: var(--muted); line-height: 1.65; }
+.hero-route-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.hero-route-list li { display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--surface-2); border-radius: var(--radius-sm); }
+.hero-route-list li > span { color: var(--gold); font-size: .75rem; font-weight: 700; }
+.hero-route-list li div { display: grid; gap: 2px; }
+.hero-route-list small { color: var(--muted); font-size: .8125rem; }
 .dashboard-top { display: flex; align-items: start; justify-content: space-between; }
 .dashboard-top .eyebrow { margin: 0; }
 .dashboard-arabic { margin: 44px 0 40px; color: var(--green); font-family: var(--font-arabic); font-size: clamp(2.5rem, 4vw, 3.25rem); line-height: 1.7; text-align: center; }
@@ -237,6 +315,18 @@ td { color: var(--muted); }
 
 .intro-grid, .beginner-grid, .practice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(48px, 6vw, 84px); align-items: center; }
 .intro-grid h2 { max-width: 24ch; }
+.home-choice-section { padding-top: clamp(52px, 7vw, 84px); padding-bottom: clamp(52px, 7vw, 84px); }
+.home-choice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.home-choice-card { display: grid; grid-template-columns: auto 1fr; gap: 16px; padding: 24px; border: 1px solid var(--line); background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow-sm); transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease; }
+.home-choice-card:hover { transform: translateY(-3px); border-color: var(--green-line); box-shadow: var(--shadow-md); }
+.home-choice-card.featured { background: var(--green); border-color: var(--green); }
+.home-choice-icon { display: grid; place-items: center; width: 42px; height: 42px; color: var(--green); background: var(--green-soft); border-radius: 11px; }
+.home-choice-card h3 { margin: 0 0 8px; font-size: 1.0625rem; }
+.home-choice-card p { margin: 0 0 18px; color: var(--muted); font-size: .9rem; line-height: 1.6; }
+.home-choice-card strong { display: inline-flex; align-items: center; gap: 5px; color: var(--green); font-size: .875rem; }
+.home-choice-card.featured h3, .home-choice-card.featured strong { color: var(--on-green); }
+.home-choice-card.featured p { color: color-mix(in srgb, var(--on-green) 82%, transparent); }
+.home-choice-card.featured .home-choice-icon { color: var(--on-green); background: rgba(255, 255, 255, .16); }
 
 .path-grid { display: grid; grid-template-columns: repeat(4, 1fr); align-items: stretch; gap: 16px; }
 .path-step {
@@ -474,6 +564,18 @@ details p { color: var(--muted); font-size: .9375rem; margin-bottom: 18px; }
 /* ---------- Learn path ---------- */
 .learn-level-section { padding-top: clamp(48px, 6vw, 72px); }
 .learn-level-inner { display: grid; gap: 40px; }
+.learn-purpose-note { display: grid; gap: 6px; max-width: 760px; margin-top: 28px; padding: 18px 22px; background: var(--green-soft); border: 1px solid var(--green-line); border-radius: var(--radius); color: var(--muted); line-height: 1.6; }
+.learn-purpose-note strong { color: var(--ink-strong); }
+.learn-path-intro { display: grid; gap: 10px; max-width: 760px; }
+.learn-path-intro h2 { margin: 0; }
+.learn-path-intro p { margin: 0; }
+.learn-curriculum-list { display: grid; gap: 42px; }
+.learn-curriculum-stage { display: grid; gap: 18px; padding: 26px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.learn-curriculum-heading { display: grid; grid-template-columns: auto 1fr auto; align-items: start; gap: 14px; }
+.learn-curriculum-heading h2 { margin: 0 0 5px; }
+.learn-curriculum-heading p { margin: 0; }
+.learn-curriculum-rules { display: grid; gap: 10px; }
+.learn-curriculum-rules .learn-topic-row { background: var(--surface-2); }
 .learn-level-heading { display: flex; justify-content: space-between; align-items: baseline; gap: 18px; flex-wrap: wrap; }
 .learn-topic-list { display: grid; gap: 12px; }
 .learn-topic-row {
@@ -712,6 +814,12 @@ details p { color: var(--muted); font-size: .9375rem; margin-bottom: 18px; }
 .listen-note strong { color: var(--ink-strong); }
 .listen-note span { display: block; margin-top: 2px; color: var(--muted); font-size: .875rem; }
 .examples-list { display: grid; gap: 18px; }
+.symbols-poster { display: grid; gap: 10px; margin: 0; padding: 16px; border: 1px solid var(--line); background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+.symbols-poster img { width: 100%; height: auto; border-radius: calc(var(--radius) - 4px); }
+.symbols-poster figcaption { color: var(--muted); font-size: .875rem; line-height: 1.6; }
+.symbols-guide { display: grid; gap: 8px; padding: 18px 20px; border-left: 4px solid var(--gold); background: var(--surface-2); color: var(--muted); line-height: 1.6; }
+.symbols-guide strong { color: var(--ink-strong); }
+.symbols-guide ol { display: grid; gap: 5px; margin: 0; padding-left: 22px; }
 .teaching-example { display: grid; gap: 10px; padding: 20px 22px; background: var(--surface-2); border-radius: var(--radius); font-size: .9375rem; }
 .teaching-example strong { color: var(--ink-strong); }
 .teaching-example p { margin: 0; font-family: var(--font-arabic); font-size: 1.625rem; line-height: 2; text-align: center; }
@@ -797,6 +905,7 @@ details p { color: var(--muted); font-size: .9375rem; margin-bottom: 18px; }
   .menu-button { display: grid; }
   .hero-grid, .intro-grid, .beginner-grid, .practice-grid, .faq-grid { grid-template-columns: 1fr; gap: 40px; }
   .hero-aside { order: -1; }
+  .home-choice-grid { grid-template-columns: 1fr; }
   .path-grid, .category-grid, .article-grid, .how-grid, .rule-grid { grid-template-columns: repeat(2, 1fr); }
   .directory-filters { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; }

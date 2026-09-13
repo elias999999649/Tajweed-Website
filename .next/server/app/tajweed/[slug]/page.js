@@ -1,6 +1,6 @@
 var R=require("../../../chunks/ssr/[turbopack]_runtime.js")("server/app/tajweed/[slug]/page.js")
-R.c("server/chunks/ssr/[root-of-the-server]__1jc9yh7._.js")
-R.c("server/chunks/ssr/_02cd3fo._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__19kktw3._.js")
+R.c("server/chunks/ssr/_1uczlpg._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_0drixxt._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_1n3w9lb._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__11amk28._.js")
@@ -13,5 +13,5 @@ R.c("server/chunks/ssr/node_modules_next_dist_client_components_0p8s4lh._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_client_components_builtin_unauthorized_0l_sp0x.js")
 R.c("server/chunks/ssr/node_modules_next_dist_client_components_builtin_global-error_0q-w892.js")
 R.c("server/chunks/ssr/_next-internal_server_app_tajweed_[slug]_page_actions_0koaupf.js")
-R.m(77275)
-module.exports=R.m(77275).exports
+R.m(25125)
+module.exports=R.m(25125).exports

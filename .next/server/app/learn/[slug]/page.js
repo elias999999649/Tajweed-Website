@@ -1,5 +1,5 @@
 var R=require("../../../chunks/ssr/[turbopack]_runtime.js")("server/app/learn/[slug]/page.js")
-R.c("server/chunks/ssr/[root-of-the-server]__0t4r4va._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__1v5oky5._.js")
 R.c("server/chunks/ssr/lib_taxonomy_index_ts_19l4w_r._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_0drixxt._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_1n3w9lb._.js")
@@ -13,5 +13,5 @@ R.c("server/chunks/ssr/node_modules_next_dist_client_components_0p8s4lh._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_client_components_builtin_unauthorized_0l_sp0x.js")
 R.c("server/chunks/ssr/node_modules_next_dist_client_components_builtin_global-error_0q-w892.js")
 R.c("server/chunks/ssr/_next-internal_server_app_learn_[slug]_page_actions_16qe_et.js")
-R.m(38957)
-module.exports=R.m(38957).exports
+R.m(69385)
+module.exports=R.m(69385).exports

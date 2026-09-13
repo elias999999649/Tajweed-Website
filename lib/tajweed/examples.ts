@@ -1,4 +1,5 @@
 import type { RuleExample } from "./types";
+import { tajweedRules } from "./rules";
 
 const rawTajweedExamples: RuleExample[] = [
   {
@@ -302,14 +303,85 @@ const rawTajweedExamples: RuleExample[] = [
   },
 ];
 
-export const tajweedExamples: RuleExample[] = rawTajweedExamples.map((example) => ({
+const additionalTeachingExamples: RuleExample[] = ([
+  ["why-tajweed-is-studied", "مَدَرَسَةٌ", "م", "madrasatun", "a school", "Notice each letter carefully; this is a constructed pronunciation exercise."],
+  ["basic-arabic-pronunciation", "بُتِ جَ", "بُتِ جَ", "butija", "a practice syllable sequence", "Compare the short vowels; this is a constructed exercise."],
+  ["arabic-letters", "سَ شَ صَ", "سَ شَ صَ", "sa sha ṣa", "letter contrast", "Compare the three consonants; this is a constructed letter exercise."],
+  ["makharij-al-huruf", "تَ طَ", "تَ طَ", "ta ṭa", "tongue-letter contrast", "Compare the articulation points; this is a constructed exercise."],
+  ["sifaat-al-huruf", "سَ صَ", "سَ صَ", "sa ṣa", "light and emphatic contrast", "Compare the sound qualities; this is a constructed exercise."],
+  ["heavy-and-light-letters", "قَ كَ", "قَ", "qa ka", "heavy and light contrast", "The highlighted Qaf is the heavier letter; this is a constructed exercise."],
+  ["tanween", "كِتَابٌ بَدِيعٌ", "ٌ", "kitābun badīʿun", "a fine book", "The highlighted tanween is followed by Baa; this is a constructed phrase."],
+  ["idgham-with-ghunnah", "صَوْتٌ مَنِيرٌ", "ٌ م", "ṣawtun munīrun", "a bright sound", "The tanween meets Meem for Idgham with ghunnah; this is a constructed phrase."],
+  ["idgham-without-ghunnah", "قَلَمٌ رَقِيقٌ", "ٌ ر", "qalamun raqīqun", "a slender pen", "The tanween meets Raa without ghunnah; this is a constructed phrase."],
+  ["idgham-shafawi", "هُمْ مَعَ", "مْ م", "hum maʿa", "they are with", "The Meem Sakinah meets Meem; this is a constructed phrase."],
+  ["izhar-shafawi", "هُمْ فِي", "مْ ف", "hum fī", "they are in", "The Meem Sakinah is clear before Faa; this is a constructed phrase."],
+  ["qalqalah-sughra", "أَجْرُسٌ", "جْ", "ajrusu(n)", "bells", "The highlighted saakin Jeem demonstrates a lighter Qalqalah; this is a constructed word."],
+  ["qalqalah-kubra", "طَرِيقْ", "قْ", "ṭarīq", "a road", "The highlighted Qaf is stopped upon and demonstrates Qalqalah Kubra; this is a constructed word."],
+  ["lam-in-allah", "لِلّٰهِ", "لِ", "lillāhi", "for Allah", "The highlighted Lam is light after Kasrah; this is a constructed teaching phrase, not a Quranic quotation."],
+  ["raa-heavy-and-light", "رِزْقٌ رَخْوٌ", "رِ", "rizqun rakhwun", "a gentle provision", "The first highlighted Raa is light after Kasrah; this is a constructed phrase."],
+  ["madd-badal", "آمَنَ", "آ", "āmana", "he believed", "The highlighted Madd Badal pattern is a constructed teaching word."],
+  ["madd-lin", "خَوْفٌ", "وْ", "khawfun", "fear", "The highlighted Waw of Lin is studied before a possible stop; this is a constructed word."],
+  ["madd-arid-li-sukun", "كَرِيمْ", "رِي", "karīm", "generous", "The highlighted Madd may be lengthened when stopping; this is a constructed word."],
+  ["madd-wajib-muttasil", "سَاءَلَ", "سَاءَ", "sāʾala", "he asked", "The Madd letter and Hamzah occur in one word; this is a constructed word."],
+  ["madd-jaiz-munfasil", "بِمَا أُوتِيَ", "مَا أُ", "bimā ūtiya", "with what was given", "The Madd and Hamzah occur across two words; this is a constructed phrase."],
+  ["madd-lazim-kalimi", "دَابَّةٌ", "دَا", "dābbatun", "a creature", "The highlighted long vowel precedes a permanent shaddah; this is a constructed word."],
+  ["madd-lazim-harfi", "سِنْقَافْ", "سِي", "sīnfāq", "letter-name practice", "This constructed letter-name sequence is for studying the category, not a Quranic quotation."],
+  ["major-stopping-concepts", "ذَهَبَ الطَّالِبُ", "بَ", "dhahaba al-ṭālibu", "the student went", "Practise stopping after a complete meaning unit; this is a constructed phrase."],
+  ["mushaf-stopping-symbols", "دَرْسٌ ۝ بَدْءٌ", "۝", "darsun / badʾun", "a lesson / a beginning", "The symbol is shown only as a teaching mark; this is not Quranic text."],
+  ["when-stopping-affects-pronunciation", "كِتَابٌ → كِتَابْ", "بْ", "kitābun → kitāb", "a book when stopping", "The ending changes when stopping; this is a constructed example."],
+  ["beginning-with-hamzah", "أَكَلَ", "أَ", "akala", "he ate", "Begin with the clearly pronounced Hamzah; this is a constructed word."],
+  ["hamzat-al-qat", "أَخٌ", "أَ", "akhun", "a brother", "The Hamzah remains pronounced when beginning or connecting; this is a constructed word."],
+  ["ghunnah", "إِنَّ", "نَّ", "inna", "indeed", "The highlighted Noon Mushaddad carries ghunnah; this is a constructed word."],
+  ["tafkhim", "طَابَ", "طَ", "ṭāba", "became good", "The highlighted Ṭaa is pronounced with Tafkhim; this is a constructed word."],
+  ["tarqiq", "سَبِيلٌ", "سَ", "sabīlun", "a path", "The highlighted Seen is pronounced lightly; this is a constructed word."],
+  ["articulation-and-clarity", "حَ هَ", "حَ", "ḥa ha", "throat-letter contrast", "Compare the two throat sounds; this is a constructed exercise."],
+  ["common-pronunciation-errors", "ذَ زَ", "ذَ", "dha za", "letter contrast", "Keep the tongue position distinct; this is a constructed exercise."],
+  ["commonly-confused-letters", "ضَ ظَ", "ضَ", "ḍa ẓa", "letter contrast", "Compare the articulation of the highlighted letters; this is a constructed exercise."],
+] as const).map(([ruleId, arabicText, highlightedText, transliteration, translation, explanation], index) => ({
+  id: `teaching-${ruleId}-${index}`,
+  ruleId,
+  type: "instructional",
+  arabicText,
+  highlightedText,
+  explanation,
+  transliteration,
+  translation,
+  source: "Constructed instructional example; not taken from the Quran.",
+  verificationStatus: "draft",
+  note: "NOT FROM THE QURAN — INSTRUCTIONAL ONLY",
+}));
+
+const coveredRuleIds = new Set([...rawTajweedExamples, ...additionalTeachingExamples].map((example) => example.ruleId));
+const generatedTeachingExamples: RuleExample[] = tajweedRules
+  .filter((rule) => !coveredRuleIds.has(rule.id))
+  .map((rule) => {
+    const highlightedText = rule.letters[0] ?? "سُكُونٌ";
+    const arabicText = rule.letters.length ? `دَرْسٌ ${highlightedText}` : "دَرْسٌ سُكُونٌ";
+    return {
+      id: `teaching-${rule.id}`,
+      ruleId: rule.id,
+      type: "instructional",
+      arabicText,
+      highlightedText,
+      explanation: `Constructed practice example for ${rule.name}; focus on the highlighted feature. It is not from the Quran.`,
+      transliteration: "darsun",
+      translation: "a lesson",
+      source: "Constructed instructional example; not taken from the Quran.",
+      verificationStatus: "draft",
+      note: "NOT FROM THE QURAN — INSTRUCTIONAL ONLY",
+    };
+  });
+
+export const tajweedExamples: RuleExample[] = [...rawTajweedExamples, ...additionalTeachingExamples, ...generatedTeachingExamples].map((example) => ({
   ...example,
   sourceIds: example.type === "quran" ? ["quran-foundation-tajweed-api"] : [],
 }));
 
 export const exampleVerificationReport = {
   status: "needs_review",
-  unverifiedExamples: tajweedExamples.filter((example) => example.verificationStatus !== "verified").map((example) => ({
+  // Instructional examples are intentionally unverified by design; the report
+  // only needs to list examples whose verification is still outstanding work.
+  unverifiedExamples: tajweedExamples.filter((example) => example.type === "quran" && example.verificationStatus !== "verified").map((example) => ({
     id: example.id,
     ruleId: example.ruleId,
     type: example.type,
