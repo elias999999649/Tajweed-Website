@@ -1,3 +1,1 @@
-globalThis.__RSC_MANIFEST = globalThis.__RSC_MANIFEST || {};
-globalThis.__RSC_MANIFEST["/sitemap.xml/route"] = {"moduleLoading":{"prefix":"","crossOrigin":"none"},"clientModules":{},"ssrModuleMapping":{},"edgeSSRModuleMapping":{},"rscModuleMapping":{},"edgeRscModuleMapping":{},"entryCSSFiles":{},"entryJSFiles":{}};
-
+globalThis.__RSC_MANIFEST=(globalThis.__RSC_MANIFEST||{});globalThis.__RSC_MANIFEST["/sitemap.xml/route"]={"moduleLoading":{"prefix":"/_next/"},"ssrModuleMapping":{},"edgeSSRModuleMapping":{},"clientModules":{},"entryCSSFiles":{"C:\\Users\\USER\\Desktop\\random wichtig\\Programmieren\\IDE Projekte\\VS CODE\\Websites\\Tajweed\\app\\sitemap.xml\\route":[]},"rscModuleMapping":{},"edgeRscModuleMapping":{}};
