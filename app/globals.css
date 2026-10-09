@@ -1007,3 +1007,71 @@ details p { color: var(--muted); font-size: .9375rem; margin-bottom: 18px; }
   .home-note { grid-template-columns: 1fr; gap: 16px; }
   .home-note .button { grid-column: 1; }
 }
+
+/* Phone layout: preserve content and wording, make navigation and reading comfortable. */
+@media (max-width: 560px) {
+  body { font-size: 1.0625rem; line-height: 1.65; }
+  :root { --header-h: 60px; }
+  .container { width: calc(100% - 32px); }
+  .nav-wrap { min-height: var(--header-h); gap: 8px; }
+  .brand { gap: 8px; font-size: .9375rem; }
+  .brand-name > span { font-size: 1.05rem; }
+  .brand-mark { width: 42px; height: 42px; border-radius: 9px; }
+  .nav-actions { gap: 4px; }
+  .nav-actions .icon-button { width: 40px; height: 40px; }
+  .main-nav { top: var(--header-h); max-height: calc(100dvh - var(--header-h)); overflow-y: auto; padding: 8px 20px max(20px, env(safe-area-inset-bottom)); }
+  .main-nav a { min-height: 52px; display: flex; align-items: center; padding: 12px 4px; font-size: 1.0625rem; }
+
+  .home-page .hero { padding: 28px 0 22px; }
+  .home-page .hero-grid { gap: 22px; }
+  .home-page .hero-aside { order: 0; }
+  .home-page .hero-copy .eyebrow { margin-bottom: 8px; font-size: .8125rem; }
+  .home-page h1 { max-width: 15ch; margin-bottom: 14px; font-size: clamp(2rem, 9vw, 2.5rem); line-height: 1.08; }
+  .home-page .hero-lede { max-width: 42ch; margin-bottom: 0; font-size: 1.0625rem; line-height: 1.55; }
+  .home-page .hero-actions { display: grid; grid-template-columns: 1fr; gap: 10px; margin-top: 20px; }
+  .home-page .hero-actions .button, .home-page .hero-actions .outline-link { width: 100%; min-height: 52px; justify-content: center; font-size: 1rem; }
+  .home-page .hero-actions .button > svg:last-child { display: none; }
+  .home-page .hero-ayah-card { gap: 12px; padding: 16px 14px; border-radius: 18px; }
+  .home-page .hero-ayah-card > .text-link { display: none; }
+  .home-page .hero-ayah-header .badge { font-size: .75rem; }
+  .home-page .hero-ayah-arabic-box { padding: 10px 8px; }
+  .home-page .hero-ayah-arabic { font-size: clamp(2rem, 9vw, 2.6rem); line-height: 1.65; }
+  .home-page .hero-ayah-details { gap: 0; }
+  .home-page .hero-ayah-translation { font-size: 1rem; line-height: 1.5; }
+
+  .home-page .home-search-section { padding: 0 0 4px; }
+  .home-page .search-panel { min-height: 56px; gap: 9px; padding: 8px 12px; border-radius: 16px; }
+  .home-page .search-panel input { font-size: 1rem; }
+  .home-page .search-panel kbd { display: none; }
+  .home-page .search-helper { margin-top: 8px; font-size: .8125rem; }
+
+  .home-page .home-choice-section { padding: 20px 0 28px; }
+  .home-page .section-heading { margin-bottom: 18px; }
+  .home-page .section-heading .eyebrow { margin-bottom: 6px; }
+  .home-page .section-heading h2 { margin-bottom: 8px; font-size: 1.625rem; }
+  .home-page .section-intro { margin-top: 0; font-size: .975rem; line-height: 1.5; }
+  .home-page .home-choice-grid { grid-template-columns: 1fr; gap: 12px; }
+  .home-page .home-choice-card { min-height: 0; grid-template-columns: 42px minmax(0, 1fr); gap: 14px; padding: 18px 16px; border-radius: 16px; }
+  .home-page .home-choice-card.featured { background: var(--surface); border-color: var(--line); }
+  .home-page .home-choice-card.featured h3 { color: var(--ink-strong); }
+  .home-page .home-choice-card.featured p { color: var(--muted); }
+  .home-page .home-choice-card.featured strong { color: var(--green); }
+  .home-page .home-choice-card.featured .home-choice-icon { color: var(--green); background: var(--green-soft); }
+  .home-page .home-choice-card:hover { transform: none; box-shadow: var(--shadow-sm); }
+  .home-page .home-choice-icon { width: 42px; height: 42px; }
+  .home-page .home-choice-card h3 { margin-bottom: 5px; font-size: 1.125rem; line-height: 1.3; }
+  .home-page .home-choice-card p { margin-bottom: 10px; font-size: .9375rem; line-height: 1.45; }
+  .home-page .home-choice-card strong { min-height: 36px; font-size: .9375rem; }
+
+  .home-page .final-cta { padding: 26px 0; }
+  .home-page .final-cta-inner { align-items: stretch; gap: 16px; }
+  .home-page .final-cta h2 { font-size: 1.625rem; }
+  .home-page .final-cta .button { width: 100%; min-height: 52px; }
+  .home-page .final-cta .button > svg:last-child { display: none; }
+  .site-footer { padding: 32px 0 20px; }
+  .footer-grid { gap: 20px; padding-bottom: 24px; }
+  .site-footer h4 { margin-bottom: 8px; }
+  .site-footer .footer-grid a:not(.brand) { min-height: 40px; display: flex; align-items: center; margin: 4px 0; }
+  .site-footer .teacher-notice { padding: 16px 0; line-height: 1.55; }
+  .footer-bottom { padding-top: 16px; }
+}
