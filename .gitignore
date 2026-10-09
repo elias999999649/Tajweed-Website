@@ -6,7 +6,44 @@ coverage/
 .env*
 !.env.example
 
-# Local test artifacts (headless browser profiles + QA screenshots)
+# Local editor, AI assistant, and machine-specific settings may contain credentials.
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.example.json
+.claude/
+.kilo/
+
+# Next.js generated files are recreated during build.
+next-env.d.ts
+*.tsbuildinfo
+
+# Local test artifacts and screenshots (keep project runtime assets tracked).
 .chrome-*-profile*/
 .screenshots/
+.screenshots*/
+*-preview.png
+*preview*.png
+*desktop.png
+*home.png
+search-page.png
+qa-tajweed.png
+redesign-home.png
+quran symbols.png
+# Common private key formats and secret files.
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+secrets.*
+secrets/
+
+# OS and local editor files.
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vs/
+.vscode-test/
 

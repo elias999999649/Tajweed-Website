@@ -1,7 +1,7 @@
 {
   "name": "complete-tajweed-guide",
   "version": "0.2.0",
-  "private": true,
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "next dev",
     "build": "next build --webpack",

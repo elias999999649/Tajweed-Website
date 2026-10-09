@@ -84,6 +84,10 @@ The project is configured for static site hosting (optimized for **Cloudflare Pa
 
 ---
 
-## 📄 License & Content Model
+## 🔐 Security
+Do not commit credentials, API keys, private keys, or local `.env` files. Keep deployment secrets in GitHub Actions secrets or your hosting provider's secret manager; do not put secrets in `NEXT_PUBLIC_*` variables. If a secret is exposed, revoke/rotate it immediately—deleting the current file does not remove previous copies from Git history. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
-All lesson content and data are stored in typed TypeScript records under `lib/`. Quran quotations are strictly verified before publishing, and instructional examples are clearly distinguished from Qur'anic citations.
+---
+
+## 📄 License & Content Model
+There is currently no open-source license in this repository. It is publicly visible, but you do not yet grant permission for others to reuse or redistribute the code or lesson content. Choose an appropriate license and add its full text before describing this repository as open source. Quran quotations are verified before publishing, and instructional examples are distinguished from Qur'anic citations.
