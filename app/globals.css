@@ -964,3 +964,46 @@ details p { color: var(--muted); font-size: .9375rem; margin-bottom: 18px; }
 .ayah-rule span { height: 1px; flex: 1; background: var(--green-line); }
 .ayah-rule i { font-size: .75rem; font-style: normal; }
 .ayah-note { max-width: 34ch; margin: 0 auto; color: var(--muted); font-size: .875rem; line-height: 1.55; text-align: center; }
+
+
+/* ---------- Beginner-friendly homepage ---------- */
+@media (min-width: 901px) {
+  .home-page .container { width: min(1440px, 100% - 80px); }
+  .home-page .hero-grid { grid-template-columns: minmax(0, 1.15fr) minmax(380px, .85fr); gap: clamp(56px, 7vw, 112px); }
+  .home-page h1 { max-width: 17ch; font-size: clamp(3.25rem, 4.5vw, 4.75rem); }
+}
+.home-page .hero { padding-top: clamp(52px, 7vw, 88px); padding-bottom: clamp(52px, 7vw, 76px); }
+.home-page .hero-lede { max-width: 54ch; font-size: clamp(1.2rem, 1.5vw, 1.4rem); }
+.home-page .hero-ayah-arabic { font-size: clamp(2.5rem, 4.4vw, 3.25rem); }
+.home-page .hero-ayah-translation { font-size: 1.125rem; }
+.home-page .search-section { margin-top: 0; }
+.home-page .search-panel { width: min(840px, 100%); min-height: 64px; padding-inline: 24px; }
+.home-page .search-panel input { font-size: 1.125rem; }
+.home-page .search-helper { font-size: .9375rem; }
+.home-page .home-choice-section { padding-top: 24px; padding-bottom: 48px; }
+.home-page .section-heading { margin-bottom: 28px; }
+.home-page .section-intro { font-size: 1.0625rem; }
+.home-page .home-choice-grid { gap: 20px; }
+.home-page .home-choice-card { min-height: 190px; gap: 18px; padding: 30px; }
+.home-page .home-choice-card h3 { font-size: 1.25rem; }
+.home-page .home-choice-card p { font-size: 1rem; }
+.home-page .home-choice-card strong { font-size: .975rem; }
+.home-note-section { padding-top: 34px; }
+.home-note { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 24px; padding: clamp(26px, 4vw, 42px); border: 1px solid var(--green-line); border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow-sm); }
+.home-note h2 { margin: 0 0 8px; font-size: clamp(1.5rem, 2vw, 2rem); }
+.home-note p { max-width: 68ch; margin: 0; color: var(--muted); font-size: 1.0625rem; }
+.home-teacher-note { max-width: 90ch; margin: 22px auto 0; color: var(--muted); text-align: center; font-size: .9375rem; }
+@media (max-width: 900px) {
+  .home-note { grid-template-columns: 1fr; }
+  .home-note .button { justify-self: start; }
+}
+@media (min-width: 561px) and (max-width: 900px) {
+  .home-page .container { width: min(100% - 64px, 820px); }
+}
+@media (max-width: 560px) {
+  .home-page .container { width: min(100% - 40px, 680px); }
+  .home-page .home-search-section { margin-top: 0; }
+  .home-page .home-choice-section { padding-top: 24px; }
+  .home-note { grid-template-columns: 1fr; gap: 16px; }
+  .home-note .button { grid-column: 1; }
+}
