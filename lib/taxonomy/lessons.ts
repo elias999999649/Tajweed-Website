@@ -12,7 +12,6 @@ export const topicLessonMap: Record<string, string> = {
   makharij: "makharij-al-huruf",
   sifaat: "sifaat-al-huruf",
   qalqalah: "qalqalah-letters",
-  "lam-rules": "lam-shamsiyyah",
   "raa-rules": "raa-heavy-and-light",
   // Topic slug differs slightly from the rule slug ("lis" vs "li").
   "madd-arid-lis-sukun": "madd-arid-li-sukun",
@@ -22,28 +21,24 @@ export const topicLessonMap: Record<string, string> = {
   "types-of-waqf": "major-stopping-concepts",
   "how-to-resume": "ibtida",
   "noon-and-meem-mushaddad": "ghunnah",
-  "idgham-between-letters": "idgham",
-  "tafkhim-and-tarqiq": "tafkhim",
   // Topic id "hamzatul-wasl" differs from the rule id "hamzat-al-wasl".
   "hamzatul-wasl": "hamzat-al-wasl",
-  "cutting-and-joining": "hamzat-al-wasl",
-  "recitation-modes": "waqf",
 };
 
 export type TopicLessonLink = {
   topic: TajweedTopic;
-  lessonSlug: string;
+  lessonSlug?: string;
+  href: string;
   /** True when the topic itself is a rule lesson page on /tajweed/[slug]. */
   isLesson: boolean;
   /** True when a different lesson teaches this topic until its own page exists. */
   isPreparation: boolean;
 };
 
-function lessonSlugForTopic(topic: TajweedTopic): string {
+function lessonSlugForTopic(topic: TajweedTopic): string | undefined {
   const mapped = topicLessonMap[topic.id];
   if (mapped && tajweedRules.some((rule) => rule.id === mapped)) return mapped;
-  const relatedRule = topic.relatedRules.find((id) => tajweedRules.some((rule) => rule.id === id));
-  return relatedRule ?? "what-is-tajweed";
+  return undefined;
 }
 
 /** Resolve the /tajweed/[slug] lesson a topic links to. */
@@ -51,7 +46,7 @@ export function getTopicLessonLink(topic: TajweedTopic): TopicLessonLink {
   const isLesson = tajweedRules.some((rule) => rule.id === topic.id);
   const lessonSlug = isLesson ? topic.slug : lessonSlugForTopic(topic);
   const isPreparation = !isLesson;
-  return { topic, lessonSlug, isLesson, isPreparation };
+  return { topic, lessonSlug, isLesson, isPreparation, href: lessonSlug ? `/tajweed/${lessonSlug}` : `/learn/${topic.slug}` };
 }
 
 export function getTopicLessonLinkBySlug(slug: string): TopicLessonLink | undefined {

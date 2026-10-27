@@ -3,8 +3,10 @@ import { getI18n } from "@/lib/i18n/server";
 import type { Metadata } from "next";
 import { ArrowRight, BookOpen, ChevronRight } from "lucide-react";
 import { notFound } from "next/navigation";
-import { Footer, SiteHeader } from "@/components/ui";
+import { Footer } from "@/components/footer";
+import { SiteHeader } from "@/components/ui";
 import { tajweedLevels, tajweedTopics } from "@/lib/taxonomy";
+import { tajweedRules } from "@/lib/tajweed/rules";
 import { getTopicLessonLink } from "@/lib/taxonomy/lessons";
 
 const aliases: Record<string, string> = { essential: "essential-rules", advanced: "advanced-topics" };
@@ -26,6 +28,12 @@ export default async function LearnDetailPage({ params }: { params: Promise<{ sl
   const prevLevel = levelIndex > 0 ? tajweedLevels[levelIndex - 1] : null;
   const nextLevel = levelIndex >= 0 && levelIndex < tajweedLevels.length - 1 ? tajweedLevels[levelIndex + 1] : null;
   const lessonLink = !itemIsLevel ? getTopicLessonLink(item) : null;
+  const relatedStudyLinks = !itemIsLevel ? item.relatedRules.flatMap(id => {
+    const rule = tajweedRules.find(rule => rule.id === id);
+    if (rule) return [{ id, label: rule.name, path: `/tajweed/${rule.slug}` }];
+    const topic = tajweedTopics.find(topic => topic.id === id && topic.id !== item.id);
+    return topic ? [{ id, label: topic.title, path: getTopicLessonLink(topic).href }] : [];
+  }) : [];
 
   return (
     <>
@@ -41,7 +49,7 @@ export default async function LearnDetailPage({ params }: { params: Promise<{ sl
             <p className="eyebrow">{itemIsLevel ? t("Level {number} of {count}", { number: item.level, count: 5 }) : t(item.category)}</p>
             <h1 style={{ marginBottom: "14px" }}>{text(item.title)}</h1>
             <p className="hero-lede">{text(itemIsLevel ? item.purpose : item.summary)}</p>
-            {!itemIsLevel && lessonLink && (
+            {!itemIsLevel && lessonLink?.lessonSlug && (
               <div className="hero-actions" style={{ marginTop: "20px" }}>
                 <a className="button primary" href={href(`/tajweed/${lessonLink.lessonSlug}`)}>
                   <BookOpen size={16} />{" "}{t("Open Full Rule Lesson")}{" "}<ArrowRight size={14} />
@@ -51,7 +59,8 @@ export default async function LearnDetailPage({ params }: { params: Promise<{ sl
           </div>
         </section>
 
-        {!itemIsLevel && <section className="section"><div className="container"><div className="learn-level-inner"><h2>{t("Prerequisites")}</h2><div className="article-related-links">{item.prerequisites.map((id) => { const topic = tajweedTopics.find((entry) => entry.id === id); return topic ? <a key={id} href={href(`/tajweed/${getTopicLessonLink(topic).lessonSlug}`)}>{text(topic.title)}<ArrowRight size={16} /></a> : null; })}</div><p>{t("Written explanations can support recognition and understanding. Correct pronunciation, timing, and articulation are best learned through listening, repetition, and qualified feedback.")}</p><a className="text-link" href={href("/editorial-policy")}>{t("Editorial policy")}</a></div></div></section>}
+        {!itemIsLevel && !lessonLink?.lessonSlug && relatedStudyLinks.length > 0 && <section className="section"><div className="container learn-level-inner"><span className="badge">{t("Awaiting qualified review")}</span><h2>{t("Related lessons")}</h2><div className="article-related-links">{relatedStudyLinks.map(link => <a href={href(link.path)} key={link.id}>{t(link.label)}</a>)}</div></div></section>}
+        {!itemIsLevel && <section className="section"><div className="container"><div className="learn-level-inner"><h2>{t("Prerequisites")}</h2><div className="article-related-links">{item.prerequisites.map((id) => { const topic = tajweedTopics.find((entry) => entry.id === id); return topic ? <a key={id} href={href(getTopicLessonLink(topic).href)}>{text(topic.title)}<ArrowRight size={16} /></a> : null; })}</div><p>{t("Written explanations can support recognition and understanding. Correct pronunciation, timing, and articulation are best learned through listening, repetition, and qualified feedback.")}</p><a className="text-link" href={href("/editorial-policy")}>{t("Editorial policy")}</a></div></div></section>}
         {itemIsLevel && (
           <section className="section learn-level-section">
             <div className="container learn-level-inner">
@@ -64,7 +73,7 @@ export default async function LearnDetailPage({ params }: { params: Promise<{ sl
                 {topics.map((topic, index) => {
                   const link = getTopicLessonLink(topic);
                   return (
-                    <a className="learn-topic-row" href={href(`/tajweed/${link.lessonSlug}`)} key={topic.id}>
+                    <a className="learn-topic-row" href={href(link.href)} key={topic.id}>
                       <div className="learn-topic-main">
                         <span className="badge">{text(String(index + 1).padStart(2, "0"))}</span>
                         <div className="learn-topic-copy">

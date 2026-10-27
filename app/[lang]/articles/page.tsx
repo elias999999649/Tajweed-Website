@@ -1,7 +1,8 @@
 import { localizeMetadata } from "@/lib/i18n/metadata";
 import { getI18n } from "@/lib/i18n/server";
 import { ArrowRight } from "lucide-react";
-import { Footer, SiteHeader } from "@/components/ui";
+import { Footer } from "@/components/footer";
+import { SiteHeader } from "@/components/ui";
 import { articles } from "@/lib/articles/content";
 
 export async function generateMetadata() { return localizeMetadata({ title: "Articles and Learning Guides", description: "Useful Tajweed articles answering real learner questions about rules, pronunciation, Quran reading, and practice.", alternates: { canonical: "/articles" }, openGraph: { title: "Articles and Learning Guides", description: "Useful Tajweed articles answering real learner questions about rules, pronunciation, Quran reading, and practice.", url: "/articles", type: "website" }, twitter: { card: "summary", title: "Articles and Learning Guides", description: "Useful Tajweed articles answering real learner questions about rules, pronunciation, Quran reading, and practice." } }, await getI18n(), "/articles"); }

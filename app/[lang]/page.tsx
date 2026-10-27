@@ -1,5 +1,8 @@
 import { ArrowRight, BookOpen, ListChecks, Target } from "lucide-react";
-import { Button, Footer, SearchPanel, SiteHeader } from "@/components/ui";
+import { Footer } from "@/components/footer";
+import { StartLearningLink } from "@/components/start-learning-link";
+import { tajweedRules } from "@/lib/tajweed/rules";
+import { Button, SearchPanel, SiteHeader } from "@/components/ui";
 import { getI18n } from "@/lib/i18n/server";
 
 export default async function Home() {
@@ -10,7 +13,7 @@ export default async function Home() {
         <p className="eyebrow">{t("For learners of Quran recitation")}</p>
         <h1>{t("Learn Tajweed,")} <span>{t("one step at a time.")}</span></h1>
         <p className="hero-lede">{t("Understand how Arabic letters sound, recognise recitation rules, and build a steady study routine with a qualified teacher.")}</p>
-        <div className="hero-actions"><Button href={href("/learn")}>{t("Find your starting point")}</Button><a href={href("/tajweed")} className="outline-link">{t("Browse the lessons")} <BookOpen size={16} aria-hidden="true" /></a></div>
+        <div className="hero-actions"><StartLearningLink slugs={Object.fromEntries(tajweedRules.map(rule => [rule.id, rule.slug]))} /><a href={href("/tajweed")} className="outline-link">{t("Browse the lessons")} <BookOpen size={16} aria-hidden="true" /></a></div>
         <p className="hero-scope">{t("Teaching scope: Hafs ʿan ʿĀṣim. No previous knowledge of Tajweed is needed.")}</p>
       </div>
       <figure className="recitation-panel" aria-labelledby="recitation-reference">

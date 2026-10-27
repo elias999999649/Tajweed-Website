@@ -1605,5 +1605,19 @@
   "needs review": "تحتاج مراجعة",
   "needs_review": "تحتاج مراجعة",
   "draft": "مسودة",
-  "verified": "متحقق منه"
+  "verified": "متحقق منه",
+  "Verified examples: {count}": "أمثلة موثّقة: {count}",
+  "{count} min read": "قراءة {count} دقيقة",
+  "Which condition belongs to this lesson on {lesson}?": "أي شرط ينتمي إلى هذا الدرس عن {lesson}؟",
+  "{guidance} Compare the other choices with this lesson; they describe guidance for other topics.": "{guidance} قارن الخيارات الأخرى بهذا الدرس؛ فهي تصف إرشادات لمواضيع أخرى.",
+  "The Arabic, Urdu, Indonesian, French, and Turkish translations are working translations. They have not been reviewed by native-language editors or qualified Tajweed teachers.": "الترجمات العربية والأردية والإندونيسية والفرنسية والتركية ترجمات عمل لم يراجعها محررون من أهل اللغات أو معلّمو تجويد مؤهلون.",
+  "The teaching scope is Hafs ʿan ʿĀṣim. The translated editions also require native-language and qualified Tajweed review. They are learning aids, not authoritative Quran translations or scholarly rulings.": "نطاق التعليم حفص عن عاصم. وتحتاج النسخ المترجمة أيضاً إلى مراجعة لغوية ومراجعة تجويد مؤهلة. هي وسائل تعلم وليست ترجمات معتمدة للقرآن أو أحكاماً علمية.",
+  "Ctrl / ⌘ K": "Ctrl / ⌘ K",
+  "Reach the Goal via Tajweed Rules · pp.": "Reach the Goal via Tajweed Rules · pp.",
+  "Ali al-Hudhaify · Hafs ʿan ʿĀṣim": "Ali al-Hudhaify · Hafs ʿan ʿĀṣim",
+  "Google Sans Flex · OFL": "Google Sans Flex · OFL",
+  "Amiri · OFL": "Amiri · OFL",
+  "Which practice guidance does this lesson give for {lesson}?": "ما إرشاد التدريب الذي يقدمه هذا الدرس عن {lesson}؟",
+  "Which occurrence condition does this lesson state for {lesson}?": "ما شرط الحدوث الذي يذكره هذا الدرس عن {lesson}؟",
+  "What is Tajweed": "ما التجويد"
 }

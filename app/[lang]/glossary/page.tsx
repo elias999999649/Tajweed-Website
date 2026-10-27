@@ -1,6 +1,7 @@
 import { localizeMetadata } from "@/lib/i18n/metadata";
 import { getI18n } from "@/lib/i18n/server";
-import { Footer, SiteHeader } from "@/components/ui";
+import { Footer } from "@/components/footer";
+import { SiteHeader } from "@/components/ui";
 import { GlossaryDirectory } from "./glossary-directory";
 
 export async function generateMetadata() { return localizeMetadata({ title: "Tajweed Glossary", description: "Search Arabic and English Tajweed terminology with definitions and links to relevant lessons.", alternates: { canonical: "/glossary" } }, await getI18n(), "/glossary"); }

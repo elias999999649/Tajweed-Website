@@ -1,0 +1,38 @@
+{
+  "scope": "Compressed artifact budgets, not Lighthouse or field Core Web Vitals",
+  "limits": {
+    ".html": 150000,
+    ".js": 200000,
+    ".css": 40000,
+    ".woff2": 200000,
+    ".mp3": 1000000
+  },
+  "largest": [
+    {
+      "file": "en/glossary/index.html",
+      "bytes": 113266,
+      "gzipBytes": 23880
+    },
+    {
+      "file": "_next/static/chunks/5747.4e8b4d5a53724e52.js",
+      "bytes": 309865,
+      "gzipBytes": 86805
+    },
+    {
+      "file": "_next/static/css/08cd43fe4faf5967.css",
+      "bytes": 81090,
+      "gzipBytes": 15363
+    },
+    {
+      "file": "_next/static/media/aa0e790b94c5bca8-s.p.woff2",
+      "bytes": 149304,
+      "gzipBytes": 148697
+    },
+    {
+      "file": "audio/al-fatihah-ali-al-hudhaify.mp3",
+      "bytes": 505984,
+      "gzipBytes": 484260
+    }
+  ],
+  "failures": []
+}

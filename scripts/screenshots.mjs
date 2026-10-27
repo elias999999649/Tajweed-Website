@@ -11,8 +11,8 @@ const OUT = path.join(ROOT, "out");
 const SHOTS = path.join(ROOT, ".screenshots");
 await mkdir(SHOTS, { recursive: true });
 const PORT = 4181;
-const CHROME = "C:/Program Files/Google/Chrome/Application/chrome.exe";
-const MIME = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".svg": "image/svg+xml", ".png": "image/png", ".woff2": "font/woff2", ".txt": "text/plain", ".xml": "application/xml", ".json": "application/json" };
+const CHROME = process.env.CHROME_BIN || (process.platform === "win32" ? "C:/Program Files/Google/Chrome/Application/chrome.exe" : process.platform === "darwin" ? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" : "/usr/bin/google-chrome");
+const MIME = { ".html": "text/html", ".css": "text/css", ".js": "text/javascript", ".svg": "image/svg+xml", ".png": "image/png", ".woff2": "font/woff2", ".txt": "text/plain", ".mp3": "audio/mpeg", ".xml": "application/xml", ".json": "application/json" };
 
 const server = createServer(async (req, res) => {
   try {
@@ -73,12 +73,14 @@ const { sessionId } = await send("Target.attachToTarget", { targetId: page.targe
 await send("Page.enable", {}, sessionId);
 await send("Runtime.enable", {}, sessionId);
 
-async function shot(name, url, width, height, dark) {
+async function shot(name, url, width, height, dark, reveal = false) {
   await send("Emulation.setDeviceMetricsOverride", { width, height, deviceScaleFactor: 1, mobile: width < 700 }, sessionId);
   await send("Page.navigate", { url: BASE + url }, sessionId);
   await sleep(2200);
   const info = await send("Runtime.evaluate", { expression: "JSON.stringify({url: location.href, title: document.title, ready: document.readyState})", returnByValue: true }, sessionId);
   console.log("nav", name, "->", info?.result?.value ?? JSON.stringify(info).slice(0, 200));
+  await send("Runtime.evaluate", { expression: "document.fonts.ready.then(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve(true)))))", awaitPromise: true }, sessionId);
+  if (reveal) { await send("Runtime.evaluate", { expression: "document.querySelectorAll('.study-tools').forEach(item=>item.open=true); document.querySelector('.learning-dashboard .study-tools:last-of-type')?.scrollIntoView(); true" }, sessionId); await sleep(150); }
   if (dark) {
     await send("Runtime.evaluate", { expression: "document.documentElement.classList.add('dark'); void document.fonts.status" }, sessionId);
     await sleep(500);
@@ -89,7 +91,7 @@ async function shot(name, url, width, height, dark) {
   console.log("saved", name);
 }
 
-const locales = (process.env.QA_LOCALES || "en,ar,ur,id,fr").split(",");
+const locales = (process.env.QA_LOCALES || "en,ar,ur,id,fr,tr").split(",");
 for (const locale of locales) {
   await shot(`${locale}-home-desktop`, `/${locale}/`, 1440, 1000, false);
   await shot(`${locale}-home-phone-dark`, `/${locale}/`, 390, 844, true);
@@ -100,6 +102,8 @@ for (const locale of locales) {
     await shot(`${locale}-search-small-phone`, `/${locale}/search/?q=madd`, 320, 900, false);
   }
   await shot(`${locale}-practice`, `/${locale}/practice/`, 1024, 1000, false);
+  await shot(`${locale}-study-tools-phone`, `/${locale}/my-learning/`, 320, 1000, false, true);
+  await shot(`${locale}-listening`, `/${locale}/listen/`, 1280, 1000, false);
   await shot(`${locale}-article`, `/${locale}/articles/how-to-practice-tajweed-effectively/`, 1280, 1000, false);
 }
 

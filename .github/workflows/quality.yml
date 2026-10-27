@@ -1,0 +1,25 @@
+name: Site quality
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  static-site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run audit
+      - run: node scripts/extract-translations.mjs && npm run audit:i18n
+      - run: npm test
+      - run: npm run build
+      - run: npm run audit:export
+      - run: node scripts/performance-budget.mjs
+      - run: npm run design:test
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+          QA_WIDTHS: 320,768,1280

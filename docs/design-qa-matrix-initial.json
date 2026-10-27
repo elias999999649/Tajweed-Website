@@ -1,0 +1,3302 @@
+{
+  "locales": [
+    "en",
+    "ar",
+    "ur",
+    "id",
+    "fr",
+    "tr"
+  ],
+  "widths": [
+    320,
+    375,
+    390,
+    430,
+    768,
+    1024,
+    1280,
+    1440
+  ],
+  "routeVariants": 91,
+  "layoutChecks": 910,
+  "interactionAssertions": 651,
+  "passedInteractionAssertions": 651,
+  "zoomMethod": "200% reflow equivalent: 640 CSS-pixel viewport at DPR 2 for a 1280-pixel desktop",
+  "interactions": [
+    {
+      "label": "language en/tajweed/what-is-tajweed/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language en/tajweed/what-is-tajweed/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/tajweed/what-is-tajweed/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/tajweed/what-is-tajweed/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/tajweed/what-is-tajweed/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/tajweed/what-is-tajweed/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/tajweed/what-is-tajweed/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/tajweed/what-is-tajweed/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/tajweed/what-is-tajweed/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "language en/glossary/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language en/glossary/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/glossary/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/glossary/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/glossary/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/glossary/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/glossary/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/glossary/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/glossary/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "language en/practice/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language en/practice/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/practice/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/practice/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/practice/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/practice/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/practice/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/practice/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/practice/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "language en/articles/how-to-start-learning-tajweed/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language en/articles/how-to-start-learning-tajweed/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/articles/how-to-start-learning-tajweed/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/articles/how-to-start-learning-tajweed/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/articles/how-to-start-learning-tajweed/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/articles/how-to-start-learning-tajweed/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/articles/how-to-start-learning-tajweed/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/articles/how-to-start-learning-tajweed/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language en -> ar/articles/how-to-start-learning-tajweed/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu en",
+      "check": "opened",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu en",
+      "check": "keyboardMoved",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu en",
+      "check": "closed",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu en",
+      "check": "returnedFocus",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu en",
+      "check": "expandedFalse",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu en",
+      "check": "skipTargetExists",
+      "passed": true
+    },
+    {
+      "label": "learning stages en",
+      "check": "focusedStart",
+      "passed": true
+    },
+    {
+      "label": "learning stages en",
+      "check": "allLessonsPresent",
+      "passed": true
+    },
+    {
+      "label": "learning disclosure en",
+      "check": "keyboardOpens",
+      "passed": true
+    },
+    {
+      "label": "reading location en",
+      "check": "highlighted",
+      "passed": true
+    },
+    {
+      "label": "mobile lesson outline en",
+      "check": "keyboardOpens",
+      "passed": true
+    },
+    {
+      "label": "theme en",
+      "check": "found",
+      "passed": true
+    },
+    {
+      "label": "theme en",
+      "check": "changed",
+      "passed": true
+    },
+    {
+      "label": "theme en",
+      "check": "persisted",
+      "passed": true
+    },
+    {
+      "label": "theme en",
+      "check": "restored",
+      "passed": true
+    },
+    {
+      "label": "search en",
+      "check": "opened",
+      "passed": true
+    },
+    {
+      "label": "search en",
+      "check": "focusedInput",
+      "passed": true
+    },
+    {
+      "label": "search en",
+      "check": "hasResults",
+      "passed": true
+    },
+    {
+      "label": "search en",
+      "check": "selectedWithArrow",
+      "passed": true
+    },
+    {
+      "label": "search en",
+      "check": "resultLinksLocalized",
+      "passed": true
+    },
+    {
+      "label": "search focus en",
+      "check": "trappedForward",
+      "passed": true
+    },
+    {
+      "label": "search focus en",
+      "check": "trappedBackward",
+      "passed": true
+    },
+    {
+      "label": "search focus en",
+      "check": "closed",
+      "passed": true
+    },
+    {
+      "label": "search focus en",
+      "check": "returnedFocus",
+      "passed": true
+    },
+    {
+      "label": "search focus en",
+      "check": "restoredScroll",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz en",
+      "check": "available",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz en",
+      "check": "waitsForCheck",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz en",
+      "check": "incorrectFeedback",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz en",
+      "check": "preventedRescore",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz en",
+      "check": "advancedWithFocus",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz en",
+      "check": "correctFeedback",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz en",
+      "check": "exactReview",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz en",
+      "check": "previousRetained",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz en",
+      "check": "secondRetained",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz en",
+      "check": "complete",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz en",
+      "check": "scoreCorrect",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz en",
+      "check": "completionFocus",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz en",
+      "check": "reviewLocalized",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz en",
+      "check": "summaryHasThree",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz en",
+      "check": "persisted",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz en",
+      "check": "missedOnlyRetry",
+      "passed": true
+    },
+    {
+      "label": "practice filters en",
+      "check": "available",
+      "passed": true
+    },
+    {
+      "label": "practice filters en",
+      "check": "activated",
+      "passed": true
+    },
+    {
+      "label": "practice filters en",
+      "check": "emptyFilters",
+      "passed": true
+    },
+    {
+      "label": "practice filters en",
+      "check": "resetFilters",
+      "passed": true
+    },
+    {
+      "label": "practice filters en",
+      "check": "feedback",
+      "passed": true
+    },
+    {
+      "label": "practice filters en",
+      "check": "shortSession",
+      "passed": true
+    },
+    {
+      "label": "directory en",
+      "check": "switched",
+      "passed": true
+    },
+    {
+      "label": "directory en",
+      "check": "empty",
+      "passed": true
+    },
+    {
+      "label": "directory en",
+      "check": "reset",
+      "passed": true
+    },
+    {
+      "label": "glossary en",
+      "check": "available",
+      "passed": true
+    },
+    {
+      "label": "glossary en",
+      "check": "localizedSearch",
+      "passed": true
+    },
+    {
+      "label": "glossary en",
+      "check": "empty",
+      "passed": true
+    },
+    {
+      "label": "glossary en",
+      "check": "reset",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent en/",
+      "check": "noOverflow",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent en/",
+      "check": "readableMain",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent en/",
+      "check": "switcherAvailable",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent en/",
+      "check": "mainTarget",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent en/tajweed/what-is-tajweed/",
+      "check": "noOverflow",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent en/tajweed/what-is-tajweed/",
+      "check": "readableMain",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent en/tajweed/what-is-tajweed/",
+      "check": "switcherAvailable",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent en/tajweed/what-is-tajweed/",
+      "check": "mainTarget",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent en/glossary/",
+      "check": "noOverflow",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent en/glossary/",
+      "check": "readableMain",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent en/glossary/",
+      "check": "switcherAvailable",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent en/glossary/",
+      "check": "mainTarget",
+      "passed": true
+    },
+    {
+      "label": "language ar/tajweed/what-is-tajweed/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language ar/tajweed/what-is-tajweed/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/tajweed/what-is-tajweed/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/tajweed/what-is-tajweed/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/tajweed/what-is-tajweed/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/tajweed/what-is-tajweed/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/tajweed/what-is-tajweed/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/tajweed/what-is-tajweed/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/tajweed/what-is-tajweed/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "language ar/glossary/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language ar/glossary/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/glossary/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/glossary/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/glossary/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/glossary/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/glossary/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/glossary/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/glossary/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "language ar/practice/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language ar/practice/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/practice/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/practice/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/practice/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/practice/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/practice/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/practice/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/practice/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "language ar/articles/how-to-start-learning-tajweed/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language ar/articles/how-to-start-learning-tajweed/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/articles/how-to-start-learning-tajweed/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/articles/how-to-start-learning-tajweed/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/articles/how-to-start-learning-tajweed/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/articles/how-to-start-learning-tajweed/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/articles/how-to-start-learning-tajweed/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/articles/how-to-start-learning-tajweed/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language ar -> ur/articles/how-to-start-learning-tajweed/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu ar",
+      "check": "opened",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu ar",
+      "check": "keyboardMoved",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu ar",
+      "check": "closed",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu ar",
+      "check": "returnedFocus",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu ar",
+      "check": "expandedFalse",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu ar",
+      "check": "skipTargetExists",
+      "passed": true
+    },
+    {
+      "label": "learning stages ar",
+      "check": "focusedStart",
+      "passed": true
+    },
+    {
+      "label": "learning stages ar",
+      "check": "allLessonsPresent",
+      "passed": true
+    },
+    {
+      "label": "learning disclosure ar",
+      "check": "keyboardOpens",
+      "passed": true
+    },
+    {
+      "label": "reading location ar",
+      "check": "highlighted",
+      "passed": true
+    },
+    {
+      "label": "mobile lesson outline ar",
+      "check": "keyboardOpens",
+      "passed": true
+    },
+    {
+      "label": "theme ar",
+      "check": "found",
+      "passed": true
+    },
+    {
+      "label": "theme ar",
+      "check": "changed",
+      "passed": true
+    },
+    {
+      "label": "theme ar",
+      "check": "persisted",
+      "passed": true
+    },
+    {
+      "label": "theme ar",
+      "check": "restored",
+      "passed": true
+    },
+    {
+      "label": "search ar",
+      "check": "opened",
+      "passed": true
+    },
+    {
+      "label": "search ar",
+      "check": "focusedInput",
+      "passed": true
+    },
+    {
+      "label": "search ar",
+      "check": "hasResults",
+      "passed": true
+    },
+    {
+      "label": "search ar",
+      "check": "selectedWithArrow",
+      "passed": true
+    },
+    {
+      "label": "search ar",
+      "check": "resultLinksLocalized",
+      "passed": true
+    },
+    {
+      "label": "search focus ar",
+      "check": "trappedForward",
+      "passed": true
+    },
+    {
+      "label": "search focus ar",
+      "check": "trappedBackward",
+      "passed": true
+    },
+    {
+      "label": "search focus ar",
+      "check": "closed",
+      "passed": true
+    },
+    {
+      "label": "search focus ar",
+      "check": "returnedFocus",
+      "passed": true
+    },
+    {
+      "label": "search focus ar",
+      "check": "restoredScroll",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ar",
+      "check": "available",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ar",
+      "check": "waitsForCheck",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ar",
+      "check": "incorrectFeedback",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ar",
+      "check": "preventedRescore",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ar",
+      "check": "advancedWithFocus",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ar",
+      "check": "correctFeedback",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ar",
+      "check": "exactReview",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ar",
+      "check": "previousRetained",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ar",
+      "check": "secondRetained",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ar",
+      "check": "complete",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ar",
+      "check": "scoreCorrect",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ar",
+      "check": "completionFocus",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ar",
+      "check": "reviewLocalized",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ar",
+      "check": "summaryHasThree",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ar",
+      "check": "persisted",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ar",
+      "check": "missedOnlyRetry",
+      "passed": true
+    },
+    {
+      "label": "practice filters ar",
+      "check": "available",
+      "passed": true
+    },
+    {
+      "label": "practice filters ar",
+      "check": "activated",
+      "passed": true
+    },
+    {
+      "label": "practice filters ar",
+      "check": "emptyFilters",
+      "passed": true
+    },
+    {
+      "label": "practice filters ar",
+      "check": "resetFilters",
+      "passed": true
+    },
+    {
+      "label": "practice filters ar",
+      "check": "feedback",
+      "passed": true
+    },
+    {
+      "label": "practice filters ar",
+      "check": "shortSession",
+      "passed": true
+    },
+    {
+      "label": "directory ar",
+      "check": "switched",
+      "passed": true
+    },
+    {
+      "label": "directory ar",
+      "check": "empty",
+      "passed": true
+    },
+    {
+      "label": "directory ar",
+      "check": "reset",
+      "passed": true
+    },
+    {
+      "label": "glossary ar",
+      "check": "available",
+      "passed": true
+    },
+    {
+      "label": "glossary ar",
+      "check": "localizedSearch",
+      "passed": true
+    },
+    {
+      "label": "glossary ar",
+      "check": "empty",
+      "passed": true
+    },
+    {
+      "label": "glossary ar",
+      "check": "reset",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ar/",
+      "check": "noOverflow",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ar/",
+      "check": "readableMain",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ar/",
+      "check": "switcherAvailable",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ar/",
+      "check": "mainTarget",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ar/tajweed/what-is-tajweed/",
+      "check": "noOverflow",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ar/tajweed/what-is-tajweed/",
+      "check": "readableMain",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ar/tajweed/what-is-tajweed/",
+      "check": "switcherAvailable",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ar/tajweed/what-is-tajweed/",
+      "check": "mainTarget",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ar/glossary/",
+      "check": "noOverflow",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ar/glossary/",
+      "check": "readableMain",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ar/glossary/",
+      "check": "switcherAvailable",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ar/glossary/",
+      "check": "mainTarget",
+      "passed": true
+    },
+    {
+      "label": "language ur/tajweed/what-is-tajweed/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language ur/tajweed/what-is-tajweed/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/tajweed/what-is-tajweed/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/tajweed/what-is-tajweed/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/tajweed/what-is-tajweed/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/tajweed/what-is-tajweed/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/tajweed/what-is-tajweed/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/tajweed/what-is-tajweed/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/tajweed/what-is-tajweed/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "language ur/glossary/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language ur/glossary/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/glossary/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/glossary/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/glossary/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/glossary/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/glossary/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/glossary/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/glossary/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "language ur/practice/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language ur/practice/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/practice/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/practice/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/practice/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/practice/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/practice/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/practice/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/practice/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "language ur/articles/how-to-start-learning-tajweed/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language ur/articles/how-to-start-learning-tajweed/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/articles/how-to-start-learning-tajweed/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/articles/how-to-start-learning-tajweed/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/articles/how-to-start-learning-tajweed/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/articles/how-to-start-learning-tajweed/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/articles/how-to-start-learning-tajweed/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/articles/how-to-start-learning-tajweed/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language ur -> id/articles/how-to-start-learning-tajweed/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu ur",
+      "check": "opened",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu ur",
+      "check": "keyboardMoved",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu ur",
+      "check": "closed",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu ur",
+      "check": "returnedFocus",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu ur",
+      "check": "expandedFalse",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu ur",
+      "check": "skipTargetExists",
+      "passed": true
+    },
+    {
+      "label": "learning stages ur",
+      "check": "focusedStart",
+      "passed": true
+    },
+    {
+      "label": "learning stages ur",
+      "check": "allLessonsPresent",
+      "passed": true
+    },
+    {
+      "label": "learning disclosure ur",
+      "check": "keyboardOpens",
+      "passed": true
+    },
+    {
+      "label": "reading location ur",
+      "check": "highlighted",
+      "passed": true
+    },
+    {
+      "label": "mobile lesson outline ur",
+      "check": "keyboardOpens",
+      "passed": true
+    },
+    {
+      "label": "theme ur",
+      "check": "found",
+      "passed": true
+    },
+    {
+      "label": "theme ur",
+      "check": "changed",
+      "passed": true
+    },
+    {
+      "label": "theme ur",
+      "check": "persisted",
+      "passed": true
+    },
+    {
+      "label": "theme ur",
+      "check": "restored",
+      "passed": true
+    },
+    {
+      "label": "search ur",
+      "check": "opened",
+      "passed": true
+    },
+    {
+      "label": "search ur",
+      "check": "focusedInput",
+      "passed": true
+    },
+    {
+      "label": "search ur",
+      "check": "hasResults",
+      "passed": true
+    },
+    {
+      "label": "search ur",
+      "check": "selectedWithArrow",
+      "passed": true
+    },
+    {
+      "label": "search ur",
+      "check": "resultLinksLocalized",
+      "passed": true
+    },
+    {
+      "label": "search focus ur",
+      "check": "trappedForward",
+      "passed": true
+    },
+    {
+      "label": "search focus ur",
+      "check": "trappedBackward",
+      "passed": true
+    },
+    {
+      "label": "search focus ur",
+      "check": "closed",
+      "passed": true
+    },
+    {
+      "label": "search focus ur",
+      "check": "returnedFocus",
+      "passed": true
+    },
+    {
+      "label": "search focus ur",
+      "check": "restoredScroll",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ur",
+      "check": "available",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ur",
+      "check": "waitsForCheck",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ur",
+      "check": "incorrectFeedback",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ur",
+      "check": "preventedRescore",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ur",
+      "check": "advancedWithFocus",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ur",
+      "check": "correctFeedback",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ur",
+      "check": "exactReview",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ur",
+      "check": "previousRetained",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ur",
+      "check": "secondRetained",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ur",
+      "check": "complete",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ur",
+      "check": "scoreCorrect",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ur",
+      "check": "completionFocus",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ur",
+      "check": "reviewLocalized",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ur",
+      "check": "summaryHasThree",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ur",
+      "check": "persisted",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz ur",
+      "check": "missedOnlyRetry",
+      "passed": true
+    },
+    {
+      "label": "practice filters ur",
+      "check": "available",
+      "passed": true
+    },
+    {
+      "label": "practice filters ur",
+      "check": "activated",
+      "passed": true
+    },
+    {
+      "label": "practice filters ur",
+      "check": "emptyFilters",
+      "passed": true
+    },
+    {
+      "label": "practice filters ur",
+      "check": "resetFilters",
+      "passed": true
+    },
+    {
+      "label": "practice filters ur",
+      "check": "feedback",
+      "passed": true
+    },
+    {
+      "label": "practice filters ur",
+      "check": "shortSession",
+      "passed": true
+    },
+    {
+      "label": "directory ur",
+      "check": "switched",
+      "passed": true
+    },
+    {
+      "label": "directory ur",
+      "check": "empty",
+      "passed": true
+    },
+    {
+      "label": "directory ur",
+      "check": "reset",
+      "passed": true
+    },
+    {
+      "label": "glossary ur",
+      "check": "available",
+      "passed": true
+    },
+    {
+      "label": "glossary ur",
+      "check": "localizedSearch",
+      "passed": true
+    },
+    {
+      "label": "glossary ur",
+      "check": "empty",
+      "passed": true
+    },
+    {
+      "label": "glossary ur",
+      "check": "reset",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ur/",
+      "check": "noOverflow",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ur/",
+      "check": "readableMain",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ur/",
+      "check": "switcherAvailable",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ur/",
+      "check": "mainTarget",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ur/tajweed/what-is-tajweed/",
+      "check": "noOverflow",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ur/tajweed/what-is-tajweed/",
+      "check": "readableMain",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ur/tajweed/what-is-tajweed/",
+      "check": "switcherAvailable",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ur/tajweed/what-is-tajweed/",
+      "check": "mainTarget",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ur/glossary/",
+      "check": "noOverflow",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ur/glossary/",
+      "check": "readableMain",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ur/glossary/",
+      "check": "switcherAvailable",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent ur/glossary/",
+      "check": "mainTarget",
+      "passed": true
+    },
+    {
+      "label": "language id/tajweed/what-is-tajweed/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language id/tajweed/what-is-tajweed/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/tajweed/what-is-tajweed/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/tajweed/what-is-tajweed/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/tajweed/what-is-tajweed/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/tajweed/what-is-tajweed/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/tajweed/what-is-tajweed/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/tajweed/what-is-tajweed/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/tajweed/what-is-tajweed/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "language id/glossary/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language id/glossary/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/glossary/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/glossary/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/glossary/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/glossary/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/glossary/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/glossary/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/glossary/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "language id/practice/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language id/practice/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/practice/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/practice/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/practice/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/practice/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/practice/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/practice/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/practice/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "language id/articles/how-to-start-learning-tajweed/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language id/articles/how-to-start-learning-tajweed/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/articles/how-to-start-learning-tajweed/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/articles/how-to-start-learning-tajweed/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/articles/how-to-start-learning-tajweed/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/articles/how-to-start-learning-tajweed/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/articles/how-to-start-learning-tajweed/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/articles/how-to-start-learning-tajweed/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language id -> fr/articles/how-to-start-learning-tajweed/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu id",
+      "check": "opened",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu id",
+      "check": "keyboardMoved",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu id",
+      "check": "closed",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu id",
+      "check": "returnedFocus",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu id",
+      "check": "expandedFalse",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu id",
+      "check": "skipTargetExists",
+      "passed": true
+    },
+    {
+      "label": "learning stages id",
+      "check": "focusedStart",
+      "passed": true
+    },
+    {
+      "label": "learning stages id",
+      "check": "allLessonsPresent",
+      "passed": true
+    },
+    {
+      "label": "learning disclosure id",
+      "check": "keyboardOpens",
+      "passed": true
+    },
+    {
+      "label": "reading location id",
+      "check": "highlighted",
+      "passed": true
+    },
+    {
+      "label": "mobile lesson outline id",
+      "check": "keyboardOpens",
+      "passed": true
+    },
+    {
+      "label": "theme id",
+      "check": "found",
+      "passed": true
+    },
+    {
+      "label": "theme id",
+      "check": "changed",
+      "passed": true
+    },
+    {
+      "label": "theme id",
+      "check": "persisted",
+      "passed": true
+    },
+    {
+      "label": "theme id",
+      "check": "restored",
+      "passed": true
+    },
+    {
+      "label": "search id",
+      "check": "opened",
+      "passed": true
+    },
+    {
+      "label": "search id",
+      "check": "focusedInput",
+      "passed": true
+    },
+    {
+      "label": "search id",
+      "check": "hasResults",
+      "passed": true
+    },
+    {
+      "label": "search id",
+      "check": "selectedWithArrow",
+      "passed": true
+    },
+    {
+      "label": "search id",
+      "check": "resultLinksLocalized",
+      "passed": true
+    },
+    {
+      "label": "search focus id",
+      "check": "trappedForward",
+      "passed": true
+    },
+    {
+      "label": "search focus id",
+      "check": "trappedBackward",
+      "passed": true
+    },
+    {
+      "label": "search focus id",
+      "check": "closed",
+      "passed": true
+    },
+    {
+      "label": "search focus id",
+      "check": "returnedFocus",
+      "passed": true
+    },
+    {
+      "label": "search focus id",
+      "check": "restoredScroll",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz id",
+      "check": "available",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz id",
+      "check": "waitsForCheck",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz id",
+      "check": "incorrectFeedback",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz id",
+      "check": "preventedRescore",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz id",
+      "check": "advancedWithFocus",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz id",
+      "check": "correctFeedback",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz id",
+      "check": "exactReview",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz id",
+      "check": "previousRetained",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz id",
+      "check": "secondRetained",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz id",
+      "check": "complete",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz id",
+      "check": "scoreCorrect",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz id",
+      "check": "completionFocus",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz id",
+      "check": "reviewLocalized",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz id",
+      "check": "summaryHasThree",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz id",
+      "check": "persisted",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz id",
+      "check": "missedOnlyRetry",
+      "passed": true
+    },
+    {
+      "label": "practice filters id",
+      "check": "available",
+      "passed": true
+    },
+    {
+      "label": "practice filters id",
+      "check": "activated",
+      "passed": true
+    },
+    {
+      "label": "practice filters id",
+      "check": "emptyFilters",
+      "passed": true
+    },
+    {
+      "label": "practice filters id",
+      "check": "resetFilters",
+      "passed": true
+    },
+    {
+      "label": "practice filters id",
+      "check": "feedback",
+      "passed": true
+    },
+    {
+      "label": "practice filters id",
+      "check": "shortSession",
+      "passed": true
+    },
+    {
+      "label": "directory id",
+      "check": "switched",
+      "passed": true
+    },
+    {
+      "label": "directory id",
+      "check": "empty",
+      "passed": true
+    },
+    {
+      "label": "directory id",
+      "check": "reset",
+      "passed": true
+    },
+    {
+      "label": "glossary id",
+      "check": "available",
+      "passed": true
+    },
+    {
+      "label": "glossary id",
+      "check": "localizedSearch",
+      "passed": true
+    },
+    {
+      "label": "glossary id",
+      "check": "empty",
+      "passed": true
+    },
+    {
+      "label": "glossary id",
+      "check": "reset",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent id/",
+      "check": "noOverflow",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent id/",
+      "check": "readableMain",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent id/",
+      "check": "switcherAvailable",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent id/",
+      "check": "mainTarget",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent id/tajweed/what-is-tajweed/",
+      "check": "noOverflow",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent id/tajweed/what-is-tajweed/",
+      "check": "readableMain",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent id/tajweed/what-is-tajweed/",
+      "check": "switcherAvailable",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent id/tajweed/what-is-tajweed/",
+      "check": "mainTarget",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent id/glossary/",
+      "check": "noOverflow",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent id/glossary/",
+      "check": "readableMain",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent id/glossary/",
+      "check": "switcherAvailable",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent id/glossary/",
+      "check": "mainTarget",
+      "passed": true
+    },
+    {
+      "label": "language fr/tajweed/what-is-tajweed/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language fr/tajweed/what-is-tajweed/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/tajweed/what-is-tajweed/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/tajweed/what-is-tajweed/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/tajweed/what-is-tajweed/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/tajweed/what-is-tajweed/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/tajweed/what-is-tajweed/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/tajweed/what-is-tajweed/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/tajweed/what-is-tajweed/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "language fr/glossary/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language fr/glossary/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/glossary/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/glossary/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/glossary/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/glossary/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/glossary/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/glossary/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/glossary/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "language fr/practice/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language fr/practice/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/practice/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/practice/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/practice/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/practice/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/practice/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/practice/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/practice/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "language fr/articles/how-to-start-learning-tajweed/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language fr/articles/how-to-start-learning-tajweed/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/articles/how-to-start-learning-tajweed/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/articles/how-to-start-learning-tajweed/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/articles/how-to-start-learning-tajweed/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/articles/how-to-start-learning-tajweed/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/articles/how-to-start-learning-tajweed/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/articles/how-to-start-learning-tajweed/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language fr -> tr/articles/how-to-start-learning-tajweed/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu fr",
+      "check": "opened",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu fr",
+      "check": "keyboardMoved",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu fr",
+      "check": "closed",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu fr",
+      "check": "returnedFocus",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu fr",
+      "check": "expandedFalse",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu fr",
+      "check": "skipTargetExists",
+      "passed": true
+    },
+    {
+      "label": "learning stages fr",
+      "check": "focusedStart",
+      "passed": true
+    },
+    {
+      "label": "learning stages fr",
+      "check": "allLessonsPresent",
+      "passed": true
+    },
+    {
+      "label": "learning disclosure fr",
+      "check": "keyboardOpens",
+      "passed": true
+    },
+    {
+      "label": "reading location fr",
+      "check": "highlighted",
+      "passed": true
+    },
+    {
+      "label": "mobile lesson outline fr",
+      "check": "keyboardOpens",
+      "passed": true
+    },
+    {
+      "label": "theme fr",
+      "check": "found",
+      "passed": true
+    },
+    {
+      "label": "theme fr",
+      "check": "changed",
+      "passed": true
+    },
+    {
+      "label": "theme fr",
+      "check": "persisted",
+      "passed": true
+    },
+    {
+      "label": "theme fr",
+      "check": "restored",
+      "passed": true
+    },
+    {
+      "label": "search fr",
+      "check": "opened",
+      "passed": true
+    },
+    {
+      "label": "search fr",
+      "check": "focusedInput",
+      "passed": true
+    },
+    {
+      "label": "search fr",
+      "check": "hasResults",
+      "passed": true
+    },
+    {
+      "label": "search fr",
+      "check": "selectedWithArrow",
+      "passed": true
+    },
+    {
+      "label": "search fr",
+      "check": "resultLinksLocalized",
+      "passed": true
+    },
+    {
+      "label": "search focus fr",
+      "check": "trappedForward",
+      "passed": true
+    },
+    {
+      "label": "search focus fr",
+      "check": "trappedBackward",
+      "passed": true
+    },
+    {
+      "label": "search focus fr",
+      "check": "closed",
+      "passed": true
+    },
+    {
+      "label": "search focus fr",
+      "check": "returnedFocus",
+      "passed": true
+    },
+    {
+      "label": "search focus fr",
+      "check": "restoredScroll",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz fr",
+      "check": "available",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz fr",
+      "check": "waitsForCheck",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz fr",
+      "check": "incorrectFeedback",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz fr",
+      "check": "preventedRescore",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz fr",
+      "check": "advancedWithFocus",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz fr",
+      "check": "correctFeedback",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz fr",
+      "check": "exactReview",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz fr",
+      "check": "previousRetained",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz fr",
+      "check": "secondRetained",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz fr",
+      "check": "complete",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz fr",
+      "check": "scoreCorrect",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz fr",
+      "check": "completionFocus",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz fr",
+      "check": "reviewLocalized",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz fr",
+      "check": "summaryHasThree",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz fr",
+      "check": "persisted",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz fr",
+      "check": "missedOnlyRetry",
+      "passed": true
+    },
+    {
+      "label": "practice filters fr",
+      "check": "available",
+      "passed": true
+    },
+    {
+      "label": "practice filters fr",
+      "check": "activated",
+      "passed": true
+    },
+    {
+      "label": "practice filters fr",
+      "check": "emptyFilters",
+      "passed": true
+    },
+    {
+      "label": "practice filters fr",
+      "check": "resetFilters",
+      "passed": true
+    },
+    {
+      "label": "practice filters fr",
+      "check": "feedback",
+      "passed": true
+    },
+    {
+      "label": "practice filters fr",
+      "check": "shortSession",
+      "passed": true
+    },
+    {
+      "label": "directory fr",
+      "check": "switched",
+      "passed": true
+    },
+    {
+      "label": "directory fr",
+      "check": "empty",
+      "passed": true
+    },
+    {
+      "label": "directory fr",
+      "check": "reset",
+      "passed": true
+    },
+    {
+      "label": "glossary fr",
+      "check": "available",
+      "passed": true
+    },
+    {
+      "label": "glossary fr",
+      "check": "localizedSearch",
+      "passed": true
+    },
+    {
+      "label": "glossary fr",
+      "check": "empty",
+      "passed": true
+    },
+    {
+      "label": "glossary fr",
+      "check": "reset",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent fr/",
+      "check": "noOverflow",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent fr/",
+      "check": "readableMain",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent fr/",
+      "check": "switcherAvailable",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent fr/",
+      "check": "mainTarget",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent fr/tajweed/what-is-tajweed/",
+      "check": "noOverflow",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent fr/tajweed/what-is-tajweed/",
+      "check": "readableMain",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent fr/tajweed/what-is-tajweed/",
+      "check": "switcherAvailable",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent fr/tajweed/what-is-tajweed/",
+      "check": "mainTarget",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent fr/glossary/",
+      "check": "noOverflow",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent fr/glossary/",
+      "check": "readableMain",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent fr/glossary/",
+      "check": "switcherAvailable",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent fr/glossary/",
+      "check": "mainTarget",
+      "passed": true
+    },
+    {
+      "label": "language tr/tajweed/what-is-tajweed/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language tr/tajweed/what-is-tajweed/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/tajweed/what-is-tajweed/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/tajweed/what-is-tajweed/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/tajweed/what-is-tajweed/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/tajweed/what-is-tajweed/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/tajweed/what-is-tajweed/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/tajweed/what-is-tajweed/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/tajweed/what-is-tajweed/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "language tr/glossary/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language tr/glossary/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/glossary/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/glossary/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/glossary/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/glossary/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/glossary/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/glossary/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/glossary/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "language tr/practice/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language tr/practice/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/practice/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/practice/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/practice/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/practice/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/practice/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/practice/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/practice/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "language tr/articles/how-to-start-learning-tajweed/",
+      "check": "sixOptions",
+      "passed": true
+    },
+    {
+      "label": "language tr/articles/how-to-start-learning-tajweed/",
+      "check": "selectedSource",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/articles/how-to-start-learning-tajweed/",
+      "check": "arrived",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/articles/how-to-start-learning-tajweed/",
+      "check": "direction",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/articles/how-to-start-learning-tajweed/",
+      "check": "equivalentRoute",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/articles/how-to-start-learning-tajweed/",
+      "check": "keptQuery",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/articles/how-to-start-learning-tajweed/",
+      "check": "keptHash",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/articles/how-to-start-learning-tajweed/",
+      "check": "selectedDestination",
+      "passed": true
+    },
+    {
+      "label": "language tr -> en/articles/how-to-start-learning-tajweed/",
+      "check": "savedPreference",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu tr",
+      "check": "opened",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu tr",
+      "check": "keyboardMoved",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu tr",
+      "check": "closed",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu tr",
+      "check": "returnedFocus",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu tr",
+      "check": "expandedFalse",
+      "passed": true
+    },
+    {
+      "label": "keyboard menu tr",
+      "check": "skipTargetExists",
+      "passed": true
+    },
+    {
+      "label": "learning stages tr",
+      "check": "focusedStart",
+      "passed": true
+    },
+    {
+      "label": "learning stages tr",
+      "check": "allLessonsPresent",
+      "passed": true
+    },
+    {
+      "label": "learning disclosure tr",
+      "check": "keyboardOpens",
+      "passed": true
+    },
+    {
+      "label": "reading location tr",
+      "check": "highlighted",
+      "passed": true
+    },
+    {
+      "label": "mobile lesson outline tr",
+      "check": "keyboardOpens",
+      "passed": true
+    },
+    {
+      "label": "theme tr",
+      "check": "found",
+      "passed": true
+    },
+    {
+      "label": "theme tr",
+      "check": "changed",
+      "passed": true
+    },
+    {
+      "label": "theme tr",
+      "check": "persisted",
+      "passed": true
+    },
+    {
+      "label": "theme tr",
+      "check": "restored",
+      "passed": true
+    },
+    {
+      "label": "search tr",
+      "check": "opened",
+      "passed": true
+    },
+    {
+      "label": "search tr",
+      "check": "focusedInput",
+      "passed": true
+    },
+    {
+      "label": "search tr",
+      "check": "hasResults",
+      "passed": true
+    },
+    {
+      "label": "search tr",
+      "check": "selectedWithArrow",
+      "passed": true
+    },
+    {
+      "label": "search tr",
+      "check": "resultLinksLocalized",
+      "passed": true
+    },
+    {
+      "label": "search focus tr",
+      "check": "trappedForward",
+      "passed": true
+    },
+    {
+      "label": "search focus tr",
+      "check": "trappedBackward",
+      "passed": true
+    },
+    {
+      "label": "search focus tr",
+      "check": "closed",
+      "passed": true
+    },
+    {
+      "label": "search focus tr",
+      "check": "returnedFocus",
+      "passed": true
+    },
+    {
+      "label": "search focus tr",
+      "check": "restoredScroll",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz tr",
+      "check": "available",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz tr",
+      "check": "waitsForCheck",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz tr",
+      "check": "incorrectFeedback",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz tr",
+      "check": "preventedRescore",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz tr",
+      "check": "advancedWithFocus",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz tr",
+      "check": "correctFeedback",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz tr",
+      "check": "exactReview",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz tr",
+      "check": "previousRetained",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz tr",
+      "check": "secondRetained",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz tr",
+      "check": "complete",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz tr",
+      "check": "scoreCorrect",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz tr",
+      "check": "completionFocus",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz tr",
+      "check": "reviewLocalized",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz tr",
+      "check": "summaryHasThree",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz tr",
+      "check": "persisted",
+      "passed": true
+    },
+    {
+      "label": "lesson quiz tr",
+      "check": "missedOnlyRetry",
+      "passed": true
+    },
+    {
+      "label": "practice filters tr",
+      "check": "available",
+      "passed": true
+    },
+    {
+      "label": "practice filters tr",
+      "check": "activated",
+      "passed": true
+    },
+    {
+      "label": "practice filters tr",
+      "check": "emptyFilters",
+      "passed": true
+    },
+    {
+      "label": "practice filters tr",
+      "check": "resetFilters",
+      "passed": true
+    },
+    {
+      "label": "practice filters tr",
+      "check": "feedback",
+      "passed": true
+    },
+    {
+      "label": "practice filters tr",
+      "check": "shortSession",
+      "passed": true
+    },
+    {
+      "label": "directory tr",
+      "check": "switched",
+      "passed": true
+    },
+    {
+      "label": "directory tr",
+      "check": "empty",
+      "passed": true
+    },
+    {
+      "label": "directory tr",
+      "check": "reset",
+      "passed": true
+    },
+    {
+      "label": "glossary tr",
+      "check": "available",
+      "passed": true
+    },
+    {
+      "label": "glossary tr",
+      "check": "localizedSearch",
+      "passed": true
+    },
+    {
+      "label": "glossary tr",
+      "check": "empty",
+      "passed": true
+    },
+    {
+      "label": "glossary tr",
+      "check": "reset",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent tr/",
+      "check": "noOverflow",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent tr/",
+      "check": "readableMain",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent tr/",
+      "check": "switcherAvailable",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent tr/",
+      "check": "mainTarget",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent tr/tajweed/what-is-tajweed/",
+      "check": "noOverflow",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent tr/tajweed/what-is-tajweed/",
+      "check": "readableMain",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent tr/tajweed/what-is-tajweed/",
+      "check": "switcherAvailable",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent tr/tajweed/what-is-tajweed/",
+      "check": "mainTarget",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent tr/glossary/",
+      "check": "noOverflow",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent tr/glossary/",
+      "check": "readableMain",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent tr/glossary/",
+      "check": "switcherAvailable",
+      "passed": true
+    },
+    {
+      "label": "200% zoom-equivalent tr/glossary/",
+      "check": "mainTarget",
+      "passed": true
+    },
+    {
+      "label": "study data",
+      "check": "available",
+      "passed": true
+    },
+    {
+      "label": "study data",
+      "check": "savedFlags",
+      "passed": true
+    },
+    {
+      "label": "study data",
+      "check": "savedNotes",
+      "passed": true
+    },
+    {
+      "label": "cross-language study records",
+      "check": "notesKept",
+      "passed": true
+    },
+    {
+      "label": "cross-language study records",
+      "check": "flagsKept",
+      "passed": true
+    },
+    {
+      "label": "offline download",
+      "check": "savedOffline",
+      "passed": true
+    },
+    {
+      "label": "offline reload",
+      "check": "textAvailable",
+      "passed": true
+    },
+    {
+      "label": "offline reload",
+      "check": "languageAvailable",
+      "passed": true
+    },
+    {
+      "label": "offline reload",
+      "check": "fontsReady",
+      "passed": true
+    },
+    {
+      "label": "official audio and recorder",
+      "check": "noAutoplay",
+      "passed": true
+    },
+    {
+      "label": "official audio and recorder",
+      "check": "localFile",
+      "passed": true
+    },
+    {
+      "label": "official audio and recorder",
+      "check": "fileAvailable",
+      "passed": true
+    },
+    {
+      "label": "official audio and recorder",
+      "check": "recorderOptIn",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable en",
+      "check": "rendered",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable en",
+      "check": "themeWorks",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable language en",
+      "check": "navigationWorks",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable language en",
+      "check": "noPageErrors",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable ar",
+      "check": "rendered",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable ar",
+      "check": "themeWorks",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable language ar",
+      "check": "navigationWorks",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable language ar",
+      "check": "noPageErrors",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable ur",
+      "check": "rendered",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable ur",
+      "check": "themeWorks",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable language ur",
+      "check": "navigationWorks",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable language ur",
+      "check": "noPageErrors",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable id",
+      "check": "rendered",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable id",
+      "check": "themeWorks",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable language id",
+      "check": "navigationWorks",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable language id",
+      "check": "noPageErrors",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable fr",
+      "check": "rendered",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable fr",
+      "check": "themeWorks",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable language fr",
+      "check": "navigationWorks",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable language fr",
+      "check": "noPageErrors",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable tr",
+      "check": "rendered",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable tr",
+      "check": "themeWorks",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable language tr",
+      "check": "navigationWorks",
+      "passed": true
+    },
+    {
+      "label": "storage unavailable language tr",
+      "check": "noPageErrors",
+      "passed": true
+    },
+    {
+      "label": "icon /icon.png",
+      "check": "available",
+      "passed": true
+    },
+    {
+      "label": "icon /apple-icon.png",
+      "check": "available",
+      "passed": true
+    }
+  ],
+  "issues": [
+    "[en-my-learning 320px light] offscreen controls/content: INPUT. [37,410], BUTTON.text-link [37,410]",
+    "[en-my-learning 375px light] offscreen controls/content: INPUT. [37,410], BUTTON.text-link [37,410]",
+    "[en-my-learning 390px light] offscreen controls/content: INPUT. [37,410], BUTTON.text-link [37,410]",
+    "[en-my-learning 390px dark] offscreen controls/content: INPUT. [37,410], BUTTON.text-link [37,410]",
+    "[ar-my-learning 320px light] offscreen controls/content: INPUT. [-43,283], BUTTON.text-link [-43,283]",
+    "[ur-my-learning 320px light] offscreen controls/content: INPUT. [-43,283], BUTTON.text-link [-43,283]",
+    "[id-my-learning 320px light] offscreen controls/content: INPUT. [37,410], BUTTON.text-link [37,410]",
+    "[id-my-learning 375px light] offscreen controls/content: INPUT. [37,410], BUTTON.text-link [37,410]",
+    "[id-my-learning 390px light] offscreen controls/content: INPUT. [37,410], BUTTON.text-link [37,410]",
+    "[id-my-learning 390px dark] offscreen controls/content: INPUT. [37,410], BUTTON.text-link [37,410]",
+    "[fr-my-learning 320px light] offscreen controls/content: INPUT. [37,410], BUTTON.text-link [37,410]",
+    "[fr-my-learning 375px light] offscreen controls/content: INPUT. [37,410], BUTTON.text-link [37,410]",
+    "[fr-my-learning 390px light] offscreen controls/content: INPUT. [37,410], BUTTON.text-link [37,410]",
+    "[fr-my-learning 390px dark] offscreen controls/content: INPUT. [37,410], BUTTON.text-link [37,410]",
+    "[tr-my-learning 320px light] offscreen controls/content: INPUT. [37,410], BUTTON.text-link [37,410]",
+    "[tr-my-learning 375px light] offscreen controls/content: INPUT. [37,410], BUTTON.text-link [37,410]",
+    "[tr-my-learning 390px light] offscreen controls/content: INPUT. [37,410], BUTTON.text-link [37,410]",
+    "[tr-my-learning 390px dark] offscreen controls/content: INPUT. [37,410], BUTTON.text-link [37,410]"
+  ]
+}

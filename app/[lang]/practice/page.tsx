@@ -1,6 +1,7 @@
 import { localizeMetadata } from "@/lib/i18n/metadata";
 import { getI18n } from "@/lib/i18n/server";
-import { Footer, SiteHeader } from "@/components/ui";
+import { Footer } from "@/components/footer";
+import { SiteHeader } from "@/components/ui";
 import { PracticeHub } from "@/components/practice";
 
 export async function generateMetadata() { return localizeMetadata({ title: "Practice Tajweed", description: "Practise identifying Tajweed rules with focused questions and explanations.", alternates: { canonical: "/practice" }, openGraph: { title: "Practice Tajweed", description: "Practise identifying Tajweed rules with focused questions and explanations.", url: "/practice", type: "website" }, twitter: { card: "summary", title: "Practice Tajweed", description: "Practise identifying Tajweed rules with focused questions and explanations." } }, await getI18n(), "/practice"); }

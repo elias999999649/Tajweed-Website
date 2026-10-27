@@ -1638,5 +1638,19 @@
   "draft": "brouillon",
   "The listed Ayn (ع) and the unconditional six-count wording need qualified review together; do not use this summary to choose a duration before that review.": "La présence de ‘ayn (ع) dans la liste et la formulation imposant six temps sans condition doivent être révisées ensemble par une personne qualifiée ; n’utilisez pas ce résumé pour choisir une durée avant cette révision.",
   "The phrase third root letter needs qualified review; the starting-vowel condition must distinguish root letters from positions in the written word.": "L’expression « troisième lettre de la racine » nécessite une révision qualifiée ; la condition de voyelle initiale doit distinguer les lettres de la racine de leur position dans le mot écrit.",
-  "This historical source URL returned 404 during the 27 October 2026 review. It has not been newly verified.": "Cette ancienne adresse de source a renvoyé une erreur 404 lors de la révision du 27 octobre 2026. Elle n’a pas été vérifiée de nouveau."
+  "This historical source URL returned 404 during the 27 October 2026 review. It has not been newly verified.": "Cette ancienne adresse de source a renvoyé une erreur 404 lors de la révision du 27 octobre 2026. Elle n’a pas été vérifiée de nouveau.",
+  "Verified examples: {count}": "Exemples vérifiés : {count}",
+  "{count} min read": "{count} min de lecture",
+  "Which condition belongs to this lesson on {lesson}?": "Quelle condition correspond à cette leçon sur {lesson} ?",
+  "{guidance} Compare the other choices with this lesson; they describe guidance for other topics.": "{guidance} Comparez les autres choix avec cette leçon : ils concernent d’autres sujets.",
+  "The Arabic, Urdu, Indonesian, French, and Turkish translations are working translations. They have not been reviewed by native-language editors or qualified Tajweed teachers.": "Les traductions arabe, ourdoue, indonésienne, française et turque sont des versions de travail, non relues par des éditeurs natifs ou des enseignants qualifiés en tajwid.",
+  "The teaching scope is Hafs ʿan ʿĀṣim. The translated editions also require native-language and qualified Tajweed review. They are learning aids, not authoritative Quran translations or scholarly rulings.": "L’enseignement suit Hafs ʿan ʿĀṣim. Les traductions nécessitent aussi une relecture linguistique et qualifiée en tajwid. Ce sont des aides, pas des traductions coraniques faisant autorité ni des avis savants.",
+  "Ctrl / ⌘ K": "Ctrl / ⌘ K",
+  "Reach the Goal via Tajweed Rules · pp.": "Reach the Goal via Tajweed Rules · pp.",
+  "Ali al-Hudhaify · Hafs ʿan ʿĀṣim": "Ali al-Hudhaify · Hafs ʿan ʿĀṣim",
+  "Google Sans Flex · OFL": "Google Sans Flex · OFL",
+  "Amiri · OFL": "Amiri · OFL",
+  "Which practice guidance does this lesson give for {lesson}?": "Quel conseil de pratique cette leçon donne-t-elle pour {lesson} ?",
+  "Which occurrence condition does this lesson state for {lesson}?": "Quelle condition d’apparition cette leçon énonce-t-elle pour {lesson} ?",
+  "What is Tajweed": "Qu’est-ce que le tajwid"
 }

@@ -1420,5 +1420,19 @@
   "You can memorize the identification pattern, but correct production should still be checked by ear and repetition.": "Pola pengenalan dapat dihafal, tetapi pengucapan yang benar tetap perlu diperiksa melalui menyimak dan pengulangan.",
   "You can study the concept in writing, but correct production is best learned with a teacher or a verified audio demonstration.": "Konsepnya dapat dipelajari melalui tulisan, tetapi pengucapan yang benar paling baik dipelajari bersama guru atau contoh audio terverifikasi.",
   "You completed the quiz for {lesson}": "Anda menyelesaikan kuis untuk {lesson}",
-  "You do not need to know every Tajweed term before beginning. You do need enough familiarity with Arabic script to work through basic reading exercises. If that foundation is not secure, begin there rather than rushing into advanced labels.": "Anda tidak perlu mengetahui setiap istilah tajwid sebelum mulai. Namun, diperlukan pengenalan tulisan Arab yang cukup untuk mengerjakan latihan membaca dasar. Jika dasar itu belum kuat, mulailah dari sana dan jangan terburu-buru menuju istilah lanjutan."
+  "You do not need to know every Tajweed term before beginning. You do need enough familiarity with Arabic script to work through basic reading exercises. If that foundation is not secure, begin there rather than rushing into advanced labels.": "Anda tidak perlu mengetahui setiap istilah tajwid sebelum mulai. Namun, diperlukan pengenalan tulisan Arab yang cukup untuk mengerjakan latihan membaca dasar. Jika dasar itu belum kuat, mulailah dari sana dan jangan terburu-buru menuju istilah lanjutan.",
+  "Verified examples: {count}": "Contoh terverifikasi: {count}",
+  "{count} min read": "Baca {count} menit",
+  "Which condition belongs to this lesson on {lesson}?": "Kondisi mana yang sesuai dengan pelajaran {lesson} ini?",
+  "{guidance} Compare the other choices with this lesson; they describe guidance for other topics.": "{guidance} Bandingkan pilihan lain dengan pelajaran ini; pilihan tersebut menjelaskan panduan topik lain.",
+  "The Arabic, Urdu, Indonesian, French, and Turkish translations are working translations. They have not been reviewed by native-language editors or qualified Tajweed teachers.": "Terjemahan Arab, Urdu, Indonesia, Prancis, dan Turki masih berupa terjemahan kerja. Belum ditinjau editor bahasa asli atau guru tajwid yang berkualifikasi.",
+  "The teaching scope is Hafs ʿan ʿĀṣim. The translated editions also require native-language and qualified Tajweed review. They are learning aids, not authoritative Quran translations or scholarly rulings.": "Cakupan pengajaran adalah Hafs ʿan ʿĀṣim. Edisi terjemahan juga memerlukan tinjauan bahasa asli dan tajwid berkualifikasi. Ini alat belajar, bukan terjemahan Al-Quran resmi atau fatwa.",
+  "Ctrl / ⌘ K": "Ctrl / ⌘ K",
+  "Reach the Goal via Tajweed Rules · pp.": "Reach the Goal via Tajweed Rules · pp.",
+  "Ali al-Hudhaify · Hafs ʿan ʿĀṣim": "Ali al-Hudhaify · Hafs ʿan ʿĀṣim",
+  "Google Sans Flex · OFL": "Google Sans Flex · OFL",
+  "Amiri · OFL": "Amiri · OFL",
+  "Which practice guidance does this lesson give for {lesson}?": "Panduan latihan apa yang diberikan pelajaran ini untuk {lesson}?",
+  "Which occurrence condition does this lesson state for {lesson}?": "Kondisi terjadinya apa yang disebutkan pelajaran ini untuk {lesson}?",
+  "What is Tajweed": "Apa itu tajwid"
 }

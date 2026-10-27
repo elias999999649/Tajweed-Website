@@ -3,25 +3,28 @@
     "lib/practice/questions.ts:57"
   ],
   ", verse": [
-    "app/[lang]/tajweed/[slug]/page.tsx:98"
+    "app/[lang]/tajweed/[slug]/page.tsx:104"
   ],
   "; focus on the highlighted feature. It is not from the Quran.": [
     "lib/tajweed/examples.ts:366"
   ],
-  ";document.addEventListener(\"DOMContentLoaded\",function(){document.title=titles[language]+\" | Tajweed101\";var navigation=document.querySelector(\"nav\");if(navigation)navigation.setAttribute(\"aria-label\",\"English / العربية / اردو / Bahasa Indonesia / Français\");});})();": [
-    "app/global-not-found.tsx:11"
+  ";document.addEventListener(\"DOMContentLoaded\",function(){document.title=titles[language]+\" | Tajweed101\";var navigation=document.querySelector(\"nav\");if(navigation)navigation.setAttribute(\"aria-label\",\"English / العربية / اردو / Bahasa Indonesia / Français / Türkçe\");});})();": [
+    "app/global-not-found.tsx:12"
   ],
-  ";try{var preferred=localStorage.getItem(\"tajweed-language\");if([\"en\",\"ar\",\"ur\",\"id\",\"fr\"].includes(preferred))target=target.replace(/^\\/en(?=\\/)/,\"/\"+preferred);}catch(e){}location.replace(target+location.search+location.hash);})();": [
+  ";try{var preferred=localStorage.getItem(\"tajweed-language\");if([\"en\",\"ar\",\"ur\",\"id\",\"fr\",\"tr\"].includes(preferred))target=target.replace(/^\\/en(?=\\/)/,\"/\"+preferred);}catch(e){}location.replace(target+location.search+location.hash);})();": [
     "app/(legacy)/[[...path]]/page.tsx:15"
   ],
   "'Arid li-Sukun means occurring because of sukoon. A natural madd letter is followed by the final consonant of the word, and the reciter stops there, making that final consonant temporarily sakin. The stop imposes a temporary sukoon on the final letter, and the madd letter may then be lengthened two, four, or six counts. If the reciter continues instead, the temporary sukoon disappears and only the two counts of natural Madd remain. This rule shows how a stopping decision changes timing.": [
     "lib/tajweed/rules.ts:1204"
   ],
   "\"] section[data-error-locale=\"": [
-    "app/global-not-found.tsx:12"
+    "app/global-not-found.tsx:13"
+  ],
+  "{count} min read": [
+    "app/[lang]/articles/[slug]/page.tsx:32"
   ],
   "{count} questions available": [
-    "components/practice.tsx:48"
+    "components/practice.tsx:39"
   ],
   "{count} search results": [
     "components/search-palette.tsx:73"
@@ -32,24 +35,18 @@
   "{pronunciation} The other choices skip the careful listening and feedback needed for pronunciation practice.": [
     "runtime educational labels"
   ],
-  "{score} correct": [
-    "components/practice.tsx:37"
-  ],
   "{score} of {count} answers correct": [
-    "components/lesson-quiz.tsx:119",
-    "components/practice.tsx:32"
+    "components/learning-dashboard.tsx:19",
+    "components/lesson-quiz.tsx:66"
   ],
   "© 2026 Tajweed101": [
-    "components/ui.tsx:25"
-  ],
-  "⌘ K": [
-    "components/ui.tsx:21"
+    "components/footer-content.tsx:6"
   ],
   "1 question": [
     "components/quiz-card.tsx:25"
   ],
   "404 · Tajweed101": [
-    "app/global-not-found.tsx:12"
+    "app/global-not-found.tsx:13"
   ],
   "5 min read": [
     "lib/articles/content.ts:6",
@@ -92,7 +89,7 @@
     "lib/articles/content.ts:6"
   ],
   "A clear place to start.": [
-    "app/[lang]/page.tsx:24"
+    "app/[lang]/page.tsx:27"
   ],
   "a creature": [
     "lib/tajweed/examples.ts:327"
@@ -149,7 +146,7 @@
     "lib/tajweed/rules.ts:454"
   ],
   "A note for every learner": [
-    "components/ui.tsx:25"
+    "components/footer-content.tsx:6"
   ],
   "a path": [
     "lib/tajweed/examples.ts:336"
@@ -173,7 +170,7 @@
     "lib/tajweed/rules.ts:726"
   ],
   "A reference records the source used for study; it does not mean the source author approved this lesson.": [
-    "app/[lang]/tajweed/[slug]/page.tsx:88"
+    "app/[lang]/tajweed/[slug]/page.tsx:94"
   ],
   "A repeatable practice routine that balances explanation, listening, controlled repetition, and review.": [
     "lib/articles/content.ts:17"
@@ -194,10 +191,10 @@
     "lib/tajweed/examples.ts:315"
   ],
   "A small, carefully edited library for learners who want to understand a rule, choose a starting point, or practise with more intention.": [
-    "app/[lang]/articles/page.tsx:14"
+    "app/[lang]/articles/page.tsx:15"
   ],
   "A small, repeatable routine": [
-    "app/[lang]/page.tsx:33"
+    "app/[lang]/page.tsx:36"
   ],
   "A stopping point where recitation is paused briefly.": [
     "components/quiz-card.tsx:21"
@@ -218,25 +215,22 @@
     "lib/articles/content.ts:6"
   ],
   "About the guide": [
-    "app/[lang]/about/page.tsx:9",
-    "components/ui.tsx:25"
+    "app/[lang]/about/page.tsx:11",
+    "components/footer-content.tsx:6"
   ],
   "About the Guide": [
-    "app/[lang]/about/page.tsx:5",
-    "app/[lang]/about/page.tsx:5",
-    "app/[lang]/about/page.tsx:5"
+    "app/[lang]/about/page.tsx:7",
+    "app/[lang]/about/page.tsx:7",
+    "app/[lang]/about/page.tsx:7"
   ],
   "About this guide": [
-    "components/ui.tsx:25"
+    "components/footer-content.tsx:6"
   ],
   "Accuracy before volume.": [
-    "app/[lang]/editorial-policy/page.tsx:9"
+    "app/[lang]/editorial-policy/page.tsx:10"
   ],
   "Accurate recitation depends on hitting the precise articulation point of each letter and releasing it with its correct quality. Clarity means the listener hears each letter as itself, neither blurred into the next nor distorted. This skill builds on makharij and sifaat study and is refined only through listening, repetition, and correction. The learner should treat every practice session as a chance to make one letter cleaner, not merely to read more text.": [
     "lib/tajweed/rules.ts:1612"
-  ],
-  "Active recall": [
-    "components/practice.tsx:37"
   ],
   "Adding a full vowel after the letter.": [
     "lib/tajweed/rules.ts:698"
@@ -256,13 +250,16 @@
   "Adding nasal quality to letters that do not carry it.": [
     "lib/tajweed/rules.ts:1516"
   ],
+  "Adres değişmiş olabilir. Rehberde arayın veya öğrenme yoluna dönün.": [
+    "app/global-not-found.tsx:10"
+  ],
   "advanced": [
     "runtime educational labels"
   ],
   "Advanced": [
-    "app/[lang]/search/page.tsx:11",
-    "app/[lang]/tajweed/directory.tsx:14",
-    "components/practice.tsx:12",
+    "app/[lang]/search/page.tsx:12",
+    "app/[lang]/tajweed/directory.tsx:15",
+    "components/practice.tsx:14",
     "lib/search/index.ts:6",
     "lib/tajweed/curriculum.ts:140",
     "lib/tajweed/rules.ts:928",
@@ -299,26 +296,35 @@
   "Alamatnya mungkin telah berubah. Cari di panduan atau kembali ke jalur belajar.": [
     "app/global-not-found.tsx:8"
   ],
+  "Ali al-Hudhaify": [
+    "lib/audio.ts:4"
+  ],
+  "Ali al-Hudhaify · Hafs ʿan ʿĀṣim": [
+    "app/[lang]/sources/page.tsx:14"
+  ],
   "All 50 lessons are study drafts awaiting qualified Tajweed review. A source link records a reference; it does not mean that the source author approved this website. No Quran examples or assessment questions have completed verification.": [
-    "app/[lang]/editorial-policy/page.tsx:9"
+    "app/[lang]/editorial-policy/page.tsx:10"
   ],
   "All categories": [
-    "app/[lang]/tajweed/directory.tsx:40",
-    "components/practice.tsx:48"
+    "app/[lang]/tajweed/directory.tsx:42",
+    "components/practice.tsx:39"
   ],
   "All difficulties": [
-    "components/practice.tsx:48"
+    "components/practice.tsx:39"
   ],
   "All learning content": [
-    "app/[lang]/search/page.tsx:22"
+    "app/[lang]/search/page.tsx:25"
   ],
   "All levels": [
-    "app/[lang]/search/page.tsx:22",
-    "app/[lang]/tajweed/directory.tsx:40",
-    "components/practice.tsx:12"
+    "app/[lang]/search/page.tsx:25",
+    "app/[lang]/tajweed/directory.tsx:42",
+    "components/practice.tsx:14"
   ],
   "am man": [
     "lib/tajweed/examples.ts:181"
+  ],
+  "Amiri · OFL": [
+    "app/[lang]/sources/page.tsx:14"
   ],
   "An organised introduction to Madd and lengthening, from the natural starting point to context-dependent categories.": [
     "lib/articles/content.ts:15"
@@ -333,7 +339,7 @@
     "components/quiz-card.tsx:25"
   ],
   "Any prerequisite": [
-    "app/[lang]/tajweed/directory.tsx:40"
+    "app/[lang]/tajweed/directory.tsx:42"
   ],
   "application": [
     "runtime educational labels"
@@ -382,21 +388,21 @@
     "runtime educational labels"
   ],
   "Article": [
-    "app/[lang]/articles/[slug]/page.tsx:30"
+    "app/[lang]/articles/[slug]/page.tsx:31"
   ],
   "Articles": [
-    "app/[lang]/articles/[slug]/page.tsx:29",
-    "app/[lang]/articles/[slug]/page.tsx:31",
-    "components/site-header.tsx:21",
-    "components/ui.tsx:25"
+    "app/[lang]/articles/[slug]/page.tsx:30",
+    "app/[lang]/articles/[slug]/page.tsx:32",
+    "components/footer-content.tsx:6",
+    "components/site-header.tsx:21"
   ],
   "Articles and learning guides": [
-    "app/[lang]/articles/page.tsx:14"
+    "app/[lang]/articles/page.tsx:15"
   ],
   "Articles and Learning Guides": [
-    "app/[lang]/articles/page.tsx:7",
-    "app/[lang]/articles/page.tsx:7",
-    "app/[lang]/articles/page.tsx:7"
+    "app/[lang]/articles/page.tsx:8",
+    "app/[lang]/articles/page.tsx:8",
+    "app/[lang]/articles/page.tsx:8"
   ],
   "Articulation and Clarity": [
     "lib/tajweed/rules.ts:1606"
@@ -413,7 +419,7 @@
     "lib/articles/content.ts:10"
   ],
   "Ask your teacher to demonstrate the sound and listen carefully.": [
-    "app/[lang]/page.tsx:34"
+    "app/[lang]/page.tsx:37"
   ],
   "Assuming all Madd has the same length.": [
     "lib/tajweed/rules.ts:970"
@@ -449,14 +455,15 @@
     "components/quran-example.tsx:32"
   ],
   "Audio may be used only when its source and permission are clear.": [
-    "app/[lang]/editorial-policy/page.tsx:9"
+    "app/[lang]/editorial-policy/page.tsx:10"
   ],
   "Awaiting qualified review": [
-    "components/practice.tsx:47"
+    "app/[lang]/learn/[slug]/page.tsx:62",
+    "components/practice.tsx:38"
   ],
   "Back to the homepage": [
     "app/[lang]/error.tsx:22",
-    "app/[lang]/not-found.tsx:22"
+    "app/[lang]/not-found.tsx:23"
   ],
   "Badal means replacement. In this madd, a word originally carried two hamzahs, and the second hamzah was replaced by a madd letter. When the learner sees a hamzah followed by Alif, Waw, or Ya in one word, the madd letter is lengthened for two counts only, the same duration as natural Madd. The name reminds the learner that nothing stronger than a natural pull is required, because the hamzah that would have demanded more is no longer there.": [
     "lib/tajweed/rules.ts:1136"
@@ -466,7 +473,7 @@
   ],
   "Bahasa Indonesia": [
     "app/(legacy)/[[...path]]/page.tsx:15",
-    "app/global-not-found.tsx:12"
+    "app/global-not-found.tsx:13"
   ],
   "Basic Arabic Pronunciation": [
     "lib/tajweed/rules.ts:77",
@@ -485,10 +492,11 @@
     "lib/tajweed/rules.ts:1153"
   ],
   "Before pressing play, choose one quality to listen for. After listening, describe what you noticed and ask a teacher to confirm whether your observation matches the intended target.": [
+    "components/listening-studio.tsx:14",
     "lib/articles/content.ts:10"
   ],
   "Before you begin": [
-    "app/[lang]/learn/page.tsx:22"
+    "app/[lang]/tajweed/[slug]/page.tsx:76"
   ],
   "Begin Madd with the natural lengthening category before studying causes that change it.": [
     "lib/taxonomy/index.ts:36"
@@ -525,7 +533,7 @@
     "lib/tajweed/rules.ts:1618"
   ],
   "body{font-family:system-ui,sans-serif;line-height:1.8;margin:3rem auto;padding:1.5rem;max-width:40rem;background:#f7faf8;color:#17271f}a{color:#0e6b5c;display:inline-flex;align-items:center;min-height:44px;margin-inline-end:18px}a:focus-visible{outline:3px solid #0e6b5c;outline-offset:4px}h1{font-size:1rem}h2{font-size:2rem;line-height:1.4}html[data-error-language] section{display:none}": [
-    "app/global-not-found.tsx:12"
+    "app/global-not-found.tsx:13"
   ],
   "Both are transmitted for Hafs; a reciter keeps one duration consistently according to what was learned from a qualified teacher.": [
     "lib/tajweed/rules.ts:1255"
@@ -534,25 +542,28 @@
     "components/ui.tsx:15"
   ],
   "Browse a structured Tajweed learning path from foundations to advanced topics.": [
-    "app/[lang]/tajweed/page.tsx:7",
-    "app/[lang]/tajweed/page.tsx:7",
-    "app/[lang]/tajweed/page.tsx:7"
+    "app/[lang]/tajweed/page.tsx:8",
+    "app/[lang]/tajweed/page.tsx:8",
+    "app/[lang]/tajweed/page.tsx:8"
   ],
   "Browse all lessons": [
-    "app/[lang]/tajweed/directory.tsx:32",
-    "app/[lang]/tajweed/directory.tsx:37"
+    "app/[lang]/tajweed/directory.tsx:34",
+    "app/[lang]/tajweed/directory.tsx:39"
   ],
   "Browse lessons by topic and level, or search for a familiar term.": [
-    "app/[lang]/page.tsx:27"
+    "app/[lang]/page.tsx:30"
   ],
   "Browse the lessons": [
-    "app/[lang]/page.tsx:13"
+    "app/[lang]/page.tsx:16"
   ],
   "Browse the Tajweed library": [
-    "app/[lang]/search/page.tsx:22"
+    "app/[lang]/search/page.tsx:25"
+  ],
+  "Bu sayfa rehberde yer almıyor.": [
+    "app/global-not-found.tsx:10"
   ],
   "Build a steady practice": [
-    "app/[lang]/articles/page.tsx:14"
+    "app/[lang]/articles/page.tsx:15"
   ],
   "Build an ear for the contrast between heavier and lighter letter qualities before studying context-specific cases.": [
     "lib/taxonomy/index.ts:20"
@@ -567,8 +578,8 @@
     "lib/tajweed/curriculum.ts:10"
   ],
   "Built for careful learning.": [
-    "app/[lang]/about/page.tsx:9",
-    "components/ui.tsx:25"
+    "app/[lang]/about/page.tsx:11",
+    "components/footer-content.tsx:6"
   ],
   "Buka jalur belajar": [
     "app/global-not-found.tsx:8"
@@ -607,29 +618,30 @@
     "app/global-not-found.tsx:8"
   ],
   "Category": [
-    "app/[lang]/tajweed/directory.tsx:40",
-    "app/[lang]/tajweed/[slug]/page.tsx:67"
+    "app/[lang]/tajweed/directory.tsx:42",
+    "app/[lang]/tajweed/[slug]/page.tsx:73"
   ],
   "Cette page ne figure pas dans le guide.": [
     "app/global-not-found.tsx:9"
   ],
   "Check the reading prerequisites, then work through the foundations.": [
-    "app/[lang]/page.tsx:26"
+    "app/[lang]/page.tsx:29"
   ],
   "Check your starting point": [
     "lib/articles/content.ts:8"
   ],
   "Check your understanding": [
-    "components/lesson-quiz.tsx:156"
+    "app/[lang]/learn/page.tsx:34",
+    "components/lesson-quiz.tsx:67"
   ],
   "Choose a focused set": [
-    "components/practice.tsx:48"
+    "components/practice.tsx:39"
   ],
   "Choose a lesson": [
-    "components/practice.tsx:47"
+    "components/practice.tsx:38"
   ],
   "Choose a lesson from the learning path": [
-    "app/[lang]/practice/page.tsx:10"
+    "app/[lang]/practice/page.tsx:11"
   ],
   "Choose one rule or one pronunciation feature for a session. A narrow target makes it easier to tell whether you are actually improving.": [
     "lib/articles/content.ts:17"
@@ -638,10 +650,10 @@
     "components/quiz-card.tsx:25"
   ],
   "Choose the right starting point": [
-    "app/[lang]/tajweed/page.tsx:12"
+    "app/[lang]/tajweed/page.tsx:13"
   ],
   "Choose your next step": [
-    "app/[lang]/page.tsx:24"
+    "app/[lang]/page.tsx:27"
   ],
   "Choosing the duration from the rule name alone instead of the transmitted route.": [
     "lib/tajweed/rules.ts:1277"
@@ -650,13 +662,13 @@
     "lib/articles/content.ts:18"
   ],
   "Clear explanations, careful study, and practice with a teacher.": [
-    "components/ui.tsx:25"
+    "components/footer-content.tsx:6"
   ],
   "Clear filter": [
-    "app/[lang]/search/page.tsx:22"
+    "app/[lang]/search/page.tsx:25"
   ],
   "Clear one or more filters to continue exploring the directory.": [
-    "app/[lang]/tajweed/directory.tsx:43"
+    "app/[lang]/tajweed/directory.tsx:45"
   ],
   "clear reading": [
     "lib/taxonomy/index.ts:24"
@@ -680,10 +692,10 @@
     "lib/tajweed/rules.ts:1654"
   ],
   "Common mistakes": [
-    "components/lesson-contents.tsx:13"
+    "components/lesson-contents.tsx:14"
   ],
   "Common Mistakes": [
-    "app/[lang]/tajweed/[slug]/page.tsx:75",
+    "app/[lang]/tajweed/[slug]/page.tsx:81",
     "lib/articles/content.ts:16",
     "lib/articles/types.ts:1"
   ],
@@ -715,7 +727,7 @@
     "lib/tajweed/examples.ts:310"
   ],
   "Compare the other choices with the lesson explanation; they describe different study topics.": [
-    "lib/practice/quiz.ts:37"
+    "lib/practice/quiz.ts:40"
   ],
   "Compare the short vowels; this is a constructed exercise.": [
     "lib/tajweed/examples.ts:308"
@@ -772,7 +784,7 @@
     "lib/tajweed/rules.ts:1414"
   ],
   "Connect this lesson": [
-    "app/[lang]/tajweed/[slug]/page.tsx:76"
+    "app/[lang]/tajweed/[slug]/page.tsx:82"
   ],
   "consolidating": [
     "runtime educational labels"
@@ -829,7 +841,7 @@
     "lib/tajweed/examples.ts:366"
   ],
   "Continue in the learning path": [
-    "app/[lang]/articles/[slug]/page.tsx:31"
+    "app/[lang]/articles/[slug]/page.tsx:32"
   ],
   "Continue to Tajweed101": [
     "app/(legacy)/[[...path]]/page.tsx:12"
@@ -841,18 +853,21 @@
     "lib/tajweed/rules.ts:259"
   ],
   "Correct": [
-    "components/lesson-quiz.tsx:199",
-    "components/practice.tsx:37",
+    "components/lesson-quiz.tsx:66",
+    "components/lesson-quiz.tsx:67",
     "components/quiz-card.tsx:25"
   ],
   "Correcting errors alone without ever having them confirmed by a teacher.": [
     "lib/tajweed/rules.ts:1652"
   ],
+  "Ctrl / ⌘ K": [
+    "components/ui.tsx:21"
+  ],
   "Current review status": [
-    "app/[lang]/editorial-policy/page.tsx:9"
+    "app/[lang]/editorial-policy/page.tsx:10"
   ],
   "Curriculum order": [
-    "app/[lang]/tajweed/directory.tsx:37"
+    "app/[lang]/tajweed/directory.tsx:39"
   ],
   "Cutting and Joining": [
     "lib/taxonomy/index.ts:55"
@@ -870,10 +885,10 @@
     "lib/tajweed/content-audit.ts:43"
   ],
   "Definitions are drawn from the Tajweed rule database.": [
-    "app/[lang]/glossary/glossary-directory.tsx:20"
+    "app/[lang]/glossary/glossary-directory.tsx:24"
   ],
   "Detailed explanation": [
-    "app/[lang]/glossary/glossary-directory.tsx:30"
+    "app/[lang]/glossary/glossary-directory.tsx:34"
   ],
   "Detailed explanation missing or too brief": [
     "lib/tajweed/content-audit.ts:44"
@@ -891,7 +906,7 @@
     "lib/articles/content.ts:16"
   ],
   "Directory view": [
-    "app/[lang]/tajweed/directory.tsx:37"
+    "app/[lang]/tajweed/directory.tsx:39"
   ],
   "Distinguish Tajweed study from recitation practice": [
     "lib/articles/content.ts:18"
@@ -957,14 +972,14 @@
     "runtime educational labels"
   ],
   "Draft": [
-    "app/[lang]/tajweed/[slug]/page.tsx:62",
-    "app/[lang]/tajweed/[slug]/page.tsx:67"
+    "app/[lang]/tajweed/[slug]/page.tsx:68",
+    "app/[lang]/tajweed/[slug]/page.tsx:73"
   ],
   "Draft instructional example; Arabic, gloss, highlight, and rule assignment require qualified review.": [
     "lib/tajweed/examples.ts:406"
   ],
   "Draft teaching examples - not Quran quotations:": [
-    "app/[lang]/tajweed/[slug]/page.tsx:74"
+    "app/[lang]/tajweed/[slug]/page.tsx:80"
   ],
   "Dropping a clearly required initial hamzah at a fresh start.": [
     "lib/tajweed/rules.ts:1481"
@@ -973,23 +988,23 @@
     "lib/tajweed/rules.ts:1107"
   ],
   "Each lesson includes reflection prompts and review-stage recognition questions. Use them with your teacher.": [
-    "app/[lang]/learn/page.tsx:35"
+    "app/[lang]/learn/page.tsx:37"
   ],
   "Editorial policy": [
-    "app/[lang]/editorial-policy/page.tsx:9",
-    "app/[lang]/learn/[slug]/page.tsx:54",
-    "components/ui.tsx:25"
+    "app/[lang]/editorial-policy/page.tsx:10",
+    "app/[lang]/learn/[slug]/page.tsx:63",
+    "components/footer-content.tsx:6"
   ],
   "Editorial Policy": [
-    "app/[lang]/editorial-policy/page.tsx:5",
-    "app/[lang]/editorial-policy/page.tsx:5",
-    "app/[lang]/editorial-policy/page.tsx:5"
+    "app/[lang]/editorial-policy/page.tsx:6",
+    "app/[lang]/editorial-policy/page.tsx:6",
+    "app/[lang]/editorial-policy/page.tsx:6"
   ],
   "Editorial rule": [
-    "app/[lang]/sources/page.tsx:10"
+    "app/[lang]/sources/page.tsx:14"
   ],
   "English": [
-    "app/global-not-found.tsx:12"
+    "app/global-not-found.tsx:13"
   ],
   "Enter": [
     "components/search-palette.tsx:55",
@@ -1003,10 +1018,10 @@
     "components/site-header.tsx:30"
   ],
   "Essential": [
-    "app/sitemap.ts:25",
-    "app/[lang]/search/page.tsx:11",
-    "app/[lang]/tajweed/directory.tsx:14",
-    "components/practice.tsx:12",
+    "app/sitemap.ts:27",
+    "app/[lang]/search/page.tsx:12",
+    "app/[lang]/tajweed/directory.tsx:15",
+    "components/practice.tsx:14",
     "lib/search/index.ts:6",
     "lib/tajweed/curriculum.ts:27",
     "lib/tajweed/curriculum.ts:46",
@@ -1043,7 +1058,7 @@
     "lib/taxonomy/index.ts:7"
   ],
   "Every lesson, clearly organised.": [
-    "app/[lang]/tajweed/page.tsx:12"
+    "app/[lang]/tajweed/page.tsx:13"
   ],
   "Every Tajweed rule begins with a sound building block: a letter, a vowel, or a pause.": [
     "lib/tajweed/rules.ts:91"
@@ -1061,8 +1076,8 @@
     "components/quran-example.tsx:31"
   ],
   "Examples": [
-    "app/[lang]/tajweed/[slug]/page.tsx:74",
-    "components/lesson-contents.tsx:13"
+    "app/[lang]/tajweed/[slug]/page.tsx:80",
+    "components/lesson-contents.tsx:14"
   ],
   "Examples appear only after the exact Arabic text, reference, highlighting, meaning, and source metadata have been verified.": [
     "components/quran-example.tsx:27"
@@ -1071,22 +1086,24 @@
     "lib/tajweed/content-audit.ts:49"
   ],
   "Examples for this lesson will appear after verification of the exact text, reference, and rule annotation.": [
-    "app/[lang]/tajweed/[slug]/page.tsx:74"
+    "app/[lang]/tajweed/[slug]/page.tsx:80"
   ],
   "Examples in review": [
-    "app/[lang]/tajweed/directory.tsx:52"
+    "app/[lang]/tajweed/directory.tsx:54",
+    "app/[lang]/tajweed/directory.tsx:55"
   ],
   "Examples pending review": [
-    "app/[lang]/tajweed/directory.tsx:52"
+    "app/[lang]/tajweed/directory.tsx:54",
+    "app/[lang]/tajweed/directory.tsx:55"
   ],
   "Explanation is required.": [
     "lib/quran-examples/types.ts:51"
   ],
   "Explanation:": [
-    "app/[lang]/tajweed/[slug]/page.tsx:98"
+    "app/[lang]/tajweed/[slug]/page.tsx:104"
   ],
   "Explore": [
-    "components/ui.tsx:25"
+    "components/footer-content.tsx:6"
   ],
   "Explore advanced decisions about separating and joining written or recited units where the selected tradition requires it.": [
     "lib/taxonomy/index.ts:55"
@@ -1095,13 +1112,16 @@
     "lib/articles/content.ts:7"
   ],
   "Explore the learning path": [
-    "app/[lang]/page.tsx:26"
+    "app/[lang]/page.tsx:29"
   ],
   "Failing to identify the Noon as saakin before applying a rule.": [
     "lib/tajweed/rules.ts:292"
   ],
   "False": [
     "lib/practice/questions.ts:65"
+  ],
+  "FAQ": [
+    "runtime educational labels"
   ],
   "Fatha or damma before: heavy Lam. Kasra before: light Lam. The vowel travels into the word and decides.": [
     "lib/tajweed/rules.ts:837"
@@ -1110,41 +1130,41 @@
     "lib/tajweed/rules.ts:1547"
   ],
   "Filter by category": [
-    "components/practice.tsx:48"
+    "components/practice.tsx:39"
   ],
   "Filter by difficulty": [
-    "components/practice.tsx:48"
+    "components/practice.tsx:39"
   ],
   "Filter by level": [
-    "app/[lang]/search/page.tsx:22"
+    "app/[lang]/search/page.tsx:25"
   ],
   "Filter the directory": [
-    "app/[lang]/tajweed/directory.tsx:40"
+    "app/[lang]/tajweed/directory.tsx:42"
   ],
   "Find a lesson": [
-    "app/[lang]/page.tsx:27"
+    "app/[lang]/page.tsx:30"
   ],
   "Find a realistic beginner Tajweed study plan": [
     "lib/articles/content.ts:8"
   ],
   "Find a rule, an Arabic term, or a study guide.": [
-    "app/[lang]/page.tsx:22"
+    "app/[lang]/page.tsx:25"
   ],
   "Find the mark in your mushaf.": [
-    "app/[lang]/tajweed/[slug]/page.tsx:74"
+    "app/[lang]/tajweed/[slug]/page.tsx:80"
   ],
   "Find your next lesson.": [
-    "app/[lang]/search/page.tsx:22",
-    "app/[lang]/search/page.tsx:29"
+    "app/[lang]/search/page.tsx:25",
+    "app/[lang]/search/page.tsx:32"
   ],
   "Find your starting point": [
-    "app/[lang]/page.tsx:13"
+    "components/start-learning-link.tsx:10"
   ],
   "Finish with retrieval": [
     "lib/articles/content.ts:17"
   ],
   "Finished the library?": [
-    "app/[lang]/tajweed/[slug]/page.tsx:86"
+    "app/[lang]/tajweed/[slug]/page.tsx:92"
   ],
   "First learn the letter names, then listen: check the madd letter and the permanent sukoon that follows it.": [
     "lib/tajweed/rules.ts:1348"
@@ -1153,15 +1173,15 @@
     "lib/tajweed/rules.ts:1008"
   ],
   "Follow a structured Tajweed learning path from foundations through essential rules, Madd, stopping, and advanced topics.": [
-    "app/[lang]/learn/page.tsx:8",
-    "app/[lang]/learn/page.tsx:8",
-    "app/[lang]/learn/page.tsx:8"
+    "app/[lang]/learn/page.tsx:10",
+    "app/[lang]/learn/page.tsx:10",
+    "app/[lang]/learn/page.tsx:10"
   ],
   "Follow the explanation with listening": [
     "lib/articles/content.ts:17"
   ],
   "Follow the path in order, or revisit the topic you need today.": [
-    "app/[lang]/page.tsx:24"
+    "app/[lang]/page.tsx:27"
   ],
   "Follow the transmitted treatment for your chain; in the well-known Hafs routes, four or five counts are taught. Keep the chosen approach consistent and confirm it with a qualified teacher.": [
     "lib/tajweed/rules.ts:1275"
@@ -1176,13 +1196,13 @@
     "lib/articles/content.ts:8"
   ],
   "For learners of Quran recitation": [
-    "app/[lang]/page.tsx:10"
+    "app/[lang]/page.tsx:13"
   ],
   "For the best results, combine reading, listening, repetition, and guidance from a qualified Tajweed teacher.": [
-    "app/[lang]/tajweed/[slug]/page.tsx:88"
+    "app/[lang]/tajweed/[slug]/page.tsx:94"
   ],
   "for the guided route and the Rules library when you want to browse or revisit a lesson.": [
-    "app/[lang]/tajweed/directory.tsx:41"
+    "app/[lang]/tajweed/directory.tsx:43"
   ],
   "For the Meem family, identify Meem Sakinah first, then the next letter, and then the case. Do not rely on memorized labels alone.": [
     "lib/tajweed/rules.ts:633"
@@ -1206,10 +1226,10 @@
     "lib/tajweed/rules.ts:426"
   ],
   "Foundation": [
-    "app/sitemap.ts:25",
-    "app/[lang]/tajweed/directory.tsx:14",
-    "components/practice.tsx:12",
-    "lib/search/index.ts:20",
+    "app/sitemap.ts:27",
+    "app/[lang]/tajweed/directory.tsx:15",
+    "components/practice.tsx:14",
+    "lib/search/index.ts:21",
     "lib/tajweed/curriculum.ts:8",
     "lib/tajweed/rules.ts:10",
     "lib/tajweed/rules.ts:46",
@@ -1222,9 +1242,9 @@
     "lib/tajweed/types.ts:3"
   ],
   "Foundations": [
-    "app/[lang]/search/page.tsx:11",
+    "app/[lang]/search/page.tsx:12",
     "lib/search/index.ts:6",
-    "lib/search/index.ts:20",
+    "lib/search/index.ts:21",
     "lib/tajweed/curriculum.ts:6",
     "lib/tajweed/rules.ts:9",
     "lib/tajweed/rules.ts:45",
@@ -1239,7 +1259,7 @@
     "lib/taxonomy/index.ts:20"
   ],
   "Frequently Asked Questions": [
-    "app/[lang]/tajweed/[slug]/page.tsx:82"
+    "app/[lang]/tajweed/[slug]/page.tsx:88"
   ],
   "from a guide": [
     "lib/tajweed/examples.ts:117"
@@ -1290,17 +1310,20 @@
     "lib/tajweed/rules.ts:1615"
   ],
   "gives you a step-by-step route from the basics to advanced topics. The": [
-    "app/[lang]/tajweed/page.tsx:12"
+    "app/[lang]/tajweed/page.tsx:13"
   ],
   "glossary": [
     "runtime educational labels"
   ],
   "Glossary": [
-    "components/site-header.tsx:19",
-    "components/ui.tsx:25"
+    "components/footer-content.tsx:6",
+    "components/site-header.tsx:19"
   ],
   "Good conceptual distinction, but term usage and exact emphasis require review before final publication.": [
     "lib/tajweed/rules.ts:1125"
+  ],
+  "Google Sans Flex · OFL": [
+    "app/[lang]/sources/page.tsx:14"
   ],
   "guide us": [
     "lib/tajweed/examples.ts:299"
@@ -1308,11 +1331,14 @@
   "ḥa ha": [
     "lib/tajweed/examples.ts:337"
   ],
+  "Hafs ʿan ʿĀṣim": [
+    "lib/audio.ts:5"
+  ],
   "Hafs ʿan ʿĀṣim — initial scope": [
     "lib/taxonomy/index.ts:3"
   ],
   "Hafs ʿan ʿĀṣim · Content awaiting qualified review": [
-    "components/ui.tsx:25"
+    "components/footer-content.tsx:6"
   ],
   "Halaman ini tidak ada dalam panduan.": [
     "app/global-not-found.tsx:8"
@@ -1370,7 +1396,7 @@
     "lib/tajweed/examples.ts:247"
   ],
   "Hear it with guidance": [
-    "app/[lang]/page.tsx:34"
+    "app/[lang]/page.tsx:37"
   ],
   "heavy and light contrast": [
     "lib/tajweed/examples.ts:312"
@@ -1390,7 +1416,7 @@
   ],
   "heavy letters": [
     "components/ui.tsx:21",
-    "lib/search/index.ts:28"
+    "lib/search/index.ts:29"
   ],
   "Heavy letters fill the mouth; study them against their light counterparts to hear both sides.": [
     "lib/tajweed/rules.ts:1552"
@@ -1406,11 +1432,11 @@
     "lib/tajweed/rules.ts:1513"
   ],
   "Home": [
-    "app/[lang]/articles/[slug]/page.tsx:29",
-    "app/[lang]/articles/[slug]/page.tsx:31",
-    "app/[lang]/tajweed/page.tsx:12",
-    "app/[lang]/tajweed/[slug]/page.tsx:59",
-    "app/[lang]/tajweed/[slug]/page.tsx:66",
+    "app/[lang]/articles/[slug]/page.tsx:30",
+    "app/[lang]/articles/[slug]/page.tsx:32",
+    "app/[lang]/tajweed/page.tsx:13",
+    "app/[lang]/tajweed/[slug]/page.tsx:65",
+    "app/[lang]/tajweed/[slug]/page.tsx:72",
     "components/ui.tsx:15"
   ],
   "How are Lam and Raa related to this foundation?": [
@@ -1432,8 +1458,8 @@
     "lib/tajweed/rules.ts:368"
   ],
   "How content is reviewed": [
-    "app/[lang]/page.tsx:30",
-    "components/practice.tsx:47"
+    "app/[lang]/page.tsx:33",
+    "components/practice.tsx:38"
   ],
   "How do articulation points help distinguish similar letters?": [
     "lib/tajweed/rules.ts:165"
@@ -1466,7 +1492,7 @@
     "lib/tajweed/rules.ts:1629"
   ],
   "How is it pronounced?": [
-    "app/[lang]/tajweed/[slug]/page.tsx:73"
+    "app/[lang]/tajweed/[slug]/page.tsx:79"
   ],
   "How is Lam Qamariyyah distinguished from Lam Shamsiyyah?": [
     "lib/tajweed/rules.ts:910"
@@ -1502,7 +1528,7 @@
     "lib/articles/content.ts:9"
   ],
   "How to pronounce it": [
-    "components/lesson-contents.tsx:12"
+    "components/lesson-contents.tsx:13"
   ],
   "How to Resume After a Stop": [
     "lib/taxonomy/index.ts:49"
@@ -1514,7 +1540,7 @@
     "lib/articles/content.ts:8"
   ],
   "How to use this poster": [
-    "app/[lang]/tajweed/[slug]/page.tsx:74"
+    "app/[lang]/tajweed/[slug]/page.tsx:80"
   ],
   "hum fī": [
     "lib/tajweed/examples.ts:317"
@@ -1526,13 +1552,13 @@
     "lib/taxonomy/index.ts:16"
   ],
   "I want to practise": [
-    "app/[lang]/page.tsx:28"
+    "app/[lang]/page.tsx:31"
   ],
   "I’m looking for a rule": [
-    "app/[lang]/page.tsx:27"
+    "app/[lang]/page.tsx:30"
   ],
   "I’m new to Tajweed": [
-    "app/[lang]/page.tsx:26"
+    "app/[lang]/page.tsx:29"
   ],
   "Ibtida": [
     "lib/tajweed/rules.ts:1028",
@@ -1612,9 +1638,6 @@
   "If you are new, start with the Foundations path. It introduces Arabic letters, basic pronunciation, articulation, and letter qualities before asking you to combine several rule families.": [
     "lib/articles/content.ts:6"
   ],
-  "If you do not yet recognise Arabic letters and short vowels, start with Arabic Letters and Basic Arabic Pronunciation. Read one lesson at a time, practise slowly, and ask a qualified teacher to check the sound.": [
-    "app/[lang]/learn/page.tsx:22"
-  ],
   "If you hear a nasal quality in a rule family, check whether the rule involves ghunnah in context before deciding the full treatment.": [
     "lib/tajweed/rules.ts:261"
   ],
@@ -1681,7 +1704,7 @@
     "lib/taxonomy/index.ts:29"
   ],
   "Important Note": [
-    "app/[lang]/tajweed/[slug]/page.tsx:88"
+    "app/[lang]/tajweed/[slug]/page.tsx:94"
   ],
   "In certain cases, the sound is merged without the ghunnah quality. This distinction is important because one subcase can sound like a merge but still differ in nasal quality. Learners should not rely on a broad label like 'merge' alone. They need to identify the specific case and then listen to the result under qualified guidance.": [
     "lib/tajweed/rules.ts:455"
@@ -1772,9 +1795,9 @@
     "lib/tajweed/examples.ts:302"
   ],
   "Intermediate": [
-    "app/[lang]/search/page.tsx:11",
-    "app/[lang]/tajweed/directory.tsx:14",
-    "components/practice.tsx:12",
+    "app/[lang]/search/page.tsx:12",
+    "app/[lang]/tajweed/directory.tsx:15",
+    "components/practice.tsx:14",
     "lib/search/index.ts:6",
     "lib/tajweed/curriculum.ts:76",
     "lib/tajweed/curriculum.ts:126",
@@ -1833,7 +1856,7 @@
     "lib/tajweed/rules.ts:846"
   ],
   "is for finding a particular lesson, comparing rules, or returning to something you have already studied.": [
-    "app/[lang]/tajweed/page.tsx:12"
+    "app/[lang]/tajweed/page.tsx:13"
   ],
   "Is ghunnah a separate rule?": [
     "lib/tajweed/rules.ts:270"
@@ -2040,7 +2063,7 @@
     "lib/tajweed/rules.ts:1511"
   ],
   "It organises Tajweed topics, learning paths, practice questions, and source records into a calm study experience. Written material supports understanding; it does not replace listening to a qualified reciter or learning with a qualified teacher.": [
-    "app/[lang]/about/page.tsx:9"
+    "app/[lang]/about/page.tsx:11"
   ],
   "Izhar": [
     "lib/tajweed/rules.ts:349",
@@ -2071,9 +2094,6 @@
   "Judge a stop by its effect on meaning: complete, sufficient, good, acceptable, or unsafe.": [
     "lib/tajweed/rules.ts:1382"
   ],
-  "Keep practising": [
-    "components/lesson-quiz.tsx:117"
-  ],
   "Keep the light sound thin and spread as demonstrated; avoid slipping into heaviness on letters that should stay light.": [
     "lib/tajweed/rules.ts:1581"
   ],
@@ -2088,6 +2108,9 @@
   ],
   "Keeping the long length even while continuing recitation.": [
     "lib/tajweed/rules.ts:1209"
+  ],
+  "King Fahd Glorious Quran Printing Complex": [
+    "lib/audio.ts:3"
   ],
   "kitābun → kitāb": [
     "lib/tajweed/examples.ts:331"
@@ -2147,7 +2170,7 @@
     "components/language-switcher.tsx:15"
   ],
   "Languages": [
-    "app/global-not-found.tsx:12"
+    "app/global-not-found.tsx:13"
   ],
   "Large reading sessions can hide the exact place where a learner is uncertain. Use a short, controlled passage and one practice target so feedback can be specific.": [
     "lib/articles/content.ts:16"
@@ -2159,14 +2182,14 @@
     "lib/tajweed/rules.ts:1306"
   ],
   "Learn": [
-    "app/[lang]/tajweed/directory.tsx:41",
-    "app/[lang]/tajweed/page.tsx:12",
+    "app/[lang]/tajweed/directory.tsx:43",
+    "app/[lang]/tajweed/page.tsx:13",
     "components/site-header.tsx:17"
   ],
   "Learn how Complete Tajweed Guide separates explanation, listening, practice, and qualified review.": [
-    "app/[lang]/about/page.tsx:5",
-    "app/[lang]/about/page.tsx:5",
-    "app/[lang]/about/page.tsx:5"
+    "app/[lang]/about/page.tsx:7",
+    "app/[lang]/about/page.tsx:7",
+    "app/[lang]/about/page.tsx:7"
   ],
   "Learn how Sifaat describes letter qualities and how it supports listening, comparison, and pronunciation practice.": [
     "lib/articles/content.ts:10"
@@ -2181,13 +2204,13 @@
     "components/ui.tsx:15"
   ],
   "Learn Tajweed in the right order.": [
-    "app/[lang]/learn/page.tsx:20"
+    "app/[lang]/learn/page.tsx:22"
   ],
   "Learn Tajweed Online": [
-    "app/[lang]/layout.tsx:22"
+    "app/[lang]/layout.tsx:20"
   ],
   "Learn Tajweed,": [
-    "app/[lang]/page.tsx:11"
+    "app/[lang]/page.tsx:14"
   ],
   "Learn the foundations of stopping and restarting before studying detailed stop classifications.": [
     "lib/tajweed/curriculum.ts:112"
@@ -2205,7 +2228,7 @@
     "lib/articles/content.ts:9"
   ],
   "Learn with care": [
-    "app/[lang]/page.tsx:30"
+    "app/[lang]/page.tsx:33"
   ],
   "Learners bring the sound habits of their first language into recitation, and certain errors repeat across nearly all beginners. Typical examples are substituting a familiar sound for the correct Arabic one, shortening madd counts, cutting the nasal hold, missing the echo of qalqalah, and giving light letters accidental heaviness. The value of studying the list is diagnostic: knowing the common failures helps the learner listen for them deliberately and ask a teacher to check each one. The error list is a listening checklist, not a reason for discouragement.": [
     "lib/tajweed/rules.ts:1646"
@@ -2214,20 +2237,20 @@
     "lib/articles/content.ts:14"
   ],
   "Learning level": [
-    "app/[lang]/tajweed/directory.tsx:40"
+    "app/[lang]/tajweed/directory.tsx:42"
   ],
   "Learning level missing": [
     "lib/tajweed/content-audit.ts:57"
   ],
   "Learning path": [
-    "app/[lang]/learn/page.tsx:19",
-    "components/ui.tsx:25"
+    "app/[lang]/learn/page.tsx:21",
+    "components/footer-content.tsx:6"
   ],
   "Learning Path": [
-    "app/[lang]/learn/[slug]/page.tsx:37"
+    "app/[lang]/learn/[slug]/page.tsx:45"
   ],
   "Learning Tips": [
-    "app/[lang]/articles/page.tsx:14",
+    "app/[lang]/articles/page.tsx:15",
     "lib/articles/content.ts:8",
     "lib/articles/content.ts:17",
     "lib/articles/types.ts:1"
@@ -2251,16 +2274,16 @@
     "lib/tajweed/rules.ts:1175"
   ],
   "Lesson": [
-    "app/[lang]/tajweed/[slug]/page.tsx:62"
+    "app/[lang]/tajweed/[slug]/page.tsx:68"
   ],
   "Lesson content is awaiting qualified Tajweed review. Use this guide alongside a teacher; written explanations cannot assess your recitation.": [
-    "app/[lang]/page.tsx:30"
+    "app/[lang]/page.tsx:33"
   ],
   "Lesson order": [
-    "app/[lang]/tajweed/[slug]/page.tsx:84"
+    "app/[lang]/tajweed/[slug]/page.tsx:90"
   ],
   "lessons": [
-    "app/[lang]/learn/page.tsx:32"
+    "app/[lang]/learn/page.tsx:34"
   ],
   "letter contrast": [
     "lib/tajweed/examples.ts:309",
@@ -2292,18 +2315,18 @@
     "lib/tajweed/examples.ts:328"
   ],
   "Letters involved": [
-    "components/lesson-contents.tsx:12"
+    "components/lesson-contents.tsx:13"
   ],
   "Level": [
-    "app/[lang]/tajweed/[slug]/page.tsx:67"
+    "app/[lang]/tajweed/[slug]/page.tsx:73"
   ],
   "Level {number}": [
-    "app/[lang]/learn/[slug]/page.tsx:39",
-    "app/[lang]/learn/[slug]/page.tsx:82",
-    "app/[lang]/learn/[slug]/page.tsx:86"
+    "app/[lang]/learn/[slug]/page.tsx:47",
+    "app/[lang]/learn/[slug]/page.tsx:91",
+    "app/[lang]/learn/[slug]/page.tsx:95"
   ],
   "Level {number} of {count}": [
-    "app/[lang]/learn/[slug]/page.tsx:41"
+    "app/[lang]/learn/[slug]/page.tsx:49"
   ],
   "light and emphatic contrast": [
     "lib/tajweed/examples.ts:311"
@@ -2321,16 +2344,14 @@
     "lib/tajweed/rules.ts:832"
   ],
   "Listen for one target": [
+    "components/listening-studio.tsx:14",
     "lib/articles/content.ts:8"
   ],
   "Listen, repeat, and receive correction": [
     "lib/articles/content.ts:6"
   ],
-  "Listening guidance": [
-    "app/[lang]/tajweed/[slug]/page.tsx:73"
-  ],
   "Loading the search index…": [
-    "app/[lang]/search/page.tsx:29"
+    "app/[lang]/search/page.tsx:32"
   ],
   "madd": [
     "runtime educational labels"
@@ -2478,13 +2499,13 @@
     "lib/tajweed/rules.ts:1368"
   ],
   "Make a little practice part of every lesson.": [
-    "app/[lang]/practice/page.tsx:10"
+    "app/[lang]/practice/page.tsx:11"
   ],
   "Make listening active": [
     "lib/articles/content.ts:10"
   ],
   "Make rule names useful": [
-    "app/[lang]/articles/page.tsx:14"
+    "app/[lang]/articles/page.tsx:15"
   ],
   "makharij": [
     "runtime educational labels"
@@ -2559,9 +2580,6 @@
   "Meem Sakinah Tajweed rules": [
     "lib/taxonomy/index.ts:28"
   ],
-  "Memorise the rule name and skip listening, repetition, and correction.": [
-    "lib/practice/quiz.ts:42"
-  ],
   "Memorising the term translations without checking what each stop does to the meaning.": [
     "lib/tajweed/rules.ts:1379"
   ],
@@ -2594,7 +2612,7 @@
     "lib/articles/content.ts:16"
   ],
   "modules": [
-    "app/[lang]/learn/[slug]/page.tsx:60"
+    "app/[lang]/learn/[slug]/page.tsx:69"
   ],
   "multiple choice": [
     "runtime educational labels"
@@ -2624,17 +2642,13 @@
     "runtime educational labels"
   ],
   "New here?": [
-    "app/[lang]/tajweed/[slug]/page.tsx:85"
-  ],
-  "Next": [
-    "components/lesson-quiz.tsx:230"
+    "app/[lang]/tajweed/[slug]/page.tsx:91"
   ],
   "Next lesson": [
-    "app/[lang]/tajweed/[slug]/page.tsx:86"
+    "app/[lang]/tajweed/[slug]/page.tsx:92"
   ],
   "Next question": [
-    "components/lesson-quiz.tsx:228",
-    "components/practice.tsx:37"
+    "components/lesson-quiz.tsx:67"
   ],
   "No added length applies while continuing; the lengthening appears only when the reciter stops after the following letter.": [
     "lib/tajweed/rules.ts:1187"
@@ -2646,28 +2660,28 @@
     "lib/tajweed/content-audit.ts:48"
   ],
   "No glossary terms match your search.": [
-    "app/[lang]/glossary/glossary-directory.tsx:20"
+    "app/[lang]/glossary/glossary-directory.tsx:24"
   ],
   "No matching content yet": [
-    "app/[lang]/search/page.tsx:22"
+    "app/[lang]/search/page.tsx:25"
   ],
   "No prerequisites": [
-    "app/[lang]/tajweed/directory.tsx:40"
+    "app/[lang]/tajweed/directory.tsx:42"
   ],
   "No questions match these filters.": [
-    "components/practice.tsx:31"
+    "components/lesson-quiz.tsx:37"
   ],
   "No Quran example is published here yet.": [
     "components/quran-example.tsx:27"
   ],
   "No Quran quotation, reference, pronunciation claim, or generated citation is published as verified without appropriate source and qualified review.": [
-    "app/[lang]/sources/page.tsx:10"
+    "app/[lang]/sources/page.tsx:14"
   ],
   "No results. Try a shorter word such as “madd” or “ikhfa”.": [
     "components/search-palette.tsx:75"
   ],
   "No rules match these filters.": [
-    "app/[lang]/tajweed/directory.tsx:43"
+    "app/[lang]/tajweed/directory.tsx:45"
   ],
   "No, but you do need a working knowledge of the Arabic letters and basic reading signs.": [
     "lib/tajweed/rules.ts:134"
@@ -2744,7 +2758,7 @@
   ],
   "noon sakinah": [
     "components/ui.tsx:21",
-    "lib/search/index.ts:28"
+    "lib/search/index.ts:29"
   ],
   "Noon Sakinah": [
     "lib/tajweed/rules.ts:281",
@@ -2778,7 +2792,7 @@
     "lib/tajweed/rules.ts:1425"
   ],
   "Not from the Quran": [
-    "app/[lang]/tajweed/[slug]/page.tsx:74"
+    "app/[lang]/tajweed/[slug]/page.tsx:80"
   ],
   "NOT FROM THE QURAN — INSTRUCTIONAL ONLY": [
     "lib/tajweed/examples.ts:351",
@@ -2803,45 +2817,50 @@
     "lib/tajweed/content-audit.ts:45"
   ],
   "of": [
-    "app/[lang]/tajweed/directory.tsx:38"
+    "app/[lang]/tajweed/directory.tsx:40"
+  ],
+  "Öğrenme yolunu aç": [
+    "app/global-not-found.tsx:10"
   ],
   "On this page": [
-    "components/lesson-contents.tsx:37",
-    "components/lesson-contents.tsx:38",
-    "components/lesson-contents.tsx:38"
+    "components/lesson-contents.tsx:42",
+    "components/lesson-contents.tsx:43",
+    "components/lesson-contents.tsx:43"
   ],
   "Once a learner knows where a letter is produced, the next step is understanding its qualities. This includes lightness, heaviness, softness, roughness, and other characteristics that affect how the sound is heard and produced. These qualities are essential for rules such as Tafkhim, Tarqiq, and Qalqalah, and they also support recognition in Noon, Meem, Lam, and Raa cases.": [
     "lib/tajweed/rules.ts:185"
   ],
   "One clear route from beginner to advanced": [
-    "app/[lang]/learn/page.tsx:28"
+    "app/[lang]/learn/page.tsx:30"
   ],
   "One letter at a time, cleanly: clarity is practised, not rushed.": [
     "lib/tajweed/rules.ts:1620"
   ],
   "one step at a time.": [
-    "app/[lang]/page.tsx:11"
+    "app/[lang]/page.tsx:14"
   ],
   "open": [
     "components/search-palette.tsx:79"
   ],
   "Open Full Rule Lesson": [
-    "app/[lang]/learn/[slug]/page.tsx:47"
+    "app/[lang]/learn/[slug]/page.tsx:55"
   ],
   "Open lesson:": [
-    "app/[lang]/tajweed/[slug]/page.tsx:76"
+    "app/[lang]/tajweed/[slug]/page.tsx:82"
   ],
   "Open menu": [
     "components/site-header.tsx:46"
   ],
   "Open practice": [
-    "app/[lang]/page.tsx:28"
+    "app/[lang]/page.tsx:31"
   ],
   "Open source": [
-    "app/[lang]/sources/page.tsx:10"
+    "app/[lang]/sources/page.tsx:14",
+    "app/[lang]/sources/page.tsx:14",
+    "components/listening-studio.tsx:14"
   ],
   "Open the first lesson": [
-    "app/[lang]/page.tsx:33"
+    "app/[lang]/page.tsx:36"
   ],
   "Open the full lesson to see when it applies and which letters are involved.": [
     "components/quiz-card.tsx:25"
@@ -2853,10 +2872,8 @@
     "app/global-not-found.tsx:5"
   ],
   "Open the related learning path": [
-    "app/[lang]/articles/[slug]/page.tsx:31"
-  ],
-  "Option {letter}: {answer}": [
-    "components/lesson-quiz.tsx:180"
+    "app/[lang]/articles/[slug]/page.tsx:32",
+    "app/[lang]/my-learning/page.tsx:15"
   ],
   "or who": [
     "lib/tajweed/examples.ts:182"
@@ -2877,40 +2894,39 @@
     "lib/tajweed/rules.ts:1465"
   ],
   "Page Not Found": [
-    "app/[lang]/not-found.tsx:8"
+    "app/[lang]/not-found.tsx:9"
   ],
   "Page not found | Tajweed101": [
     "app/global-not-found.tsx:2"
   ],
   "Poster explaining Quran reading and stopping symbols": [
-    "app/[lang]/tajweed/[slug]/page.tsx:74"
+    "app/[lang]/tajweed/[slug]/page.tsx:80"
   ],
   "Poster reference: the right side shows common stopping signs; the left side shows other printed reading marks. Use the poster to recognise a sign, then confirm its application in the mushaf and with a qualified teacher.": [
-    "app/[lang]/tajweed/[slug]/page.tsx:74"
+    "app/[lang]/tajweed/[slug]/page.tsx:80"
   ],
   "Practice": [
-    "app/[lang]/tajweed/[slug]/page.tsx:78",
-    "components/lesson-contents.tsx:14",
-    "components/site-header.tsx:20",
-    "components/ui.tsx:25"
+    "app/[lang]/tajweed/[slug]/page.tsx:84",
+    "components/footer-content.tsx:6",
+    "components/learning-dashboard.tsx:20",
+    "components/lesson-contents.tsx:15",
+    "components/practice.tsx:23",
+    "components/site-header.tsx:20"
   ],
   "Practice and quizzes": [
-    "app/[lang]/practice/page.tsx:10"
-  ],
-  "Practice complete": [
-    "components/practice.tsx:32"
+    "app/[lang]/practice/page.tsx:11"
   ],
   "Practice filters": [
-    "components/practice.tsx:48"
+    "components/practice.tsx:39"
   ],
   "Practice follows verified content": [
     "components/quiz-card.tsx:16"
   ],
   "Practice library": [
-    "components/practice.tsx:48"
+    "components/practice.tsx:39"
   ],
   "Practice Mode": [
-    "app/[lang]/learn/page.tsx:35"
+    "app/[lang]/learn/page.tsx:37"
   ],
   "Practice note": [
     "components/quiz-card.tsx:16"
@@ -2919,9 +2935,9 @@
     "lib/tajweed/content-audit.ts:52"
   ],
   "Practice Tajweed": [
-    "app/[lang]/practice/page.tsx:6",
-    "app/[lang]/practice/page.tsx:6",
-    "app/[lang]/practice/page.tsx:6"
+    "app/[lang]/practice/page.tsx:7",
+    "app/[lang]/practice/page.tsx:7",
+    "app/[lang]/practice/page.tsx:7"
   ],
   "Practise a small set": [
     "lib/articles/content.ts:8"
@@ -2933,9 +2949,9 @@
     "lib/tajweed/rules.ts:1683"
   ],
   "Practise identifying Tajweed rules with focused questions and explanations.": [
-    "app/[lang]/practice/page.tsx:6",
-    "app/[lang]/practice/page.tsx:6",
-    "app/[lang]/practice/page.tsx:6"
+    "app/[lang]/practice/page.tsx:7",
+    "app/[lang]/practice/page.tsx:7",
+    "app/[lang]/practice/page.tsx:7"
   ],
   "Practise pairs: read the ending while continuing, then stop on the same word, and listen for the differences with a qualified teacher.": [
     "lib/tajweed/rules.ts:1445"
@@ -2965,22 +2981,18 @@
     "lib/tajweed/examples.ts:380"
   ],
   "Prerequisites": [
-    "app/[lang]/learn/[slug]/page.tsx:54",
-    "app/[lang]/tajweed/directory.tsx:40",
-    "app/[lang]/tajweed/[slug]/page.tsx:83"
+    "app/[lang]/learn/[slug]/page.tsx:63",
+    "app/[lang]/tajweed/directory.tsx:42"
   ],
   "Prerequisites missing": [
     "lib/tajweed/content-audit.ts:58"
   ],
   "Previous": [
-    "app/[lang]/learn/[slug]/page.tsx:82",
-    "components/lesson-quiz.tsx:221"
+    "app/[lang]/learn/[slug]/page.tsx:91",
+    "components/lesson-quiz.tsx:67"
   ],
   "Previous lesson": [
-    "app/[lang]/tajweed/[slug]/page.tsx:85"
-  ],
-  "Previous question": [
-    "components/lesson-quiz.tsx:219"
+    "app/[lang]/tajweed/[slug]/page.tsx:91"
   ],
   "Primary navigation": [
     "components/site-header.tsx:46"
@@ -3015,22 +3027,22 @@
     "lib/tajweed/rules.ts:120"
   ],
   "Pronunciation guidance": [
-    "app/[lang]/glossary/glossary-directory.tsx:30"
+    "app/[lang]/glossary/glossary-directory.tsx:34"
   ],
   "Pronunciation guidance missing or too brief": [
     "lib/tajweed/content-audit.ts:47"
   ],
   "Pronunciation guidance must be clearly separated from written theory.": [
-    "app/[lang]/editorial-policy/page.tsx:9"
+    "app/[lang]/editorial-policy/page.tsx:10"
   ],
   "Protect the meaning before you stop or continue.": [
-    "app/[lang]/tajweed/[slug]/page.tsx:74"
+    "app/[lang]/tajweed/[slug]/page.tsx:80"
   ],
   "Provider, source URL, and text edition are required.": [
     "lib/quran-examples/types.ts:52"
   ],
   "Put understanding into practice": [
-    "app/[lang]/learn/page.tsx:35"
+    "app/[lang]/learn/page.tsx:37"
   ],
   "qa ka": [
     "lib/tajweed/examples.ts:312"
@@ -3087,30 +3099,25 @@
     "lib/tajweed/rules.ts:721"
   ],
   "Question {number} of {count}": [
-    "components/lesson-quiz.tsx:157",
-    "components/practice.tsx:37"
+    "components/lesson-quiz.tsx:67"
   ],
   "Questions answered": [
-    "components/lesson-quiz.tsx:162",
-    "components/practice.tsx:37"
+    "components/lesson-quiz.tsx:67"
   ],
   "Questions are published after the lesson content has completed qualified review. You can still read the lessons and use their practice prompts with a teacher.": [
-    "components/practice.tsx:47"
+    "components/practice.tsx:38"
   ],
   "Quick check": [
     "components/quiz-card.tsx:25"
   ],
   "Quiz": [
-    "components/lesson-contents.tsx:14"
+    "components/lesson-contents.tsx:15"
   ],
   "Quiz complete": [
-    "components/lesson-quiz.tsx:108"
-  ],
-  "Quiz questions will appear after qualified review. Use the lesson’s practice prompts with your teacher.": [
-    "components/lesson-quiz.tsx:45"
+    "components/lesson-quiz.tsx:66"
   ],
   "Quran example": [
-    "app/[lang]/tajweed/[slug]/page.tsx:98"
+    "app/[lang]/tajweed/[slug]/page.tsx:104"
   ],
   "Quran Foundation Tajweed Script Documentation": [
     "lib/tajweed/sources.ts:22",
@@ -3124,7 +3131,8 @@
     "lib/taxonomy/index.ts:47"
   ],
   "Quran text and verse references must be checked against a reliable text source.": [
-    "app/[lang]/editorial-policy/page.tsx:9"
+    "app/[lang]/editorial-policy/page.tsx:10",
+    "components/listening-studio.tsx:14"
   ],
   "Quranic reference requires authoritative verification before publication.": [
     "lib/tajweed/examples.ts:406"
@@ -3144,30 +3152,30 @@
   "Raa rules in Tajweed": [
     "lib/taxonomy/index.ts:34"
   ],
-  "Read faster whenever a sound feels uncertain, without checking it.": [
-    "lib/practice/quiz.ts:41"
+  "Reach the Goal via Tajweed Rules · pp.": [
+    "app/[lang]/tajweed/[slug]/page.tsx:94"
   ],
   "Read one explanation, recall its condition, then discuss your pronunciation with a qualified teacher. The recognition questions below are study drafts awaiting qualified review; their scores cannot assess recitation.": [
-    "app/[lang]/practice/page.tsx:10"
+    "app/[lang]/practice/page.tsx:11"
   ],
   "Read the editorial policy": [
-    "app/[lang]/about/page.tsx:9"
+    "app/[lang]/about/page.tsx:11"
   ],
   "Read the explanation and check any unfamiliar words in the glossary.": [
-    "app/[lang]/page.tsx:34"
+    "app/[lang]/page.tsx:37"
   ],
   "Read the explanation, listen to a qualified reciter, repeat a small portion, and ask for feedback. Then return to the rule page when you need to understand the reason behind a correction.": [
     "lib/articles/content.ts:18"
   ],
   "Read the guide": [
-    "app/[lang]/articles/page.tsx:14"
+    "app/[lang]/articles/page.tsx:15"
   ],
   "Read the instruction beside the matching symbol.": [
-    "app/[lang]/tajweed/[slug]/page.tsx:74"
+    "app/[lang]/tajweed/[slug]/page.tsx:80"
   ],
   "Read the review policy": [
-    "app/[lang]/articles/[slug]/page.tsx:31",
-    "app/[lang]/tajweed/[slug]/page.tsx:69"
+    "app/[lang]/articles/[slug]/page.tsx:32",
+    "app/[lang]/tajweed/[slug]/page.tsx:75"
   ],
   "Read the rule, inspect a verified example, and listen before attempting repetition. Try to describe the sound you are listening for, then ask a qualified teacher to correct your description if needed.": [
     "lib/articles/content.ts:17"
@@ -3176,10 +3184,10 @@
     "lib/tajweed/examples.ts:104"
   ],
   "Read with more awareness": [
-    "app/[lang]/articles/page.tsx:14"
+    "app/[lang]/articles/page.tsx:15"
   ],
   "Read. Listen. Practise.": [
-    "app/[lang]/page.tsx:33"
+    "app/[lang]/page.tsx:36"
   ],
   "Reading quickly before the articulation is stable, which rehearses mistakes.": [
     "lib/tajweed/rules.ts:1617"
@@ -3191,10 +3199,7 @@
     "lib/tajweed/rules.ts:528"
   ],
   "Reading tradition and review": [
-    "app/[lang]/about/page.tsx:9"
-  ],
-  "Ready to review": [
-    "components/lesson-quiz.tsx:117"
+    "app/[lang]/about/page.tsx:11"
   ],
   "Rechercher dans le guide": [
     "app/global-not-found.tsx:9"
@@ -3206,7 +3211,8 @@
     "lib/taxonomy/index.ts:56"
   ],
   "Recite slowly, repeat, and ask your teacher what to adjust.": [
-    "app/[lang]/page.tsx:34"
+    "app/[lang]/page.tsx:37",
+    "components/listening-studio.tsx:14"
   ],
   "Recognise and practise the characteristic commonly taught as Qalqalah, with attention to position and degree.": [
     "lib/taxonomy/index.ts:32"
@@ -3242,95 +3248,89 @@
     "lib/tajweed/rules.ts:835"
   ],
   "Reference poster (English; awaiting review)": [
-    "app/[lang]/tajweed/[slug]/page.tsx:74"
+    "app/[lang]/tajweed/[slug]/page.tsx:80"
   ],
   "Reference:": [
-    "app/[lang]/tajweed/[slug]/page.tsx:98"
+    "app/[lang]/tajweed/[slug]/page.tsx:94",
+    "app/[lang]/tajweed/[slug]/page.tsx:104"
+  ],
+  "Rehberde ara": [
+    "app/global-not-found.tsx:10"
   ],
   "Related lessons": [
-    "app/[lang]/glossary/glossary-directory.tsx:30"
+    "app/[lang]/glossary/glossary-directory.tsx:34",
+    "app/[lang]/learn/[slug]/page.tsx:62"
   ],
   "Related rule link is unresolved": [
     "lib/tajweed/content-audit.ts:51"
   ],
   "Related rules": [
-    "components/lesson-contents.tsx:16"
+    "components/lesson-contents.tsx:17"
   ],
   "Related Rules": [
-    "app/[lang]/tajweed/[slug]/page.tsx:83"
+    "app/[lang]/tajweed/[slug]/page.tsx:89"
   ],
   "Related Tajweed lessons": [
-    "app/[lang]/articles/[slug]/page.tsx:31"
+    "app/[lang]/articles/[slug]/page.tsx:32"
   ],
   "Remember": [
-    "app/[lang]/tajweed/[slug]/page.tsx:77"
+    "app/[lang]/tajweed/[slug]/page.tsx:83"
   ],
   "Remember that editions can differ; your teacher and your own mushaf take priority.": [
-    "app/[lang]/tajweed/[slug]/page.tsx:74"
+    "app/[lang]/tajweed/[slug]/page.tsx:80"
   ],
   "Remember: merge does not always mean ghunnah.": [
     "lib/tajweed/rules.ts:463"
   ],
   "Requirements before verification": [
-    "app/[lang]/editorial-policy/page.tsx:9"
+    "app/[lang]/editorial-policy/page.tsx:10"
   ],
   "Requires Review": [
-    "app/[lang]/tajweed/[slug]/page.tsx:67"
+    "app/[lang]/tajweed/[slug]/page.tsx:73"
   ],
   "REQUIRES REVIEW": [
     "lib/tajweed/types.ts:2"
   ],
   "Reset filters": [
-    "components/practice.tsx:48"
+    "app/[lang]/tajweed/directory.tsx:42",
+    "components/practice.tsx:39"
   ],
   "result": [
-    "app/[lang]/search/page.tsx:22"
+    "app/[lang]/search/page.tsx:25"
   ],
   "results": [
-    "app/[lang]/search/page.tsx:22"
+    "app/[lang]/search/page.tsx:25"
   ],
   "Results for {query}": [
-    "app/[lang]/search/page.tsx:22"
+    "app/[lang]/search/page.tsx:25"
   ],
   "Review {rule}": [
     "components/quiz-card.tsx:25"
   ],
-  "Review any incorrect answers, then practise reciting with your teacher. A quiz checks understanding; it cannot assess pronunciation.": [
-    "components/lesson-quiz.tsx:128"
-  ],
   "Review any missed answers with your teacher. Recognition practice cannot assess your recitation.": [
-    "components/practice.tsx:32"
-  ],
-  "Review lesson": [
-    "components/lesson-quiz.tsx:143"
+    "components/lesson-quiz.tsx:66"
   ],
   "Review status": [
-    "app/[lang]/tajweed/[slug]/page.tsx:67",
-    "app/[lang]/tajweed/[slug]/page.tsx:69"
+    "app/[lang]/tajweed/[slug]/page.tsx:73",
+    "app/[lang]/tajweed/[slug]/page.tsx:75"
   ],
   "Review status claims approval while verification is not verified": [
     "lib/tajweed/content-audit.ts:55"
   ],
   "Review the explanation": [
-    "components/lesson-quiz.tsx:209"
-  ],
-  "Review the lesson and focus on the questions you missed. Then try the quiz again.": [
-    "components/lesson-quiz.tsx:133"
+    "components/lesson-quiz.tsx:67"
   ],
   "Review the next day": [
     "lib/articles/content.ts:8"
   ],
-  "Review the related rule": [
-    "components/practice.tsx:37"
-  ],
   "Review the source and verification approach used by Complete Tajweed Guide.": [
-    "app/[lang]/sources/page.tsx:6",
-    "app/[lang]/sources/page.tsx:6",
-    "app/[lang]/sources/page.tsx:6"
+    "app/[lang]/sources/page.tsx:10",
+    "app/[lang]/sources/page.tsx:10",
+    "app/[lang]/sources/page.tsx:10"
   ],
   "Review this one": [
-    "components/lesson-quiz.tsx:204",
-    "components/practice.tsx:37",
+    "components/lesson-quiz.tsx:66",
+    "components/lesson-quiz.tsx:67",
     "components/quiz-card.tsx:25"
   ],
   "Review-gated": [
@@ -3346,16 +3346,16 @@
     "lib/quran-examples/types.ts:46"
   ],
   "Rule terminology and classifications must be reviewed for the selected reading tradition.": [
-    "app/[lang]/editorial-policy/page.tsx:9"
+    "app/[lang]/editorial-policy/page.tsx:10"
   ],
   "rules": [
-    "app/[lang]/tajweed/directory.tsx:38",
-    "app/[lang]/tajweed/directory.tsx:42"
+    "app/[lang]/tajweed/directory.tsx:40",
+    "app/[lang]/tajweed/directory.tsx:44"
   ],
   "Rules library": [
-    "app/[lang]/tajweed/page.tsx:12",
-    "components/site-header.tsx:18",
-    "components/ui.tsx:25"
+    "app/[lang]/tajweed/page.tsx:13",
+    "components/footer-content.tsx:6",
+    "components/site-header.tsx:18"
   ],
   "Rushing the nasal hold so it becomes a quick hum rather than a measured count.": [
     "lib/tajweed/rules.ts:1515"
@@ -3375,19 +3375,16 @@
   ],
   "Search": [
     "app/[lang]/search/layout.tsx:6",
-    "app/[lang]/search/page.tsx:22",
+    "app/[lang]/search/page.tsx:25",
     "components/site-header.tsx:46",
     "components/site-header.tsx:46",
     "components/ui.tsx:21"
   ],
   "Search Arabic and English Tajweed terminology with definitions and links to relevant lessons.": [
-    "app/[lang]/glossary/page.tsx:6"
-  ],
-  "Search English or Arabic terms": [
-    "app/[lang]/glossary/glossary-directory.tsx:20"
+    "app/[lang]/glossary/page.tsx:7"
   ],
   "Search glossary": [
-    "app/[lang]/glossary/glossary-directory.tsx:20"
+    "app/[lang]/glossary/glossary-directory.tsx:24"
   ],
   "Search query": [
     "components/search-palette.tsx:72"
@@ -3399,33 +3396,31 @@
     "components/ui.tsx:21"
   ],
   "Search rules, Arabic terms, pronunciation concepts, articles, and glossary entries.": [
-    "app/[lang]/search/page.tsx:22"
+    "app/[lang]/search/page.tsx:25"
   ],
   "Search rules, terms, and articles…": [
     "components/search-palette.tsx:72"
   ],
   "Search Tajweed content": [
-    "app/[lang]/search/page.tsx:22"
+    "app/[lang]/search/page.tsx:25"
   ],
   "Search Tajweed rules, lessons, articles, and glossary terms.": [
     "app/[lang]/search/layout.tsx:7"
   ],
   "Search the guide": [
     "app/global-not-found.tsx:5",
-    "app/[lang]/not-found.tsx:23",
+    "app/[lang]/not-found.tsx:24",
     "components/search-palette.tsx:70",
     "components/ui.tsx:21"
   ],
   "Search the terminology used throughout the curriculum and open the lesson where each term is taught.": [
-    "app/[lang]/glossary/page.tsx:11"
+    "app/[lang]/glossary/page.tsx:12"
   ],
   "See results": [
-    "components/lesson-quiz.tsx:228",
-    "components/lesson-quiz.tsx:230",
-    "components/practice.tsx:37"
+    "components/lesson-quiz.tsx:67"
   ],
   "See the available activities and the review status of the practice bank.": [
-    "app/[lang]/page.tsx:28"
+    "app/[lang]/page.tsx:31"
   ],
   "Self-listening helps you notice issues, but confirmation and correction should come from a qualified teacher who hears your recitation.": [
     "lib/tajweed/rules.ts:1663"
@@ -3467,11 +3462,11 @@
     "lib/tajweed/rules.ts:1688"
   ],
   "Site-wide search": [
-    "app/[lang]/search/page.tsx:22",
-    "app/[lang]/search/page.tsx:29"
+    "app/[lang]/search/page.tsx:25",
+    "app/[lang]/search/page.tsx:32"
   ],
   "Sitemap": [
-    "components/ui.tsx:25"
+    "components/footer-content.tsx:6"
   ],
   "Six throat letters make the Noon clear: ء ه ع ح غ خ. Keep ه and ح distinct.": [
     "lib/tajweed/rules.ts:363"
@@ -3501,38 +3496,38 @@
     "lib/tajweed/content-audit.ts:56"
   ],
   "Source register": [
-    "app/[lang]/sources/page.tsx:10"
+    "app/[lang]/sources/page.tsx:14"
   ],
   "Source:": [
     "components/quran-example.tsx:32",
     "components/quran-example.tsx:32"
   ],
   "Sources": [
-    "app/[lang]/articles/[slug]/page.tsx:31"
+    "app/[lang]/articles/[slug]/page.tsx:32"
   ],
   "Sources and Editorial Policy": [
-    "app/[lang]/sources/page.tsx:6",
-    "app/[lang]/sources/page.tsx:6",
-    "app/[lang]/sources/page.tsx:6"
-  ],
-  "Sources and references": [
-    "components/ui.tsx:25"
-  ],
-  "Sources and review": [
+    "app/[lang]/sources/page.tsx:10",
+    "app/[lang]/sources/page.tsx:10",
     "app/[lang]/sources/page.tsx:10"
   ],
+  "Sources and references": [
+    "components/footer-content.tsx:6"
+  ],
+  "Sources and review": [
+    "app/[lang]/sources/page.tsx:14"
+  ],
   "Sources and review notes": [
-    "app/[lang]/tajweed/[slug]/page.tsx:88",
-    "components/lesson-contents.tsx:16"
+    "app/[lang]/tajweed/[slug]/page.tsx:94",
+    "components/lesson-contents.tsx:17"
   ],
   "Sources are provided transparently. The article is educational guidance and does not replace qualified instruction.": [
-    "app/[lang]/articles/[slug]/page.tsx:31"
+    "app/[lang]/articles/[slug]/page.tsx:32"
   ],
   "Splitting the word in a way that turns the rule into the separated form.": [
     "lib/tajweed/rules.ts:1244"
   ],
   "Stage": [
-    "app/[lang]/learn/page.tsx:32"
+    "app/[lang]/learn/page.tsx:34"
   ],
   "Standard description of the heavy quality; the letter set shown is illustrative and the sound must be demonstrated.": [
     "lib/tajweed/rules.ts:1567"
@@ -3562,25 +3557,25 @@
     "lib/tajweed/rules.ts:1159"
   ],
   "Start at Stage 1": [
-    "app/[lang]/learn/page.tsx:28"
+    "app/[lang]/learn/page.tsx:30"
   ],
   "Start Practice": [
-    "app/[lang]/learn/[slug]/page.tsx:89"
+    "app/[lang]/learn/[slug]/page.tsx:98"
   ],
   "Start with recognition": [
     "lib/articles/content.ts:11"
   ],
   "Start with the foundations, then study the rule families, Madd, stopping and starting, and finally the advanced topics. Use": [
-    "app/[lang]/tajweed/directory.tsx:41"
+    "app/[lang]/tajweed/directory.tsx:43"
   ],
   "Start with the larger picture": [
-    "app/[lang]/articles/page.tsx:14"
+    "app/[lang]/articles/page.tsx:15"
   ],
   "Start with the learning path": [
-    "app/[lang]/tajweed/[slug]/page.tsx:85"
+    "app/[lang]/tajweed/[slug]/page.tsx:91"
   ],
   "Start with the reading foundations, learn each rule family, and leave detailed stopping and advanced topics until the skills they need are secure.": [
-    "app/[lang]/learn/page.tsx:21"
+    "app/[lang]/learn/page.tsx:23"
   ],
   "Starting without paying attention to the new sound environment.": [
     "lib/tajweed/rules.ts:1040"
@@ -3623,8 +3618,8 @@
     "lib/taxonomy/index.ts:52"
   ],
   "Study draft - qualified review pending": [
-    "app/[lang]/articles/[slug]/page.tsx:31",
-    "app/[lang]/tajweed/[slug]/page.tsx:69"
+    "app/[lang]/articles/[slug]/page.tsx:32",
+    "app/[lang]/tajweed/[slug]/page.tsx:75"
   ],
   "Study how to resume or begin recitation thoughtfully after a stop, with attention to context.": [
     "lib/taxonomy/index.ts:46"
@@ -3754,35 +3749,35 @@
     "lib/taxonomy/index.ts:53"
   ],
   "Tajweed": [
-    "app/[lang]/tajweed/page.tsx:12",
-    "app/[lang]/tajweed/[slug]/page.tsx:59",
-    "app/[lang]/tajweed/[slug]/page.tsx:66"
+    "app/[lang]/tajweed/page.tsx:13",
+    "app/[lang]/tajweed/[slug]/page.tsx:65",
+    "app/[lang]/tajweed/[slug]/page.tsx:72"
   ],
   "Tajweed and Quran Recitation: What Is the Difference?": [
     "lib/articles/content.ts:18"
   ],
   "Tajweed Basics": [
-    "app/[lang]/articles/page.tsx:14",
+    "app/[lang]/articles/page.tsx:15",
     "lib/articles/content.ts:6",
     "lib/articles/content.ts:7",
     "lib/articles/types.ts:1"
   ],
   "Tajweed glossary": [
-    "app/[lang]/glossary/page.tsx:11",
-    "lib/search/index.ts:24",
-    "lib/search/index.ts:35"
+    "app/[lang]/glossary/page.tsx:12",
+    "lib/search/index.ts:25",
+    "lib/search/index.ts:36"
   ],
   "Tajweed Glossary": [
-    "app/[lang]/glossary/page.tsx:6"
+    "app/[lang]/glossary/page.tsx:7"
   ],
   "Tajweed is a structured way to study the details of Quranic recitation. It gives learners language for discussing articulation, letter qualities, connected sound patterns, lengthening, and stopping and starting.": [
     "lib/articles/content.ts:6"
   ],
   "Tajweed is best learned through both understanding and listening. Written explanations can help you understand the rules, but correct pronunciation, timing, and articulation are best learned by listening to a qualified reciter or teacher and practicing along with them.": [
-    "app/[lang]/tajweed/[slug]/page.tsx:88"
+    "app/[lang]/tajweed/[slug]/page.tsx:94"
   ],
   "Tajweed is best learned through listening, repetition, and practice with a qualified teacher or reciter. This guide supports that learning; it does not replace it.": [
-    "components/ui.tsx:25"
+    "components/footer-content.tsx:6"
   ],
   "Tajweed is studied to protect the Quranic sound, improve accuracy, and support respectful recitation.": [
     "lib/tajweed/rules.ts:48"
@@ -3794,12 +3789,12 @@
     "lib/tajweed/rules.ts:13"
   ],
   "Tajweed Learning Path": [
-    "app/[lang]/learn/page.tsx:8",
-    "app/[lang]/learn/page.tsx:8",
-    "app/[lang]/learn/page.tsx:8"
+    "app/[lang]/learn/page.tsx:10",
+    "app/[lang]/learn/page.tsx:10",
+    "app/[lang]/learn/page.tsx:10"
   ],
   "Tajweed lessons": [
-    "components/practice.tsx:16"
+    "components/practice.tsx:18"
   ],
   "Tajweed lessons organise concepts that a learner can recognise and discuss. Quran recitation is the act of reading, where those concepts must be heard and applied in context.": [
     "lib/articles/content.ts:18"
@@ -3808,7 +3803,7 @@
     "lib/tajweed/rules.ts:57"
   ],
   "Tajweed Rules": [
-    "app/[lang]/articles/page.tsx:14",
+    "app/[lang]/articles/page.tsx:15",
     "lib/articles/content.ts:11",
     "lib/articles/content.ts:12",
     "lib/articles/content.ts:13",
@@ -3817,24 +3812,24 @@
     "lib/articles/types.ts:1"
   ],
   "Tajweed rules directory": [
-    "app/[lang]/tajweed/directory.tsx:35",
-    "app/[lang]/tajweed/page.tsx:12"
+    "app/[lang]/tajweed/directory.tsx:37",
+    "app/[lang]/tajweed/page.tsx:13"
   ],
   "Tajweed Rules Directory": [
-    "app/[lang]/tajweed/page.tsx:7",
-    "app/[lang]/tajweed/page.tsx:7",
-    "app/[lang]/tajweed/page.tsx:7"
+    "app/[lang]/tajweed/page.tsx:8",
+    "app/[lang]/tajweed/page.tsx:8",
+    "app/[lang]/tajweed/page.tsx:8"
   ],
   "Tajweed Rules Reference": [
     "lib/tajweed/sources.ts:4",
     "lib/taxonomy/sources.ts:27"
   ],
   "Tajweed101 helps you explore Quranic recitation through a structured learning path, lesson explanations, and a searchable glossary.": [
-    "app/[lang]/about/page.tsx:9"
+    "app/[lang]/about/page.tsx:11"
   ],
   "Tajweed101 home": [
-    "components/site-header.tsx:46",
-    "components/ui.tsx:25"
+    "components/footer-content.tsx:6",
+    "components/site-header.tsx:46"
   ],
   "Tanween": [
     "lib/tajweed/rules.ts:315",
@@ -3865,19 +3860,19 @@
     "lib/tajweed/rules.ts:1374"
   ],
   "Teaching scope: Hafs ʿan ʿĀṣim. No previous knowledge of Tajweed is needed.": [
-    "app/[lang]/page.tsx:14"
+    "app/[lang]/page.tsx:17"
   ],
   "term": [
-    "app/[lang]/glossary/glossary-directory.tsx:20"
+    "app/[lang]/glossary/glossary-directory.tsx:24"
   ],
   "terms": [
-    "app/[lang]/glossary/glossary-directory.tsx:20"
+    "app/[lang]/glossary/glossary-directory.tsx:24"
   ],
   "Test yourself in Practice →": [
-    "app/[lang]/tajweed/[slug]/page.tsx:86"
+    "app/[lang]/tajweed/[slug]/page.tsx:92"
   ],
   "The address may have changed, or the lesson may still be in preparation. Search the guide, or continue from a popular lesson below.": [
-    "app/[lang]/not-found.tsx:20"
+    "app/[lang]/not-found.tsx:21"
   ],
   "The address may have changed. Search the guide or return to the learning path.": [
     "app/global-not-found.tsx:5"
@@ -3888,8 +3883,8 @@
   "The Arabic alphabet is the foundation of reading the Quran. Arabic is conventionally taught with 28 letters; Hamzah (ء) is a distinct glottal stop represented in writing in several forms, while Alif (ا) is used both as a written letter and as the long-vowel Madd letter. Each letter has an articulation point, sound, and set of qualities. Without this foundation, Tajweed becomes a memorized label rather than a sound discipline. The learner begins by recognizing the letters, their shapes, and their basic place of production.": [
     "lib/tajweed/rules.ts:117"
   ],
-  "The Arabic, Urdu, Indonesian, and French translations are working translations. They have not been reviewed by native-language editors or qualified Tajweed teachers.": [
-    "app/[lang]/about/page.tsx:9"
+  "The Arabic, Urdu, Indonesian, French, and Turkish translations are working translations. They have not been reviewed by native-language editors or qualified Tajweed teachers.": [
+    "app/[lang]/about/page.tsx:11"
   ],
   "The articulation point of a letter in the mouth or throat.": [
     "components/quiz-card.tsx:22"
@@ -3919,9 +3914,9 @@
     "lib/tajweed/rules.ts:1289"
   ],
   "The editorial, source, and review standards for Complete Tajweed Guide.": [
-    "app/[lang]/editorial-policy/page.tsx:5",
-    "app/[lang]/editorial-policy/page.tsx:5",
-    "app/[lang]/editorial-policy/page.tsx:5"
+    "app/[lang]/editorial-policy/page.tsx:6",
+    "app/[lang]/editorial-policy/page.tsx:6",
+    "app/[lang]/editorial-policy/page.tsx:6"
   ],
   "The ending changes when stopping; this is a constructed example.": [
     "lib/tajweed/examples.ts:331"
@@ -3933,7 +3928,7 @@
     "lib/tajweed/rules.ts:376"
   ],
   "The examples below are clearly labelled teaching examples and are not from the Quran. Use them to notice the rule, then confirm your recitation with a qualified teacher.": [
-    "app/[lang]/tajweed/[slug]/page.tsx:74"
+    "app/[lang]/tajweed/[slug]/page.tsx:80"
   ],
   "The fabricated letter-name sequence does not demonstrate this rule; its highlight is absent.": [
     "lib/tajweed/examples.ts:386"
@@ -3948,7 +3943,7 @@
     "lib/tajweed/rules.ts:16"
   ],
   "The guide favours a smaller, reviewable library over large amounts of unsupported content.": [
-    "app/[lang]/editorial-policy/page.tsx:9"
+    "app/[lang]/editorial-policy/page.tsx:10"
   ],
   "The guide is now available in five languages.": [
     "app/(legacy)/[[...path]]/page.tsx:15"
@@ -4064,14 +4059,11 @@
   "The Noon or tanween is changed to a hidden Meem-like sound before Baa, with ghunnah for approximately two counts; the learner should verify the exact result with a qualified reciter.": [
     "lib/tajweed/rules.ts:492"
   ],
-  "The other choices skip the careful listening and feedback needed for pronunciation practice.": [
-    "lib/practice/quiz.ts:43"
-  ],
   "The phrase third root letter needs qualified review; the starting-vowel condition must distinguish root letters from positions in the written word.": [
     "lib/tajweed/rules.ts:1499"
   ],
   "The quiz bank is not ready yet.": [
-    "components/practice.tsx:47"
+    "components/practice.tsx:38"
   ],
   "The Quran was revealed in Arabic, and the letters carry precise articulation and sound qualities. Tajweed helps a learner preserve the meanings and pronunciation that the Quranic wording requires. It also supports consistency in reading and helps the learner listen more carefully to the sound of the letters, vowels, and pauses. It is not a theoretical subject only; it is tied directly to recitation practice and sound discipline.": [
     "lib/tajweed/rules.ts:49"
@@ -4092,7 +4084,7 @@
     "lib/tajweed/rules.ts:1545"
   ],
   "The site keeps source records separate from lesson copy so learners can see what has been consulted and what still requires review.": [
-    "app/[lang]/sources/page.tsx:10"
+    "app/[lang]/sources/page.tsx:14"
   ],
   "The sound is assimilated or adjusted to the following letter according to the selected methodology; the actual audio demonstration should govern the learner's practice.": [
     "lib/tajweed/rules.ts:866"
@@ -4119,7 +4111,7 @@
     "lib/tajweed/rules.ts:358"
   ],
   "The stages below contain all 50 study lessons once. Follow them from top to bottom; within each stage, study the lessons in the order shown. These lessons await qualified Tajweed review.": [
-    "app/[lang]/learn/page.tsx:28"
+    "app/[lang]/learn/page.tsx:30"
   ],
   "the student went": [
     "lib/tajweed/examples.ts:329"
@@ -4143,10 +4135,10 @@
     "lib/tajweed/examples.ts:315"
   ],
   "The teaching scope is Hafs ʿan ʿĀṣim. Details should not be assumed to apply to every reading tradition. All 50 lessons currently await qualified Tajweed review. No Quran examples or assessment questions have completed verification.": [
-    "app/[lang]/about/page.tsx:9"
+    "app/[lang]/about/page.tsx:11"
   ],
-  "The teaching scope is Hafs ʿan ʿĀṣim. The four translated editions also require native-language and qualified Tajweed review. They are learning aids, not authoritative Quran translations or scholarly rulings.": [
-    "app/[lang]/editorial-policy/page.tsx:9"
+  "The teaching scope is Hafs ʿan ʿĀṣim. The translated editions also require native-language and qualified Tajweed review. They are learning aids, not authoritative Quran translations or scholarly rulings.": [
+    "app/[lang]/editorial-policy/page.tsx:10"
   ],
   "The treatment is a family category. The exact sound quality is learned through a reliable demonstration and should not be guessed from text alone.": [
     "lib/tajweed/rules.ts:540"
@@ -4176,7 +4168,7 @@
     "lib/tajweed/rules.ts:1375"
   ],
   "These definitions come from study drafts awaiting qualified Tajweed review. Check pronunciation and application with your teacher.": [
-    "app/[lang]/glossary/page.tsx:11"
+    "app/[lang]/glossary/page.tsx:12"
   ],
   "These errors appear wherever habits from another language or rushed reading replace careful articulation.": [
     "lib/tajweed/rules.ts:1647"
@@ -4212,7 +4204,7 @@
     "lib/tajweed/rules.ts:82"
   ],
   "This article connects to a structured lesson sequence.": [
-    "app/[lang]/articles/[slug]/page.tsx:31"
+    "app/[lang]/articles/[slug]/page.tsx:32"
   ],
   "This concept applies throughout recitation and is especially important in Lam, Raa, and the general understanding of letter quality.": [
     "lib/tajweed/rules.ts:220"
@@ -4260,7 +4252,7 @@
     "lib/tajweed/rules.ts:14"
   ],
   "This historical source URL returned 404 during the 27 October 2026 review. It has not been newly verified.": [
-    "app/[lang]/sources/page.tsx:10"
+    "app/[lang]/sources/page.tsx:14"
   ],
   "This is a broad educational definition and should be reviewed for exact terminology and classifications before publication.": [
     "lib/tajweed/rules.ts:988"
@@ -4341,20 +4333,20 @@
     "lib/tajweed/rules.ts:591"
   ],
   "This is the recommended order.": [
-    "app/[lang]/tajweed/directory.tsx:41"
+    "app/[lang]/tajweed/directory.tsx:43"
   ],
   "This is useful educational material but should remain flagged as source-sensitive because the exact grouping and terminology may differ by methodology.": [
     "lib/tajweed/rules.ts:920"
   ],
   "This lesson is within the Hafs ʿan ʿĀṣim teaching scope. Its explanations and teaching examples have not completed qualified Tajweed review. Use them with a teacher, not as a verified recitation reference.": [
-    "app/[lang]/tajweed/[slug]/page.tsx:69"
+    "app/[lang]/tajweed/[slug]/page.tsx:75"
   ],
   "This page is a good learner-facing summary, but the exact letter set and nasal timing should be reviewed against the adopted source before final publishing.": [
     "lib/tajweed/rules.ts:546"
   ],
   "This page is not in the guide.": [
     "app/global-not-found.tsx:5",
-    "app/[lang]/not-found.tsx:19"
+    "app/[lang]/not-found.tsx:20"
   ],
   "This principle applies all the time, from first introduction to advanced recitation.": [
     "lib/tajweed/rules.ts:50"
@@ -4369,7 +4361,7 @@
     "lib/tajweed/rules.ts:784"
   ],
   "This topic is determined by context rather than a fixed letter set.": [
-    "app/[lang]/tajweed/[slug]/page.tsx:72"
+    "app/[lang]/tajweed/[slug]/page.tsx:78"
   ],
   "Three layers of learning": [
     "lib/articles/content.ts:6"
@@ -4387,7 +4379,7 @@
     "lib/tajweed/examples.ts:310"
   ],
   "Topics in this Level": [
-    "app/[lang]/learn/[slug]/page.tsx:59"
+    "app/[lang]/learn/[slug]/page.tsx:68"
   ],
   "Transliteration:": [
     "components/quran-example.tsx:32"
@@ -4396,7 +4388,7 @@
     "lib/tajweed/rules.ts:1295"
   ],
   "Transparency": [
-    "app/[lang]/sources/page.tsx:10"
+    "app/[lang]/sources/page.tsx:14"
   ],
   "Treating a temporary stop-sukoon as the permanent sukoon of the Lazim form.": [
     "lib/tajweed/rules.ts:1312"
@@ -4447,30 +4439,27 @@
     "lib/practice/questions.ts:65"
   ],
   "Try “ikhfa”, “madd”, or “makharij”…": [
-    "app/[lang]/search/page.tsx:22"
+    "app/[lang]/search/page.tsx:25"
   ],
   "Try a broader term, check the spelling, or browse the learning path directly.": [
-    "app/[lang]/search/page.tsx:22"
+    "app/[lang]/search/page.tsx:25"
   ],
   "Try again": [
     "app/[lang]/error.tsx:21",
-    "components/lesson-quiz.tsx:140",
-    "components/practice.tsx:32"
+    "components/lesson-quiz.tsx:66"
   ],
   "Try an English term, Arabic spelling, or rule name.": [
-    "app/[lang]/glossary/glossary-directory.tsx:20"
-  ],
-  "Try choosing “All levels” or a different category to continue practising.": [
-    "components/practice.tsx:31"
+    "app/[lang]/glossary/glossary-directory.tsx:24"
   ],
   "Try searching:": [
-    "app/[lang]/search/page.tsx:22"
+    "app/[lang]/search/page.tsx:25"
   ],
   "Try to identify the trigger first, say the sound slowly, then listen and repeat. Short, accurate practice is more useful than rushing through many examples.": [
-    "app/[lang]/tajweed/[slug]/page.tsx:78"
+    "app/[lang]/tajweed/[slug]/page.tsx:84"
   ],
   "Try, then get feedback": [
-    "app/[lang]/page.tsx:34"
+    "app/[lang]/page.tsx:37",
+    "components/listening-studio.tsx:14"
   ],
   "Turning a clear Noon into an Idgham or Ikhfa case by mistake.": [
     "lib/tajweed/rules.ts:360"
@@ -4488,8 +4477,8 @@
     "lib/taxonomy/index.ts:48"
   ],
   "Understand how Arabic letters sound, recognise recitation rules, and build a steady study routine with a qualified teacher.": [
-    "app/[lang]/layout.tsx:22",
-    "app/[lang]/page.tsx:12"
+    "app/[lang]/layout.tsx:20",
+    "app/[lang]/page.tsx:15"
   ],
   "Understand Ikhfa as a Noon Sakinah and Tanween case, including how to separate recognition from pronunciation practice.": [
     "lib/articles/content.ts:12"
@@ -4501,7 +4490,7 @@
     "lib/articles/content.ts:11"
   ],
   "Understand one rule": [
-    "app/[lang]/page.tsx:34"
+    "app/[lang]/page.tsx:37"
   ],
   "Understand Sifaat in Tajweed": [
     "lib/articles/content.ts:10"
@@ -4531,10 +4520,10 @@
     "lib/articles/content.ts:14"
   ],
   "Understand the rule": [
-    "app/[lang]/tajweed/[slug]/page.tsx:70"
+    "app/[lang]/tajweed/[slug]/page.tsx:76"
   ],
   "Understand the words behind the rules.": [
-    "app/[lang]/glossary/page.tsx:11"
+    "app/[lang]/glossary/page.tsx:12"
   ],
   "Understand why articulation points are taught early and how to study them without relying on English approximations.": [
     "lib/articles/content.ts:9"
@@ -4546,7 +4535,7 @@
     "lib/tajweed/rules.ts:392"
   ],
   "Updated": [
-    "app/[lang]/articles/[slug]/page.tsx:31"
+    "app/[lang]/articles/[slug]/page.tsx:32"
   ],
   "Use a repeatable lesson rhythm": [
     "lib/articles/content.ts:8"
@@ -4561,7 +4550,7 @@
     "lib/articles/content.ts:18"
   ],
   "Use Curriculum order when you want the recommended sequence from beginner to advanced. Use Browse all lessons when you already know the rule you need or want to compare topics.": [
-    "app/[lang]/tajweed/page.tsx:12"
+    "app/[lang]/tajweed/page.tsx:13"
   ],
   "Use dark mode": [
     "components/theme-toggle.tsx:34"
@@ -4577,9 +4566,6 @@
   ],
   "Use the symbol as a guide, then confirm the meaning and the correct restart point.": [
     "lib/tajweed/rules.ts:1416"
-  ],
-  "Use transliteration as a complete substitute for listening and teacher feedback.": [
-    "lib/practice/quiz.ts:40"
   ],
   "Used as a comparative terminology reference for the rule families and their standard teaching labels.": [
     "lib/tajweed/sources.ts:6"
@@ -4598,12 +4584,12 @@
     "lib/taxonomy/sources.ts:16"
   ],
   "Useful answers for the questions between lessons.": [
-    "app/[lang]/articles/page.tsx:14"
+    "app/[lang]/articles/page.tsx:15"
   ],
   "Useful Tajweed articles answering real learner questions about rules, pronunciation, Quran reading, and practice.": [
-    "app/[lang]/articles/page.tsx:7",
-    "app/[lang]/articles/page.tsx:7",
-    "app/[lang]/articles/page.tsx:7"
+    "app/[lang]/articles/page.tsx:8",
+    "app/[lang]/articles/page.tsx:8",
+    "app/[lang]/articles/page.tsx:8"
   ],
   "Using a classification without verifying the source.": [
     "lib/tajweed/rules.ts:767"
@@ -4621,14 +4607,17 @@
     "runtime educational labels"
   ],
   "Verified": [
-    "app/[lang]/tajweed/[slug]/page.tsx:67",
-    "app/[lang]/tajweed/[slug]/page.tsx:98"
+    "app/[lang]/tajweed/[slug]/page.tsx:73",
+    "app/[lang]/tajweed/[slug]/page.tsx:104"
+  ],
+  "Verified examples: {count}": [
+    "app/[lang]/tajweed/directory.tsx:54"
   ],
   "verse": [
     "components/quran-example.tsx:32"
   ],
   "View source": [
-    "app/[lang]/page.tsx:19",
+    "app/[lang]/page.tsx:22",
     "components/quran-example.tsx:32"
   ],
   "Wajib means obligatory and muttasil means connected. When a madd letter is followed by a hamzah within the same word, the madd letter must be lengthened four or five counts; the lengthening cannot be shortened. This is the strongest of the regularly met madd forms because both the madd letter and the hamzah are present and adjacent in one word. The learner should spot the madd letter first, then the hamzah after it.": [
@@ -4640,7 +4629,7 @@
     "lib/taxonomy/index.ts:45"
   ],
   "Waqf and Ibtida": [
-    "app/[lang]/tajweed/[slug]/page.tsx:74",
+    "app/[lang]/tajweed/[slug]/page.tsx:80",
     "lib/tajweed/curriculum.ts:108",
     "lib/tajweed/rules.ts:995",
     "lib/tajweed/rules.ts:1030",
@@ -4658,7 +4647,7 @@
     "lib/taxonomy/index.ts:45"
   ],
   "What a page can and cannot do": [
-    "app/[lang]/editorial-policy/page.tsx:9"
+    "app/[lang]/editorial-policy/page.tsx:10"
   ],
   "What Are Makharij?": [
     "lib/articles/content.ts:9"
@@ -4697,7 +4686,7 @@
     "lib/articles/content.ts:12"
   ],
   "What is it?": [
-    "components/lesson-contents.tsx:11"
+    "components/lesson-contents.tsx:12"
   ],
   "What Is Madd?": [
     "lib/articles/content.ts:15"
@@ -4775,10 +4764,11 @@
     "lib/tajweed/rules.ts:1387"
   ],
   "What still needs review?": [
-    "app/[lang]/tajweed/[slug]/page.tsx:88"
+    "app/[lang]/tajweed/[slug]/page.tsx:76",
+    "app/[lang]/tajweed/[slug]/page.tsx:94"
   ],
   "What this site does": [
-    "app/[lang]/about/page.tsx:9"
+    "app/[lang]/about/page.tsx:11"
   ],
   "What two conditions make a madd wajib muttasil?": [
     "lib/tajweed/rules.ts:1251"
@@ -4802,10 +4792,10 @@
     "lib/tajweed/rules.ts:1173"
   ],
   "When does it occur?": [
-    "app/[lang]/tajweed/[slug]/page.tsx:71"
+    "app/[lang]/tajweed/[slug]/page.tsx:77"
   ],
   "When it occurs": [
-    "components/lesson-contents.tsx:11"
+    "components/lesson-contents.tsx:12"
   ],
   "When Stopping Affects Pronunciation": [
     "lib/tajweed/rules.ts:1436"
@@ -4847,7 +4837,7 @@
     "lib/tajweed/rules.ts:1221"
   ],
   "Which definition does this lesson give for": [
-    "lib/practice/quiz.ts:36"
+    "lib/practice/quiz.ts:39"
   ],
   "Which definition does this lesson give for {lesson}?": [
     "runtime educational labels"
@@ -4862,7 +4852,7 @@
     "lib/tajweed/rules.ts:1592"
   ],
   "Which letters are involved?": [
-    "app/[lang]/tajweed/[slug]/page.tsx:72"
+    "app/[lang]/tajweed/[slug]/page.tsx:78"
   ],
   "Which longer madd looks similar but always takes six counts?": [
     "lib/tajweed/rules.ts:1218"
@@ -4870,11 +4860,14 @@
   "Which madd rule depends on whether you stop or continue?": [
     "lib/tajweed/rules.ts:1456"
   ],
-  "Which practice guidance belongs to this lesson on": [
-    "lib/practice/quiz.ts:38"
+  "Which occurrence condition does this lesson state for": [
+    "lib/practice/quiz.ts:43"
   ],
   "Which practice guidance belongs to this lesson on {lesson}?": [
     "runtime educational labels"
+  ],
+  "Which practice guidance does this lesson give for": [
+    "lib/practice/quiz.ts:41"
   ],
   "Which rule matches this condition:": [
     "lib/practice/questions.ts:62"
@@ -5045,11 +5038,11 @@
     "lib/articles/content.ts:15"
   ],
   "Written explanations can support recognition and understanding. Correct pronunciation, timing, and articulation are best learned through listening, repetition, and qualified feedback.": [
-    "app/[lang]/editorial-policy/page.tsx:9",
-    "app/[lang]/learn/[slug]/page.tsx:54"
+    "app/[lang]/editorial-policy/page.tsx:10",
+    "app/[lang]/learn/[slug]/page.tsx:63"
   ],
   "Written explanations support recognition. Use an approved recitation and teacher feedback for sound, timing, and articulation.": [
-    "app/[lang]/tajweed/[slug]/page.tsx:73"
+    "app/[lang]/tajweed/[slug]/page.tsx:79"
   ],
   "Yes, it is its own family, though the same general teaching logic of condition, trigger, and listening applies.": [
     "lib/tajweed/rules.ts:574"
@@ -5070,7 +5063,7 @@
     "lib/tajweed/rules.ts:168"
   ],
   "You completed the quiz for {lesson}": [
-    "components/lesson-quiz.tsx:109"
+    "components/lesson-quiz.tsx:66"
   ],
   "You do not need to know every Tajweed term before beginning. You do need enough familiarity with Arabic script to work through basic reading exercises. If that foundation is not secure, begin there rather than rushing into advanced labels.": [
     "lib/articles/content.ts:8"

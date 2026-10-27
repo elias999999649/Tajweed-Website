@@ -1,3 +1,4 @@
+import { isPublishableRule } from "@/lib/editorial/reviews";
 import type { LessonQuiz, LessonQuizQuestion } from "./types";
 import type { TajweedRuleRecord } from "@/lib/tajweed/types";
 import { tajweedRules } from "@/lib/tajweed/rules";
@@ -19,28 +20,28 @@ function makeQuestion(rule: TajweedRuleRecord, suffix: string, purpose: LessonQu
     question, options: shuffled.options, correctAnswer: shuffled.correctAnswer, explanation,
     difficulty: difficultyForRule(rule.difficultyScore),
     level: ({ Foundation: 1, Essential: 2, Intermediate: 3, Advanced: 4 } as const)[rule.level],
-    verificationStatus: rule.verificationStatus === "verified" && rule.reviewStatus === "VERIFIED" ? "verified" : "needs-review",
+    verificationStatus: isPublishableRule(rule) ? "verified" : "needs-review",
   };
 }
 
 function quizForRule(rule: TajweedRuleRecord): LessonQuiz {
+  const lessonLabel = rule.name.replace(/[?؟]+$/u, "").trim();
   // Ask for the lesson definition, not whether an overlapping rule is false.
   const alternatives = tajweedRules
     .filter((other) => other.category !== rule.category && other.shortDefinition !== rule.shortDefinition)
     .map((other) => other.shortDefinition);
   const offset = tajweedRules.indexOf(rule) % alternatives.length;
   const distractors = [...alternatives.slice(offset), ...alternatives.slice(0, offset)].slice(0, 3);
+  const alternativesFor = (field: "pronunciation" | "whenItOccurs") => [...new Set(tajweedRules.filter(other => other.id !== rule.id && other[field] !== rule[field]).sort((a, b) => Number(a.category !== rule.category) - Number(b.category !== rule.category)).map(other => other[field]))].slice(0, 3);
   return {
     lessonId: rule.id, lessonSlug: rule.slug, lessonName: rule.name,
     questions: [
-      makeQuestion(rule, "q1-understanding", "understanding", `Which definition does this lesson give for ${rule.name}?`,
+      makeQuestion(rule, "q1-understanding", "understanding", `Which definition does this lesson give for ${lessonLabel}?`,
         [rule.shortDefinition, ...distractors], `${rule.shortDefinition} Compare the other choices with the lesson explanation; they describe different study topics.`),
-      makeQuestion(rule, "q2-application", "application", `Which practice guidance belongs to this lesson on ${rule.name}?`,
-        [rule.pronunciation,
-          "Use transliteration as a complete substitute for listening and teacher feedback.",
-          "Read faster whenever a sound feels uncertain, without checking it.",
-          "Memorise the rule name and skip listening, repetition, and correction."],
-        `${rule.pronunciation} The other choices skip the careful listening and feedback needed for pronunciation practice.`),
+      makeQuestion(rule, "q2-application", "application", `Which practice guidance does this lesson give for ${lessonLabel}?`,
+        [rule.pronunciation, ...alternativesFor("pronunciation")], rule.pronunciation),
+      makeQuestion(rule, "q3-recognition", "recognition", `Which occurrence condition does this lesson state for ${lessonLabel}?`,
+        [rule.whenItOccurs, ...alternativesFor("whenItOccurs")], rule.whenItOccurs),
     ],
   };
 }

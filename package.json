@@ -12,7 +12,9 @@
     "audit:export": "node scripts/export-audit.mjs",
     "font": "python scripts/build-font.py",
     "design:test": "node scripts/design-test.mjs",
-    "design:shots": "node scripts/screenshots.mjs"
+    "design:shots": "node scripts/screenshots.mjs",
+    "prebuild": "node scripts/register.mjs scripts/prepare-redirects.mjs",
+    "test": "node scripts/register.mjs scripts/study-test.mjs"
   },
   "dependencies": {
     "next": "16.3.3",

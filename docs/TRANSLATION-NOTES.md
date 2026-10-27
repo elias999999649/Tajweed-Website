@@ -1,7 +1,7 @@
 # Translation notes — 27 October 2026
 
-The interface uses exactly five locales: English (`en`), Arabic (`ar`), Urdu
-(`ur`), Indonesian (`id`), and French (`fr`). English message strings are the
+The interface uses six locales: English (`en`), Arabic (`ar`), Urdu
+(`ur`), Indonesian (`id`), French (`fr`), and Turkish (`tr`). English message strings are the
 dictionary keys. Dynamic labels use named placeholders so sentence order can
 change by language without changing answer indices, route IDs, or Quran text.
 
@@ -53,3 +53,7 @@ fields, explicit interface messages, dynamic quiz templates, and named
 placeholder integrity. Missing messages fail validation instead of silently
 falling back to English. This check establishes coverage and structural
 consistency, not native-language or scholarly approval.
+
+## Turkish and study tools
+
+Turkish is included throughout the educational corpus, interface, quizzes and metadata. It uses familiar Turkish forms such as tecvid, ihfâ, idgam, iklab, kalkale, med, mahreç, sıfat, gunne, vakıf and ibtidâ. Source Arabic, references, transliteration and bibliography titles remain distinguishable. These choices still require independent native and Tajweed review. New study tools use typed stable message IDs in `lib/i18n/study.ts`; legacy educational dictionaries retain English source keys.

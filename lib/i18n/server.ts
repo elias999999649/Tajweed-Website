@@ -8,6 +8,7 @@ const dictionaries = {
   ur: async (): Promise<Dictionary> => (await import("./ur.json")).default,
   id: async (): Promise<Dictionary> => (await import("./id.json")).default,
   fr: async (): Promise<Dictionary> => (await import("./fr.json")).default,
+  tr: async (): Promise<Dictionary> => (await import("./tr.json")).default,
 };
 export const getDictionary = (locale: Locale) => dictionaries[locale]();
 export async function getI18n() {

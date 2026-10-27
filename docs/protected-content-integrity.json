@@ -1,0 +1,32 @@
+{
+  "scope": "Unchanged normalized source files; this is not scholarly verification",
+  "files": [
+    {
+      "path": "lib/tajweed/rules.ts",
+      "unchanged": true,
+      "sha256": "bdb6dbf720ea4ccb4b12fffed5ecf6ff3d851073c5f9667f3a24a95e500e2db7"
+    },
+    {
+      "path": "lib/tajweed/examples.ts",
+      "unchanged": true,
+      "sha256": "499328a6ed9bf39c9f4db1bb92c7d6073afcda3d2da6d62d76f0197521a6beaf"
+    },
+    {
+      "path": "lib/tajweed/curriculum.ts",
+      "unchanged": true,
+      "sha256": "3559fcba00cf7e3db3d483bf6d031269fbfb69f60335e7ae35c2b02af9bdc6da"
+    },
+    {
+      "path": "lib/articles/content.ts",
+      "unchanged": true,
+      "sha256": "0274b00853ee0a0baf68c99426fdd4882ffdc992ad792caf7a0f0e76fb825e2f"
+    },
+    {
+      "path": "lib/quran-examples/index.ts",
+      "unchanged": true,
+      "sha256": "a42a8bade496b8b782e92bf78e44650288842433007391b63bd232b655957e91"
+    }
+  ],
+  "homepageVerseUnchanged": true,
+  "homepageVerseSha256": "a64a3b9a948f3bbc5d7c8b0b390fb998f0a35f70027e51586edb841ed689207c"
+}

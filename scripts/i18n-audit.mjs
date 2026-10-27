@@ -24,8 +24,8 @@ const catalog = JSON.parse(await readFile(new URL("../docs/translation-source-ca
 // representative browser journey (empty states and errors included).
 for (const [key, locations] of Object.entries(catalog)) if (locations.some((location) => location.startsWith("app/[lang]/") || location.startsWith("components/") || location === "runtime educational labels")) add(key);
 const results = {};
-const selected = process.argv.slice(2).filter((item) => ["ar", "ur", "id", "fr"].includes(item));
-for (const locale of (selected.length ? selected : ["ar", "ur", "id", "fr"])) {
+const selected = process.argv.slice(2).filter((item) => ["ar", "ur", "id", "fr", "tr"].includes(item));
+for (const locale of (selected.length ? selected : ["ar", "ur", "id", "fr", "tr"])) {
   const dictionarySource = await readFile(new URL(`../lib/i18n/${locale}.json`, import.meta.url), "utf8");
   const dictionary = JSON.parse(dictionarySource);
   const { t } = createI18n(locale, dictionary);

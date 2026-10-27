@@ -1,0 +1,53 @@
+{
+  "checkedAt": "2026-10-27T16:44:54.167086+00:00",
+  "scope": "Availability and provenance only; not scholarly review",
+  "sources": [
+    {
+      "url": "https://islamicstudies.info/quran/tajweed/Tajweed_Rules.pdf",
+      "status": 406,
+      "finalUrl": "https://islamicstudies.info/quran/tajweed/Tajweed_Rules.pdf",
+      "bytes": 226,
+      "sha256": "80a265bed528211aa708dcd58f7a95db36eeb7f873c6fe4ddab0b3a1dc0973a4"
+    },
+    {
+      "url": "https://recitewithlove.com/wp-content/uploads/2015/03/recitewithlovetajweedclassinfo-1.pdf",
+      "status": 200,
+      "finalUrl": "https://recitewithlove.com/wp-content/uploads/2015/03/recitewithlovetajweedclassinfo-1.pdf",
+      "bytes": 363955,
+      "sha256": "c16919a5e7c9b2f26fe2829506c17b4e13bf56e87057968fd9ef1909ab77e25d"
+    },
+    {
+      "url": "https://mcec.org.uk/documents/SatSchoolQuran.pdf",
+      "status": 404,
+      "finalUrl": "https://mcec.org.uk/documents/SatSchoolQuran.pdf",
+      "bytes": 188756,
+      "sha256": "eb4102c71c373e3c786c7228aba6965df9ca538ef5c61d681593c219406ff9a7"
+    },
+    {
+      "url": "https://api-docs.quran.com/docs/content_apis_versioned/4.0.0/quran-verses-uthmani-tajweed/",
+      "status": 200,
+      "finalUrl": "https://api-docs.quran.com/docs/content_apis_versioned/4.0.0/quran-verses-uthmani-tajweed/",
+      "bytes": 148221,
+      "sha256": "0848bfca1930e356d6f6c2420c3451f62ed1d525d3026bae78899d9bb0e8de31"
+    },
+    {
+      "url": "https://qurancomplex.gov.sa/quran-audios/",
+      "status": 200,
+      "finalUrl": "https://qurancomplex.gov.sa/quran-audios/",
+      "bytes": 547210,
+      "sha256": "a1a7fa54c58226d392ac2b20dabdf39522e018d7abae81fade2d1255740c548d"
+    },
+    {
+      "url": "https://qurancomplex.gov.sa/quran-audio-hafs-huthify/",
+      "status": 200,
+      "finalUrl": "https://qurancomplex.gov.sa/quran-audio-hafs-huthify/",
+      "bytes": 485341,
+      "sha256": "2479fc9c956b0c4e54f6947c1c48de489b387dd080f477dfa5ebe29fe3adc9b6"
+    }
+  ],
+  "audio": {
+    "path": "public\\audio\\al-fatihah-ali-al-hudhaify.mp3",
+    "bytes": 505984,
+    "sha256": "fbb5a63f06695dbcbe4d3792bbd2ecda572a61ec0391f90ac477366992d48abe"
+  }
+}

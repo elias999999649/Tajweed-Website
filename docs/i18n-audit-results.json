@@ -1,6 +1,6 @@
 {
   "ar": {
-    "entries": 1607,
+    "entries": 1621,
     "missing": [],
     "invalidPlaceholders": [],
     "duplicateKeys": [],
@@ -8,7 +8,7 @@
     "duplicateQuizOptions": []
   },
   "ur": {
-    "entries": 1610,
+    "entries": 1624,
     "missing": [],
     "invalidPlaceholders": [],
     "duplicateKeys": [],
@@ -16,7 +16,7 @@
     "duplicateQuizOptions": []
   },
   "id": {
-    "entries": 1422,
+    "entries": 1436,
     "missing": [],
     "invalidPlaceholders": [],
     "duplicateKeys": [],
@@ -24,7 +24,15 @@
     "duplicateQuizOptions": []
   },
   "fr": {
-    "entries": 1640,
+    "entries": 1654,
+    "missing": [],
+    "invalidPlaceholders": [],
+    "duplicateKeys": [],
+    "encodingIssues": [],
+    "duplicateQuizOptions": []
+  },
+  "tr": {
+    "entries": 1374,
     "missing": [],
     "invalidPlaceholders": [],
     "duplicateKeys": [],

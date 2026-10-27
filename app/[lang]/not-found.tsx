@@ -2,7 +2,8 @@ import { localizeMetadata } from "@/lib/i18n/metadata";
 import { getI18n } from "@/lib/i18n/server";
 import Link from "next/link";
 import { ArrowRight, Search } from "lucide-react";
-import { Footer, SiteHeader } from "@/components/ui";
+import { Footer } from "@/components/footer";
+import { SiteHeader } from "@/components/ui";
 import { tajweedRules } from "@/lib/tajweed/rules";
 
 export async function generateMetadata() { return localizeMetadata({ title: "Page Not Found", robots: { index: false, follow: true } }, await getI18n(), "/"); }

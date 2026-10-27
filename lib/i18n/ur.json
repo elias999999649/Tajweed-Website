@@ -1608,5 +1608,19 @@
   "Context-dependent": "سیاق پر منحصر",
   "draft": "مسودہ",
   "needs review": "جائزہ درکار ہے",
-  "verified": "تصدیق شدہ"
+  "verified": "تصدیق شدہ",
+  "Verified examples: {count}": "تصدیق شدہ مثالیں: {count}",
+  "{count} min read": "{count} منٹ کا مطالعہ",
+  "Which condition belongs to this lesson on {lesson}?": "{lesson} کے اس سبق سے کون سی شرط متعلق ہے؟",
+  "{guidance} Compare the other choices with this lesson; they describe guidance for other topics.": "{guidance} دوسرے اختیارات کا اس سبق سے موازنہ کریں؛ وہ دوسرے موضوعات کی رہنمائی ہیں۔",
+  "The Arabic, Urdu, Indonesian, French, and Turkish translations are working translations. They have not been reviewed by native-language editors or qualified Tajweed teachers.": "عربی، اردو، انڈونیشیائی، فرانسیسی اور ترکی تراجم ابتدائی کام ہیں۔ مقامی زبان کے مدیروں یا اہل تجوید اساتذہ نے ان کا جائزہ نہیں لیا۔",
+  "The teaching scope is Hafs ʿan ʿĀṣim. The translated editions also require native-language and qualified Tajweed review. They are learning aids, not authoritative Quran translations or scholarly rulings.": "تدریس حفص عن عاصم تک محدود ہے۔ تراجم کو مقامی زبان اور اہل تجوید کی جانچ درکار ہے۔ یہ تعلیمی مدد ہیں، مستند قرآنی تراجم یا علمی فتاویٰ نہیں۔",
+  "Ctrl / ⌘ K": "Ctrl / ⌘ K",
+  "Reach the Goal via Tajweed Rules · pp.": "Reach the Goal via Tajweed Rules · pp.",
+  "Ali al-Hudhaify · Hafs ʿan ʿĀṣim": "Ali al-Hudhaify · Hafs ʿan ʿĀṣim",
+  "Google Sans Flex · OFL": "Google Sans Flex · OFL",
+  "Amiri · OFL": "Amiri · OFL",
+  "Which practice guidance does this lesson give for {lesson}?": "یہ سبق {lesson} کے لیے مشق کی کون سی رہنمائی دیتا ہے؟",
+  "Which occurrence condition does this lesson state for {lesson}?": "یہ سبق {lesson} کے واقع ہونے کی کون سی شرط بیان کرتا ہے؟",
+  "What is Tajweed": "تجوید کیا ہے"
 }

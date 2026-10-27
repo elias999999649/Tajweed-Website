@@ -65,7 +65,10 @@ async function walk(directory) {
         const field = fieldFor(node);
         const excluded = excludedFields.has(field) && !(field === "name" && permittedNameFiles.test(filename));
         const directMessage = isExplicitMessage(node, file);
-        const technical = !directMessage && /^(?:https?:|\/|@|[.#][\w-]|[a-z]+(?:-[a-z0-9]+)+$|[a-z]+\.[a-z]+$|[\w-]+\/[\w-]+|\(function\(|\((?:min|max)-width:|M\d|\d+rem |button, |system-ui, |use client$)/.test(text);
+        let errorParent = node.parent;
+        while (ts.isConditionalExpression(errorParent) || ts.isParenthesizedExpression(errorParent)) errorParent = errorParent.parent;
+        const internalError = ts.isNewExpression(errorParent) && /^(?:Error|TypeError|RangeError)$/.test(errorParent.expression.getText(file));
+        const technical = internalError || !directMessage && /^(?:https?:|\/|@|[.#][\w-]|[a-z]+(?:-[a-z0-9]+)+$|[a-z]+\.[a-z]+$|[\w-]+\/[\w-]+|\(function\(|\((?:min|max)-width:|M\d|\d+rem |button, |system-ui, |use client$)/.test(text);
         const useful = directMessage || /[A-Za-z]/.test(text) && (/\s/.test(text) || /^[A-Z][a-z]+[?!:]?$/.test(text));
         if (!excluded && !technical && useful && !text.includes("=>") && !text.includes("@context")) {
           const location = `${path.relative(root, filename).replaceAll("\\", "/")}:${file.getLineAndCharacterOfPosition(node.getStart()).line + 1}`;
@@ -82,7 +85,7 @@ async function walk(directory) {
 await walk(path.join(root, "app"));
 await walk(path.join(root, "components"));
 await walk(path.join(root, "lib"));
-for (const message of ["Which definition does this lesson give for {lesson}?", "Which practice guidance belongs to this lesson on {lesson}?", "{definition} Compare the other choices with the lesson explanation; they describe different study topics.", "{pronunciation} The other choices skip the careful listening and feedback needed for pronunciation practice.", "rule", "article", "glossary", "term", "terms", "result", "results", "understanding", "recognition", "application", "introductory", "developing", "consolidating", "advanced", "multiple choice", "ikhfa", "noon sakinah", "madd", "qalqalah", "heavy letters", "makharij", "needs review", "verified", "draft"]) if (!catalog.has(message)) catalog.set(message, ["runtime educational labels"]);
+for (const message of ["Which definition does this lesson give for {lesson}?", "Which practice guidance belongs to this lesson on {lesson}?", "{definition} Compare the other choices with the lesson explanation; they describe different study topics.", "{pronunciation} The other choices skip the careful listening and feedback needed for pronunciation practice.", "rule", "article", "glossary", "term", "terms", "result", "results", "understanding", "recognition", "application", "introductory", "developing", "consolidating", "advanced", "multiple choice", "ikhfa", "noon sakinah", "madd", "qalqalah", "heavy letters", "makharij", "needs review", "verified", "draft", "FAQ"]) if (!catalog.has(message)) catalog.set(message, ["runtime educational labels"]);
 const sorted = Object.fromEntries([...catalog].sort(([a], [b]) => a.localeCompare(b)));
 const destination = path.resolve(root, process.argv[2] || "docs/translation-source-catalog.json");
 await mkdir(path.dirname(destination), { recursive: true });

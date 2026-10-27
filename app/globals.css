@@ -1214,12 +1214,76 @@ html[lang="ar"] .main-nav a, html[lang="ur"] .main-nav a, html[lang="ar"] .butto
 .home-page .home-search-section { margin-block-start: 0; }
 .glossary-directory { margin-block-start: 20px; }
 .practice-filters .clear-filter { justify-self: start; width: fit-content; min-height: 44px; padding: 8px 0; border: 0; color: var(--green); background: transparent; text-decoration: underline; text-underline-offset: 4px; }
+.nav-actions select { max-width: 160px; }
 .main-nav .compact-nav-search { display: none; }
-@media (max-width: 350px) { .nav-wrap { gap: 4px; } .nav-actions .search-button { display: none; } .nav-actions select { max-width: 144px; padding-inline: 4px; } .main-nav .compact-nav-search { display: flex; } }
+@media (max-width: 400px) { .nav-wrap { gap: 4px; } .nav-actions .search-button { display: none; } .nav-actions select { max-width: 144px; padding-inline: 4px; } .main-nav .compact-nav-search { display: flex; } }
 /* Grid tracks must shrink to the viewport in both writing directions. */
 html { scroll-padding-block-start: 0; }
 .glossary-directory, .glossary-list, .glossary-card, .glossary-detail, .search-page { grid-template-columns: minmax(0, 1fr); }
 .glossary-directory > *, .glossary-list > *, .glossary-card > *, .glossary-detail > *, .search-page > section { min-width: 0; }
+
+/* A quiet reading desk: reveal tools and secondary explanations on demand. */
+.library-hero, .search-hero, .practice-hero, .articles-hero { padding-block: clamp(32px, 4vw, 56px); }
+.article-layout { display: block; max-width: 760px; padding-block: 40px; }
+.article-hero-inner { margin-inline: auto; }
+.article-body { max-width: 70ch; margin-inline: auto; }
+.study-tools { border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 16px 20px; margin-block: 20px; background: var(--surface); }
+.study-tools > summary, .glossary-detail > summary { cursor: pointer; min-height: 44px; align-content: center; font-weight: 650; }
+.study-tools[open] > summary { border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+.study-tools-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; min-width: 0; }
+.study-tools-body > *, .learning-dashboard > *, .import-backup { min-width: 0; max-width: 100%; }
+.study-tools-body p { margin: 0; }
+.study-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 20px; }
+.study-actions label { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 10px; min-height: 44px; }
+.study-actions input[type="checkbox"], .quiz-option input { width: 20px; height: 20px; flex-shrink: 0; accent-color: var(--green); }
+.study-tools textarea { display: block; width: 100%; min-height: 120px; resize: vertical; margin-block: 10px 12px; padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font: inherit; }
+.study-actions select, .practice-filter-row label select { display: block; max-width: 100%; min-height: 44px; padding: 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); font: inherit; }
+.lesson-focus { border-inline-start: 3px solid var(--gold); padding-inline-start: 20px; }
+.lesson-focus h2 { font-size: 1.25rem; }
+.lesson-focus .related-links { margin-top: 16px; }
+.learning-dashboard, .listening-studio { max-width: 70ch; }
+.learning-dashboard > section { padding-block: 24px; border-bottom: 1px solid var(--line); }
+.resume-card { padding: 24px; background: var(--green-soft); border-radius: var(--radius-sm); }
+.study-link-list { list-style: none; padding: 0; }
+.study-link-list li { padding-block: 10px; border-bottom: 1px solid var(--line); }
+.study-link-list small { display: block; color: var(--muted); }
+.study-link-list a { display: inline-flex; align-items: center; min-height: 44px; }
+.import-backup { display: grid; gap: 8px; max-width: 100%; }
+.import-backup input { width: 100%; min-width: 0; max-width: 100%; }
+.listening-studio audio { display: block; width: 100%; margin-block: 24px; }
+.listening-studio section { padding-block: 24px; }
+.listening-steps { padding-inline-start: 24px; }
+.listening-steps li { padding-block: 18px; padding-inline-start: 10px; }
+.quiz-question-area { border: 0; padding: 0; margin: 24px 0; min-width: 0; }
+.quiz-question-area legend { padding: 0 0 16px; }
+.quiz-option { cursor: pointer; }
+.quiz-option.selected { border-color: var(--green); background: var(--green-soft); }
+.quiz-option:focus-within { outline: 3px solid var(--green); outline-offset: 3px; }
+.quiz-review-list { padding-inline-start: 0; list-style: none; }
+.quiz-review-list li { display: flex; flex-wrap: wrap; gap: 8px; padding-block: 12px; border-bottom: 1px solid var(--line); }
+.quiz-review-list a { flex: 1 1 220px; }
+.quiz-review-list li > span:last-child { font-size: .875rem; color: var(--muted); }
+.quiz-confidence { margin-block: 16px; }
+.quiz-confidence summary { min-height: 44px; align-content: center; cursor: pointer; }
+.quiz-confidence label { display: grid; gap: 8px; }
+.quiz-confidence select, .search-kind-filter select { display: block; min-height: 44px; width: 100%; padding: 8px; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; font: inherit; }
+.search-kind-filter { display: grid; gap: 8px; margin-top: 20px; }
+.stage-practice { padding: 0 20px 20px; margin: 0; }
+html[data-reading="large"] .rule-content > section { font-size: 1.1875rem; line-height: 1.9; }
+html[data-reading="large"] .rule-content p { font-size: inherit; }
+@media (forced-colors: active) { .button, .quiz-option, .badge, .recitation-panel, .study-tools { border: 1px solid ButtonText; } a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible { outline: 3px solid Highlight; } }
+@media print {
+  html, html.dark { --bg: #fff; --surface: #fff; --surface-2: #fff; --ink: #000; --ink-strong: #000; --muted: #333; --gold: #000; --gold-soft: #fff; --green: #000; --green-soft: #fff; --line: #bbb; }
+  .site-header, .site-footer, .rule-sidebar, .study-tools, .lesson-quiz, .rule-pager, .poster-reference, .search-panel-wrap { display: none !important; }
+  html, html.dark, body { color: #000 !important; background: #fff !important; }
+  .container { max-width: none; width: 100%; padding: 0; }
+  .rule-layout { display: block; padding: 0; }
+  .rule-hero { padding: 12px 0; background: none; }
+  .rule-content section { break-inside: avoid; margin-block: 20px; }
+  a { color: #000; }
+  .rule-content details > * { display: block !important; }
+  .lesson-sources a[href^="http"]::after, .article-sources a[href^="http"]::after { content: " (" attr(href) ")"; font-size: .8em; overflow-wrap: anywhere; }
+}
 .glossary-search, .large-search { width: 100%; min-width: 0; }
 .glossary-search input, .large-search input { width: 0; }
 

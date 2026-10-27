@@ -1,6 +1,7 @@
 import { localizeMetadata } from "@/lib/i18n/metadata";
 import { getI18n } from "@/lib/i18n/server";
-import { Footer, SiteHeader } from "@/components/ui";
+import { Footer } from "@/components/footer";
+import { SiteHeader } from "@/components/ui";
 import { TajweedDirectory } from "./directory";
 import { breadcrumbJsonLd } from "@/lib/seo";
 

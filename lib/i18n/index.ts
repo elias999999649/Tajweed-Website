@@ -1,14 +1,14 @@
-export const locales = ["en", "ar", "ur", "id", "fr"] as const;
+export const locales = ["en", "ar", "ur", "id", "fr", "tr"] as const;
 export type Locale = (typeof locales)[number];
 export type Dictionary = Record<string, string>;
-export const languageNames: Record<Locale, string> = { en: "English", ar: "العربية", ur: "اردو", id: "Bahasa Indonesia", fr: "Français" };
+export const languageNames: Record<Locale, string> = { en: "English", ar: "العربية", ur: "اردو", id: "Bahasa Indonesia", fr: "Français", tr: "Türkçe" };
 export const isLocale = (value: string): value is Locale => locales.includes(value as Locale);
 export const direction = (locale: Locale) => locale === "ar" || locale === "ur" ? "rtl" : "ltr";
 export const normalizeMessage = (value: string) => value.replace(/\s+/g, " ").trim();
 
 export function localizedHref(locale: Locale, path: string) {
   if (!path.startsWith("/") || path.startsWith("//") || /^\/(?:_next|api|fonts)(?:\/|$)/.test(path) || /\.(?:xml|txt|png|svg|ico|woff2?)(?:[?#]|$)/.test(path)) return path;
-  const stripped = path.replace(/^\/(en|ar|ur|id|fr)(?=\/|[?#]|$)/, "") || "/";
+  const stripped = path.replace(/^\/(en|ar|ur|id|fr|tr)(?=\/|[?#]|$)/, "") || "/";
   const separator = stripped.search(/[?#]/);
   const pathname = separator < 0 ? stripped : stripped.slice(0, separator);
   const suffix = separator < 0 ? "" : stripped.slice(separator);
@@ -27,13 +27,15 @@ export function createI18n(locale: Locale, dictionary: Dictionary = {}) {
     // fixed messages. Translate each part without changing the answer index.
     if (translated === undefined) {
       const definition = key.match(/^Which definition does this lesson give for (.+)\?$/);
-      const practice = key.match(/^Which practice guidance belongs to this lesson on (.+)\?$/);
+      const practice = key.match(/^Which practice guidance does this lesson give for (.+)\?$/);
+      const condition = key.match(/^Which occurrence condition does this lesson state for (.+)\?$/);
       const definitionFeedback = key.match(/^(.+) Compare the other choices with the lesson explanation; they describe different study topics\.$/);
       const practiceFeedback = key.match(/^(.+) The other choices skip the careful listening and feedback needed for pronunciation practice\.$/);
-      if (definition) return t("Which definition does this lesson give for {lesson}?", { lesson: t(definition[1]) });
-      if (practice) return t("Which practice guidance belongs to this lesson on {lesson}?", { lesson: t(practice[1]) });
-      if (definitionFeedback) return t("{definition} Compare the other choices with the lesson explanation; they describe different study topics.", { definition: t(definitionFeedback[1]) });
-      if (practiceFeedback) return t("{pronunciation} The other choices skip the careful listening and feedback needed for pronunciation practice.", { pronunciation: t(practiceFeedback[1]) });
+      if (definition && !key.includes("{lesson}")) return t("Which definition does this lesson give for {lesson}?", { lesson: t(definition[1]) });
+      if (practice && !key.includes("{lesson}")) return t("Which practice guidance does this lesson give for {lesson}?", { lesson: t(practice[1]) });
+      if (condition && !key.includes("{lesson}")) return t("Which occurrence condition does this lesson state for {lesson}?", { lesson: t(condition[1]) });
+      if (definitionFeedback && !key.includes("{definition}")) return t("{definition} Compare the other choices with the lesson explanation; they describe different study topics.", { definition: t(definitionFeedback[1]) });
+      if (practiceFeedback && !key.includes("{pronunciation}")) return t("{pronunciation} The other choices skip the careful listening and feedback needed for pronunciation practice.", { pronunciation: t(practiceFeedback[1]) });
     }
     if (translated === undefined && (!/[A-Za-z]/.test(key) || /^(?:Tajweed101|Complete Tajweed Guide|Hafs ʿan ʿĀṣim|Ctrl|⌘|K|Enter|Esc|Tab)$/.test(key) || /^(?:https?:\/\/|\/[a-z])/.test(key))) translated = key;
     if (translated === undefined) throw new Error(`Missing ${locale} translation: ${key}`);

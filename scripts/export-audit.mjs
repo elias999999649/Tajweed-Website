@@ -19,7 +19,7 @@ let structuredDataBlocks = 0;
 const titles = new Map();
 const descriptions = new Map();
 for (const [route, html] of htmlByPath) {
-  const locale = route.match(/^\/(en|ar|ur|id|fr)(?:\/|$)/)?.[1];
+  const locale = route.match(/^\/(en|ar|ur|id|fr|tr)(?:\/|$)/)?.[1];
   if (!locale) continue;
   localized++;
   const canonicalPath = route.replace(/\/+$/, "") + "/";
@@ -30,7 +30,7 @@ for (const [route, html] of htmlByPath) {
   if ((html.match(/<h1(?:\s|>)/g) || []).length !== 1) issues.push(`${route}: expected one H1`);
   if (!html.includes('name="description"')) issues.push(`${route}: missing description`);
   const noindex = /<meta name="robots" content="[^"]*noindex/.test(html);
-  if (/^\/(en|ar|ur|id|fr)\/search$/.test(route) && !noindex) issues.push(`${route}: search must be noindex`);
+  if (/^\/(en|ar|ur|id|fr|tr)\/search$/.test(route) && !noindex) issues.push(`${route}: search must be noindex`);
   if (!noindex) {
     indexablePages++;
     const title = decode(html.match(/<title>([^<]+)<\/title>/)?.[1] || "");
@@ -43,9 +43,9 @@ for (const [route, html] of htmlByPath) {
     }
   }
   if (!html.includes('hrefLang="x-default"') && !html.includes('hreflang="x-default"')) issues.push(`${route}: missing language alternates`);
-  const basePath = canonicalPath.replace(/^\/(en|ar|ur|id|fr)(?=\/|$)/, "");
+  const basePath = canonicalPath.replace(/^\/(en|ar|ur|id|fr|tr)(?=\/|$)/, "");
   const alternates = [...html.matchAll(/<link\b[^>]*rel="alternate"[^>]*>/gi)].map(([tag]) => ({ language: tag.match(/\bhreflang="([^"]+)"/i)?.[1], href: decode(tag.match(/\bhref="([^"]+)"/i)?.[1] || "") })).filter((item) => item.language);
-  for (const language of ["en", "ar", "ur", "id", "fr", "x-default"]) {
+  for (const language of ["en", "ar", "ur", "id", "fr", "tr", "x-default"]) {
     const alternate = alternates.find((item) => item.language === language);
     const expectedAlternate = new URL(`/${language === "x-default" ? "en" : language}${basePath}`, origin).href;
     if (!alternate || alternate.href !== expectedAlternate) issues.push(`${route}: incorrect ${language} alternate`);
@@ -62,8 +62,8 @@ for (const [route, html] of htmlByPath) {
     const targetHtml = htmlByPath.get(target === "/" ? "/" : target);
     if (!targetHtml && !existsSync(file)) { issues.push(`${route}: broken link ${href}`); continue; }
     if (url.hash && targetHtml && !targetHtml.includes(`id="${decodeURIComponent(url.hash.slice(1))}"`)) issues.push(`${route}: missing anchor ${href}`);
-    if (/^\/(?:learn|tajweed|glossary|practice|articles|about|sources|editorial-policy|search)(?:\/|$)/.test(url.pathname)) issues.push(`${route}: unlocalized internal link ${href}`);
-    const linkedLocale = url.pathname.match(/^\/(en|ar|ur|id|fr)(?:\/|$)/)?.[1];
+    if (/^\/(?:learn|tajweed|glossary|practice|articles|about|sources|editorial-policy|search|listen|my-learning)(?:\/|$)/.test(url.pathname)) issues.push(`${route}: unlocalized internal link ${href}`);
+    const linkedLocale = url.pathname.match(/^\/(en|ar|ur|id|fr|tr)(?:\/|$)/)?.[1];
     if (linkedLocale && linkedLocale !== locale) issues.push(`${route}: link changes language ${href}`);
   }
   for (const data of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
@@ -82,6 +82,15 @@ for (const match of sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)) {
   if (!html) issues.push(`Sitemap: missing page ${url}`);
   else if (/<meta name="robots" content="[^"]*noindex/.test(html)) issues.push(`Sitemap: noindex page ${url}`);
   if (/\/search\//.test(url.pathname)) issues.push(`Sitemap: search utility ${url}`);
+}
+const redirects = await readFile(path.join(root, "_redirects"), "utf8");
+const redirectSources = new Set();
+for (const line of redirects.split(/\r?\n/).filter(line => line.trim() && !line.startsWith("#"))) {
+  const [source, target, status] = line.split(/\s+/);
+  if (status !== "301" || !/^\/(en|ar|ur|id|fr|tr)\/learn\//.test(source)) issues.push(`Redirect: unexpected rule ${line}`);
+  if (redirectSources.has(source)) issues.push(`Redirect: duplicate source ${source}`);
+  redirectSources.add(source);
+  if (source.split("/")[1] !== target.split("/")[1] || !htmlByPath.has(target.replace(/\/+$/, ""))) issues.push(`Redirect: invalid destination ${target}`);
 }
 const uniqueIssues = [...new Set(issues)];
 await writeFile(path.resolve(import.meta.dirname, "../docs/export-audit-results.json"), JSON.stringify({ pages: localized, indexablePages, links, languageLinks, structuredDataBlocks, issues: uniqueIssues }, null, 2) + "\n");

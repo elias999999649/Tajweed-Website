@@ -21,13 +21,13 @@ if (!existsSync(OUT)) {
 }
 
 const PORT = Number(process.argv[2] ?? 4173);
-const CHROME = "C:/Program Files/Google/Chrome/Application/chrome.exe";
+const CHROME = process.env.CHROME_BIN || (process.platform === "win32" ? "C:/Program Files/Google/Chrome/Application/chrome.exe" : process.platform === "darwin" ? "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" : "/usr/bin/google-chrome");
 
 const MIME = {
   ".html": "text/html; charset=utf-8", ".css": "text/css", ".js": "text/javascript",
   ".svg": "image/svg+xml", ".png": "image/png", ".ico": "image/x-icon",
   ".json": "application/json", ".woff2": "font/woff2", ".txt": "text/plain; charset=utf-8",
-  ".xml": "application/xml",
+  ".mp3": "audio/mpeg", ".xml": "application/xml",
 };
 
 const server = createServer(async (req, res) => {
@@ -66,7 +66,7 @@ await new Promise((resolve) => server.listen(PORT, "127.0.0.1", resolve));
 const BASE = `http://127.0.0.1:${PORT}`;
 
 const chrome = spawn(CHROME, [
-  "--headless=new", "--disable-gpu", "--no-first-run", "--no-default-browser-check",
+  "--headless=new", "--disable-gpu", "--use-fake-device-for-media-stream", "--use-fake-ui-for-media-stream", "--no-first-run", "--no-default-browser-check",
   "--remote-debugging-port=0", "--user-data-dir=" + path.join(os.tmpdir(), "tajweed-design-test-profile"),
   "--window-size=1280,900", `--homepage=${BASE}`,
 ], { stdio: ["ignore", "pipe", "pipe"] });
@@ -158,9 +158,14 @@ const PAGE_TYPES = [
   ["home", "/"],
   ["learn", "/learn"],
   ["learn-level", "/learn/foundations"],
+  ["learn-overview", "/learn/tafkhim-and-tarqiq"],
   ["tajweed-directory", "/tajweed"],
   ["rule-lesson", "/tajweed/what-is-tajweed"],
+  ["review-madd", "/tajweed/madd-lazim-harfi"],
+  ["review-hamzah", "/tajweed/beginning-with-hamzah"],
   ["practice", "/practice"],
+  ["listening", "/listen"],
+  ["my-learning", "/my-learning"],
   ["glossary", "/glossary"],
   ["articles", "/articles"],
   ["article", "/articles/how-to-start-learning-tajweed"],
@@ -170,7 +175,7 @@ const PAGE_TYPES = [
   ["editorial-policy", "/editorial-policy"],
   ["404", "/nonexistent-page"],
 ];
-const QA_LOCALES = (process.env.QA_LOCALES || "en,ar,ur,id,fr").split(",");
+const QA_LOCALES = (process.env.QA_LOCALES || "en,ar,ur,id,fr,tr").split(",");
 const selectedPageTypes = process.env.QA_PAGE_TYPES?.split(",");
 const PAGES = QA_LOCALES.flatMap(locale => PAGE_TYPES.filter(([name]) => name !== "404" && (!selectedPageTypes || selectedPageTypes.includes(name))).map(([name, url]) => [`${locale}-${name}`, `/${locale}${url === "/" ? "/" : url}`])).concat(!selectedPageTypes || selectedPageTypes.includes("404") ? [["404", "/nonexistent-page"]] : []);
 const WIDTHS = (process.env.QA_WIDTHS || "320,375,390,430,768,1024,1280,1440").split(",").map(Number);
@@ -217,6 +222,17 @@ async function auditPage(sessionId, name, url, width, height, mode) {
     if (overflow.elements.length) report(label, `offscreen controls/content: ${overflow.elements.join(", ")}`);
     if (overflow.clippedText.length) report(label, `clipped leaf text: ${overflow.clippedText.join(", ")}`);
   }
+
+  const languageFit = await evaluate(sessionId, `(() => {
+    const select = document.querySelector('.language-switcher select');
+    if (!select) return null;
+    const style = getComputedStyle(select), context = document.createElement('canvas').getContext('2d');
+    context.font = style.font;
+    const text = select.selectedOptions[0]?.textContent ?? '';
+    const needed = context.measureText(text).width + parseFloat(style.paddingLeft) + parseFloat(style.paddingRight) + 16;
+    return { text, needed, available: select.clientWidth };
+  })()`);
+  if (languageFit && languageFit.needed > languageFit.available + 1) report(label, `native language label lacks space: ${JSON.stringify(languageFit)}`);
 
   const tiny = await evaluate(sessionId, `(() => {
     const tiny = [];
@@ -292,9 +308,9 @@ async function interactionTests(sessionId) {
       await readyControls(sessionId);
       const options = await evaluate(sessionId, `(() => {
         const select = document.querySelector('.language-switcher select');
-        return { fiveOptions: select?.options.length === 5, selectedSource: select?.value === ${JSON.stringify(locale)} };
+        return { sixOptions: select?.options.length === 6, selectedSource: select?.value === ${JSON.stringify(locale)} };
       })()`);
-      checked("language " + locale + route, options, ["fiveOptions", "selectedSource"]);
+      checked("language " + locale + route, options, ["sixOptions", "selectedSource"]);
       await evaluate(sessionId, `(() => {
         const select = document.querySelector('.language-switcher select');
         if (!select) return false;
@@ -407,17 +423,20 @@ async function interactionTests(sessionId) {
     }))()`);
     checked("search focus " + locale, searchFocus, ["trappedForward", "trappedBackward", "closed", "returnedFocus", "restoredScroll"]);
 
-    // Answer one wrong and one right, attempt to re-score answered questions,
-    // go backwards, then finish. The two-question lesson must finish at 50%.
+    // Source comprehension: one wrong, two right, explicit confirmation,
+    // answer retention, accurate totals, exact review links and missed-only retry.
+    await evaluate(sessionId, "localStorage.removeItem('tajweed-study-v1')");
     await navigate(sessionId, BASE + "/" + locale + "/tajweed/what-is-tajweed/", 1280, 900);
     await readyControls(sessionId);
     const quiz = await evaluate(sessionId, `(async () => {
-      const pause = () => new Promise(r => setTimeout(r, 100));
+      const pause = () => new Promise(r => setTimeout(r, 120));
       const options = () => [...document.querySelectorAll('.lesson-quiz .quiz-option')];
       const firstDefinition = document.querySelector('.rule-intro')?.textContent.trim();
       const wrong = options().find(b => b.querySelector('.option-text')?.textContent.trim() !== firstDefinition);
       if (!wrong) return { available: false };
       wrong.click(); await pause();
+      const waitsForCheck = !document.querySelector('.quiz-feedback') && document.querySelector('.check-answer')?.disabled === false;
+      document.querySelector('.check-answer')?.click(); await pause();
       const incorrectFeedback = Boolean(document.querySelector('.quiz-feedback.incorrect[role="status"]'));
       const answeredBefore = document.querySelector('.quiz-progress-bar')?.getAttribute('aria-valuenow');
       options().find(b => b.classList.contains('correct'))?.click(); await pause();
@@ -426,21 +445,30 @@ async function interactionTests(sessionId) {
       const advancedWithFocus = document.activeElement === document.getElementById('quiz-heading');
       const guidance = document.querySelector('#pronunciation > p')?.textContent.trim();
       options().find(b => b.querySelector('.option-text')?.textContent.trim() === guidance)?.click(); await pause();
+      document.querySelector('.check-answer')?.click(); await pause();
       const correctFeedback = Boolean(document.querySelector('.quiz-feedback.correct[role="status"]'));
+      const exactReview = document.querySelector('.quiz-feedback a')?.hash === '#pronunciation';
       document.querySelector('.quiz-navigation .secondary')?.click(); await pause();
-      const previousRetained = Boolean(document.querySelector('.quiz-feedback.incorrect')) && options().every(b => b.getAttribute('aria-disabled') === 'true');
+      const previousRetained = Boolean(document.querySelector('.quiz-feedback.incorrect')) && [...document.querySelectorAll('.quiz-option input')].every(b => b.disabled);
       document.querySelector('.quiz-navigation .primary')?.click(); await pause();
       const secondRetained = Boolean(document.querySelector('.quiz-feedback.correct'));
       document.querySelector('.quiz-navigation .primary')?.click(); await pause();
+      const condition = document.querySelector('#occurs > p')?.textContent.trim();
+      options().find(b => b.querySelector('.option-text')?.textContent.trim() === condition)?.click(); await pause();
+      document.querySelector('.check-answer')?.click(); await pause();
+      document.querySelector('.quiz-navigation .primary')?.click(); await pause();
       const complete = Boolean(document.querySelector('.lesson-quiz-results'));
-      const scoreCorrect = document.querySelector('.score-number')?.textContent.trim() === '50%';
-      const completionFocus = document.activeElement === document.getElementById('quiz-results');
-      const reviewLocalized = document.querySelector('.results-actions a')?.pathname === '/${locale}/tajweed/what-is-tajweed/';
-      document.querySelector('.results-actions button')?.click(); await pause();
-      const reset = Boolean(document.querySelector('.quiz-options')) && document.querySelector('.quiz-progress-bar')?.getAttribute('aria-valuenow') === '0' && !document.querySelector('.quiz-feedback');
-      return { available: true, incorrectFeedback, preventedRescore, advancedWithFocus, correctFeedback, previousRetained, secondRetained, complete, scoreCorrect, completionFocus, reviewLocalized, reset };
+      const scoreText = document.querySelector('.score-breakdown')?.textContent ?? '';
+      const scoreCorrect = scoreText.includes('2') && scoreText.includes('3');
+      const completionFocus = document.activeElement === document.querySelector('.lesson-quiz-results h3');
+      const reviewLocalized = [...document.querySelectorAll('.quiz-review-list a')].every(a => a.pathname === '/${locale}/tajweed/what-is-tajweed/');
+      const summaryHasThree = document.querySelectorAll('.quiz-review-list li').length === 3;
+      const persisted = Object.values(JSON.parse(localStorage.getItem('tajweed-study-v1')).sessions).some(session => session.completed && Object.keys(session.answers).length === 3);
+      document.querySelector('.results-actions .primary')?.click(); await pause();
+      const missedOnlyRetry = document.querySelector('.quiz-progress-bar')?.getAttribute('aria-valuemax') === '1' && document.querySelector('.quiz-progress-bar')?.getAttribute('aria-valuenow') === '0' && !document.querySelector('.quiz-feedback');
+      return { available: true, waitsForCheck, incorrectFeedback, preventedRescore, advancedWithFocus, correctFeedback, exactReview, previousRetained, secondRetained, complete, scoreCorrect, completionFocus, reviewLocalized, summaryHasThree, persisted, missedOnlyRetry };
     })()`);
-    checked("lesson quiz " + locale, quiz, ["available", "incorrectFeedback", "preventedRescore", "advancedWithFocus", "correctFeedback", "previousRetained", "secondRetained", "complete", "scoreCorrect", "completionFocus", "reviewLocalized", "reset"]);
+    checked("lesson quiz " + locale, quiz, ["available", "waitsForCheck", "incorrectFeedback", "preventedRescore", "advancedWithFocus", "correctFeedback", "exactReview", "previousRetained", "secondRetained", "complete", "scoreCorrect", "completionFocus", "reviewLocalized", "summaryHasThree", "persisted", "missedOnlyRetry"]);
 
     await navigate(sessionId, BASE + "/" + locale + "/practice/", 1280, 900);
     await readyControls(sessionId);
@@ -450,16 +478,17 @@ async function interactionTests(sessionId) {
       if (!pill) return { available: false };
       pill.click(); await pause();
       const activated = pill.getAttribute('aria-pressed') === 'true';
-      const difficulty = document.querySelectorAll('.practice-filter-row select')[1];
+      const difficulty = document.querySelectorAll('.practice-filter-row select')[2];
       difficulty.value = 'advanced'; difficulty.dispatchEvent(new Event('change', { bubbles: true })); await pause();
-      const emptyFilters = Boolean(document.querySelector('.practice-empty'));
+      const emptyFilters = Boolean(document.querySelector('.lesson-quiz-empty'));
       document.querySelector('.practice-filters .clear-filter')?.click(); await pause();
       const resetFilters = Boolean(document.querySelector('.quiz-session')) && document.querySelectorAll('.filter-pills button')[0]?.getAttribute('aria-pressed') === 'true' && difficulty.value === '';
-      const option = document.querySelector('.session-option'); option?.click(); await pause();
-      const feedback = Boolean(document.querySelector('.answer-feedback[role="status"]'));
-      return { available: true, activated, emptyFilters, resetFilters, feedback };
+      const shortSession = document.querySelector('.quiz-progress-bar')?.getAttribute('aria-valuemax') === '5';
+      const option = document.querySelector('.quiz-option'); option?.click(); await pause(); document.querySelector('.check-answer')?.click(); await pause();
+      const feedback = Boolean(document.querySelector('.quiz-feedback[role="status"]'));
+      return { available: true, activated, emptyFilters, resetFilters, feedback, shortSession };
     })()`);
-    checked("practice filters " + locale, practice, ["available", "activated", "emptyFilters", "resetFilters", "feedback"]);
+    checked("practice filters " + locale, practice, ["available", "activated", "emptyFilters", "resetFilters", "feedback", "shortSession"]);
 
     await navigate(sessionId, BASE + "/" + locale + "/tajweed/", 1280, 900);
     await readyControls(sessionId);
@@ -507,6 +536,62 @@ async function interactionTests(sessionId) {
     }
   }
 
+  // Device-only notes, bookmarks and reading settings survive a language switch.
+  await navigate(sessionId, BASE + "/en/tajweed/what-is-tajweed/", 390, 844);
+  await readyControls(sessionId);
+  const study = await evaluate(sessionId, `(async () => {
+    const pause = () => new Promise(r => setTimeout(r, 150));
+    const tools = document.querySelector('.study-tools'); tools.open = true; await pause();
+    const inputs = [...tools.querySelectorAll('input[type="checkbox"]')];
+    if (!inputs.length) return { available: false };
+    if (!inputs[0].checked) inputs[0].click();
+    if (!inputs[1].checked) inputs[1].click();
+    const bookmark = tools.querySelector('button[aria-pressed]'); if (bookmark?.getAttribute('aria-pressed') !== 'true') bookmark?.click();
+    const notes = tools.querySelector('textarea');
+    Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'value').set.call(notes, 'QA note: ask my teacher about timing.');
+    notes.dispatchEvent(new Event('input', { bubbles: true })); await pause();
+    tools.querySelector('.save-study-notes')?.click(); await pause();
+    const saved = JSON.parse(localStorage.getItem('tajweed-study-v1')).records['what-is-tajweed'];
+    return { available: true, savedFlags: saved.read && saved.practised && saved.bookmark, savedNotes: saved.notes === 'QA note: ask my teacher about timing.', focusRetained: document.activeElement !== document.body };
+  })()`);
+  checked("study data", study, ["available", "savedFlags", "savedNotes"]);
+  await navigate(sessionId, BASE + "/tr/tajweed/what-is-tajweed/", 390, 844);
+  await readyControls(sessionId);
+  const crossLanguage = await evaluate(sessionId, `(() => { const tools = document.querySelector('.study-tools'); tools.open = true; return { notesKept: tools.querySelector('textarea')?.value === 'QA note: ask my teacher about timing.', flagsKept: [...tools.querySelectorAll('input[type="checkbox"]')].every(input => input.checked) }; })()`);
+  checked("cross-language study records", crossLanguage, ["notesKept", "flagsKept"]);
+
+  // Save an actual exported lesson and reload it without a network connection.
+  await navigate(sessionId, BASE + "/en/tajweed/what-is-tajweed/", 390, 844);
+  await readyControls(sessionId);
+  await evaluate(sessionId, "document.querySelector('.study-tools').open = true; document.querySelector('.offline-lesson button').click(); true");
+  const savedOffline = await waitFor(sessionId, "document.querySelector('.offline-lesson [role=status]')?.textContent === 'Lesson saved for offline reading.'", 30000);
+  checked("offline download", { savedOffline }, ["savedOffline"]);
+  try {
+    await send('Network.emulateNetworkConditions', { offline: true, latency: 0, downloadThroughput: 0, uploadThroughput: 0 }, sessionId);
+    await navigate(sessionId, BASE + "/en/tajweed/what-is-tajweed/", 390, 844);
+    await readyControls(sessionId);
+    const offline = await evaluate(sessionId, `(() => ({ textAvailable: Boolean(document.querySelector('#definition p')), languageAvailable: document.querySelector('.language-switcher select')?.value === 'en', fontsReady: document.fonts.status === 'loaded' }))()`);
+    checked("offline reload", offline, ["textAvailable", "languageAvailable", "fontsReady"]);
+  } finally {
+    await send('Network.emulateNetworkConditions', { offline: false, latency: 0, downloadThroughput: -1, uploadThroughput: -1 }, sessionId);
+  }
+  await navigate(sessionId, BASE + "/en/listen/", 390, 844);
+  await readyControls(sessionId);
+  const audio = await evaluate(sessionId, `(async () => {
+    const player = document.querySelector('.listening-studio > section audio');
+    const response = await fetch(player.currentSrc || player.src);
+    return { noAutoplay: !player.autoplay, localFile: new URL(player.src).origin === location.origin, fileAvailable: response.ok && (await response.arrayBuffer()).byteLength === 505984, recorderOptIn: !!document.querySelector('.local-recorder') && !document.querySelector('.local-recorder').open };
+  })()`);
+  checked("official audio and recorder", audio, ["noAutoplay", "localFile", "fileAvailable", "recorderOptIn"]);
+  await evaluate(sessionId, "document.querySelector('.local-recorder').open = true; document.querySelector('.local-recorder button').click(); true");
+  const recordingStarted = await waitFor(sessionId, "document.querySelector('.local-recorder [role=status]')?.textContent.includes('Recording')", 10000);
+  await sleep(600);
+  await evaluate(sessionId, "document.querySelector('.local-recorder').open = false; true");
+  const stoppedWhenClosed = await waitFor(sessionId, "!document.querySelector('.local-recorder [role=status]')?.textContent && !!document.querySelector('.local-recorder audio')", 10000);
+  const localClip = await evaluate(sessionId, "document.querySelector('.local-recorder audio')?.src.startsWith('blob:') === true");
+  checked("simulated local microphone", { recordingStarted, stoppedWhenClosed, localClip }, ["recordingStarted", "stoppedWhenClosed", "localClip"]);
+
+
   // Storage failures are injected before scripts execute. A throwing getter
   // checks both theme initialization and the language switcher's catch path.
   const { identifier } = await send("Page.addScriptToEvaluateOnNewDocument", { source: "Object.defineProperty(window, 'localStorage', { configurable: true, get() { throw new DOMException('Storage disabled for QA', 'SecurityError'); } });" }, sessionId);
@@ -534,6 +619,21 @@ async function interactionTests(sessionId) {
   } finally {
     await send("Page.removeScriptToEvaluateOnNewDocument", { identifier }, sessionId);
   }
+  await navigate(sessionId, BASE + "/en/tajweed/what-is-tajweed/", 1280, 900);
+  await send("Emulation.setEmulatedMedia", { media: "print" }, sessionId);
+  const print = await evaluate(sessionId, `(() => { document.documentElement.classList.add('dark'); return { headerHidden: getComputedStyle(document.querySelector('.site-header')).display === 'none', notesHidden: getComputedStyle(document.querySelector('.study-tools')).display === 'none', bodyBlack: getComputedStyle(document.body).color === 'rgb(0, 0, 0)', mutedReadable: getComputedStyle(document.documentElement).getPropertyValue('--muted').trim() === '#333', mainPresent: document.querySelector('main').getBoundingClientRect().width > 0 }; })()`);
+  checked("dark-theme print", print, ["headerHidden", "notesHidden", "bodyBlack", "mutedReadable", "mainPresent"]);
+  await send("Emulation.setEmulatedMedia", { media: "" }, sessionId);
+  // The lazy language boundary must keep important static lesson text visible
+  // even when the browser does not execute any application scripts.
+  try {
+    await send("Emulation.setScriptExecutionDisabled", { value: true }, sessionId);
+    for (const language of ["en", "ar", "tr"]) {
+      await navigate(sessionId, BASE + "/" + language + "/tajweed/what-is-tajweed/", 375, 844);
+      const noJs = await evaluate(sessionId, `(() => ({ mainVisible: document.querySelector('main')?.getBoundingClientRect().width > 0, lessonVisible: document.querySelector('#definition p')?.getBoundingClientRect().height > 0, noLoadingLabel: !document.querySelector('.language-loading') || getComputedStyle(document.querySelector('.language-loading')).display === 'none' }))()`);
+      checked("static reading without scripts " + language, noJs, ["mainVisible", "lessonVisible", "noLoadingLabel"]);
+    }
+  } finally { await send("Emulation.setScriptExecutionDisabled", { value: false }, sessionId); }
   await navigate(sessionId, BASE + "/en/", 1280, 900);
   for (const iconPath of ["/icon.png", "/apple-icon.png"]) {
     const available = await evaluate(sessionId, `fetch(${JSON.stringify(BASE + iconPath)}).then(r => r.ok).catch(() => false)`);
