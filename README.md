@@ -1,93 +1,48 @@
-# Complete Tajweed Guide (Tajweed101)
+# Tajweed101
 
-A calm, beautifully structured web application designed to help learners study Tajweed clearly, step by step. 
+A static, beginner-oriented study companion for Quranic recitation within the **Hafs ʿan ʿĀṣim** teaching scope. Written explanations support listening and feedback from a qualified teacher.
 
-🌐 **Live Website:** [tajweed101.pages.dev](https://tajweed101.pages.dev)
+Public origin: [tajweed101.pages.dev](https://tajweed101.pages.dev).
 
----
+## Content and review status
 
-## 🌟 Overview
+The repository contains 50 structured lesson drafts, a glossary derived from those lessons, a staged learning path, 13 articles, and 100 review-stage recognition questions. All lessons still require qualified Tajweed review. The separate verified-only practice bank and Quran-example registry are empty. Draft teaching text is labelled as instructional and is not presented as Quran quotation. Eleven mismatched instructional records are preserved for editorial traceability and withheld from learner pages.
 
-**Complete Tajweed Guide** provides a comprehensive, distraction-free environment for mastering the rules of Quranic recitation (*Tajweed* according to the Hafs ʿan ʿĀṣim reading tradition). Built with Next.js (static export), it features:
-- **50 Detailed Rule Lessons:** Covering foundational rules (Makharij, Sifaat, Harakat), Noon Sakinah & Tanween, Meem Sakinah, Madd & lengthening, stopping & starting (Waqf & Ibtida), and advanced letter interactions.
-- **Structured Learning Path:** Guided stages taking learners from absolute reading prerequisites to advanced recitation topics.
-- **Interactive Quizzes & Practice:** Formative exercises and recognition tests with randomized option shuffling.
-- **Search Palette:** Instant `Cmd+K` / `Ctrl+K` search across all rules, terms, and topics.
-- **Bilingual Typography:** Optimized self-hosted Google Sans Flex for English UI and Amiri for authentic Arabic Qur'anic text with precise diacritics.
-- **Dark Mode:** Built-in light/dark theme support with zero flash and system preference detection.
+The four translated editions are working translations requiring native-language and qualified Tajweed review. A source reference does not imply endorsement or approval. See [the current content review](docs/CONTENT-REVIEW-2026-10-27.md) and the visible editorial-policy and sources pages. Earlier audit documents are historical snapshots.
 
----
+## Languages and routes
 
-## 🚀 Quick Start
+Exactly five editions are generated: English `/en/`, Arabic `/ar/`, Urdu `/ur/`, Indonesian `/id/`, and French `/fr/`. Arabic and Urdu set document-level RTL direction. Language switching preserves the corresponding route, query, and fragment. Navigation uses stable static URLs with trailing slashes. Previous unprefixed English URLs remain as `noindex` compatibility pages linking and redirecting to the corresponding edition; stored language preference is optional.
 
-```bash
-# Install dependencies
-npm install
+`app/[lang]/` contains the shared pages. Server-rendered content uses `getI18n()`; interactive components use `useI18n()`. Exact source-language messages map to dictionaries in `lib/i18n/`. Missing keys throw instead of silently displaying English. Each language dictionary is a separate cacheable client chunk, rather than a large object repeated in every page's HTML.
 
-# Run development server
-npm run dev        # http://localhost:3000
-```
+## Development and checks
 
-### Production Build
-
-```bash
-npm run build      # Static export (Next.js with webpack & output: export)
-npm run start      # Serve production build locally
-```
-
----
-
-## 🛠️ Available Scripts
+Use Node.js 20 or newer for the app (the headless QA tooling uses Node's built-in WebSocket, available in Node.js 22+). Install dependencies with `npm install`.
 
 | Command | Purpose |
-| :--- | :--- |
-| `npm run dev` | Start development server |
-| `npm run build` | Production static export with type checking and page prerendering |
-| `npm run start` | Serve production build locally |
-| `npm run lint` | Run ESLint (Next.js core web vitals config) |
-| `npm run audit` | Run content integrity audit (checks cross-references, rules, curriculum) |
-| `npm run font` | Rebuild self-hosted Google Sans Flex font subset (`app/fonts/`) |
-| `npm run design:test` | Run headless Chrome QA across all pages (light/dark, mobile, overflow check) |
-| `npm run design:shots` | Capture QA screenshots into `.screenshots/` |
+| --- | --- |
+| `npm run dev` | Next.js development server |
+| `npm run lint` | ESLint |
+| `npm run audit` | Content, references, curriculum, and quiz integrity |
+| `npm run audit:i18n` | Educational/UI translation coverage and placeholders |
+| `npm run build` | Production static export into `out/` |
+| `npm start` | Local static preview, default port 3000; real 404 responses |
+| `npm run audit:export` | Exported HTML, links, anchors, metadata, and sitemap |
+| `npm run design:test` | Chrome layout and interaction QA in five languages |
+| `npm run design:shots` | Representative screenshots in `.screenshots/` |
+| `npm run font` | Rebuild the local Google Sans Flex subset |
 
----
+Headless scripts use the installed Windows Chrome path. `QA_LOCALES` and `QA_WIDTHS` can narrow a diagnostic run; the default design matrix uses all five editions and 320, 375, 390, 430, 768, 1024, 1280, and 1440 CSS pixels, with additional dark-theme checks. Coverage and actual results belong in the current verification report, not inferred from a checklist.
 
-## 📁 Project Structure
+## Deployment and privacy
 
-```text
-app/
-  page.tsx              # Homepage with hero ayah card & entry points
-  learn/                # Guided learning curriculum path (5 levels)
-  tajweed/[slug]/       # 50 individual rule lessons
-  practice/             # Interactive practice session & quiz center
-  glossary/             # Searchable Tajweed glossary
-  articles/             # Study guides and methodology articles
-  search/               # Server-rendered search index
-components/             # UI components (Header, Footer, Quiz, Search Palette, etc.)
-lib/
-  tajweed/              # Rule records, curriculum, examples, glossary
-  taxonomy/             # Learning levels and topic-to-lesson resolvers
-  practice/             # Practice question generator and banks
-  search/               # Ranked multi-word tokenized search
-scripts/                # Content integrity audit & QA tooling
-docs/                   # Editorial policies, SEO audits, and QA checklists
-```
+Next.js 16.3.3 exports static HTML with `output: "export"`, `trailingSlash: true`, and unoptimized static images for Cloudflare Pages. Publish `out/`. `NEXT_PUBLIC_SITE_URL` sets the canonical HTTPS origin; the default is the public project origin above. Source and search pages remain available; search utilities and unreviewed lesson/article pages retain `noindex,follow` as appropriate. Sitemaps contain canonical indexable localized pages only.
 
----
+There is no server runtime, analytics, tracking, autoplay, or external account dependency. Fonts are served by the exported site; the existing Amiri font is obtained at build time by `next/font`. Browser storage is optional. Security headers remain in `public/_headers`.
 
-## ☁️ Deployment
+## Contributions and license
 
-The project is configured for static site hosting (optimized for **Cloudflare Pages**):
-- Output mode: `output: "export"` with `trailingSlash: true` in `next.config.ts`.
-- Security headers configured via `public/_headers`.
-- Node.js 20 pinned via `.nvmrc`.
+Read [AGENTS.md](AGENTS.md), [CONTRIBUTING.md](CONTRIBUTING.md), and the relevant installed Next.js guides before changing the app. Do not commit secrets or local environment files.
 
----
-
-## 🔐 Security
-Do not commit credentials, API keys, private keys, or local `.env` files. Keep deployment secrets in GitHub Actions secrets or your hosting provider's secret manager; do not put secrets in `NEXT_PUBLIC_*` variables. If a secret is exposed, revoke/rotate it immediately—deleting the current file does not remove previous copies from Git history. See [CONTRIBUTING.md](CONTRIBUTING.md) for details.
-
----
-
-## 📄 License & Content Model
-There is currently no open-source license in this repository. It is publicly visible, but you do not yet grant permission for others to reuse or redistribute the code or lesson content. Choose an appropriate license and add its full text before describing this repository as open source. Quran quotations are verified before publishing, and instructional examples are distinguished from Qur'anic citations.
+The repository is **UNLICENSED**. Public visibility does not grant reuse or redistribution rights. Do not describe it as open source without an appropriate license grant.

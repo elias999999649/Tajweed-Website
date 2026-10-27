@@ -18,6 +18,8 @@ export type RuleExample = {
   sourceIds?: string[];
   verificationStatus: VerificationStatus;
   note?: string;
+  /** An identified teaching problem. Preserve the record but withhold it from learners. */
+  reviewIssue?: string;
 };
 
 export type RuleFaq = {

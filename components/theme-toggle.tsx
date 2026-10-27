@@ -2,6 +2,7 @@
 
 import { useCallback, useSyncExternalStore } from "react";
 import { Moon, Sun } from "lucide-react";
+import { useI18n } from "@/lib/i18n/client";
 
 function subscribe(callback: () => void) {
   const observer = new MutationObserver(callback);
@@ -17,17 +18,18 @@ function getServerSnapshot() {
 }
 
 export function ThemeToggle() {
+  const { t } = useI18n();
   const dark = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const toggle = useCallback(() => {
-    const next = !dark;
+    const next = !document.documentElement.classList.contains("dark");
     document.documentElement.classList.toggle("dark", next);
     try {
       window.localStorage.setItem("theme", next ? "dark" : "light");
     } catch {
       // Storage can be unavailable (private mode); the choice still applies for this visit.
     }
-  }, [dark]);
+  }, []);
 
-  return <button className="icon-button" onClick={toggle} aria-label={dark ? "Use light mode" : "Use dark mode"} aria-pressed={dark}>{dark ? <Sun size={18} /> : <Moon size={18} />}</button>;
+  return <button type="button" className="icon-button" onClick={toggle} aria-label={t(dark ? "Use light mode" : "Use dark mode")} aria-pressed={dark}>{dark ? <Sun size={18} aria-hidden="true" /> : <Moon size={18} aria-hidden="true" />}</button>;
 }

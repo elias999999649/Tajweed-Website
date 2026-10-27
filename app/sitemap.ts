@@ -3,6 +3,8 @@ import { articles } from "@/lib/articles/content";
 import { tajweedRules } from "@/lib/tajweed/rules";
 import { tajweedLevels } from "@/lib/taxonomy";
 import { absoluteUrl } from "@/lib/seo";
+import { locales, localizedHref } from "@/lib/i18n";
+import { languageAlternates } from "@/lib/i18n/metadata";
 
 export const dynamic = "force-static";
 
@@ -24,5 +26,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const articlePages = publishedArticles.map((article) => ({ url: absoluteUrl(`/articles/${article.slug}`), lastModified: new Date(article.updatedAt), changeFrequency: "monthly" as const, priority: 0.7 }));
   // Learning-path level pages are indexable entry points to the same curriculum.
   const levelPages = tajweedLevels.map((level) => ({ url: absoluteUrl(`/learn/${level.slug}`), changeFrequency: "monthly" as const, priority: 0.7 }));
-  return staticPages.map((page) => ({ url: absoluteUrl(page.path), changeFrequency: page.frequency, priority: page.priority })).concat(rulePages, levelPages, { url: absoluteUrl("/articles"), changeFrequency: "weekly" as const, priority: 0.8 }, ...articlePages);
+  const pages = staticPages.map((page) => ({ url: absoluteUrl(page.path), changeFrequency: page.frequency, priority: page.priority })).concat(rulePages, levelPages, { url: absoluteUrl("/articles"), changeFrequency: "weekly" as const, priority: 0.8 }, ...articlePages);
+  return locales.flatMap((locale) => pages.map((page) => {
+    const path = new URL(page.url).pathname;
+    return { ...page, url: absoluteUrl(localizedHref(locale, path)), alternates: { languages: languageAlternates(path) } };
+  }));
 }

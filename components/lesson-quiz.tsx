@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CheckCircle2, XCircle, RotateCcw, ChevronRight, ChevronLeft } from "lucide-react";
 import type { LessonQuizQuestion } from "@/lib/practice/types";
+import { useI18n } from "@/lib/i18n/client";
 
 interface LessonQuizProps {
   lessonName: string;
@@ -20,6 +21,8 @@ interface QuestionState {
 }
 
 export function LessonQuiz({ lessonName, questions }: LessonQuizProps) {
+  const { t, href } = useI18n();
+  const headingRef = useRef<HTMLHeadingElement>(null);
   const [state, setState] = useState<QuestionState>({
     current: 0,
     selected: null,
@@ -28,11 +31,18 @@ export function LessonQuiz({ lessonName, questions }: LessonQuizProps) {
     completed: false,
     answered: {},
   });
+  const currentQuestion = state.current;
+  const quizCompleted = state.completed;
+  const hasNavigated = useRef(false);
+  useEffect(() => {
+    if (hasNavigated.current) headingRef.current?.focus();
+    hasNavigated.current = true;
+  }, [currentQuestion, quizCompleted]);
 
   if (!questions || questions.length === 0) {
     return (
       <div className="lesson-quiz-empty">
-        <p>No quiz questions available for this lesson yet.</p>
+        <p>{t("Quiz questions will appear after qualified review. Use the lesson’s practice prompts with your teacher.")}</p>
       </div>
     );
   }
@@ -95,8 +105,8 @@ export function LessonQuiz({ lessonName, questions }: LessonQuizProps) {
       <section className="lesson-quiz lesson-quiz-results" aria-labelledby="quiz-results">
         <div className="quiz-results-inner">
           <div className="results-header">
-            <h3 id="quiz-results">Quiz Complete</h3>
-            <p className="results-summary">You completed the quiz for {lessonName}</p>
+            <h3 id="quiz-results" ref={headingRef} tabIndex={-1}>{t("Quiz complete")}</h3>
+            <p className="results-summary">{t("You completed the quiz for {lesson}", { lesson: t(lessonName) })}</p>
           </div>
 
           <div className={`results-score ${passed ? "passed" : "needs-review"}`}>
@@ -104,9 +114,9 @@ export function LessonQuiz({ lessonName, questions }: LessonQuizProps) {
               <span className="score-number">{percentage}%</span>
             </div>
             <div className="score-details">
-              <p className="score-status">{passed ? "Great!" : "Keep practicing!"}</p>
+              <p className="score-status">{t(passed ? "Ready to review" : "Keep practising")}</p>
               <p className="score-breakdown">
-                You got <strong>{state.score}</strong> out of <strong>{questions.length}</strong> correct
+                {t("{score} of {count} answers correct", { score: state.score, count: questions.length })}
               </p>
             </div>
           </div>
@@ -115,22 +125,22 @@ export function LessonQuiz({ lessonName, questions }: LessonQuizProps) {
             {passed ? (
               <div className="feedback positive">
                 <CheckCircle2 size={20} />
-                <p>You have a solid understanding of {lessonName}. Review any incorrect answers and move on to related lessons.</p>
+                <p>{t("Review any incorrect answers, then practise reciting with your teacher. A quiz checks understanding; it cannot assess pronunciation.")}</p>
               </div>
             ) : (
               <div className="feedback needs-work">
                 <XCircle size={20} />
-                <p>Review the lesson content again and focus on the questions you missed. Then try the quiz again.</p>
+                <p>{t("Review the lesson and focus on the questions you missed. Then try the quiz again.")}</p>
               </div>
             )}
           </div>
 
           <div className="results-actions">
             <button className="button primary" onClick={handleReset}>
-              <RotateCcw size={16} /> Try Again
+              <RotateCcw size={16} aria-hidden="true" /> {t("Try again")}
             </button>
-            <a href={`/tajweed/${question.lessonSlug}`} className="button secondary">
-              Review Lesson <ChevronRight size={16} />
+            <a href={href(`/tajweed/${question.lessonSlug}`)} className="button secondary">
+              {t("Review lesson")} <ChevronRight size={16} aria-hidden="true" />
             </a>
           </div>
         </div>
@@ -143,20 +153,20 @@ export function LessonQuiz({ lessonName, questions }: LessonQuizProps) {
       {/* Progress Bar */}
       <div className="quiz-header">
         <div className="quiz-title-area">
-          <span className="eyebrow">Test Your Understanding</span>
-          <h3 id="quiz-heading">Question {state.current + 1} of {questions.length}</h3>
+          <span className="eyebrow">{t("Check your understanding")}</span>
+          <h3 id="quiz-heading" ref={headingRef} tabIndex={-1}>{t("Question {number} of {count}", { number: state.current + 1, count: questions.length })}</h3>
         </div>
         <span className="quiz-progress-text">{state.current + 1}/{questions.length}</span>
       </div>
 
-      <div className="quiz-progress-bar">
+      <div className="quiz-progress-bar" role="progressbar" aria-label={t("Questions answered")} aria-valuemin={0} aria-valuemax={questions.length} aria-valuenow={state.answeredCount}>
         <div className="progress-fill" style={{ width: `${progress}%` }} />
       </div>
 
       {/* Question */}
       <div className="quiz-question-area">
-        <div className="question-type-badge">{question.purpose.replace("-", " ")}</div>
-        <h4 className="quiz-question-text">{question.question}</h4>
+        <div className="question-type-badge">{t(question.purpose.replace("-", " "))}</div>
+        <h4 className="quiz-question-text">{t(question.question)}</h4>
       </div>
 
       {/* Options */}
@@ -166,15 +176,15 @@ export function LessonQuiz({ lessonName, questions }: LessonQuizProps) {
             key={index}
             className={`quiz-option ${selected === index ? (index === question.correctAnswer ? "correct" : "incorrect") : answered && index === question.correctAnswer ? "correct" : ""}`}
             onClick={() => handleAnswer(index)}
-            disabled={answered}
-            aria-label={`Option ${String.fromCharCode(65 + index)}: ${option}`}
+            aria-disabled={answered}
+            aria-label={t("Option {letter}: {answer}", { letter: String.fromCharCode(65 + index), answer: t(option) })}
           >
             <span className="option-indicator">
               {answered && index === question.correctAnswer && <CheckCircle2 size={20} />}
               {answered && selected === index && index !== question.correctAnswer && <XCircle size={20} />}
               {!answered && <span className="option-letter">{String.fromCharCode(65 + index)}</span>}
             </span>
-            <span className="option-text">{option}</span>
+            <span className="option-text">{t(option)}</span>
           </button>
         ))}
       </div>
@@ -186,16 +196,17 @@ export function LessonQuiz({ lessonName, questions }: LessonQuizProps) {
             {selected === question.correctAnswer ? (
               <>
                 <CheckCircle2 size={20} />
-                <strong>Correct!</strong>
+                <strong>{t("Correct")}</strong>
               </>
             ) : (
               <>
                 <XCircle size={20} />
-                <strong>Not quite right</strong>
+                <strong>{t("Review this one")}</strong>
               </>
             )}
           </div>
-          <p className="feedback-explanation">{question.explanation}</p>
+          <p className="feedback-explanation">{t(question.explanation)}</p>
+          <a className="text-link" href={href(`/tajweed/${question.lessonSlug}#definition`)}>{t("Review the explanation")}</a>
         </div>
       )}
 
@@ -205,18 +216,18 @@ export function LessonQuiz({ lessonName, questions }: LessonQuizProps) {
           className="button secondary"
           onClick={handlePrevious}
           disabled={state.current === 0}
-          aria-label="Previous question"
+          aria-label={t("Previous question")}
         >
-          <ChevronLeft size={16} /> Previous
+          <ChevronLeft size={16} aria-hidden="true" /> {t("Previous")}
         </button>
 
         {answered && (
           <button
             className="button primary"
             onClick={handleNext}
-            aria-label={isLastQuestion ? "See results" : "Next question"}
+            aria-label={t(isLastQuestion ? "See results" : "Next question")}
           >
-            {isLastQuestion ? "See Results" : "Next"} <ChevronRight size={16} />
+            {t(isLastQuestion ? "See results" : "Next")} <ChevronRight size={16} aria-hidden="true" />
           </button>
         )}
       </div>

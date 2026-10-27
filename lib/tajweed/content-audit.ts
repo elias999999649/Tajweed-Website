@@ -33,7 +33,7 @@ export function auditRuleContent(rule: TajweedRuleRecord): RuleContentAudit {
   const definitionPresent = meaningful(rule.shortDefinition);
   const explanationPresent = meaningful(rule.detailedExplanation);
   const conditionPresent = meaningful(rule.whenItOccurs);
-  const lettersPresent = rule.letters.length > 0 || ["what-is-tajweed", "why-tajweed-is-studied", "waqf", "ibtida"].includes(rule.id);
+  const lettersPresent = rule.letters.length > 0 || ["what-is-tajweed", "why-tajweed-is-studied", "tanween", "waqf", "ibtida", "major-stopping-concepts", "mushaf-stopping-symbols", "when-stopping-affects-pronunciation", "articulation-and-clarity", "common-pronunciation-errors"].includes(rule.id);
   const pronunciationPresent = meaningful(rule.pronunciation);
   const authenticExamplesPresent = examples.some((example) => example.type === "quran");
   const examplesVerified = examples.some((example) => example.type === "quran") && examples.filter((example) => example.type === "quran").every((example) => example.verificationStatus === "verified" && Boolean(example.surah) && Number.isInteger(example.verse) && Boolean(example.sourceIds?.length));

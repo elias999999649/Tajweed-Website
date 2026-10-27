@@ -1,0 +1,34 @@
+{
+  "ar": {
+    "entries": 1606,
+    "missing": [],
+    "invalidPlaceholders": [],
+    "duplicateKeys": [],
+    "encodingIssues": [],
+    "duplicateQuizOptions": []
+  },
+  "ur": {
+    "entries": 1609,
+    "missing": [],
+    "invalidPlaceholders": [],
+    "duplicateKeys": [],
+    "encodingIssues": [],
+    "duplicateQuizOptions": []
+  },
+  "id": {
+    "entries": 1421,
+    "missing": [],
+    "invalidPlaceholders": [],
+    "duplicateKeys": [],
+    "encodingIssues": [],
+    "duplicateQuizOptions": []
+  },
+  "fr": {
+    "entries": 1639,
+    "missing": [],
+    "invalidPlaceholders": [],
+    "duplicateKeys": [],
+    "encodingIssues": [],
+    "duplicateQuizOptions": []
+  }
+}

@@ -89,20 +89,14 @@ async function shot(name, url, width, height, dark) {
   console.log("saved", name);
 }
 
-await shot("01-home-light", "/", 1280, 900, false);
-await shot("02-home-dark", "/", 1280, 900, true);
-await shot("03-home-mobile", "/", 390, 844, false);
-await shot("04-tajweed-directory", "/tajweed", 1280, 900, false);
-await shot("05-rule-lesson", "/tajweed/what-is-tajweed", 1280, 900, false);
-await shot("06-rule-lesson-dark", "/tajweed/what-is-tajweed", 1280, 900, true);
-await shot("07-learn", "/learn", 1280, 900, false);
-await shot("08-practice", "/practice", 1280, 900, false);
-await shot("09-glossary", "/glossary", 1280, 900, false);
-await shot("10-articles", "/articles", 1280, 900, false);
-await shot("11-search", "/search?q=madd", 1280, 900, false);
-await shot("12-search-dark", "/search?q=madd", 1280, 900, true);
-await shot("13-start-here", "/start-here", 1280, 900, false);
-await shot("14-404", "/no-such-page", 1280, 900, false);
-await shot("15-rule-mobile", "/tajweed/what-is-tajweed", 390, 844, false);
+const locales = (process.env.QA_LOCALES || "en,ar,ur,id,fr").split(",");
+for (const locale of locales) {
+  await shot(`${locale}-home-desktop`, `/${locale}/`, 1440, 1000, false);
+  await shot(`${locale}-home-phone-dark`, `/${locale}/`, 390, 844, true);
+  await shot(`${locale}-lesson-small-phone`, `/${locale}/tajweed/intro-to-ghunnah/#examples`, 320, 900, false);
+  await shot(`${locale}-glossary-tablet`, `/${locale}/glossary/`, 768, 1000, false);
+  await shot(`${locale}-practice`, `/${locale}/practice/`, 1024, 1000, false);
+  await shot(`${locale}-article`, `/${locale}/articles/how-to-practice-tajweed-effectively/`, 1280, 1000, false);
+}
 
 sock.close(); chrome.kill(); server.close(); process.exit(0);

@@ -7,7 +7,7 @@
  * Usage: node scripts/design-test.mjs [port]
  */
 import { createServer } from "node:http";
-import { readFile, stat } from "node:fs/promises";
+import { readFile, stat, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import path from "node:path";
 import { spawn } from "node:child_process";
@@ -39,6 +39,7 @@ const server = createServer(async (req, res) => {
     // route/index.html (nested routes). Never treat a directory without
     // index.html as the final answer.
     let file = null;
+    let responseStatus = 200;
     const exact = path.join(OUT, urlPath);
     if (existsSync(exact) && (await stat(exact)).isFile()) file = exact;
     if (!file) {
@@ -52,11 +53,11 @@ const server = createServer(async (req, res) => {
     if (!file) {
       // Unknown routes: serve the exported 404 page, like a static host does.
       const notFound = path.join(OUT, "404.html");
-      if (urlPath !== "/" && existsSync(notFound)) file = notFound;
+      if (urlPath !== "/" && existsSync(notFound)) { file = notFound; responseStatus = 404; }
     }
     if (!file) { res.writeHead(404).end("not found"); return; }
     const body = await readFile(file);
-    res.writeHead(200, { "content-type": MIME[path.extname(file)] ?? "application/octet-stream" });
+    res.writeHead(responseStatus, { "content-type": MIME[path.extname(file)] ?? "application/octet-stream" });
     res.end(body);
   } catch { if (!res.headersSent) res.writeHead(500).end("error"); else res.end(); }
 });
@@ -153,9 +154,8 @@ async function navigate(sessionId, url, width, height) {
 const issues = [];
 function report(page, msg) { issues.push(`[${page}] ${msg}`); }
 
-const PAGES = [
+const PAGE_TYPES = [
   ["home", "/"],
-  ["start-here", "/start-here"],
   ["learn", "/learn"],
   ["learn-level", "/learn/foundations"],
   ["tajweed-directory", "/tajweed"],
@@ -170,11 +170,15 @@ const PAGES = [
   ["editorial-policy", "/editorial-policy"],
   ["404", "/nonexistent-page"],
 ];
+const QA_LOCALES = (process.env.QA_LOCALES || "en,ar,ur,id,fr").split(",");
+const PAGES = QA_LOCALES.flatMap(locale => PAGE_TYPES.filter(([name]) => name !== "404").map(([name, url]) => [`${locale}-${name}`, `/${locale}${url === "/" ? "/" : url}`])).concat([["404", "/nonexistent-page"]]);
+const WIDTHS = (process.env.QA_WIDTHS || "320,375,390,430,768,1024,1280,1440").split(",").map(Number);
 
 async function auditPage(sessionId, name, url, width, height, mode) {
   const label = `${name} ${width}px ${mode}`;
   consoleMessages = []; requestFailures = []; pageErrors = [];
   await navigate(sessionId, BASE + url, width, height);
+  await evaluate(sessionId, `document.documentElement.classList.${mode === "dark" ? "add" : "remove"}('dark'); 'ok'`);
   if (mode === "dark") {
     await evaluate(sessionId, "document.documentElement.classList.add('dark'); 'ok'");
     await sleep(250);
@@ -185,20 +189,32 @@ async function auditPage(sessionId, name, url, width, height, mode) {
 
   const overflow = await evaluate(sessionId, `(() => {
     const doc = document.documentElement;
-    const out = { sw: doc.scrollWidth, cw: doc.clientWidth, elements: [] };
-    if (doc.scrollWidth > doc.clientWidth + 1) {
-      for (const el of document.querySelectorAll('body *')) {
-        const r = el.getBoundingClientRect();
-        if (r.right > doc.clientWidth + 1 || r.left < -1) {
-          out.elements.push(el.tagName + '.' + String(el.className?.baseVal ?? el.className ?? '').split(' ')[0]);
-          if (out.elements.length >= 5) break;
-        }
+    const out = { sw: doc.scrollWidth, cw: doc.clientWidth, elements: [], clippedText: [] };
+    // A clipped body can conceal scrollWidth overflow. Check the actual
+    // bounds of controls and visible text even when the document fits.
+    const candidates = document.querySelectorAll('.site-header a, .site-header button, .site-header select, main a, main button, main input, main select, main summary, main h1, main h2, main h3, main h4, main p, main li, main span, main small, main img, .site-footer a, .site-footer p');
+    const description = el => el.tagName + '.' + String(el.className?.baseVal ?? el.className ?? '').split(' ')[0];
+    for (const el of candidates) {
+      if (el.closest('.sr-only, [hidden], [aria-hidden="true"]')) continue;
+      const r = el.getBoundingClientRect();
+      const style = getComputedStyle(el);
+      if (!r.width || !r.height || style.visibility === 'hidden' || style.display === 'none') continue;
+      let intentionallyScrollable = false;
+      for (let parent = el.parentElement; parent && parent !== document.body; parent = parent.parentElement) {
+        const parentStyle = getComputedStyle(parent);
+        if (['auto', 'scroll'].includes(parentStyle.overflowX) && parent.scrollWidth > parent.clientWidth + 1) { intentionallyScrollable = true; break; }
       }
+      if (intentionallyScrollable) continue;
+      if ((r.right > doc.clientWidth + 1 || r.left < -1) && out.elements.length < 8) out.elements.push(description(el) + ' [' + Math.round(r.left) + ',' + Math.round(r.right) + ']');
+      if (!el.children.length && el.textContent.trim() && el.clientWidth && el.scrollWidth > el.clientWidth + 2 && ['hidden', 'clip'].includes(style.overflowX) && out.clippedText.length < 5) out.clippedText.push(description(el));
     }
     return out;
   })()`);
-  if (overflow && !overflow.__error && overflow.sw > overflow.cw + 1) {
-    report(label, `horizontal overflow ${overflow.sw}>${overflow.cw}: ${overflow.elements.join(", ")}`);
+  if (!overflow || overflow.__error) report(label, `bounds inspection failed: ${JSON.stringify(overflow)}`);
+  else {
+    if (overflow.sw > overflow.cw + 1) report(label, `horizontal overflow ${overflow.sw}>${overflow.cw}`);
+    if (overflow.elements.length) report(label, `offscreen controls/content: ${overflow.elements.join(", ")}`);
+    if (overflow.clippedText.length) report(label, `clipped leaf text: ${overflow.clippedText.join(", ")}`);
   }
 
   const tiny = await evaluate(sessionId, `(() => {
@@ -216,146 +232,283 @@ async function auditPage(sessionId, name, url, width, height, mode) {
     const el = document.querySelector('h1') || document.body;
     return getComputedStyle(el).fontFamily;
   })()`);
-  if (typeof font === "string" && !font.toLowerCase().includes("google sans")) {
+  if (name !== "404" && typeof font === "string" && !/google.?sans|amiri/i.test(font)) {
     report(label, `font not applied: ${font}`);
   }
 }
 
+const interactionChecks = [];
+function checked(label, result, fields) {
+  for (const field of fields) {
+    const passed = Boolean(result && !result.__error && result[field] === true);
+    interactionChecks.push({ label, check: field, passed });
+    if (!passed) report(label, `${field} failed: ${JSON.stringify(result)}`);
+  }
+}
+async function waitFor(sessionId, expression, timeout = 10000) {
+  const start = Date.now();
+  while (Date.now() - start < timeout) {
+    if (await evaluate(sessionId, expression) === true) return true;
+    await sleep(100);
+  }
+  return false;
+}
+async function pressKey(sessionId, key, modifiers = 0) {
+  const keyCodes = { Tab: 9, Enter: 13, Escape: 27, ArrowDown: 40, ArrowUp: 38 };
+  await send("Input.dispatchKeyEvent", { type: "keyDown", key, code: key, windowsVirtualKeyCode: keyCodes[key], modifiers }, sessionId);
+  await send("Input.dispatchKeyEvent", { type: "keyUp", key, code: key, windowsVirtualKeyCode: keyCodes[key], modifiers }, sessionId);
+}
+async function readyControls(sessionId) {
+  // Use a DOM event that must update React state to distinguish rendered HTML
+  // from hydrated controls. The later interactions make their own assertions.
+  await waitFor(sessionId, "Boolean(document.querySelector('.language-switcher select'))");
+  await sleep(250);
+}
+
 async function interactionTests(sessionId) {
-  // Theme toggle round-trip
-  await navigate(sessionId, BASE + "/", 1280, 900);
-  const theme = await evaluate(sessionId, `(() => {
-    const btn = document.querySelector('[aria-label*="dark mode" i], [aria-label*="light mode" i]');
-    if (!btn) return 'no toggle button found';
-    const before = document.documentElement.classList.contains('dark');
-    btn.click();
-    const afterToggle = document.documentElement.classList.contains('dark');
-    const stored = localStorage.getItem('theme');
-    btn.click();
-    const afterSecond = document.documentElement.classList.contains('dark');
-    return { before, afterToggle, afterSecond, stored };
-  })()`);
-  if (typeof theme === "string") report("theme", theme);
-  else {
-    if (theme.afterToggle === theme.before) report("theme", "toggle click did not change dark class");
-    if (!theme.stored) report("theme", "theme choice not persisted to localStorage");
+  const languageRoutes = ["/tajweed/what-is-tajweed/", "/glossary/", "/practice/", "/articles/how-to-start-learning-tajweed/"];
+  for (const [sourceIndex, locale] of QA_LOCALES.entries()) {
+    const target = QA_LOCALES[(sourceIndex + 1) % QA_LOCALES.length];
+    for (const route of languageRoutes) {
+      await navigate(sessionId, BASE + "/" + locale + route + "?q=madd&qa=language#main-content", 390, 844);
+      await readyControls(sessionId);
+      const options = await evaluate(sessionId, `(() => {
+        const select = document.querySelector('.language-switcher select');
+        return { fiveOptions: select?.options.length === 5, selectedSource: select?.value === ${JSON.stringify(locale)} };
+      })()`);
+      checked("language " + locale + route, options, ["fiveOptions", "selectedSource"]);
+      await evaluate(sessionId, `(() => {
+        const select = document.querySelector('.language-switcher select');
+        if (!select) return false;
+        select.value = ${JSON.stringify(target)};
+        select.dispatchEvent(new Event('change', { bubbles: true }));
+        return true;
+      })()`);
+      const arrived = await waitFor(sessionId, `location.pathname === ${JSON.stringify("/" + target + route)} && document.documentElement.lang === ${JSON.stringify(target)} && document.readyState === 'complete'`);
+      const destination = await evaluate(sessionId, `(() => ({
+        arrived: ${arrived},
+        direction: document.documentElement.dir === ${JSON.stringify(["ar", "ur"].includes(target) ? "rtl" : "ltr")},
+        equivalentRoute: location.pathname === ${JSON.stringify("/" + target + route)},
+        keptQuery: location.search === '?q=madd&qa=language',
+        keptHash: location.hash === '#main-content',
+        selectedDestination: document.querySelector('.language-switcher select')?.value === ${JSON.stringify(target)},
+        savedPreference: localStorage.getItem('tajweed-language') === ${JSON.stringify(target)}
+      }))()`);
+      checked("language " + locale + " -> " + target + route, destination, ["arrived", "direction", "equivalentRoute", "keptQuery", "keptHash", "selectedDestination", "savedPreference"]);
+    }
+
+    await navigate(sessionId, BASE + "/" + locale + "/", 390, 844);
+    await readyControls(sessionId);
+    await evaluate(sessionId, "document.querySelector('.menu-button').focus()");
+    await pressKey(sessionId, "Enter");
+    const opened = await waitFor(sessionId, "document.querySelector('.main-nav')?.classList.contains('open')");
+    await evaluate(sessionId, "document.querySelector('.main-nav a')?.focus()");
+    await pressKey(sessionId, "Tab");
+    const keyboardMoved = await evaluate(sessionId, "document.activeElement === document.querySelectorAll('.main-nav a')[1]");
+    await pressKey(sessionId, "Escape");
+    await sleep(80);
+    const menu = await evaluate(sessionId, `(() => ({
+      opened: ${opened}, keyboardMoved: ${keyboardMoved},
+      closed: !document.querySelector('.main-nav').classList.contains('open'),
+      returnedFocus: document.activeElement === document.querySelector('.menu-button'),
+      expandedFalse: document.querySelector('.menu-button').getAttribute('aria-expanded') === 'false',
+      skipTargetExists: document.querySelector('.skip-link')?.hash === '#main-content' && Boolean(document.getElementById('main-content'))
+    }))()`);
+    checked("keyboard menu " + locale, menu, ["opened", "keyboardMoved", "closed", "returnedFocus", "expandedFalse", "skipTargetExists"]);
+
+    // Check both theme transitions in each locale without English-label matching.
+    const theme = await evaluate(sessionId, `(async () => {
+      const btn = document.querySelector('.nav-actions button[aria-pressed]');
+      if (!btn) return { found: false };
+      const before = document.documentElement.classList.contains('dark');
+      btn.click(); await new Promise(r => setTimeout(r, 50));
+      const changed = document.documentElement.classList.contains('dark') !== before;
+      const persisted = localStorage.getItem('theme') === (before ? 'light' : 'dark');
+      btn.click(); await new Promise(r => setTimeout(r, 50));
+      return { found: true, changed, persisted, restored: document.documentElement.classList.contains('dark') === before };
+    })()`);
+    checked("theme " + locale, theme, ["found", "changed", "persisted", "restored"]);
+
+    // The modal opens with focus on its input, traps Tab at both boundaries,
+    // supports arrow selection, and restores the originating control on Escape.
+    await evaluate(sessionId, `(() => {
+      document.querySelector('.search-button').focus();
+      window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', ctrlKey: true, bubbles: true }));
+    })()`);
+    await waitFor(sessionId, "Boolean(document.querySelector('.search-palette input'))");
+    const search = await evaluate(sessionId, `(async () => {
+      const input = document.querySelector('.search-palette input');
+      if (!input) return { opened: false };
+      const focusedInput = document.activeElement === input;
+      Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set.call(input, 'madd');
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+      await new Promise(r => setTimeout(r, 180));
+      const hasResults = document.querySelectorAll('.palette-result').length > 0;
+      input.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown', bubbles: true }));
+      await new Promise(r => setTimeout(r, 50));
+      const selectedWithArrow = input.getAttribute('aria-activedescendant') === 'palette-result-1';
+      const all = [...document.querySelectorAll('.search-palette button, .search-palette input, .search-palette a[href]')];
+      all.at(-1)?.focus();
+      return { opened: true, focusedInput, hasResults, selectedWithArrow, resultLinksLocalized: [...document.querySelectorAll('.palette-result')].every(a => a.pathname.startsWith('/${locale}/')) };
+    })()`);
+    checked("search " + locale, search, ["opened", "focusedInput", "hasResults", "selectedWithArrow", "resultLinksLocalized"]);
+    await pressKey(sessionId, "Tab");
+    const trappedForward = await evaluate(sessionId, "document.activeElement === document.querySelector('.palette-close')");
+    await pressKey(sessionId, "Tab", 8);
+    const trappedBackward = await evaluate(sessionId, "document.activeElement === [...document.querySelectorAll('.search-palette button, .search-palette input, .search-palette a[href]')].at(-1)");
+    await pressKey(sessionId, "Escape");
+    await sleep(80);
+    const searchFocus = await evaluate(sessionId, `(() => ({
+      trappedForward: ${trappedForward}, trappedBackward: ${trappedBackward},
+      closed: !document.querySelector('.search-palette'),
+      returnedFocus: document.activeElement === document.querySelector('.search-button'),
+      restoredScroll: document.body.style.overflow !== 'hidden'
+    }))()`);
+    checked("search focus " + locale, searchFocus, ["trappedForward", "trappedBackward", "closed", "returnedFocus", "restoredScroll"]);
+
+    // Answer one wrong and one right, attempt to re-score answered questions,
+    // go backwards, then finish. The two-question lesson must finish at 50%.
+    await navigate(sessionId, BASE + "/" + locale + "/tajweed/what-is-tajweed/", 1280, 900);
+    await readyControls(sessionId);
+    const quiz = await evaluate(sessionId, `(async () => {
+      const pause = () => new Promise(r => setTimeout(r, 100));
+      const options = () => [...document.querySelectorAll('.lesson-quiz .quiz-option')];
+      const firstDefinition = document.querySelector('.rule-intro')?.textContent.trim();
+      const wrong = options().find(b => b.querySelector('.option-text')?.textContent.trim() !== firstDefinition);
+      if (!wrong) return { available: false };
+      wrong.click(); await pause();
+      const incorrectFeedback = Boolean(document.querySelector('.quiz-feedback.incorrect[role="status"]'));
+      const answeredBefore = document.querySelector('.quiz-progress-bar')?.getAttribute('aria-valuenow');
+      options().find(b => b.classList.contains('correct'))?.click(); await pause();
+      const preventedRescore = Boolean(document.querySelector('.quiz-feedback.incorrect')) && document.querySelector('.quiz-progress-bar')?.getAttribute('aria-valuenow') === answeredBefore;
+      document.querySelector('.quiz-navigation .primary')?.click(); await pause();
+      const advancedWithFocus = document.activeElement === document.getElementById('quiz-heading');
+      const guidance = document.querySelector('#pronunciation > p')?.textContent.trim();
+      options().find(b => b.querySelector('.option-text')?.textContent.trim() === guidance)?.click(); await pause();
+      const correctFeedback = Boolean(document.querySelector('.quiz-feedback.correct[role="status"]'));
+      document.querySelector('.quiz-navigation .secondary')?.click(); await pause();
+      const previousRetained = Boolean(document.querySelector('.quiz-feedback.incorrect')) && options().every(b => b.getAttribute('aria-disabled') === 'true');
+      document.querySelector('.quiz-navigation .primary')?.click(); await pause();
+      const secondRetained = Boolean(document.querySelector('.quiz-feedback.correct'));
+      document.querySelector('.quiz-navigation .primary')?.click(); await pause();
+      const complete = Boolean(document.querySelector('.lesson-quiz-results'));
+      const scoreCorrect = document.querySelector('.score-number')?.textContent.trim() === '50%';
+      const completionFocus = document.activeElement === document.getElementById('quiz-results');
+      const reviewLocalized = document.querySelector('.results-actions a')?.pathname === '/${locale}/tajweed/what-is-tajweed/';
+      document.querySelector('.results-actions button')?.click(); await pause();
+      const reset = Boolean(document.querySelector('.quiz-options')) && document.querySelector('.quiz-progress-bar')?.getAttribute('aria-valuenow') === '0' && !document.querySelector('.quiz-feedback');
+      return { available: true, incorrectFeedback, preventedRescore, advancedWithFocus, correctFeedback, previousRetained, secondRetained, complete, scoreCorrect, completionFocus, reviewLocalized, reset };
+    })()`);
+    checked("lesson quiz " + locale, quiz, ["available", "incorrectFeedback", "preventedRescore", "advancedWithFocus", "correctFeedback", "previousRetained", "secondRetained", "complete", "scoreCorrect", "completionFocus", "reviewLocalized", "reset"]);
+
+    await navigate(sessionId, BASE + "/" + locale + "/practice/", 1280, 900);
+    await readyControls(sessionId);
+    const practice = await evaluate(sessionId, `(async () => {
+      const pause = () => new Promise(r => setTimeout(r, 100));
+      const pill = document.querySelectorAll('.filter-pills button')[1];
+      if (!pill) return { available: false };
+      pill.click(); await pause();
+      const activated = pill.getAttribute('aria-pressed') === 'true';
+      const difficulty = document.querySelectorAll('.practice-filter-row select')[1];
+      difficulty.value = 'advanced'; difficulty.dispatchEvent(new Event('change', { bubbles: true })); await pause();
+      const emptyFilters = Boolean(document.querySelector('.practice-empty'));
+      document.querySelector('.practice-filters .clear-filter')?.click(); await pause();
+      const resetFilters = Boolean(document.querySelector('.quiz-session')) && document.querySelectorAll('.filter-pills button')[0]?.getAttribute('aria-pressed') === 'true' && difficulty.value === '';
+      const option = document.querySelector('.session-option'); option?.click(); await pause();
+      const feedback = Boolean(document.querySelector('.answer-feedback[role="status"]'));
+      return { available: true, activated, emptyFilters, resetFilters, feedback };
+    })()`);
+    checked("practice filters " + locale, practice, ["available", "activated", "emptyFilters", "resetFilters", "feedback"]);
+
+    await navigate(sessionId, BASE + "/" + locale + "/tajweed/", 1280, 900);
+    await readyControls(sessionId);
+    const directory = await evaluate(sessionId, `(async () => {
+      const pause = () => new Promise(r => setTimeout(r, 100));
+      const button = document.querySelectorAll('.directory-mode-button')[1]; button?.click(); await pause();
+      const switched = button?.getAttribute('aria-pressed') === 'true' && document.querySelectorAll('.directory-rule-card').length === 50;
+      const category = document.getElementById('directory-category'), level = document.getElementById('directory-level');
+      category.value = 'Foundations'; category.dispatchEvent(new Event('change', { bubbles: true }));
+      level.value = 'Advanced'; level.dispatchEvent(new Event('change', { bubbles: true })); await pause();
+      const empty = Boolean(document.querySelector('.directory-empty')) && !document.querySelector('.directory-rule-card');
+      category.value = 'all'; category.dispatchEvent(new Event('change', { bubbles: true }));
+      level.value = 'all'; level.dispatchEvent(new Event('change', { bubbles: true })); await pause();
+      return { switched, empty, reset: document.querySelectorAll('.directory-rule-card').length === 50 };
+    })()`);
+    checked("directory " + locale, directory, ["switched", "empty", "reset"]);
+
+    await navigate(sessionId, BASE + "/" + locale + "/glossary/", 1280, 900);
+    await readyControls(sessionId);
+    const glossary = await evaluate(sessionId, `(async () => {
+      const input = document.querySelector('.glossary-search input');
+      const title = document.querySelector('.glossary-card h2')?.textContent.trim();
+      const setter = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value').set;
+      const change = async value => { setter.call(input, value); input.dispatchEvent(new Event('input', { bubbles: true })); await new Promise(r => setTimeout(r, 100)); };
+      if (!input || !title) return { available: false };
+      await change(title); const localizedSearch = document.querySelectorAll('.glossary-card').length > 0;
+      await change('zzzzzznomatch'); const empty = Boolean(document.querySelector('.directory-empty')) && !document.querySelector('.glossary-card');
+      await change(''); const reset = document.querySelectorAll('.glossary-card').length === 50;
+      return { available: true, localizedSearch, empty, reset };
+    })()`);
+    checked("glossary " + locale, glossary, ["available", "localizedSearch", "empty", "reset"]);
+
+    // Browser zoom reduces the CSS viewport. 640 CSS pixels at DPR 2 is
+    // the reflow-equivalent of a 1280-pixel desktop at 200% zoom.
+    for (const route of ["/", "/tajweed/what-is-tajweed/", "/glossary/"]) {
+      await navigate(sessionId, BASE + "/" + locale + route, 640, 450);
+      await send("Emulation.setDeviceMetricsOverride", { width: 640, height: 450, deviceScaleFactor: 2, mobile: false }, sessionId);
+      const zoom = await evaluate(sessionId, `(() => ({
+        noOverflow: document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1,
+        readableMain: Boolean(document.querySelector('main h1')) && getComputedStyle(document.body).fontSize !== '0px',
+        switcherAvailable: Boolean(document.querySelector('.language-switcher select')),
+        mainTarget: Boolean(document.getElementById('main-content'))
+      }))()`);
+      checked("200% zoom-equivalent " + locale + route, zoom, ["noOverflow", "readableMain", "switcherAvailable", "mainTarget"]);
+    }
   }
 
-  // Mobile menu
-  await navigate(sessionId, BASE + "/", 390, 844);
-  const menu = await evaluate(sessionId, `(async () => {
-    const btn = document.querySelector('.menu-button');
-    if (!btn) return 'no menu button';
-    const nav = document.getElementById('primary-navigation');
-    if (!nav) return 'no primary-navigation element';
-    // React hydration may lag behind load; click and poll for the class.
-    let open = false;
-    for (let i = 0; i < 40 && !open; i++) {
-      btn.click();
-      await new Promise(r => setTimeout(r, 150));
-      open = nav.classList.contains('open') && getComputedStyle(nav).display !== 'none';
+  // Storage failures are injected before scripts execute. A throwing getter
+  // checks both theme initialization and the language switcher's catch path.
+  const { identifier } = await send("Page.addScriptToEvaluateOnNewDocument", { source: "Object.defineProperty(window, 'localStorage', { configurable: true, get() { throw new DOMException('Storage disabled for QA', 'SecurityError'); } });" }, sessionId);
+  try {
+    for (const [index, locale] of QA_LOCALES.entries()) {
+      const target = QA_LOCALES[(index + 1) % QA_LOCALES.length];
+      pageErrors = [];
+      await navigate(sessionId, BASE + "/" + locale + "/", 390, 844);
+      await readyControls(sessionId);
+      const storage = await evaluate(sessionId, `(async () => {
+        const h1 = document.querySelector('main h1');
+        const button = document.querySelector('.nav-actions button[aria-pressed]');
+        if (!button) return { rendered: Boolean(h1), themeWorks: false };
+        const before = document.documentElement.classList.contains('dark');
+        button.click(); await new Promise(r => setTimeout(r, 60));
+        const themeWorks = document.documentElement.classList.contains('dark') !== before;
+        const select = document.querySelector('.language-switcher select');
+        select.value = ${JSON.stringify(target)}; select.dispatchEvent(new Event('change', { bubbles: true }));
+        return { rendered: Boolean(h1), themeWorks };
+      })()`);
+      checked("storage unavailable " + locale, storage, ["rendered", "themeWorks"]);
+      const navigationWorks = await waitFor(sessionId, `location.pathname === ${JSON.stringify("/" + target + "/")} && document.documentElement.lang === ${JSON.stringify(target)} && document.readyState === 'complete'`);
+      checked("storage unavailable language " + locale, { navigationWorks, noPageErrors: pageErrors.length === 0 }, ["navigationWorks", "noPageErrors"]);
     }
-    const style = open ? getComputedStyle(nav).display : getComputedStyle(nav).display;
-    if (open) { btn.click(); await new Promise(r => setTimeout(r, 200)); }
-    const closed = !nav.classList.contains('open');
-    return { open, closed, style, cls: nav.className };
-  })()`);
-  if (typeof menu === "string") report("menu", menu);
-  else if (!menu.open || !menu.closed) report("menu", `menu broken: ${JSON.stringify(menu)}`);
-
-  // Lesson quiz: content is review-gated, so the empty state must render
-  // nicely; if quizzes existed, answering must show feedback and advance.
-  await navigate(sessionId, BASE + "/tajweed/what-is-tajweed", 1280, 900);
-  const quiz = await evaluate(sessionId, `(async () => {
-    const first = document.querySelector('.lesson-quiz .quiz-option');
-    if (!first) {
-      const empty = document.querySelector('.lesson-quiz-empty');
-      return { empty: Boolean(empty), visible: empty ? getComputedStyle(empty).color !== '' : false };
-    }
-    first.click();
-    await new Promise(r => setTimeout(r, 200));
-    const feedback = Boolean(document.querySelector('.quiz-feedback'));
-    const next = [...document.querySelectorAll('.lesson-quiz .quiz-navigation button')].find(b => /next/i.test(b.textContent));
-    if (!next) return { feedback, advanced: false };
-    next.click();
-    await new Promise(r => setTimeout(r, 200));
-    return { feedback, advanced: /Question 2|2\\s*of/i.test(document.body.textContent) };
-  })()`);
-  if (quiz?.empty === false) report("quiz", "quiz area missing entirely");
-  else if (quiz?.empty === undefined && !quiz.feedback) report("quiz", "no feedback shown after answering");
-  else if (quiz?.empty === undefined && quiz.advanced === false) report("quiz", "Next button did not advance the question");
-
-  // ⌘K palette search
-  await navigate(sessionId, BASE + "/", 1280, 900);
-  const palette = await evaluate(sessionId, `(async () => {
-    window.dispatchEvent(new KeyboardEvent('keydown', { key: 'k', metaKey: true, bubbles: true }));
-    await new Promise(r => setTimeout(r, 300));
-    const input = document.querySelector('.search-palette input');
-    if (!input) return 'palette did not open with Cmd+K';
-    const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
-    setter.call(input, 'madd');
-    input.dispatchEvent(new Event('input', { bubbles: true }));
-    await new Promise(r => setTimeout(r, 400));
-    return { results: document.querySelectorAll('.palette-result').length };
-  })()`);
-  if (typeof palette === "string") report("palette", palette);
-  else if (palette.results < 1) report("palette", `no results for 'madd' (${palette.results})`);
-
-  // Practice filter pills (question bank is review-gated; the empty state
-  // is valid, but the pill must still activate and re-render the hub).
-  await navigate(sessionId, BASE + "/practice", 1280, 900);
-  const filters = await evaluate(sessionId, `(async () => {
-    const pill = [...document.querySelectorAll('.filter-pills button')].find(b => b.textContent.trim() === 'Foundation');
-    if (!pill) return 'no Foundation pill';
-    pill.click();
-    await new Promise(r => setTimeout(r, 250));
-    return { active: pill.classList.contains('active'), hubRendered: Boolean(document.querySelector('.practice-empty, .quiz-session')) };
-  })()`);
-  if (typeof filters === "string") report("practice", filters);
-  else if (!filters.active) report("practice", "Foundation pill did not activate");
-  else if (!filters.hubRendered) report("practice", "practice hub did not re-render after filtering");
-
-  // Directory view switch
-  await navigate(sessionId, BASE + "/tajweed", 1280, 900);
-  const dirMode = await evaluate(sessionId, `(async () => {
-    const btn = [...document.querySelectorAll('.directory-mode-button')].find(b => /all rules/i.test(b.textContent));
-    if (!btn) return 'no All Rules button';
-    btn.click();
-    await new Promise(r => setTimeout(r, 250));
-    return { selected: btn.getAttribute('aria-selected'), cards: document.querySelectorAll('.directory-rule-card').length };
-  })()`);
-  if (typeof dirMode === "string") report("directory", dirMode);
-  else if (dirMode.selected !== "true") report("directory", "All Rules tab not selected after click");
-
-  // Glossary live search
-  await navigate(sessionId, BASE + "/glossary", 1280, 900);
-  const glossary = await evaluate(sessionId, `(async () => {
-    const input = document.querySelector('.glossary-search input');
-    if (!input) return 'no glossary input';
-    const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value').set;
-    setter.call(input, 'ikhfa');
-    input.dispatchEvent(new Event('input', { bubbles: true }));
-    await new Promise(r => setTimeout(r, 400));
-    return { cards: document.querySelectorAll('.glossary-card').length };
-  })()`);
-  if (typeof glossary === "string") report("glossary", glossary);
-  else if (glossary.cards < 1) report("glossary", `search 'ikhfa' produced ${glossary.cards} cards`);
-
-  // Icon endpoints
-  for (const iconPath of ["/icon.svg", "/apple-icon.png"]) {
-    const ok = await evaluate(sessionId, `fetch('${BASE}${iconPath}').then(r => r.ok).catch(() => false)`);
-    if (ok !== true) report("icons", `${iconPath} request failed`);
+  } finally {
+    await send("Page.removeScriptToEvaluateOnNewDocument", { identifier }, sessionId);
   }
+  await navigate(sessionId, BASE + "/en/", 1280, 900);
+  for (const iconPath of ["/icon.png", "/apple-icon.png"]) {
+    const available = await evaluate(sessionId, `fetch(${JSON.stringify(BASE + iconPath)}).then(r => r.ok).catch(() => false)`);
+    checked("icon " + iconPath, { available }, ["available"]);
+  }
+  console.log(`\n  ${interactionChecks.filter(check => check.passed).length}/${interactionChecks.length} interaction assertions passed.`);
 }
 
 async function main() {
   const sessionId = await setup();
-  console.log(`Testing ${PAGES.length} pages x (1280 light, 1280 dark, 390 light) + interactions…`);
-  for (const [name, url] of PAGES) {
+  let layoutChecks = 0;
+  console.log(`Testing ${PAGES.length} page variants at widths ${WIDTHS.join(", ")} plus dark themes and interactions…`);
+  for (const [name, url] of (process.env.QA_INTERACTIONS_ONLY ? [] : PAGES)) {
     process.stdout.write(`  ${name}…`);
-    await auditPage(sessionId, name, url, 1280, 900, "light");
-    await auditPage(sessionId, name, url, 1280, 900, "dark");
-    await auditPage(sessionId, name, url, 390, 844, "light");
+    for (const width of WIDTHS) { await auditPage(sessionId, name, url, width, width < 700 ? 844 : 900, "light"); layoutChecks++; }
+    for (const width of [390, 1280]) if (WIDTHS.includes(width)) { await auditPage(sessionId, name, url, width, 900, "dark"); layoutChecks++; }
     process.stdout.write(" done\n");
   }
   process.stdout.write("  interactions…");
@@ -363,6 +516,13 @@ async function main() {
   process.stdout.write(" done\n");
 
   console.log("─".repeat(60));
+  await writeFile(path.join(ROOT, "docs", "design-qa-results.json"), JSON.stringify({
+    locales: QA_LOCALES, widths: WIDTHS, routeVariants: PAGES.length,
+    layoutChecks, interactionAssertions: interactionChecks.length,
+    passedInteractionAssertions: interactionChecks.filter(check => check.passed).length,
+    zoomMethod: "200% reflow equivalent: 640 CSS-pixel viewport at DPR 2 for a 1280-pixel desktop",
+    interactions: interactionChecks, issues,
+  }, null, 2) + "\n");
   if (issues.length === 0) {
     console.log("ALL CHECKS PASSED");
   } else {

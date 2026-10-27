@@ -5,9 +5,11 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build --webpack",
-    "start": "next start",
+    "start": "node scripts/serve.mjs",
     "lint": "eslint .",
     "audit": "node scripts/register.mjs scripts/audit.mjs",
+    "audit:i18n": "node scripts/register.mjs scripts/i18n-audit.mjs",
+    "audit:export": "node scripts/export-audit.mjs",
     "font": "python scripts/build-font.py",
     "design:test": "node scripts/design-test.mjs",
     "design:shots": "node scripts/screenshots.mjs"

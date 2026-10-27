@@ -317,9 +317,9 @@ export const tajweedRules: TajweedRuleRecord[] = [
     category: "Noon and Tanween",
     level: "Essential",
     difficultyScore: 2,
-    shortDefinition: "Tanween is the doubled vowel sound at the end of a word, and it is treated under the same Noon and Tanween rule family.",
-    detailedExplanation: "Tanween is a term for the doubled vowel sound represented in writing by the symbols of fatḥatayn, dammatayn, and kasratayn. It is studied in the same family as Noon Sakinah because the same principles of clear reading, merging, concealment, and change can apply when the sound is followed by a specific letter. The key is to identify the sound pattern and then recognize the following letter to determine which rule applies.",
-    whenItOccurs: "It occurs when a word ends with a doubled vowel sound or when the word ending has the tanween sign in the text.",
+    shortDefinition: "Tanween adds an n sound after a final vowel in connected reading. Double vowel signs represent it; it belongs to the Noon Sakinah and Tanween rule family.",
+    detailedExplanation: "Tanween is an added n sound represented by fatḥatayn, dammatayn, or kasratayn: the double vowel signs. It is not a lengthened vowel. It is studied in the same family as Noon Sakinah because the same principles of clear reading, merging, concealment, and change can apply when the sound is followed by a specific letter. The key is to identify the sound pattern and then recognize the following letter to determine which rule applies.",
+    whenItOccurs: "Recognise the double vowel sign at a word ending. In connected reading, inspect the next pronounced letter; stopping changes the ending.",
     letters: [],
     pronunciation: "The learner should hear the tanween sound as an ending pattern and then analyze the next letter with a qualified demonstration.",
     commonMistakes: [
@@ -351,16 +351,16 @@ export const tajweedRules: TajweedRuleRecord[] = [
     category: "Noon and Tanween",
     level: "Essential",
     difficultyScore: 2,
-    shortDefinition: "Izhar is the clear pronunciation of Noon Sakinah or Tanween when the following letter is one of the six throat letters: Hamzah, Ha, 'Ayn, Ha (the lighter h), Ghayn, or Kha.",
-    detailedExplanation: "In the Noon Sakinah and Tanween family, Izhar is the case in which the Noon or tanween sound remains clear and is not merged, concealed, or changed. The condition depends on the following letter: when it is one of the six throat letters — Hamzah (ء), Ha (ه), 'Ayn (ع), the lighter Ha (ح), Ghayn (غ), or Kha (خ) — the Noon is pronounced clearly. These six letters are the entire Izhar set, and memorizing them lets the learner rule out the merging, concealment, and change cases. This rule is best learned by identifying the trigger first and then listening to a reliable demonstration of what clear pronunciation sounds like.",
-    whenItOccurs: "It occurs when Noon Sakinah or Tanween is followed by one of the six throat letters: Hamzah, Ha, 'Ayn, the lighter Ha, Ghayn, or Kha.",
+    shortDefinition: "Izhar is the clear pronunciation of Noon Sakinah or Tanween before one of the six throat letters: ء ه ع ح غ خ.",
+    detailedExplanation: "In the Noon Sakinah and Tanween family, Izhar is the case in which the Noon or tanween sound remains clear and is not merged, concealed, or changed. The condition depends on the following letter: when it is one of the six throat letters — Hamzah (ء), Haa (ه), Ayn (ع), Haa (ح), Ghayn (غ), or Khaa (خ) — the Noon is pronounced clearly. The two letters ه and ح are distinct sounds; learn their contrast with a teacher. These six letters are the entire Izhar set, and memorizing them lets the learner rule out the merging, concealment, and change cases. This rule is best learned by identifying the trigger first and then listening to a reliable demonstration of what clear pronunciation sounds like.",
+    whenItOccurs: "It occurs when Noon Sakinah or Tanween is followed by one of ء ه ع ح غ خ.",
     letters: ["ء", "ه", "ع", "ح", "غ", "خ"],
     pronunciation: "The sound stays clear, without merging or concealment, and should be reproduced with a precise opening of the sound according to qualified instruction.",
     commonMistakes: [
       "Turning a clear Noon into an Idgham or Ikhfa case by mistake.",
       "Adding an artificial sound or pause where none belongs.",
     ],
-    memoryTip: "Six throat letters make the Noon clear: Hamzah, Ha, 'Ayn, the lighter Ha, Ghayn, and Kha.",
+    memoryTip: "Six throat letters make the Noon clear: ء ه ع ح غ خ. Keep ه and ح distinct.",
     prerequisites: ["noon-sakinah", "tanween"],
     relatedRules: ["idgham", "ikhfa", "iqlab"],
     quranExamples: [],
@@ -486,7 +486,7 @@ export const tajweedRules: TajweedRuleRecord[] = [
     level: "Essential",
     difficultyScore: 3,
     shortDefinition: "Iqlab is the changing of Noon Sakinah or Tanween into a Meem sound when the following letter is Baa, pronounced with ghunnah.",
-    detailedExplanation: "Iqlab means conversion or flipping. When a Noon Sakinah or a tanween is followed by Baa, the Noon sound is converted into a Meem sound that is pronounced with the lips closed and with a nasal quality (ghunnah) of about two counts, while the written text stays unchanged. The learner must identify the Noon Sakinah or tanween, detect the Baa trigger, and then recognize the changed sound in a qualified demonstration. The change is a practical sound change, not a rewriting of the text, and it should be heard, imitated, and corrected with a qualified reciter.",
+    detailedExplanation: "Iqlab means conversion or flipping. When a Noon Sakinah or a tanween is followed by Baa, the Noon sound is converted into a Meem sound that is concealed before Baa with a nasal quality (ghunnah) of about two counts, while the written text stays unchanged. The learner must identify the Noon Sakinah or tanween, detect the Baa trigger, and then recognize the changed sound in a qualified demonstration. The change is a practical sound change, not a rewriting of the text, and it should be heard, imitated, and corrected with a qualified reciter.",
     whenItOccurs: "It occurs when Noon Sakinah or Tanween is followed by the letter Baa.",
     letters: ["ب"],
     pronunciation: "The Noon or tanween is changed to a hidden Meem-like sound before Baa, with ghunnah for approximately two counts; the learner should verify the exact result with a qualified reciter.",
@@ -636,7 +636,7 @@ export const tajweedRules: TajweedRuleRecord[] = [
     quranExamples: [],
     practiceQuestions: [
       "How does Idgham Shafawi differ from Ikhfa Shafawi?",
-      "What is the first step when a Learner sees Meem Sakinah?",
+      "What is the first step when a learner sees Meem Sakinah?",
     ],
     faq: [
       { question: "Is the Meem family a separate branch of Tajweed?", answer: "Yes. It is a separate family with its own conditions and sound outcomes even though the same general recognition logic applies." },
@@ -894,7 +894,7 @@ export const tajweedRules: TajweedRuleRecord[] = [
     level: "Essential",
     difficultyScore: 2,
     shortDefinition: "Lam Qamariyyah is the clear pronunciation of the Lam of the definite article (al-) when it is followed by one of the fourteen lunar (qamariyyah) letters.",
-    detailedExplanation: "When the definite article al- is attached to a word beginning with a lunar letter, the Lam is pronounced clearly with a sukoon and is not merged into the following letter. The fourteen lunar (qamariyyah) letters are: Hamzah, Ba, Jim, Ha (from the chest), Kha, 'Ayn, Ghayn, Fa, Kaf, Qaf, Mim, Ha (the light h), Waw, and Ya. In the mushaf the Lam of the definite article is written with a sukoon in these cases, which is the visual clue distinguishing them from the solar cases. Together the solar and lunar letters cover all letters of the alphabet exactly once. This is the complementary case to Lam Shamsiyyah in many curricula. The rule is a practical guide to production and listening and is best learned in context with a qualified reciter.",
+    detailedExplanation: "When the definite article al- is attached to a word beginning with a lunar letter, the Lam is pronounced clearly with a sukoon and is not merged into the following letter. The fourteen lunar (qamariyyah) letters are: ء ب ج ح خ ع غ ف ك ق م ه و ي. Keep the two distinct letters ح and ه separate when learning their sounds. In the mushaf the Lam of the definite article is written with a sukoon in these cases, which is the visual clue distinguishing them from the solar cases. Together the solar and lunar letters cover all letters of the alphabet exactly once. This is the complementary case to Lam Shamsiyyah in many curricula. The rule is a practical guide to production and listening and is best learned in context with a qualified reciter.",
     whenItOccurs: "It occurs when the Lam of the definite article (al-) is followed by one of the fourteen lunar letters: Hamzah, Ba, Jim, Ha, Kha, 'Ayn, Ghayn, Fa, Kaf, Qaf, Mim, Ha, Waw, or Ya.",
     letters: ["ء", "ب", "ج", "ح", "خ", "ع", "غ", "ف", "ك", "ق", "م", "ه", "و", "ي"],
     pronunciation: "The sound stays clear and is not absorbed into the following letter in the same way as in the solar-letter case.",
@@ -1070,10 +1070,10 @@ export const tajweedRules: TajweedRuleRecord[] = [
     letters: ["ٱ"],
     pronunciation: "At a fresh start, pronounce Hamzat al-Wasl with the prescribed vowel for that word; when joining, drop it. In Hafs, learn the vowel from the word's category and a qualified reciter rather than guessing from the spelling.",
     commonMistakes: [
-      "Mixing the joining Hamzah with the stopping Hamzah.",
+      "Confusing Hamzat al-Wasl with Hamzat al-Qat'.",
       "Treating it as a purely visual symbol without hearing the context.",
     ],
-    memoryTip: "The first question is whether this is a joining Hamzah or a stopping Hamzah. The answer determines the recitation approach.",
+    memoryTip: "Distinguish Wasl from Qat', then check whether you are starting or joining.",
     prerequisites: ["ibtida", "basic-arabic-pronunciation"],
     relatedRules: ["hamzat-al-qat", "waqf"],
     quranExamples: [],
@@ -1104,7 +1104,7 @@ export const tajweedRules: TajweedRuleRecord[] = [
     letters: ["أ", "إ", "ؤ", "ئ", "ء"],
     pronunciation: "The Hamzah is pronounced when starting and joining. At a stop, apply the ordinary stopping treatment to the final vowel while retaining the Hamzah itself; learn detailed final-Hamzah cases from qualified instruction.",
     commonMistakes: [
-      "Using the joining Hamzah description for the stoppage case.",
+      "Dropping Hamzat al-Qat' when joining words.",
       "Treating the distinction as visual rather than contextual.",
     ],
     memoryTip: "The first question is whether the Hamzah is joining or cut-off. That distinction governs the correct practice.",
@@ -1202,7 +1202,7 @@ export const tajweedRules: TajweedRuleRecord[] = [
     difficultyScore: 3,
     shortDefinition: "Madd 'Arid li-Sukun is the temporary madd that occurs when a natural madd letter at the end of a word is followed by one letter and the reciter stops, leaving the ending temporarily sakin.",
     detailedExplanation: "'Arid li-Sukun means occurring because of sukoon. A natural madd letter is followed by the final consonant of the word, and the reciter stops there, making that final consonant temporarily sakin. The stop imposes a temporary sukoon on the final letter, and the madd letter may then be lengthened two, four, or six counts. If the reciter continues instead, the temporary sukoon disappears and only the two counts of natural Madd remain. This rule shows how a stopping decision changes timing.",
-    whenItOccurs: "It occurs when a madd letter ends a word, is followed by exactly one non-madd letter, and the reciter stops on that word.",
+    whenItOccurs: "It occurs when a madd letter is followed by the final consonant of a word, and stopping makes that consonant temporarily saakin.",
     letters: ["ا", "و", "ي"],
     pronunciation: "When stopping: two, four, or six counts are permitted and should be applied consistently. When continuing: only the two counts of natural Madd.",
     commonMistakes: [
@@ -1274,16 +1274,16 @@ export const tajweedRules: TajweedRuleRecord[] = [
     letters: ["ا", "و", "ي"],
     pronunciation: "Follow the transmitted treatment for your chain; in the well-known Hafs routes, four or five counts are taught. Keep the chosen approach consistent and confirm it with a qualified teacher.",
     commonMistakes: [
-      "Applying the long obligatory length although the hamzah is in the next word.",
+      "Choosing the duration from the rule name alone instead of the transmitted route.",
       "Confusing the separated form with the connected form because both involve hamzah.",
     ],
-    memoryTip: "Separated by a word boundary, so the strength of the rule is reduced compared with the connected form.",
+    memoryTip: "Munfasil means separated: the madd and Hamzah are in different words. Follow your taught route for the duration.",
     prerequisites: ["madd-tabii", "madd-wajib-muttasil"],
     relatedRules: ["madd-wajib-muttasil", "madd-tabii"],
     quranExamples: [],
     practiceQuestions: [
       "Where exactly does the word boundary fall in Madd Jaiz Munfasil?",
-      "Which madd form is stronger when a hamzah follows a madd letter, and why?",
+      "How does the word boundary distinguish Munfasil from Muttasil?",
     ],
     faq: [
       { question: "How long is Madd Jaiz Munfasil?", answer: "The duration depends on the transmitted route. In the well-known Hafs routes, four or five counts are taught; learn one treatment from a qualified teacher and keep it consistent." },
@@ -1345,7 +1345,7 @@ export const tajweedRules: TajweedRuleRecord[] = [
       "Applying the six counts to opening letters whose names contain no madd letter.",
       "Reading the letters as though they were ordinary words rather than letter names.",
     ],
-    memoryTip: "First learn the letter names, then listen: only the names that end with a madd letter take the long pull.",
+    memoryTip: "First learn the letter names, then listen: check the madd letter and the permanent sukoon that follows it.",
     prerequisites: ["madd-lazim-kalimi"],
     relatedRules: ["madd-lazim-kalimi", "madd-tabii"],
     quranExamples: [],
@@ -1360,7 +1360,7 @@ export const tajweedRules: TajweedRuleRecord[] = [
     verificationStatus: "needs_review",
     reviewStatus: "REQUIRES REVIEW",
     sourceReferences: ["Tajweed Rules Reference"],
-    reviewNotes: ["Standard Hafs classification; letter-name recitation should be learned by listening to a qualified reciter."],
+    reviewNotes: ["Standard Hafs classification; letter-name recitation should be learned by listening to a qualified reciter.", "The listed Ayn (ع) and the unconditional six-count wording need qualified review together; do not use this summary to choose a duration before that review."],
   },
   {
     id: "major-stopping-concepts",
@@ -1496,7 +1496,7 @@ export const tajweedRules: TajweedRuleRecord[] = [
     verificationStatus: "needs_review",
     reviewStatus: "REQUIRES REVIEW",
     sourceReferences: ["Beginner and Intermediate Tajweed Curriculum"],
-    reviewNotes: ["Concept aligned with standard Hamzah teaching; the joining-hamzah cases should be demonstrated by a qualified reciter."],
+    reviewNotes: ["Concept aligned with standard Hamzah teaching; the joining-hamzah cases should be demonstrated by a qualified reciter.", "The phrase third root letter needs qualified review; the starting-vowel condition must distinguish root letters from positions in the written word."],
   },
   {
     id: "ghunnah",
@@ -1713,7 +1713,7 @@ export function getRulesByCategory(category: string) {
 }
 
 export function getVerifiedRules() {
-  return tajweedRules.filter((rule) => rule.verificationStatus === "verified");
+  return tajweedRules.filter((rule) => rule.verificationStatus === "verified" && rule.reviewStatus === "VERIFIED");
 }
 
 export function getReviewRequiredRules() {

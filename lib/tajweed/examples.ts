@@ -372,25 +372,41 @@ const generatedTeachingExamples: RuleExample[] = tajweedRules
     };
   });
 
+// Preserve these records verbatim for review; do not publish known mismatches.
+export const withheldExampleIssues: Record<string, string> = {
+  "instr-meem-01": "Meem mushaddad is shown rather than an isolated Meem Sakinah case; the gloss also needs language review.",
+  "instr-ikhfa-shafawi-01": "Meem meets Meem, not the Baa required for Ikhfa Shafawi; the highlight is misplaced.",
+  "instr-qalqalah-02": "The constructed word and its gloss need Arabic-language review.",
+  "instr-lam-01": "Prepositional Lam is shown, not the definite article required for Lam Shamsiyyah.",
+  "instr-lam-02": "Prepositional Lam is shown, not the definite article required for Lam Qamariyyah.",
+  "teaching-why-tajweed-is-studied-0": "The vowels do not match the transliteration and school gloss.",
+  "teaching-idgham-with-ghunnah-7": "The second word's vowels disagree with the transliteration and gloss.",
+  "teaching-qalqalah-sughra-11": "The word, transliteration, and gloss need Arabic-language review.",
+  "teaching-lam-in-allah-13": "The highlight does not isolate the Lam whose weight is described.",
+  "teaching-madd-lazim-harfi-21": "The fabricated letter-name sequence does not demonstrate this rule; its highlight is absent.",
+  "teaching-mushaf-stopping-symbols-23": "The verse-ending marker is not a stopping symbol explained by this lesson.",
+};
+
 export const tajweedExamples: RuleExample[] = [...rawTajweedExamples, ...additionalTeachingExamples, ...generatedTeachingExamples].map((example) => ({
   ...example,
+  reviewIssue: withheldExampleIssues[example.id],
   sourceIds: example.type === "quran" ? ["quran-foundation-tajweed-api"] : [],
 }));
 
 export const exampleVerificationReport = {
   status: "needs_review",
-  // Instructional examples are intentionally unverified by design; the report
-  // only needs to list examples whose verification is still outstanding work.
-  unverifiedExamples: tajweedExamples.filter((example) => example.type === "quran" && example.verificationStatus !== "verified").map((example) => ({
+  // Draft instructional material also needs review; its label alone does not
+  // establish that its Arabic, gloss, or rule assignment is fit for teaching.
+  unverifiedExamples: tajweedExamples.filter((example) => example.verificationStatus !== "verified").map((example) => ({
     id: example.id,
     ruleId: example.ruleId,
     type: example.type,
     surah: example.surah ?? "N/A",
     verse: example.verse ?? "N/A",
-    reason: example.type === "quran" ? "Quranic reference requires authoritative verification before publication." : "Constructed example is intentionally instructional-only and not a Quranic citation.",
+    reason: example.reviewIssue ?? (example.type === "quran" ? "Quranic reference requires authoritative verification before publication." : "Draft instructional example; Arabic, gloss, highlight, and rule assignment require qualified review."),
   })),
 };
 
 export function getExamplesByRule(ruleId: string) {
-  return tajweedExamples.filter((example) => example.ruleId === ruleId);
+  return tajweedExamples.filter((example) => example.ruleId === ruleId && !example.reviewIssue);
 }

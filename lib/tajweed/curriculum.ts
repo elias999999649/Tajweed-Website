@@ -12,8 +12,8 @@ export const curriculumAreas: CurriculumArea[] = [
     rules: [
       "what-is-tajweed",
       "why-tajweed-is-studied",
-      "basic-arabic-pronunciation",
       "arabic-letters",
+      "basic-arabic-pronunciation",
       "makharij-al-huruf",
       "sifaat-al-huruf",
       "heavy-and-light-letters",

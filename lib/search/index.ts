@@ -39,7 +39,7 @@ const paletteDocuments: SearchDocument[] = [
 export const searchPaletteIndex: SearchIndexEntry[] = paletteDocuments.map((document) => ({ kind: document.kind, title: document.title, level: document.level, description: document.description, url: document.url, haystack: [document.title, document.category, document.level ?? "", document.description, ...document.terms].filter(Boolean).join(" ").toLocaleLowerCase() }));
 
 function normalize(value: string): string {
-  return value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLocaleLowerCase().replace(/[’'`-]/g, " ").replace(/[^\p{Letter}\p{Number}]+/gu, " ").trim();
+  return value.normalize("NFKD").replace(/\p{Mark}/gu, "").replace(/ـ/g, "").replace(/[أإآٱ]/g, "ا").replace(/ی/g, "ي").replace(/ک/g, "ك").toLocaleLowerCase().replace(/[’'`-]/g, " ").replace(/[^\p{Letter}\p{Number}]+/gu, " ").trim();
 }
 
 function tokenize(query: string): string[] {
@@ -65,13 +65,13 @@ function scoreEntry(haystack: string, tokens: string[]): number {
 }
 
 /** Search with multi-word matching and relevance ranking (best first). */
-export function searchDocumentsFor(query: string, level?: SearchLevel): SearchDocument[] {
+export function searchDocumentsFor(query: string, level?: SearchLevel, translate?: (message: string) => string): SearchDocument[] {
   const tokens = tokenize(query);
   const matchingLevel = (document: SearchDocument) => !level || document.level === level;
   if (!tokens.length) return searchDocuments.filter(matchingLevel);
   return searchDocuments
     .filter((document) => matchingLevel(document))
-    .map((document) => ({ document, score: scoreEntry([document.title, document.category, document.level ?? "", document.description, ...document.terms].filter(Boolean).join(" ").toLocaleLowerCase(), tokens) }))
+    .map((document) => ({ document, score: scoreEntry([document.title, document.category, document.level ?? "", document.description, ...document.terms, ...(translate ? [translate(document.title), translate(document.category), translate(document.description)] : [])].filter(Boolean).join(" ").toLocaleLowerCase(), tokens) }))
     .filter((entry) => entry.score > 0)
     .sort((a, b) => b.score - a.score)
     .map((entry) => entry.document);
