@@ -1,0 +1,52 @@
+[
+  {
+    "locale": "en",
+    "label": "English",
+    "labelFits": true,
+    "noOverflow": true,
+    "controlsFit": true,
+    "lang": "en",
+    "searchInMenu": true,
+    "focusReturns": true
+  },
+  {
+    "locale": "ar",
+    "label": "العربية",
+    "labelFits": true,
+    "noOverflow": true,
+    "controlsFit": true,
+    "lang": "ar",
+    "searchInMenu": true,
+    "focusReturns": true
+  },
+  {
+    "locale": "ur",
+    "label": "اردو",
+    "labelFits": true,
+    "noOverflow": true,
+    "controlsFit": true,
+    "lang": "ur",
+    "searchInMenu": true,
+    "focusReturns": true
+  },
+  {
+    "locale": "id",
+    "label": "Bahasa Indonesia",
+    "labelFits": true,
+    "noOverflow": true,
+    "controlsFit": true,
+    "lang": "id",
+    "searchInMenu": true,
+    "focusReturns": true
+  },
+  {
+    "locale": "fr",
+    "label": "Français",
+    "labelFits": true,
+    "noOverflow": true,
+    "controlsFit": true,
+    "lang": "fr",
+    "searchInMenu": true,
+    "focusReturns": true
+  }
+]

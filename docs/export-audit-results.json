@@ -1,24 +1,8 @@
 {
-  "pages": 115,
-  "links": 4183,
-  "issues": [
-    "Sitemap: noindex page https://tajweed101.pages.dev/",
-    "Sitemap: noindex page https://tajweed101.pages.dev/tajweed",
-    "Sitemap: noindex page https://tajweed101.pages.dev/learn",
-    "Sitemap: noindex page https://tajweed101.pages.dev/practice",
-    "Sitemap: noindex page https://tajweed101.pages.dev/about",
-    "Sitemap: noindex page https://tajweed101.pages.dev/sources",
-    "Sitemap: noindex page https://tajweed101.pages.dev/editorial-policy",
-    "Sitemap: noindex page https://tajweed101.pages.dev/glossary",
-    "Sitemap: noindex page https://tajweed101.pages.dev/learn/foundations",
-    "Sitemap: noindex page https://tajweed101.pages.dev/learn/essential-rules",
-    "Sitemap: noindex page https://tajweed101.pages.dev/learn/madd-and-lengthening",
-    "Sitemap: noindex page https://tajweed101.pages.dev/learn/stopping-and-starting",
-    "Sitemap: noindex page https://tajweed101.pages.dev/learn/advanced-topics",
-    "Sitemap: noindex page https://tajweed101.pages.dev/articles",
-    "Sitemap: noindex page https://tajweed101.pages.dev/articles/how-to-start-learning-tajweed",
-    "Sitemap: noindex page https://tajweed101.pages.dev/articles/common-tajweed-mistakes-beginners-make",
-    "Sitemap: noindex page https://tajweed101.pages.dev/articles/how-to-practice-tajweed-effectively",
-    "Sitemap: noindex page https://tajweed101.pages.dev/articles/tajweed-vs-quran-recitation"
-  ]
+  "pages": 575,
+  "indexablePages": 90,
+  "links": 24360,
+  "languageLinks": 3450,
+  "structuredDataBlocks": 895,
+  "issues": []
 }

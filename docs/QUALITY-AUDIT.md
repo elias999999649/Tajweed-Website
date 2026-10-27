@@ -1,5 +1,7 @@
 # Performance and accessibility audit checklist
 
+Current implementation and actual test scope: [27 October 2026 report](IMPROVEMENTS-2026-10-27.md). This document remains a reusable checklist, not a statement that every item has passed.
+
 Use this checklist on the homepage, `/tajweed`, `/tajweed/[slug]`, `/learn`, `/learn/[slug]`, `/articles`, `/articles/[slug]`, `/practice`, and `/search` before release.
 
 ## Mobile

@@ -4,6 +4,8 @@ A static, beginner-oriented study companion for Quranic recitation within the **
 
 Public origin: [tajweed101.pages.dev](https://tajweed101.pages.dev).
 
+See [the implementation and verification report](docs/IMPROVEMENTS-2026-10-27.md) for the current scope, actual checks, and review limitations. The homepage keeps the sourced Quran 73:4 recitation phrase and the Google Sans Flex/Amiri fonts.
+
 ## Content and review status
 
 The repository contains 50 structured lesson drafts, a glossary derived from those lessons, a staged learning path, 13 articles, and 100 review-stage recognition questions. All lessons still require qualified Tajweed review. The separate verified-only practice bank and Quran-example registry are empty. Draft teaching text is labelled as instructional and is not presented as Quran quotation. Eleven mismatched instructional records are preserved for editorial traceability and withheld from learner pages.
@@ -34,6 +36,8 @@ Use Node.js 20 or newer for the app (the headless QA tooling uses Node's built-i
 | `npm run font` | Rebuild the local Google Sans Flex subset |
 
 Headless scripts use the installed Windows Chrome path. `QA_LOCALES` and `QA_WIDTHS` can narrow a diagnostic run; the default design matrix uses all five editions and 320, 375, 390, 430, 768, 1024, 1280, and 1440 CSS pixels, with additional dark-theme checks. Coverage and actual results belong in the current verification report, not inferred from a checklist.
+
+On Windows, use `npm.cmd` if PowerShell blocks the `npm.ps1` launcher. `QA_PAGE_TYPES` can limit a regression run to named route types; it does not change the exported site languages.
 
 ## Deployment and privacy
 

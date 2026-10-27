@@ -15,6 +15,7 @@ const excludedFields = new Set([
   "className", "htmlFor", "role", "target", "rel", "key", "value", "name", "method",
   "dir", "lang", "variable", "display", "weight", "subsets", "arabicText", "highlightedText",
   "arabicName", "arabicTerm", "arabicSpelling", "letters", "surah", "sourceReferences",
+  "rootMargin",
 ]);
 const permittedNameFiles = /[\\/](rules|index)\.ts$/;
 
@@ -64,7 +65,7 @@ async function walk(directory) {
         const field = fieldFor(node);
         const excluded = excludedFields.has(field) && !(field === "name" && permittedNameFiles.test(filename));
         const directMessage = isExplicitMessage(node, file);
-        const technical = !directMessage && /^(?:https?:|\/|@|#[\w-]|[a-z]+(?:-[a-z0-9]+)+$|[a-z]+\.[a-z]+$|[\w-]+\/[\w-]+|\(function\(|\((?:min|max)-width:|M\d|\d+rem |button, |system-ui, |use client$)/.test(text);
+        const technical = !directMessage && /^(?:https?:|\/|@|[.#][\w-]|[a-z]+(?:-[a-z0-9]+)+$|[a-z]+\.[a-z]+$|[\w-]+\/[\w-]+|\(function\(|\((?:min|max)-width:|M\d|\d+rem |button, |system-ui, |use client$)/.test(text);
         const useful = directMessage || /[A-Za-z]/.test(text) && (/\s/.test(text) || /^[A-Z][a-z]+[?!:]?$/.test(text));
         if (!excluded && !technical && useful && !text.includes("=>") && !text.includes("@context")) {
           const location = `${path.relative(root, filename).replaceAll("\\", "/")}:${file.getLineAndCharacterOfPosition(node.getStart()).line + 1}`;

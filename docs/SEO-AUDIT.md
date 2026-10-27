@@ -1,5 +1,7 @@
 # Technical SEO audit checklist
 
+Current localized routes and actual results: [27 October 2026 report](IMPROVEMENTS-2026-10-27.md). The route inventory below is historical; canonical editions now use `/en/`, `/ar/`, `/ur/`, `/id/`, and `/fr/`.
+
 This checklist protects crawlability, relevance, helpfulness, and technical quality. It does not promise rankings.
 
 ## Before publishing a route

@@ -47,3 +47,9 @@ The reported hashes cover the selected fields in stored record order; they are p
 ## Arabic translation work
 
 The Arabic dictionary covers the lesson/glossary text, article content, educational prompts and feedback, sources/review notes, metadata and interface messages. Terminology was checked for consistent use of النون الساكنة، التنوين، الإظهار، الإدغام، الإقلاب، الإخفاء، الغنة، التفخيم، الترقيق، الوقف والابتداء. This is an unreviewed working translation, not a native-editor or scholarly approval. Its source's unresolved Madd, Raa, Hamzah and stopping details remain unresolved. `npm run audit:i18n -- ar` passed with zero missing messages and zero invalid placeholders at the end of the translation pass; the root agent will rerun it after integration.
+
+## Homepage quotation retained
+
+The requested “wa rattil al-Qur’ana tartila” phrase is retained in the homepage recitation panel. Its displayed Arabic is copied exactly from the final phrase of 73:4 returned by `quran.ai fetch_quran(73:4, ar-uthmani-hafs)` on 27 October 2026, with a visible [Quran.com 73:4](https://quran.com/73:4) source link. This uses the retrieved Hafs Uthmani spelling rather than reconstructing diacritics or supplying an AI translation. It is a sourced quotation, not a newly approved rule example or an assertion that the draft curriculum has completed review.
+
+The existing English stopping-symbols poster is preserved as a collapsed original reference, explicitly labelled as English and awaiting review in all five editions. Its image text has not been silently translated into new rulings. The surrounding lesson explanations and controls are translated; a teacher still needs to check the poster's provenance and edition-specific instructions.

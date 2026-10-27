@@ -20,7 +20,7 @@
   --green-line: #bfded2;
   --on-green: #ffffff;
   --green-deep: #0b463c;
-  --gold: #9a6b21;
+  --gold: #875d1a;
   --gold-bright: #e2b45c;
   --gold-soft: #f6efdd;
   --line: #dfe8e2;
@@ -1163,4 +1163,63 @@ html[lang="ar"] body, html[lang="ur"] body { font-family: var(--font-amiri), "Tr
 html[dir="rtl"] .rule-pager, html[dir="rtl"] .rule-meta, html[dir="rtl"] .hero-copy, html[dir="rtl"] .article-body { text-align: start; }
 .option-index, .option-letter, .result-url { direction: ltr; unicode-bidi: isolate; }
 @media (max-width: 350px) { .language-switcher > svg { display: none; } }
+
+/* A quiet recitation folio gives the guide its own visual signature. */
+.dark { --faint: #8ca398; }
+.home-page .hero-grid { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); align-items: center; }
+.recitation-panel { position: relative; isolation: isolate; display: grid; align-content: center; gap: 20px; min-height: 348px; margin: 0; padding: 44px 36px 38px; border-radius: 120px 120px 20px 20px; color: #f6f3e8; background: #104c42; text-align: center; }
+.recitation-panel::before { content: ""; position: absolute; z-index: -1; inset: 14px; border: 1px solid #c5b78c; border-radius: 108px 108px 10px 10px; opacity: .55; pointer-events: none; }
+.recitation-ornament { display: flex; justify-content: center; align-items: center; height: 14px; gap: 14px; }
+.recitation-ornament::before, .recitation-ornament::after { content: ""; width: 32px; height: 1px; background: #c5b78c; }
+.recitation-panel blockquote { margin: 0; font-family: var(--font-arabic); font-weight: 400; font-size: clamp(2rem, 3.6vw, 3.1rem); line-height: 1.95; overflow-wrap: normal; }
+.recitation-panel figcaption { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 9px 16px; font-size: .875rem; line-height: 1.8; color: #e6e6d8; }
+.recitation-panel figcaption > span { font-family: var(--font-arabic); font-size: 1.1rem; }
+.recitation-panel figcaption a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; text-decoration: underline; text-underline-offset: 5px; }
+.recitation-panel figcaption a:focus-visible { outline-color: #f6f3e8; }
+.home-page .home-choice-card { box-shadow: none; border-radius: 4px 16px 16px 4px; border-inline-start: 3px solid var(--green-line); }
+.home-page .home-choice-card.featured { border-inline-start-color: var(--green); }
+.home-page .home-review-note { border-radius: 0; border-inline: 0; background: none; padding-inline: 0; }
+.study-routine { border-block-start: 1px solid var(--line); background: var(--surface); }
+.study-routine-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; padding: 0; margin: 0; list-style: none; }
+.study-routine-steps li { border-block-start: 2px solid var(--green-line); padding-block-start: 20px; }
+.study-routine-steps li > span { display: block; margin-block-end: 12px; color: var(--green); font-size: .875rem; font-weight: 650; font-variant-numeric: tabular-nums; }
+.study-routine-steps h3 { font-size: 1.125rem; margin-block: 0 10px; }
+.study-routine-steps p { max-width: 38ch; color: var(--muted); margin: 0; }
+html[lang="ar"] .main-nav a, html[lang="ur"] .main-nav a, html[lang="ar"] .button, html[lang="ur"] .button { font-size: 1.0625rem; }
+@media (max-width: 900px) { .home-page .hero-grid { grid-template-columns: minmax(0, 1fr); } .recitation-panel { width: min(100%, 540px); justify-self: center; } }
+@media (max-width: 600px) { .recitation-panel { min-height: 260px; gap: 12px; padding: 36px 28px 28px; border-radius: 88px 88px 16px 16px; } .recitation-panel::before { border-radius: 76px 76px 8px 8px; inset: 12px; } .recitation-panel blockquote { font-size: clamp(1.9rem, 8vw, 2.4rem); } .study-routine-steps { grid-template-columns: 1fr; gap: 28px; } .study-routine .section-heading { align-items: start; gap: 18px; } }
+.rule-sidebar a[aria-current="location"] { color: var(--green); background: var(--green-soft); border-inline-start: 3px solid var(--green); font-weight: 650; }
+.desktop-contents > strong { display: block; padding-inline: 12px; }
+.mobile-contents { display: none; }
+.review-notice details { margin-block: 8px; }
+.review-notice summary { cursor: pointer; min-height: 44px; display: flex; align-items: center; text-decoration: underline; text-underline-offset: 4px; }
+.learn-curriculum-stage > summary { position: relative; cursor: pointer; list-style: none; margin: 0; grid-template-columns: auto minmax(0, 1fr) auto; padding-inline-end: 28px; }
+.learn-curriculum-stage > summary::-webkit-details-marker { display: none; }
+.learn-curriculum-stage > summary::after { content: "+"; position: absolute; inset-inline-end: 0; inset-block-start: 4px; font-size: 1.5rem; line-height: 1; color: var(--green); }
+.learn-curriculum-stage[open] > summary::after { content: "−"; }
+.learn-curriculum-stage > summary h2 { margin-block: 0 8px; }
+.learn-curriculum-stage:not([open]) > summary p { display: none; }
+.learn-curriculum-stage[open] .learn-curriculum-rules { margin-block-start: 18px; }
+@media (max-width: 560px) { .learn-curriculum-stage { padding: 18px; } .learn-curriculum-stage > summary { grid-template-columns: minmax(0, 1fr) auto; } .learn-curriculum-stage > summary > div { grid-column: 1 / -1; grid-row: 2; } .learn-curriculum-stage > summary > .directory-group-count { grid-column: 2; grid-row: 1; } }
+@media (max-width: 1080px) {
+  .rule-sidebar { display: block; position: static; }
+  .desktop-contents { display: none; }
+  .mobile-contents { display: block; border-block: 1px solid var(--line); }
+  .mobile-contents > summary { display: flex; align-items: center; justify-content: space-between; cursor: pointer; min-height: 52px; font-weight: 650; padding-inline: 12px; }
+  .mobile-contents[open] > summary svg { transform: rotate(180deg); }
+  .mobile-contents nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding-block: 8px; }
+  .mobile-contents nav a { min-height: 44px; }
+  .rule-layout { gap: 24px; }
+}
+.home-page .home-search-section { margin-block-start: 0; }
+.glossary-directory { margin-block-start: 20px; }
+.practice-filters .clear-filter { justify-self: start; width: fit-content; min-height: 44px; padding: 8px 0; border: 0; color: var(--green); background: transparent; text-decoration: underline; text-underline-offset: 4px; }
+.main-nav .compact-nav-search { display: none; }
+@media (max-width: 350px) { .nav-wrap { gap: 4px; } .nav-actions .search-button { display: none; } .nav-actions select { max-width: 144px; padding-inline: 4px; } .main-nav .compact-nav-search { display: flex; } }
+/* Grid tracks must shrink to the viewport in both writing directions. */
+html { scroll-padding-block-start: 0; }
+.glossary-directory, .glossary-list, .glossary-card, .glossary-detail, .search-page { grid-template-columns: minmax(0, 1fr); }
+.glossary-directory > *, .glossary-list > *, .glossary-card > *, .glossary-detail > *, .search-page > section { min-width: 0; }
+.glossary-search, .large-search { width: 100%; min-width: 0; }
+.glossary-search input, .large-search input { width: 0; }
 

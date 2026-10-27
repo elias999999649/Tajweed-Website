@@ -17,7 +17,7 @@ const themeInitScript = `(function(){var d=false;try{d=matchMedia("(prefers-colo
 const providers = { en: () => import("@/lib/i18n/providers/en"), ar: () => import("@/lib/i18n/providers/ar"), ur: () => import("@/lib/i18n/providers/ur"), id: () => import("@/lib/i18n/providers/id"), fr: () => import("@/lib/i18n/providers/fr") };
 
 export const dynamicParams = false;
-export function generateStaticParams() { return (process.env.TAJWEED_QA_LOCALES ? process.env.TAJWEED_QA_LOCALES.split(",") : locales).map((lang) => ({ lang })); }
+export function generateStaticParams() { return locales.map((lang) => ({ lang })); }
 export async function generateMetadata(): Promise<Metadata> {
   return localizeMetadata({ metadataBase: new URL(siteUrl), applicationName: "Tajweed101", icons: { icon: "/logo.png", apple: "/logo.png" }, title: "Learn Tajweed Online", description: "Understand how Arabic letters sound, recognise recitation rules, and build a steady study routine with a qualified teacher.", robots: { index: true, follow: true } }, await getI18n(), "/");
 }

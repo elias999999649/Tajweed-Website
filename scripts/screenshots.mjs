@@ -95,6 +95,10 @@ for (const locale of locales) {
   await shot(`${locale}-home-phone-dark`, `/${locale}/`, 390, 844, true);
   await shot(`${locale}-lesson-small-phone`, `/${locale}/tajweed/intro-to-ghunnah/#examples`, 320, 900, false);
   await shot(`${locale}-glossary-tablet`, `/${locale}/glossary/`, 768, 1000, false);
+  if (locale === "ar" || locale === "ur") {
+    await shot(`${locale}-glossary-small-phone`, `/${locale}/glossary/`, 320, 900, false);
+    await shot(`${locale}-search-small-phone`, `/${locale}/search/?q=madd`, 320, 900, false);
+  }
   await shot(`${locale}-practice`, `/${locale}/practice/`, 1024, 1000, false);
   await shot(`${locale}-article`, `/${locale}/articles/how-to-practice-tajweed-effectively/`, 1280, 1000, false);
 }

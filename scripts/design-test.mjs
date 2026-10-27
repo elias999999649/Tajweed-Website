@@ -171,7 +171,8 @@ const PAGE_TYPES = [
   ["404", "/nonexistent-page"],
 ];
 const QA_LOCALES = (process.env.QA_LOCALES || "en,ar,ur,id,fr").split(",");
-const PAGES = QA_LOCALES.flatMap(locale => PAGE_TYPES.filter(([name]) => name !== "404").map(([name, url]) => [`${locale}-${name}`, `/${locale}${url === "/" ? "/" : url}`])).concat([["404", "/nonexistent-page"]]);
+const selectedPageTypes = process.env.QA_PAGE_TYPES?.split(",");
+const PAGES = QA_LOCALES.flatMap(locale => PAGE_TYPES.filter(([name]) => name !== "404" && (!selectedPageTypes || selectedPageTypes.includes(name))).map(([name, url]) => [`${locale}-${name}`, `/${locale}${url === "/" ? "/" : url}`])).concat(!selectedPageTypes || selectedPageTypes.includes("404") ? [["404", "/nonexistent-page"]] : []);
 const WIDTHS = (process.env.QA_WIDTHS || "320,375,390,430,768,1024,1280,1440").split(",").map(Number);
 
 async function auditPage(sessionId, name, url, width, height, mode) {
@@ -228,6 +229,23 @@ async function auditPage(sessionId, name, url, width, height, mode) {
   })()`);
   if (tiny?.length) report(label, `tiny text (<12px): ${tiny.join(", ")}`);
 
+  if (name !== "404") {
+    const lowContrast = await evaluate(sessionId, `(() => {
+      const style = getComputedStyle(document.documentElement);
+      const luminance = token => {
+        const value = style.getPropertyValue(token).trim().replace('#', '');
+        const rgb = [0,2,4].map(index => parseInt(value.slice(index,index+2),16)/255).map(c => c <= .04045 ? c/12.92 : ((c+.055)/1.055)**2.4);
+        return rgb[0]*.2126 + rgb[1]*.7152 + rgb[2]*.0722;
+      };
+      const pairs = [['--ink','--bg'],['--muted','--bg'],['--faint','--surface'],['--green','--green-soft'],['--red','--red-soft'],['--gold','--gold-soft'],['--footer-ink','--footer-bg'],['--footer-muted','--footer-bg'],['--on-green','--green']];
+      return pairs.map(([foreground,background]) => {
+        const values=[luminance(foreground),luminance(background)].sort((a,b)=>a-b);
+        return { foreground, background, ratio:(values[1]+.05)/(values[0]+.05) };
+      }).filter(pair => !Number.isFinite(pair.ratio) || pair.ratio < 4.5);
+    })()`);
+    if (lowContrast?.length) report(label, `text palette contrast below 4.5:1: ${JSON.stringify(lowContrast)}`);
+  }
+
   const font = await evaluate(sessionId, `(() => {
     const el = document.querySelector('h1') || document.body;
     return getComputedStyle(el).fontFamily;
@@ -255,7 +273,7 @@ async function waitFor(sessionId, expression, timeout = 10000) {
 }
 async function pressKey(sessionId, key, modifiers = 0) {
   const keyCodes = { Tab: 9, Enter: 13, Escape: 27, ArrowDown: 40, ArrowUp: 38 };
-  await send("Input.dispatchKeyEvent", { type: "keyDown", key, code: key, windowsVirtualKeyCode: keyCodes[key], modifiers }, sessionId);
+  await send("Input.dispatchKeyEvent", { type: "keyDown", key, code: key, windowsVirtualKeyCode: keyCodes[key], modifiers, ...(key === "Enter" && !modifiers ? { text: "\r", unmodifiedText: "\r" } : {}) }, sessionId);
   await send("Input.dispatchKeyEvent", { type: "keyUp", key, code: key, windowsVirtualKeyCode: keyCodes[key], modifiers }, sessionId);
 }
 async function readyControls(sessionId) {
@@ -315,6 +333,29 @@ async function interactionTests(sessionId) {
       skipTargetExists: document.querySelector('.skip-link')?.hash === '#main-content' && Boolean(document.getElementById('main-content'))
     }))()`);
     checked("keyboard menu " + locale, menu, ["opened", "keyboardMoved", "closed", "returnedFocus", "expandedFalse", "skipTargetExists"]);
+
+    await navigate(sessionId, BASE + "/" + locale + "/learn/", 390, 844);
+    const stages = await evaluate(sessionId, `(() => {
+      const stages = [...document.querySelectorAll('.learn-curriculum-stage')];
+      return { focusedStart: stages.length > 1 && stages[0].open && stages.slice(1).every(stage => !stage.open), allLessonsPresent: document.querySelectorAll('.learn-curriculum-rules a').length === 50 };
+    })()`);
+    checked("learning stages " + locale, stages, ["focusedStart", "allLessonsPresent"]);
+    await evaluate(sessionId, "document.querySelectorAll('.learn-curriculum-stage summary')[1]?.focus()");
+    await pressKey(sessionId, "Enter");
+    checked("learning disclosure " + locale, { keyboardOpens: await waitFor(sessionId, "document.querySelectorAll('.learn-curriculum-stage')[1]?.open === true") }, ["keyboardOpens"]);
+
+    await navigate(sessionId, BASE + "/" + locale + "/tajweed/what-is-tajweed/", 1280, 900);
+    await readyControls(sessionId);
+    await evaluate(sessionId, "document.getElementById('pronunciation').scrollIntoView({behavior:'instant', block:'start'})");
+    checked("reading location " + locale, { highlighted: await waitFor(sessionId, "document.querySelector('.desktop-contents a[aria-current=location]')?.getAttribute('href') === '#pronunciation'") }, ["highlighted"]);
+    await navigate(sessionId, BASE + "/" + locale + "/tajweed/what-is-tajweed/", 375, 844);
+    await readyControls(sessionId);
+    await evaluate(sessionId, "document.querySelector('.mobile-contents summary').focus()");
+    await pressKey(sessionId, "Enter");
+    checked("mobile lesson outline " + locale, { keyboardOpens: await waitFor(sessionId, "document.querySelector('.mobile-contents')?.open === true") }, ["keyboardOpens"]);
+
+    await navigate(sessionId, BASE + "/" + locale + "/", 390, 844);
+    await readyControls(sessionId);
 
     // Check both theme transitions in each locale without English-label matching.
     const theme = await evaluate(sessionId, `(async () => {
